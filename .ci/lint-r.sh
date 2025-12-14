@@ -8,4 +8,4 @@ Rscript \
     --vanilla \
     -e "install.packages('lintr', repos = '${CRAN_MIRROR}', dependencies = c('Depends', 'Imports', 'LinkingTo'))"
 
-Rscript .ci/lint-r-code.R ./mu_rprog
+Rscript .ci/lint-r-code.R

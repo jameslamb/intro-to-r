@@ -389,25 +389,25 @@ playerDF <- data.frame(
     , position   = c("PG", "SF", "PF", "SG", "C")
     , apg        = c(14.2, 3.5, 4.6, 5.0, 0.7)
     , ppg        = c(4.8, 31.0, 24.6, 33.2, 12.3)
-    , fg_percent = c(-.062, 0.48, 0.63, 0.80, 0.51)
+    , fg_percent = c(-0.062, 0.48, 0.63, 0.80, 0.51)
 )
 
 # "Give me a data frame with all Rondo and KG's stats"
 nameIndex <- playerDF$playerName %in% c("Rajon Rondo", "Kevin Garnett")
 nameIndex
 class(nameIndex)
-playerDF[nameIndex,]
+playerDF[nameIndex, ]
 
 # "Give me apg for players who averaged more than 20 ppg"
 playerDF[playerDF$ppg > 20, c("playerName", "apg")]
 
 # "Give me stats for all the guards""
-guardIndex <- grepl("G", playerDF$position)
+guardIndex <- grepl("G", playerDF$position, fixed = TRUE)
 print(guardIndex)
-playerDF[grepl("G", playerDF$position)]
+playerDF[grepl("G", playerDF$position, fixed = TRUE)]
 
 # "Give me stats for players who were guards OR show above 50% from the field"
-playerDF[grepl("G", playerDF$position) | playerDF$fg_percent > 0.5,]
+playerDF[grepl("G", playerDF$position, fixed = TRUE) | playerDF$fg_percent > 0.5, ]
 ```
 
 # Controlling Program Flow
@@ -422,7 +422,7 @@ DAY <- "SATURDAY"
 print(DAY)
 
 # If it's Monday, print 2 messages. Otherwise, print 1
-if (DAY == "MONDAY"){
+if (DAY == "MONDAY") {
     print("It is Monday.")
     print("I love Monday!")
 } else {
@@ -436,9 +436,9 @@ Note that conditional blocks can have any number of "else if" statements, but on
 
 ```{r ifElse2}
 # Try to think through what this will do before you run it yourself:
-if (4 > 5){
+if (4 > 5) {
     print("3")
-} else if (6 <= (5/10)) {
+} else if (6 <= (5 / 10)) {
     print("1")
 } else if (4 + 4 + 4 == 12.0001) {
     print("4")
@@ -454,7 +454,7 @@ When you know that you want to do something a fixed number of times (say, squari
 
 ```{r forLoop}
 # Create a vector
-x <- c(1,4,6)
+x <- c(1, 4, 6)
 
 # Print the square of each element one at a time
 print(1^2)
@@ -462,7 +462,7 @@ print(4^2)
 print(6^2)
 
 # BETTER: Loop over the vector and print the square of each element
-for (some_number in x){
+for (some_number in x) {
     print(some_number^2)
 }
 ```
@@ -516,7 +516,7 @@ MOVIE_TO_SEARCH_FOR <- "apocalypse now"
 # Faster while loop implementation
 KEEP_SEARCHING <- TRUE
 i <- 1
-while (KEEP_SEARCHING){
+while (KEEP_SEARCHING) {
 
     # Check this element
     if (movies[i] == MOVIE_TO_SEARCH_FOR) {
@@ -528,7 +528,7 @@ while (KEEP_SEARCHING){
     }
 
     # If we've reached the end, break out. Otherwise, increment the counter
-    if (i == length(movies)){
+    if (i == length(movies)) {
         print("Done searching. This movie isn't in the list")
         KEEP_SEARCHING <- FALSE
     }
@@ -548,7 +548,7 @@ To write powerful, concise code, you'll want to learn how to use and create func
 # Function to return only the numbers smaller than 10
 nums <- c(1, 3, 4, 8, 13, 24)
 
-getLittleNumbers <- function(some_numbahs){
+getLittleNumbers <- function(some_numbahs) {
     lil_ones <- some_numbahs[some_numbahs < 10]
     return(lil_ones)
 }
@@ -564,7 +564,7 @@ When you call a function with arguments in R, you can provide those arguments tw
 * "keyword" = matching a specific argument by name
 
 ```{r exampleFunction}
-someFunction <- function(x, y, z){
+someFunction <- function(x, y, z) {
   print(paste0("x: ", x))
   print(paste0("y: ", y))
   print(paste0("z: ", z))
@@ -639,14 +639,14 @@ The first time that the code inside the function reaches a `return` value, it wi
 
 ```{r returnExample}
 # simple function + print debugging
-simpFunction <- function(n){
+simpFunction <- function(n) {
     print("first print")
-    if (n > 5){
+    if (n > 5) {
       return(TRUE)
     }
 
     print("second print")
-    if (n < 5){
+    if (n < 5) {
       return(FALSE)
     }
 
@@ -667,12 +667,13 @@ These are called "null functions" and they're common in scripting languages like
 By default, these functions return the R special value `NULL`.
 
 ```{r nullFunc}
-printSentence <- function(theSentence){
+printSentence <- function(theSentence) {
     words <- strsplit(
       x = theSentence
       , split = " "
+      , fixed = TRUE
     )
-    for (word in words){
+    for (word in words) {
         print(word)
     }
 }
@@ -692,7 +693,7 @@ R uses a search technique called [lexical scoping](https://en.wikipedia.org/wiki
 Let's define a function that takes a single input, named `y`.
 
 ```{r sampleFunction}
-someFunc <- function(y){
+someFunc <- function(y) {
     return(x^2)
 }
 ```
@@ -739,7 +740,7 @@ someFunc(20)
 It would be better to re-write the function to take in `x`.
 
 ```{r rewriteSomeFunc}
-someFunc <- function(x){
+someFunc <- function(x) {
     return(x^2)
 }
 ```
@@ -796,18 +797,18 @@ weights <- ChickWeight$weight
 
 # Loop over and encode "above mean" and "below mean"
 the_mean <- mean(weights)
-meanCheck <- function(val, ref_mean){
-    if (val > ref_mean){
+meanCheck <- function(val, ref_mean) {
+    if (val > ref_mean) {
         return("above mean")
     }
-    if (val < ref_mean){
+    if (val < ref_mean) {
         return("below mean")
     }
     return("equal to the mean")
 }
 check_vec <- sapply(
     X = weights
-    , FUN = function(x){
+    , FUN = function(x) {
         meanCheck(val = x, ref_mean = the_mean)
     }
 )
@@ -829,7 +830,7 @@ data("ChickWeight")
 cwRanges <- apply(
     X = ChickWeight
     , MARGIN = 2
-    , FUN = function(x){
+    , FUN = function(x) {
         range(as.numeric(x))
     }
 )
@@ -838,7 +839,7 @@ cwRanges <- apply(
 rwRanges <- apply(
     X = ChickWeight
     , MARGIN = 1
-    , FUN = function(blah){
+    , FUN = function(blah) {
         range(as.numeric(blah))
     }
 )
@@ -892,7 +893,7 @@ library(data.table)
 
 find("fread")
 
-fread <- function(){
+fread <- function() {
     print("using my custom fread()")
 }
 
@@ -926,8 +927,8 @@ Let's create two scripts.
 
 ```{r helperFun}
 # Define some arbitrary custom function
-myFunction <- function(n){
-    if (n <= 5){
+myFunction <- function(n) {
+    if (n <= 5) {
         return(n^2)
     } else {
         return(n^3)
@@ -942,7 +943,7 @@ myFunction <- function(n){
 #source("helperfuns.R")
 
 # Apply that function over some data
-le_stuff <- sapply(c(1:20), myFunction)
+le_stuff <- sapply(1:20, myFunction)
 
 # Plot the result
 plot(x = 1:20, y = le_stuff)
@@ -961,10 +962,10 @@ This approach involves forming expectations about the state of the objects in yo
 ```{r printDebugging}
 # This function is supposed to sum all the numbers in a vector that are greater than 10
 # but it's breaking with a weird error. Let's use print debugging to dig into it
-sumBigNums <- function(aVector){
+sumBigNums <- function(aVector) {
     running_sum <- 0
-    for (num in aVector){
-        if (num >= 10){
+    for (num in aVector) {
+        if (num >= 10) {
             running_sum <- running_sum + num
         }
     }
@@ -976,14 +977,14 @@ some_vector <- c(11, 20, 5, 9.5, 10, 14)
 sumBigNums(some_vector)
 
 # Let's refactor this function (change the code) and print the status at each stage
-sumBigNums <- function(aVector){
+sumBigNums <- function(aVector) {
     running_sum <- 0
-    for (num in aVector){
+    for (num in aVector) {
         # Grab the sum before we hit this number
         sum_before <- running_sum
 
         # If the number if greater than 10, increase the sum
-        if (num >= 10){
+        if (num >= 10) {
             running_sum <- running_sum + num
         }
 
@@ -1320,7 +1321,7 @@ They're an inevitability in real-world data.
 
 ```{r introToNAs}
 # Create a vector w/ missing data
-some_nums <- c(1,2,NA, 6, NA, 8)
+some_nums <- c(1, 2, NA, 6, NA, 8)
 print(some_nums)
 
 # Use is.na() to get a vector of TRUE/FALSE for the question "is this element NA?"
@@ -1378,15 +1379,15 @@ testDF <- data.frame(
 )
 
 # Find columns that are more than 90% missing values
-.percent_na <- function(a_vector){
-    return(sum(is.na(a_vector)/length(a_vector)))
+.percent_na <- function(a_vector) {
+    return(sum(is.na(a_vector) / length(a_vector)))
 }
 colsToDrop <- apply(testDF, MARGIN = 2, .percent_na) > 0.9
 cleanDF <- testDF[, !colsToDrop]
 print(str(cleanDF))
 
 # Remove rows w/ remaining NAs
-cleanDF <- cleanDF[complete.cases(cleanDF),]
+cleanDF <- cleanDF[complete.cases(cleanDF), ]
 print(str(cleanDF))
 ```
 
@@ -1468,7 +1469,7 @@ legend(
   x = 7
   , y = 4.3
   , unique(iris$Species)
-  , col = seq_len(length(iris$Species))
+  , col = seq_along(iris$Species)
   , pch = 1
 )
 ```
@@ -1524,7 +1525,7 @@ You can control the plotting options to make a grid of plots.
 The code below creates a 2x2 grid with a density for Sepal Width and scatter plots of the other three variables against sepal width.
 
 ```{r gridOfPlots}
-par(mfrow = c(2,2))
+par(mfrow = c(2, 2))
 
 plot(
   density(iris$Sepal.Width)
@@ -1569,7 +1570,7 @@ plot(
 )
 
 # reset options
-par(mfrow = c(1,1))
+par(mfrow = c(1, 1))
 ```
 
 ### A Note On Graphics Devices
@@ -1587,7 +1588,7 @@ if (!dir.exists(outDir)) {
 }
 
 # Create 10 plots in a loop
-for (i in seq_len(10)){
+for (i in seq_len(10)) {
     # Open a connection to a .png file
     fileName <- paste0("plot_", i, ".png")
     filePath <- file.path(outDir, fileName)
@@ -1770,8 +1771,8 @@ set.seed(708)
 ```{r traintest, eval = TRUE, echo = TRUE}
 # Test vs. Training Data: Let's hold out 40 random records right now for testing
 testIndx    <- sample(seq_len(nrow(swiss)), size = 10, replace = FALSE)
-swissTestDF <- swiss[testIndx,]
-swiss       <- swiss[-testIndx,]
+swissTestDF <- swiss[testIndx, ]
+swiss       <- swiss[-testIndx, ]
 ```
 
 ## Examine Your Training Data
@@ -1810,7 +1811,7 @@ swiss$majority_agg <- NULL
 
 #=== Create the binary columns
 x_var_names <- names(swiss)[names(swiss) != "Fertility"]
-for (var_name in x_var_names){
+for (var_name in x_var_names) {
 
     bin_var_name <- paste0(var_name, "_above_median")
     swiss[, bin_var_name] <- swiss[, var_name] > median(swiss[, var_name])
@@ -1824,8 +1825,8 @@ We can use `lapply()` to apply the same test to every variable in our data frame
 
 ```{r tTestFunc}
 # Could just loop over every non-Fertility column and do this test!
-bin_var_names <- grep("_above_median", names(swiss), value = TRUE)
-t_tests <- lapply(bin_var_names, function(bin_var){
+bin_var_names <- grep("_above_median", names(swiss), value = TRUE, fixed = TRUE)
+t_tests <- lapply(bin_var_names, function(bin_var) {
     t_test <- t.test(
         Fertility ~ get(bin_var)
         , data = swiss
@@ -1867,7 +1868,7 @@ errors <- swissTestDF$Fertility - preds
 
 MAE   <- mean(abs(errors))
 MSE   <- mean(errors^2)
-MAPE  <- 100*mean(abs(errors)/swissTestDF$Fertility)
+MAPE  <- 100 * mean(abs(errors) / swissTestDF$Fertility)
 
 # Actuals vs. Preds plot
 plot(
@@ -1889,7 +1890,7 @@ Since we could reuse the code for other models, we should just wrap it in a func
 
 ```{r evalFunction}
 # Before moving on...lets wrap that pipeline in a function
-EvaluateModel <- function(model, testDF, modelName){
+EvaluateModel <- function(model, testDF, modelName) {
     # Check how well our model does on the held-out data
     preds <- predict(model, newdata = testDF)
     errors <- testDF$Fertility - preds
@@ -1913,8 +1914,8 @@ EvaluateModel <- function(model, testDF, modelName){
     lines(x = 0:100, y = 0:100, col = "red")
 
     # add error metrics
-    text(x = rep(5,3), y = c(72,80,88), labels = c("MAE: ", "MSE: ", "MAPE: "))
-    text(x = rep(15,3), y = c(72,80,88), labels = round(c(MAE, MSE, MAPE), 2))
+    text(x = rep(5, 3), y = c(72, 80, 88), labels = c("MAE: ", "MSE: ", "MAPE: "))
+    text(x = rep(15, 3), y = c(72, 80, 88), labels = round(c(MAE, MSE, MAPE), 2))
 
     # Give back the preds in case user wants to do something customized
     return(list(
@@ -2103,10 +2104,10 @@ bsText <- tolower(bsText)
 bsText <- trimws(bsText)
 
 # Remove empty lines
-bsText <- bsText[sapply(bsText, nchar)>0]
+bsText <- bsText[sapply(bsText, nchar) > 0]
 
 # sample a few lines
-print(head(bsText, n=10))
+print(head(bsText, n = 10))
 ```
 
 ## Regular Expressions
@@ -2131,18 +2132,18 @@ Next, let's use regular expressions (commonly just called "regex") to handle som
 
 ```{r moreRegex}
 # split some common contractions into two words
-bsText <- gsub("he's", "he is", bsText)
-bsText <- gsub("how's", "how is", bsText)
-bsText <- gsub("it's", "it is", bsText)
-bsText <- gsub("she's", "she is", bsText)
-bsText <- gsub("that's", "that is", bsText)
-bsText <- gsub("there's", "there is", bsText)
-bsText <- gsub("what's", "what is", bsText)
-bsText <- gsub("when's", "when is", bsText)
-bsText <- gsub("where's", "where is", bsText)
-bsText <- gsub("why's", "why is", bsText)
+bsText <- gsub("he's", "he is", bsText, fixed = TRUE)
+bsText <- gsub("how's", "how is", bsText, fixed = TRUE)
+bsText <- gsub("it's", "it is", bsText, fixed = TRUE)
+bsText <- gsub("she's", "she is", bsText, fixed = TRUE)
+bsText <- gsub("that's", "that is", bsText, fixed = TRUE)
+bsText <- gsub("there's", "there is", bsText, fixed = TRUE)
+bsText <- gsub("what's", "what is", bsText, fixed = TRUE)
+bsText <- gsub("when's", "when is", bsText, fixed = TRUE)
+bsText <- gsub("where's", "where is", bsText, fixed = TRUE)
+bsText <- gsub("why's", "why is", bsText, fixed = TRUE)
 
-bsText <- gsub("'ll", " will", bsText)
+bsText <- gsub("'ll", " will", bsText, fixed = TRUE)
 ```
 
 To experiment with regular expressions outside of R, try https://regexr.com/.
@@ -2158,8 +2159,8 @@ library(stringr)
 library(data.table)
 allWords <- lapply(
     X = bsText
-    , FUN = function(thisLine){
-        return(data.frame(words = str_split(thisLine, " ")[[1]]))
+    , FUN = function(thisLine) {
+        return(data.frame(words = str_split(thisLine, " ", fixed = TRUE)[[1]]))
     }
 )
 
@@ -2232,7 +2233,7 @@ This will probably change once you start writing code, but in my experience it's
 
 ```{r level2}
 # Function to create random sentences
-createSentence <- function(){
+createSentence <- function() {
 
     # Define a list of nouns
 
@@ -2254,7 +2255,7 @@ createSentence <- function(){
 }
 
 # Function to create a "page" with n sentences
-createPage <- function(n){
+createPage <- function(n) {
 
     # Call the function to create a sentence n times
 
@@ -2264,7 +2265,7 @@ createPage <- function(n){
 }
 
 # Function to create a "book" with m pages
-createBook <- function(n_pages, sentences_per_page){
+createBook <- function(n_pages, sentences_per_page) {
 
     # Call the function to create pages n_pages times
 
@@ -2283,7 +2284,7 @@ The point here is not to show you how to create a book-writing app, but rather t
 
 ```{r level3}
 # Function to create random sentences
-createSentence <- function(){
+createSentence <- function() {
 
     # Define a list of nouns
     nouns <- c("parrot", "giant squid", "whale", "captain", "first mate")
@@ -2318,12 +2319,12 @@ createSentence <- function(){
 }
 
 # Function to create a "page" with n sentences
-createPage <- function(n){
+createPage <- function(n) {
 
     # Call the function to create a sentence n times
     some_sentences <- sapply(
         X = seq_len(n)
-        , FUN = function(x){
+        , FUN = function(x) {
             createSentence()
         }
     )
@@ -2336,12 +2337,12 @@ createPage <- function(n){
 }
 
 # Function to create a "book" with m pages
-createBook <- function(n_pages, sentences_per_page){
+createBook <- function(n_pages, sentences_per_page) {
 
     # Call the function to create pages n_pages times
     a_book <- lapply(
         X = seq_len(n_pages)
-        , FUN = function(x){
+        , FUN = function(x) {
             createPage(n = sentences_per_page)
         }
     )
