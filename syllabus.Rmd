@@ -1,0 +1,311 @@
+---
+title: "ECON 6114: R Programming (Spring 2026)"
+output:
+  html_document:
+    number_sections: false
+    theme: bootstrap
+    toc: true
+    toc_float:
+      collapsed: false
+      smooth_scroll: true
+    toc_depth: 3
+linkcolor: blue
+urlcolor: blue
+---
+
+\hrulefill
+
+**Instructor:** James Lamb
+
+\hrulefill
+
+# I. Course Info
+
+Welcome to R Programming!
+
+## A. Learning Objectives and Outcomes
+
+In this course, you'll learn the fundamentals of using the R programming language.
+
+What you'll learn:
+
+* syntax (i.e. "this is the command to do this thing in R")
+* how to write complex R programs
+* how to use R to read data, conduct statistical analyses and create data visualizations
+
+## B. Course Resources and Communication
+
+### Instructor
+
+* **email:** jaylamb20@gmail.com
+* **GitHub:** https://github.com/jameslamb
+* **LinkedIn:** https://www.linkedin.com/in/jameslamb1/
+
+Email is my preferred contact method, and I will do my best to respond to all emails within 24 hours.
+
+### Office Hours
+
+Go to https://calendar.app.google/iKAUGVQjBhegyLHH8 to book time for a 1-on-1 video call with me.
+That service is automatically synced with my calendars.
+
+If you don't see a time that works with your schedule, please email me with your availability and we can find a time to meet.
+
+### Course Materials
+
+No textbooks or other paid resources.
+
+Bookmark these:
+
+* course site: https://jameslamb.github.io/intro-to-r
+* lecture videos: https://drive.google.com/drive/folders/1gxLk7hH5sPd8QaBwKY9QqabyWq3TXoAh
+* programming supplement: https://jameslamb.github.io/intro-to-r/code/programming-supplement.html
+
+All lectures are delivered asynchronously, via those pre-recorded videos.
+
+**YOU WILL PRESENT YOUR FINAL PROJECT ON A VIDEO CALL SATURDAY, February 14, 9:00a-12:00P CT**.
+
+Videos describing the solutions to quizzes and assignments will be made available after the deadlines for those items.
+
+### Required Hardware
+
+\textcolor{red}{You are required to use your own computer for this class.}
+
+If you do not have a personal computer, please let me know as soon as possible.
+
+The use of personal hardware is required because one of the objectives for this course is to help each of you set up a data science development environment on your own machines.
+
+### Required Software
+
+We will be working with the [R programming language](https://www.r-project.org/).
+For script editing and exploratory analysis, we'll use [RStudio](https://posit.co/products/open-source/rstudio/), a popular integrated development environment (IDE) for R.
+
+Instructions for setting up these components can be found in the sections below.
+
+## C. Course Outline
+
+As long as you meet all deadlines in the course, you can approach the material at any pace and in any order you'd like.
+
+Recommended sequence:
+
+1. Read this syllabus
+2. Accept the calendar invitation for the final project presentation call.
+3. bookmark the course resources:
+    * course site ([link](https://jameslamb.github.io/intro-to-r/))
+    * programming supplement: ([link](https://jameslamb.github.io/intro-to-r/code/programming-supplement.html))
+    * office hours link: https://calendar.app.google/iKAUGVQjBhegyLHH8
+4. Watch the course intro video ([link](https://drive.google.com/file/d/1BHRiFxOTSNRXyD1rAF7CPa7MC3xD3sRf/view?usp=drive_link))
+5. **(due January 17, 2026)** Take the `pre-course survey` on D2L
+6. Set up your development environment
+    * install R on your personal computer (https://cloud.r-project.org/)
+    * install RStudio on your personal computer (https://posit.co/products/open-source/rstudio/)
+7. Review Week 1 lecture materials
+    * lecture videos ([link](https://drive.google.com/drive/folders/1wR0qZgDKSiOnhwlEkWiMjvhavuGi4WK2))
+    * Programming Supplement topics ([link](https://jameslamb.github.io/intro-to-r/code/programming-supplement.html)):
+      - "Variables and Namespaces"
+      - "Dollarstore Calculator Math"
+      - "Data Structures"
+      - "Logical Operators"
+      - "Subsetting"
+      - "Controlling Program Flow"
+    * *(optional)* Quiz Description video ([link](https://drive.google.com/file/d/1mA5umVuGeezZIVapP9t2ZMCMKdsDMzic/view?usp=sharing))
+8. **(due January 24, 2026)** Complete `Quiz 1`
+9. Watch solution videos:
+    * Quiz 1 ([link](https://drive.google.com/file/d/1Yz0eF37P7BmW6C1t1-QFFeOwt_MyWogg/view?usp=drive_link))
+10. Review Week 2 lecture materials
+    * lecture videos ([link](https://drive.google.com/drive/folders/1RzLcoA22EpZ2ijgemlyOiPQjXb6Dgnqt))
+      - "Functions"
+      - "Using External Packages"
+      - "Debugging"
+      - "Working with Files"
+    * *(optional)* Programming Assignment 1 description video ([link](https://drive.google.com/file/d/1lTCFRY9lpxvz-rPih8nf33TQiWaV2sum/view?usp=drive_link))
+11. **(due January 31, 2026)** Complete `Quiz 2`
+12. **(due January 31, 2026)** Submit `Programming Assignment 1`
+13. Watch solution videos
+    * Quiz 2 ([link](https://drive.google.com/file/d/1LvTJXAe9_zeA8ISH2D1iTJWQFjO5suLs/view?usp=drive_link))
+    * Programming Assignment 1 ([link](https://drive.google.com/file/d/196tA7oURjCh7-aEV3OLkmbo-0Cf1_BrV/view?usp=drive_link))
+14. Review Week 3 lecture materials
+    * lecture videos ([link](https://drive.google.com/drive/folders/17q_QMf5TTT_gMYGDhkn5V8yY_dpjHUeO))
+    * Programming Supplement topics ([link](https://jameslamb.github.io/intro-to-r/code/programming-supplement.html)):
+      - "Missing Values"
+      - "Plotting"
+      - "Manipulating Data Frames"
+    * *(optional)* Programming Assignment 2 description video ([link](https://drive.google.com/file/d/1o-KPSFapjP85TooNywc6HdPNv7csaFRE/view?usp=drive_link))
+15. Review Final Project materials
+    * videos ([link](https://drive.google.com/drive/folders/1zP8VsIt9vpvD5LvLn4aUk5CtT9uJ-vmU))
+    * rubrics ([link](https://jameslamb.github.io/intro-to-r/assignments/final_project.html))
+    * "Practices to Avoid in R Programming" ([link](https://jameslamb.github.io/intro-to-r/assignments/bad-practices.html))
+16. **(due February 7, 2026)** Submit `Programming Assignment 2`
+17. **(due February 7, 2026)** Submit `Final Project Proposal`
+18. Watch solution videos
+    * Programming Assignment 2 ([link](https://drive.google.com/file/d/1BjkwPfre3iRSeY6HjzMWPQy8VKh7qFl1/view?usp=drive_link))
+19. Review Week 4 lecture materials
+    * lecture videos ([link](https://drive.google.com/drive/folders/1pIHR3RXgqI9vbKm6u1HX_pYQDD9QOgyf?usp=drive_link))
+    * Programming Supplement topics ([link](https://jameslamb.github.io/intro-to-r/code/programming-supplement.html)):
+      - "Statistical Analysis"
+      - "Text Processing"
+      - "Software Principles"
+      - "R Programming Best Practices"
+20. **(due February 14, 2026)** Submit `Final Project Script(s)`
+21. **(due February 14, 2026)** Attend `Final Project Presentation` (video call)
+  * present your final project code to your classmates
+  * provide peer review feedback to your classmates
+22. **(due February 17, 2026)** *(optional)* complete `Extra Credit Assignment`
+
+\pagebreak
+
+# II. Grading and Assignments
+
+You will receive a letter grade for this course.
+Grades will be assigned using the following scheme (also available under the "Grades" section of the course D2L page).
+
+|Grade Item                      |Proportion of Final Grade |
+|:------------------------------:|:------------------------:|
+|Pre-Class Quiz                  |5\%                       |
+|Quiz 1                          |10\%                      |
+|Quiz 2                          |10\%                      |
+|Programming Assignment 1        |15\%                      |
+|Programming Assignment 2        |15\%                      |
+|Final Project - Proposal        |10\%                      |
+|Final Project - R script        |20\%                      |
+|Final Project - Presentation    |10\%                      |
+|Final Project - Written Report  |5\%                       |
+
+<br>
+And letter grades will be assigned using the following scale:
+
+> **A**  - 94\% or higher
+>
+> **A-** - 87\% $\leq$ grade < 94\%
+>
+> **B+**  - 85\% $\leq$ grade < 87\%
+>
+> **B**  - 82\% $\leq$ grade < 85\%
+>
+> **B-** - 75\% $\leq$ grade < 82\%
+>
+> **C+**  - 73\% $\leq$ grade < 75\%
+>
+> **C**  - 70\% $\leq$ grade < 73\%
+>
+> **F**  - Less than 70\%
+
+## A. Quizzes (25\%)
+
+There will be two quizzes which will test your understanding of topics covered in class.
+In addition, quizzes may require you to interpret pseudo-code or to write a bit of R code yourself to solve questions.
+
+Quizzes are delivered online via D2L (see the "Quizzes" section of the course site).
+Quizzes have no time limit.
+You will be allowed two attempts for each quiz and your grade on each quiz will be the better of your two scores.
+All times below are in Central Time.
+
+|Quiz                       |Opens                             |Due                         |
+|:-------------------------:|:--------------------------------:|:--------------------------:|
+|Pre-course survey          | Immediately                      | 11:00p on January 17, 2026 |
+|Quiz 1                     | Immediately                      | 11:00p on January 24, 2026 |
+|Quiz 2                     | Immediately                      | 11:00p on January 31, 2026 |
+
+## B. Programming Assignments (30\%)
+
+After we've covered preliminary topics in the first two weeks of the course, I'll ask you to complete two programming assignments.
+In these assignments, you'll create R scripts to accomplish common tasks in data exploration and statistical analysis.
+
+Assignment rubrics are available on the course site.
+
+* Assignment 1 ([link](https://jameslamb.github.io/intro-to-r/assignments/programming_assignment1.html))
+* Assignment 2 ([link](https://jameslamb.github.io/intro-to-r/assignments/programming_assignment2.html))
+
+Your completed assignment must be uploaded to the appropriate folder in the "Dropbox" section on the course D2L page by the due date listed in the table below.
+<br>
+
+|Quiz                       |Opens                             |Due                         |
+|:-------------------------:|:--------------------------------:|:--------------------------:|
+|Programming Assignment 1   | Immediately                      | 11:00p on January 24, 2026 |
+|Programming Assignment 2   | Immediately                      | 11:00p on January 31, 2026 |
+
+<br>
+All times below are in Central Time.
+
+## C. Final Project (45\%)
+
+Unlike the quizzes and programming assignments, the final project will be relatively unstructured.
+In this project, you will be asked to augment what you've learned about base R with other functionality available in external packages.
+You will be responsible for building an end-to-end analysis in R...a script that gets/cleans real world data, creates some data visualizations, and executes some statistical analyses.
+
+The project comprises the following parts:
+
+1. *Final project proposal*: A 1-2 page briefing on your planned project
+2. *Final project script*: The R script/scripts supporting your project
+3. *Final project report*: A 2-4 page report detailing the outcome of your analysis
+4. *Final project presentation*: A 5-10 minute overview of your project, presented live in the final week of the course.
+
+Full details of the project and each of its components are available at [https://jameslamb.github.io/intro-to-r/assignments/final_project.html](https://jameslamb.github.io/intro-to-r/assignments/final_project.html).
+All times below are in Central Time.
+
+|Assignment                      |Materials Available | Due                          |
+|:-------------------------------:|:------------------:|:---------------------------:|
+|Final Project proposal          | Immediately        |11:00p on February 7, 2026    |
+|Final Project (script + report) | Immediately        |11:00p on February 14, 2026   |
+|Final Project presentation      | Immediately        |live, 9:00a February 14, 2026 |
+
+<br>
+
+## D. Extra Credit
+
+There is an optional Extra Credit assignment available, worth up to 3 percentage points on your final grade.
+Follow the instructions at https://jameslamb.github.io/intro-to-r/assignments/extra-credit.html.
+
+This extra credit must be submitted prior to midnight on February 17, 2026.
+
+## D. Deadlines and Late Policy
+
+Any work submitted after a deadline, without an approved extension, will receive a grade of 0.
+
+## E. Grade Appeal
+
+The grading policies described above will be used to calculate your final grade for the course.
+Individual assignment grades will follow rubrics available on the course site.
+
+If you disagree with any grade assigned to you in this course, please refer to this document and those rubrics in your appeal.
+
+# III. Administrative Information
+
+## A. Special Needs
+
+Please inform me during the first week of class if you have any conditions that may limit or affect your ability to participate in this course so that we can make necessary arrangements.
+You may also contact the Office of Student Disability Services (https://www.marquette.edu/disability-services/).
+
+## B. Emergency Plan
+
+See https://www.marquette.edu/university-safety/guides/emergency-planning.php.
+
+## C. Attendance Statement
+
+The Marquette University Graduate School of Management considers regular class attendance an important component of the learning process.
+Students are expected to attend scheduled class meetings; excessive absences may have adverse consequences, ranging from a lowered course grade to forced withdrawal from the course.
+Excessive absence is generally defined as missing more than 10-15 percent of the regularly scheduled class time.
+
+There is only 1 synchronous meeting in this course... the final project presentations.
+**An unexcused absence from the final project presentation will result in a grade of 0 on that portion of the course.**
+
+All students are expected to complete all quizzes, assignments, and the final project.
+
+There are a handful of situations which are considered "excused" absences:
+
+* legal obligations (such as jury duty)
+* university-sanctioned activities and related travel
+* religious observance
+
+If you anticipate missing any classes, please let me know as early as possible so we can plan accordingly.
+
+For more, see https://bulletin.marquette.edu/policies/attendance/management/
+
+## D. Academic Integrity
+
+Don't cheat.
+
+For more, see https://www.marquette.edu/provost/integrity-pledge.php.
+
+## E. Important Dates
+
+See https://www.marquette.edu/central/registrar/2026-spring-academic-calendar.php for dates like the deadlines for dropping or withdrawing from the course.

@@ -1,0 +1,2421 @@
+---
+title: R Programming (Code Supplement)
+output:
+  html_document:
+    code_folding: show
+    number_sections: false
+    theme: spacelab
+    toc: true
+    toc_float:
+      collapsed: true
+      smooth_scroll: true
+    toc_depth: 2
+---
+
+```{r setOpts, echo = FALSE}
+knitr::opts_chunk$set(
+  eval = TRUE
+  , echo = TRUE
+  , warning = FALSE
+  , message = FALSE
+)
+```
+
+This document contains code that is too long to display in the slides.
+
+You should use this supplement to follow along and try executing the example code yourself.
+
+# Variables and Namespaces
+
+When you execute a statement like `x <- 5` in R, you are creating an **object** in memory which holds the numeric **value** 5 and is referenced by the **variable name** "x".
+
+If you later ask R to do something like `y <- x + 2`, it will search sequentially through a series of **namespaces** until it finds a variable called "x".
+Namespaces can be thought of as collections of labels pointing to places in memory.
+You can use R's `search()` command to examine the ordered list of namespaces that R will search in for variables.
+
+```{r namespaces}
+# Check the search path of namespaces
+search()
+
+# use ls() to list the objects in one of those namespaces
+ls("package:stats")
+
+# use find() to check which namespace R is finding an object in
+find("read.csv")
+```
+
+# Dollarstore Calculator Math
+
+Math in R looks very similar to how you might write it by hand.
+
+```{r simpleMath1}
+# Addition with "+"
+4 + 5
+
+# Subtraction with "-"
+100 - 99
+
+# Multiplication with "*"
+4 * 5
+
+# Division with "/"
+15 / 3
+
+# Exponentiation with "^"
+2^3
+
+# Order of Operations
+4 * 5 + 5 / 5
+
+# Control with parentheses
+4 * (5 + 5) / 5
+```
+
+# Data Structures
+
+## Vectors
+
+Because R was designed for use with statistics, most of its operations are "vectorized" ([click here to learn more](https://www.cs.cornell.edu/courses/cs1112/2016sp/Exams/exam2/vectorizedCode.pdf)) [vectorized]().
+
+```{r vectors_pt1}
+# Ordered sequence of integers
+1:5
+
+# Counting by 2s
+seq(from = 0, to = 14, by = 2)
+
+# Replicate the same values
+rep(TRUE, 6)
+
+# Concatenate multiple values with the "c" operator
+c("all", "of", "the", "lights")
+
+# Watch out! Mixing types will lead to silent coercion
+c(1, TRUE, "hellos")
+
+# Some functions, when applied over a vector, return a single value
+is.numeric(rnorm(100))
+
+# Others will return a vector of results
+is.na(c(1, 5, 10, NA, 8))
+
+# Vectors can be named
+batting_avg <- c(
+  youkilis = 0.300
+  , ortiz = 0.355
+  , nixon = 0.285
+)
+print(batting_avg)
+
+# You can combine two vectors with c()
+x <- c("a", "b", "c")
+y <- c("1", "2", "3")
+c(x, y)
+```
+
+## Lists
+
+Vectors are the first multi-item data structure most R programmers learn.
+Soon, though, you may find yourself frustrated with the fact that they can only hold a single type.
+The `list` data structure is useful for cases where you want to hold objects of different types together in the same object.
+
+|Capabilities                        |Vectors |Lists   |
+|:----------------------------------:|:------:|:------:|
+|Optional use of named elements      |&#x2714;|&#x2714;|
+|Support math operations like mean() |&#x2714;|        |
+|Hold multiple types                 |        |&#x2714;|
+|Hold multiple objects               |        |&#x2714;|
+
+
+```{r lists_pt1}
+# Create a list with list()
+myList <- list(
+  a = 1
+  , b = rep(TRUE, 10)
+  , x = c("shakezoola", "mic", "rulah")
+)
+
+# Examine it with str()
+str(myList)
+```
+
+## Factors
+
+Imagine that you want to build a model of the relationship between resource wealth and quality-of-life outcomes like life expectancy.
+You get some data from the Wold Bank, and the dataset you get includes a column called "region" with values like "Africa", "European Union", and "South America".
+How can you use this variable in a model or for generating region-by-region summary stats?
+
+This is where R's **factor type** comes in.
+
+```{r factorVar1}
+regions <- c("Africa", "European Union", "South America", "South America", "European Union")
+region_fac <- as.factor(regions)
+
+str(regions)
+str(region_fac)
+```
+
+What does it mean for `region` to be a factor?
+
+Essentially, a factor is a categorical variable.
+R uses a cool trick to save memory when storing factors...internally, R will convert factor values to integers and then keep around a single table that tells it, e.g., that 1 = "Africa", 2 = "European Union", etc..
+
+```{r factorVar2}
+# Check it out! R has assigned integer values to the "region_fac" variable
+as.integer(region_fac)
+
+# But you can also access the character values if you want
+as.character(region_fac)
+
+# For more, see:
+str(region_fac)
+levels(region_fac)
+```
+
+## Data Frames
+
+Vectors and lists are crucial data structures in R, but you may find that they're difficult to work with for statistical tasks.
+It is now time to introduce a third foundational data structure: the data frame.
+
+Data frames are tables of data.
+Each column of a data frame can be a different type, but all values within a column must be the same type.
+
+<center><img src="../slides/assets/img/data-frame.png"></center>
+
+```{r dataFrame}
+# Create a data frame!
+myDF <- data.frame(
+    time_period    = c(1, 2, 3, 4, 5)
+    , temperature  = c(25.6, 38.7, 31.4, 40.0, 29.20)
+    , station      = c("A", "B", "A", "A", "B")
+    , is_gov_owned = c(TRUE, FALSE, TRUE, TRUE, FALSE)
+)
+
+# Check out the structure of this thing
+str(myDF)
+```
+
+R comes with some sample data sets you can experiment with.
+Let's load the `mtcars` data.frame and test out some new commands!
+
+```{r dateFrame2}
+# Load the mtcars data frame
+data("mtcars")
+
+# Check out its structure
+str(mtcars)
+
+# View the top 10 rows
+head(mtcars, n = 10)
+
+# View the bottom 10 rows
+tail(mtcars, n = 10)
+```
+
+# Logical Operators
+
+Often in your code, you'll want to do/not do something or select / not select some data based on a logical condition (a statement that evaluates to TRUE or FALSE).
+
+Here are some examples of how to construct these statements in R.
+
+```{r logicalCond1}
+# "and" logic is expressed with "&"
+TRUE & TRUE   # TRUE
+TRUE & FALSE  # FALSE
+FALSE & FALSE # FALSE
+-5 < 5 & 3 > 2 # TRUE
+
+# "or" logic is expressed with "|"
+TRUE | TRUE    # TRUE
+TRUE | FALSE   # TRUE
+FALSE | FALSE  # FALSE
+3 < 8 | 8 > 19 # TRUE
+```
+
+The most common operators used to generate logicals are `>`, `<`, `==`, and `!=`
+
+```{r logicalCond2}
+# "equality" logic is specified with "=="
+3 == 3   # TRUE
+4 == 4.1 # FALSE
+
+# "not" logic is specified with !. In a special case, != signifies "not equal"
+!TRUE            # FALSE
+!FALSE           # TRUE
+! (TRUE | FALSE) # FALSE
+4 != 5           # TRUE
+
+# "greater than" and "less than" logic are specified in the way you might expect
+5 < 5  # FALSE
+6 <= 6 # TRUE
+4 > 2  # TRUE
+3 >= 3 # TRUE
+```
+
+You can use vectors of logicals (TRUE and FALSE) to subset other objects.
+As a general rule, when you put a vector on the left-hand side of a logical condition like `==` or `>`, you will get back a vector as a result.
+
+```{r logicalCond3}
+vehicleSizes <- c(1, 5, 5, 2, 4)
+
+# Create a logical index. Note that we get a VECTOR of logicals back
+bigCarIndex <- vehicleSizes > 4
+print(bigCarIndex)
+
+# Taking the SUM of a logical vector tells you the number of TRUEs.
+sum(bigCarIndex)
+
+# Taking the MEAN of a logical vector tells you the proportion of TRUEs
+mean(bigCarIndex)
+```
+
+# Subsetting
+
+## Subsetting Vectors
+
+**Subsetting** is the act of retrieving a portion of an object, usually based on some logical condition (e.g. "all elements greater than 5").
+In R, this is done with the `[` operator.
+
+```{r subset_vecs}
+myVec <- c(
+    var1 = 10
+    , var2 = 15
+    , var3 = 20
+    , av4 = 6
+)
+
+# "the first element"
+myVec[1]
+
+# "second to fourth element"
+myVec[c(2, 3, 4)]
+
+# "second to fourth elements"
+myVec[2:4]
+
+# "the element named var3"
+myVec["var3"]
+
+# "the elements named var1 and var3"
+myVec[c("var1", "var3")]
+
+# "third element, then the fourth one repeated twice"
+myVec[c(3, 4, 4)]
+```
+
+## Subsetting Lists
+
+Lists, arbitrary collections of (potentially heterogeneous) R objects, are subsetted a bit differently than vectors.
+You have a few options:
+
+* `[` = guaranteed to return a list
+* `[[` = get back an object in its natural form (whatever it would look like if it wasn't in the list)
+* `$` = similar to `[[`, but only accepts element names
+
+```{r subsettingLists}
+# Set up a sample list object
+someList <- list(
+    country = "DEU"
+    , region  = "EU"
+    , econ_stats = list(
+        gdp_growth = 1.5
+        , rm10y    = 2.75
+        , DAXmonthly = c(1000, 1100, 1050, 1200, 1500)
+    )
+)
+
+# Examine the list structure
+str(someList)
+
+# Grab the country name
+country1 <- someList[["country"]]
+country2 <- someList$country
+
+class(country1)
+class(country2)
+identical(country1, country2)
+
+# Grab the economic stats as a list within a list
+germanyStats <- someList["econ_stats"]
+class(germanyStats)
+
+# Grab the numeric vector of stock prices
+daxPrices <- someList$econ_stats$DAXmonthly
+class(daxPrices)
+
+# Another way to parse down the list for stock prices
+someList[["econ_stats"]][["DAXmonthly"]]
+```
+
+## Subsetting Data Frames
+
+Data frames are the workhorse data structure of statistics in R.
+
+To practice subsetting data frames, try modifying the examples below.
+
+```{r subsetDF}
+# Create a data frame
+someDF <- data.frame(
+    conference  = c("Big East", "Big Ten", "Big East", "ACC", "SEC")
+    , school_name = c("Villanova", "Minnesota", "Marquette", "Duke", "LSU")
+    , wins        = c(18, 14, 19, 24, 12)
+    , ppg         = c(71.5, 45.8, 66.9, 83.4, 58.7)
+)
+
+# Grab the wins column (NOTE: will give you back a vector)
+someDF[, "wins"]
+someDF[["wins"]]
+
+# Grab conference and wins columns
+someDF[, c("conference", "wins")]
+
+# Grab the first 3 rows and the two numeric columns
+someDF[1:3, c("wins", "ppg")]
+```
+
+## Using Logical Vectors
+
+So far, we've seen how to subset R objects using numeric indices and named elements.
+These are useful approaches, but both require you to know something about the contents of the object you're working with.
+
+Using these methods (especially numeric indices like saying *"give me columns 2-4"*) can make your code confusing and hard for others to reason about.
+Wherever possible, I strongly recommend using logical vectors for subsetting.
+This makes your code easier to read and more likely to be correct if the data changes.
+
+```{r logicalSubsetting}
+# Some data frame
+playerDF <- data.frame(
+    playerName   = c("Rajon Rondo", "Paul Pierce", "Kevin Garnett", "Ray Allen", "Big Baby")
+    , position   = c("PG", "SF", "PF", "SG", "C")
+    , apg        = c(14.2, 3.5, 4.6, 5.0, 0.7)
+    , ppg        = c(4.8, 31.0, 24.6, 33.2, 12.3)
+    , fg_percent = c(-0.062, 0.48, 0.63, 0.80, 0.51)
+)
+
+# "Give me a data frame with all Rondo and KG's stats"
+nameIndex <- playerDF$playerName %in% c("Rajon Rondo", "Kevin Garnett")
+nameIndex
+class(nameIndex)
+playerDF[nameIndex, ]
+
+# "Give me apg for players who averaged more than 20 ppg"
+playerDF[playerDF$ppg > 20, c("playerName", "apg")]
+
+# "Give me stats for all the guards""
+guardIndex <- grepl("G", playerDF$position, fixed = TRUE)
+print(guardIndex)
+playerDF[grepl("G", playerDF$position, fixed = TRUE)]
+
+# "Give me stats for players who were guards OR show above 50% from the field"
+playerDF[grepl("G", playerDF$position, fixed = TRUE) | playerDF$fg_percent > 0.5, ]
+```
+
+# Controlling Program Flow
+
+## If-Else
+
+Soon after you start writing code (in any language), you'll inevitably find yourself saying "I only want to do this thing if certain conditions are met".
+This type of logic is expressed using [if-else syntax](https://en.wikipedia.org/wiki/Conditional_(computer_programming))
+
+```{r ifElse1}
+DAY <- "SATURDAY"
+print(DAY)
+
+# If it's Monday, print 2 messages. Otherwise, print 1
+if (DAY == "MONDAY") {
+    print("It is Monday.")
+    print("I love Monday!")
+} else {
+    print("I wish it were Monday.")
+}
+```
+
+What if you want to express more than two possible outcomes?
+For this, we could use R's `else if` construct to nest conditions.
+Note that conditional blocks can have any number of "else if" statements, but only one "else" block.
+
+```{r ifElse2}
+# Try to think through what this will do before you run it yourself:
+if (4 > 5) {
+    print("3")
+} else if (6 <= (5 / 10)) {
+    print("1")
+} else if (4 + 4 + 4 == 12.0001) {
+    print("4")
+} else {
+    print("2")
+}
+```
+
+## For Loops
+
+One of the most powerful characteristics of general purpose programming languages is their ability to automate repetitive tasks.
+When you know that you want to do something a fixed number of times (say, squaring each item in a vector), you can use a `for` loop.
+
+```{r forLoop}
+# Create a vector
+x <- c(1, 4, 6)
+
+# Print the square of each element one at a time
+print(1^2)
+print(4^2)
+print(6^2)
+
+# BETTER: Loop over the vector and print the square of each element
+for (some_number in x) {
+    print(some_number^2)
+}
+```
+
+## While Loops
+
+`for` loops are suitable for many applications, but they can be too restrictive in some cases.
+
+For example, imagine that you are writing a simple movie search engine and you want to tell R "look through an alphabetized list of movies and tell me if you find Apocalypse Now".
+A `for` loop can certainly do this, but it will keep running over ALL movies...long after it finds Ace Ventura!
+This is a great place to use a `while` loop.
+
+Here is the `for` loop implementation:
+
+```{r whileLoop1}
+movies <- c(
+    "ace ventura"
+    , "apocalypse now"
+    , "return of the jedi"
+    , "v for vendetta"
+    , "zoolander"
+)
+MOVIE_TO_SEARCH_FOR <- "apocalypse now"
+
+# Naive for loop implementation
+i <- 1
+for (movie in movies) {
+    if (movie == MOVIE_TO_SEARCH_FOR) {
+        print(paste0(i, ": found it!"))
+    } else {
+        print(paste0(i, ": not found"))
+    }
+    i <- i + 1
+}
+```
+
+And here is the `while` loop implementation.
+Notice that this one stops checking once it finds what it wants.
+In this case, it's more efficient to use a `while` loop to solve this problem.
+
+```{r whileLoop2}
+movies <- c(
+    "ace ventura"
+    , "apocalypse now"
+    , "return of the jedi"
+    , "v for vendetta"
+    , "zoolander"
+)
+MOVIE_TO_SEARCH_FOR <- "apocalypse now"
+
+# Faster while loop implementation
+KEEP_SEARCHING <- TRUE
+i <- 1
+while (KEEP_SEARCHING) {
+
+    # Check this element
+    if (movies[i] == MOVIE_TO_SEARCH_FOR) {
+        print(paste0(i, ": found it!"))
+        KEEP_SEARCHING <- FALSE
+    } else {
+        print(paste0(i, ": not found"))
+        i <- i + 1
+    }
+
+    # If we've reached the end, break out. Otherwise, increment the counter
+    if (i == length(movies)) {
+        print("Done searching. This movie isn't in the list")
+        KEEP_SEARCHING <- FALSE
+    }
+}
+```
+
+# Functions
+
+R is a [functional programming language](https://adv-r.hadley.nz/functions.html).
+To write powerful, concise code, you'll want to learn how to use and create functions.
+
+> _"If you find yourself copying and pasting the same code more than twice, it's time to write a function."_
+>
+> - Hadley Wickham
+
+```{r functionExample}
+# Function to return only the numbers smaller than 10
+nums <- c(1, 3, 4, 8, 13, 24)
+
+getLittleNumbers <- function(some_numbahs) {
+    lil_ones <- some_numbahs[some_numbahs < 10]
+    return(lil_ones)
+}
+
+getLittleNumbers(nums)
+```
+
+## Positional and Keyword Arguments
+
+When you call a function with arguments in R, you can provide those arguments two ways:
+
+* "positional" = based on the order
+* "keyword" = matching a specific argument by name
+
+```{r exampleFunction}
+someFunction <- function(x, y, z) {
+  print(paste0("x: ", x))
+  print(paste0("y: ", y))
+  print(paste0("z: ", z))
+}
+```
+
+If you don't use the `=` sign in the function call, all argument values are matched positionally.
+The first value is assigned to the first argument, the second to the second, and so on.
+
+```{r allPositional}
+someFunction(4, 8, 10)
+```
+
+If you pass all keyword arguments, you can pass them in any order.
+All of the function calls below have the same result.
+
+```{r allKeyword}
+someFunction(x = 1, y = -1, z = 3)
+someFunction(x = 1, z = 3, y = -1)
+someFunction(z = 3, y = -1, x = 1)
+```
+
+If you pass a mix of positional and keyword, all of the keyword arguments are matched first.
+Once they've all been matched, the positional values are assigned to the remaining unmatched arguments in order.
+
+```{r mixArgs}
+someFunction(10, 100, x = -5)
+```
+
+## Required Arguments
+
+R functions take 0 or more arguments...basically named variables that the function uses to do it work
+
+Take a look at `?sqrt`. You'll see that it takes one argument, named `x`. You can pass any vector of numeric values to this argument and `sqrt()` will return the square root of each element
+
+In this case, we'd say `x` is a *required argument* of `sqrt()`.
+
+```{r requiredArgs, error = TRUE}
+# Take the square root of a vector of numbers
+sqrt(x = c(1, 4, 9, 16, 25))
+
+# Note that calling this function without the argument will throw an error!
+sqrt()
+```
+
+## Default Argument Values
+
+For more complicated functions, passing values to each argument can be tedious.
+
+To handle this, R allows function authors to specify *default values*.
+These are values that certain arguments will take automatically unless you decide to overwrite them
+
+Example: look at `?rnorm`.
+You'll see that this function's signature reads `rnorm(n, mean = 0, sd = 1)`.
+That means that, for example, if you do not pass an argument for `mean`, it will *default* to `0`.
+
+```{r normalDraw}
+# 100 random draws from a normal distribution w/ mean 0 and standard deviation 1
+rand_nums <- rnorm(n = 100)
+
+# 100 random draws from a normal distribution w/ mean 4.5 and standard deviation 1
+rand_nums <- rnorm(n = 100, mean = 4.5)
+```
+
+## Functions That Return Stuff
+
+As you've seen in previous examples, the R special word `return` tells a function to "give back" some value.
+When you execute an expression like `x <- someFunction()`, that function's return value (an R object) is stored a variable called "x".
+
+Unlike in some other programming languages, R allows you to use multiple `return` values inside the body of a function.
+The first time that the code inside the function reaches a `return` value, it will pass that value back out of the function and immediately stop executing the function.
+
+```{r returnExample}
+# simple function + print debugging
+simpFunction <- function(n) {
+    print("first print")
+    if (n > 5) {
+      return(TRUE)
+    }
+
+    print("second print")
+    if (n < 5) {
+      return(FALSE)
+    }
+
+    print("third print")
+    return("TRALSE")
+}
+
+simpFunction(100)
+simpFunction(5)
+```
+
+## Functions That Return Nothing
+
+Not all functions have to return something!
+Sometimes you may want to create a function that just has some side effect like creating a plot, writing to a file, or print to the console.
+
+These are called "null functions" and they're common in scripting languages like R.
+By default, these functions return the R special value `NULL`.
+
+```{r nullFunc}
+printSentence <- function(theSentence) {
+    words <- strsplit(
+      x = theSentence
+      , split = " "
+      , fixed = TRUE
+    )
+    for (word in words) {
+        print(word)
+    }
+}
+
+# Assigning to an object is irrelevant...this function doesn't return anything
+x <- printSentence("Hip means to know, it's a form of intelligence")
+x
+```
+
+## Scoping
+
+Remember when we talked about namespaces and how R searches for objects?
+It's time to extend that logic to functions...which is where things get a bit weird and hard to understand.
+
+R uses a search technique called [lexical scoping](https://en.wikipedia.org/wiki/Scope_(computer_science)#Lexical_scoping).
+
+Let's define a function that takes a single input, named `y`.
+
+```{r sampleFunction}
+someFunc <- function(y) {
+    return(x^2)
+}
+```
+
+```{r cleanUpX, eval = TRUE, echo = FALSE}
+if (exists("x")) {
+    rm(x)
+}
+```
+
+When you try to call this function in a clean environment, it throws an error.
+This is because the code inside the function is looking for something called `x`.
+
+```{r cannotFindX, eval = FALSE}
+someFunc(y = 5)
+
+### Error in someFunc(y = 5) : object 'x' not found
+```
+
+If you define `x` in the global environment and try again, the function won't throw an error...but does its result make sense?
+
+```{r tryAgain}
+x <- 4
+someFunc(y = 5)
+```
+
+What happened here?
+When R ran the statement `x ^ 2` inside the function `someFunc()`, it went searching for the value of `x`.
+It first looked around in the function's local environment, but all it found there was a `y` (the argument you passed in).
+Next, it went "up a level" in to the global environment.
+It found `x` there and used that.
+
+In practice, this is very dangerous.
+Functions should always be self-contained, which means they should only reference objects passed in to them or made available via libraries.
+Relying on data in the global environment can lead to strange outcomes.
+Notice that now, the output of `someFunc()` is the same no matter what we pass it!
+
+```{r sameOutput}
+someFunc(1)
+someFunc(8)
+someFunc(20)
+```
+
+It would be better to re-write the function to take in `x`.
+
+```{r rewriteSomeFunc}
+someFunc <- function(x) {
+    return(x^2)
+}
+```
+
+With this re-write, now the function will use the `x` in its local environment (the one that was passed in), and not look at the one in the global environment.
+
+```{r useLocalEnv}
+someFunc(x = 5)
+```
+
+Because the function's local environment is its own independent thing, calling the function `someFunc()` does not alter the value of `x` in the global environment.
+
+```{r callThatThing}
+print(x)
+
+someFunc(x = 10)
+
+print(x)
+```
+
+## Looping with lapply
+
+R's `*apply` family of functions are a bit difficult to understand at first, but soon you'll come to love them.
+They make your code more expressive, flexible, and parallelizable (more on that final point later).
+One of the most popular is `lapply()` ("list apply"), which loops over a thing (e.g. vector, list) and returns a 1-level list.
+Let's try it out:
+
+```{r listLapply}
+# Create a list
+studentList <- list(
+  kanye = c(80, 90, 100)
+  , talib = c(95, 85, 99)
+  , common = c(100, 100, 99)
+)
+
+# Better way with lapply
+grades <- lapply(studentList, mean)
+```
+
+## Looping with sapply
+
+You've seen how to loop over a vector/list and get back a list of function results.
+This may not be appropriate for some settings.
+Remember that you cannot execute statistical operations like `mean()` over a list.
+For that, we'd probably prefer to have a *vector* of results.
+This is where R's `sapply()` ("simplified apply") comes in.
+`sapply()` works the same way that `lapply()` does but returns a vector.
+Try it for yourself:
+
+```{r sapplyExample}
+# Get some data
+data("ChickWeight")
+weights <- ChickWeight$weight
+
+# Loop over and encode "above mean" and "below mean"
+the_mean <- mean(weights)
+meanCheck <- function(val, ref_mean) {
+    if (val > ref_mean) {
+        return("above mean")
+    }
+    if (val < ref_mean) {
+        return("below mean")
+    }
+    return("equal to the mean")
+}
+check_vec <- sapply(
+    X = weights
+    , FUN = function(x) {
+        meanCheck(val = x, ref_mean = the_mean)
+    }
+)
+```
+
+## Looping with apply
+
+When analyzing real-world datasets, you may want to use the same looping convention we've been discussing, but apply it over many items and the get some summary (such as the median) of the results.
+This is where R's `apply()` function comes in!
+
+`apply()` allows you to loop over the rows or columns of a data frame and execute an arbitrary function.
+The code below holds some examples of what can be accomplished with `apply()`.
+
+```{r applyExample}
+# Get some data
+data("ChickWeight")
+
+# Calculate column-wise range
+cwRanges <- apply(
+    X = ChickWeight
+    , MARGIN = 2
+    , FUN = function(x) {
+        range(as.numeric(x))
+    }
+)
+
+# Calculate row-wise range
+rwRanges <- apply(
+    X = ChickWeight
+    , MARGIN = 1
+    , FUN = function(blah) {
+        range(as.numeric(blah))
+    }
+)
+```
+
+# Using External Packages
+
+This example shows some interesting data visualizations you can make using `{data.table}`, `{dygraphs}`, and `{quantmod}`.
+
+Install these packages (this only needs to be done once):
+
+```r
+install.packages(c("data.table", "dygraphs", "quantmod"))
+```
+
+Then run the following:
+
+```{r makePlots, echo = TRUE, eval = TRUE, message = FALSE, warning = FALSE}
+# Load dependencies
+library(data.table)
+library(dygraphs)
+library(quantmod)
+
+# Get data
+cpiData <- quantmod::getSymbols(
+    Symbols = "CPIAUCSL"
+    , src = "FRED"
+    , auto.assign = FALSE
+)["1947-01-01/2023-11-01"]
+
+# Plot it!
+dygraphs::dygraph(
+    data = cpiData
+    , main = "U.S. CPI"
+    , xlab = "date"
+    , ylab = "Index (1982-1984 = 100)"
+    , elementId = "plot"
+) %>%
+    dygraphs::dyRangeSelector()
+```
+
+## Telling R which package to use
+
+The use of `::` in the example above is important.
+That tells R exactly which package namespace to look in for a given function.
+
+Consider this example:
+
+```{r}
+library(data.table)
+
+find("fread")
+
+fread <- function() {
+    print("using my custom fread()")
+}
+
+find("fread")
+
+fread
+```
+
+The first `find("fread")` there finds the one from `{data.table}`.
+The `fread()` custom function defined later then takes precedence over that one that was loaded earlier.
+
+To ensure that your code isn't dependent on the order that libraries are loaded, you should always
+use `::` when referencing functions from external packages.
+
+Like this:
+
+```r
+data.table::fread(...)
+```
+
+## Sourcing Helper Functions
+
+In the examples so far, I've been defining functions and using them in the same script.
+As your projects grow in complexity, you will find this really tedious and hard to keep track of.
+
+An alternative that many R programmers turn to is defining one or more `helperfuns.R` scripts to store custom functions and then using `source()` at the top of their run scripts to make those functions available in the main program.
+
+Let's create two scripts.
+
+**script 1: helperfuns.R**
+
+```{r helperFun}
+# Define some arbitrary custom function
+myFunction <- function(n) {
+    if (n <= 5) {
+        return(n^2)
+    } else {
+        return(n^3)
+    }
+}
+```
+
+**script 2: run_script.R**
+
+```{r runScript}
+# uncomment the line below to source in the helper functions file
+#source("helperfuns.R")
+
+# Apply that function over some data
+le_stuff <- sapply(1:20, myFunction)
+
+# Plot the result
+plot(x = 1:20, y = le_stuff)
+```
+
+# Debugging
+
+## Print Debugging
+
+Writing code involves a never-ending process of trying things, fixing errors, trying other things, fixing new errors, etc.
+The process of identifying and fixing issues is called **debugging**.
+
+The simplest way to debug an issue in your code is to use **print debugging**.
+This approach involves forming expectations about the state of the objects in your environment at each point in your code, then printing those states at each point to find where things broke.
+
+```{r printDebugging}
+# This function is supposed to sum all the numbers in a vector that are greater than 10
+# but it's breaking with a weird error. Let's use print debugging to dig into it
+sumBigNums <- function(aVector) {
+    running_sum <- 0
+    for (num in aVector) {
+        if (num >= 10) {
+            running_sum <- running_sum + num
+        }
+    }
+    return(running_sum)
+}
+
+# This should return 45...hmmmmmm
+some_vector <- c(11, 20, 5, 9.5, 10, 14)
+sumBigNums(some_vector)
+
+# Let's refactor this function (change the code) and print the status at each stage
+sumBigNums <- function(aVector) {
+    running_sum <- 0
+    for (num in aVector) {
+        # Grab the sum before we hit this number
+        sum_before <- running_sum
+
+        # If the number if greater than 10, increase the sum
+        if (num >= 10) {
+            running_sum <- running_sum + num
+        }
+
+        # print new state of the environment
+        msg <- paste0("num: ", num, " | before: ", sum_before, " | after: ", running_sum)
+        print(msg)
+    }
+    return(running_sum)
+}
+
+# Run the code again and look at the output...it looks like we added the number
+# 10 to the count even though it isn't greater than 10! We need to change
+# the code to say "num > 10", not ">="
+sumBigNums(some_vector)
+```
+
+# Working with Files
+
+## File Paths
+
+Whenever you find yourself reading data into R or writing data out of it, you will need to work with file paths.
+File paths are just addresses on your computer's file system.
+
+There are 2 types of file paths:
+
+- **relative**: expressed in relation to the current working directory (e.g. `datasets/data.csv`)
+- **absolute**: full address (e.g. `/Users/fnourzad/research/datasets/data.csv`)
+
+All relative paths in R are relative to your **working directory**, a single location that you can set and reset any time in your session.
+
+```{r setwdExample, eval = FALSE, echo = TRUE}
+# Check and then change the current working directory
+print(getwd())
+sandbox_repo <- file.path(getwd(), "repos", "sandbox")
+setwd(sandbox_repo)
+
+# Reference a file with a full path
+myDF <- read.csv(
+    file = file.path(
+        sandbox_repo
+        , "data"
+        , "some_data.csv"
+    )
+)
+
+# Reference a file with a relative path
+myDF <- read.csv(file = "./data/some_data.csv")
+```
+
+R provides a few other utilities for working with file paths and directory structures.
+
+* `file.path()`: create a filepath from multiple parts
+* `file.exists()`: returns `TRUE` is a file exists and  `FALSE` if it doesn't
+* `list.files()`: get a character vector with names of all files found in a directory
+* `dir.exists()`: returns `TRUE` is a directory exists and  `FALSE` if it doesn't
+* `dir.create()`: create a new directory
+
+```{r moarFilez, eval = FALSE, echo = TRUE}
+# List all the files in some directory and put the list in a vector
+docs_dir <- file.path(
+    getwd()
+    , "some_folder"
+    , "docs"
+)
+theFiles <- list.files(path = docs_dir)
+
+# Create a directory if it doesn't exist
+slide_dir <- file.path(docs_dir, "slides")
+if (!dir.exists(slide_dir)) {
+    dir.create(slide_dir)
+}
+
+# Check if a file exists
+report_file <- file.path(docs_dir, "report.xlsx")
+myFileExists <- file.exists(report_file)
+```
+
+## Downloading files from the internet
+
+To download files hosted on the internet, you can use `download.file()`.
+
+```{r, eval = FALSE, echo = TRUE}
+download.file(
+  url = "https://raw.githubusercontent.com/jameslamb/intro-to-r/main/sample-data/iris.csv"
+  , destfile = "iris.csv"
+)
+```
+
+## CSV
+
+CSV stands for "comma-separated values".
+This format is a really common to share small, tabular datasets because it is just a text file, and can be ready by many different types of programs.
+R has several options for reading this type of file.
+
+* `read.csv()`: base R function for reading CSVs into a `data.frame`
+* `data.table::fread()`: super-fast CSV reader that creates a special type of `data.frame` called a `data.table`
+* `read.delim()`: similar to `read.csv()`, but can read files with any delimiter
+* `readr::read_csv()`: CSV reader from RStudio
+
+A CSV is just a plaintext file where the first row is column names separated by columns and each following row is an observation with columns separated by commas.
+
+```text
+date,open,close
+01-01-2012,10.5,8.9
+01-02-2012,8.9,10.3
+```
+
+To begin this example, download the example file from the course repository.
+
+```{r, eval=TRUE, echo=TRUE}
+iris_url <- "https://raw.githubusercontent.com/jameslamb/intro-to-r/main/sample-data/iris.csv"
+iris_file <- "iris.csv"
+download.file(
+  url = iris_url
+  , destfile = iris_file
+)
+```
+
+Then read it in with `read.csv()` and inspect it with `head()`.
+
+```{r, eval=TRUE, echo=TRUE}
+irisDF <- read.csv(
+  file = iris_file
+  , header = TRUE
+  , row.names = 1
+)
+print(head(irisDF))
+```
+
+This function can also read CSV data directly from files on the internet.
+
+```{r, eval=TRUE, echo=TRUE}
+irisDF <- read.csv(
+  file = iris_url
+  , header = TRUE
+  , row.names = 1
+)
+print(head(irisDF))
+```
+
+## Excel
+
+Microsoft Excel is widely used for curating and sharing datasets.
+
+You'll get data from the internet, your colleagues, clients, etc. in Excel format and may want to work with it in R.
+There are a few packages for doing this, but in this course we'll focus on [openxlsx](https://cran.r-project.org/web/packages/openxlsx/openxlsx.pdf).
+
+NOTE: This package requires certain Java components that you may not have on your machine.
+If you run into issues, I recommend 1) installing an updated version of [JRE](https://www.oracle.com/technetwork/java/javase/downloads/jre8-downloads-2133155.html) or 2) exploring other packages like [xlsx](https://cran.r-project.org/web/packages/xlsx/xlsx.pdf) or [readxl](https://cran.r-project.org/web/packages/readxl/readxl.pdf).
+
+To begin this example, download the example file from the course repository.
+
+```{r, eval=TRUE, echo=TRUE}
+gdp_url <- "https://raw.githubusercontent.com/jameslamb/intro-to-r/main/sample-data/gdp.xlsx"
+gdp_file <- "gdp.xlsx"
+download.file(
+  url = gdp_url
+  , destfile = gdp_file
+)
+```
+
+Then read it in with `openxlsx::read.xlsx()` and view it with `head()`.
+
+```{r readingExcel, eval = TRUE, echo = TRUE}
+library(openxlsx)
+gdpDF <- openxlsx::read.xlsx(
+    xlsxFile = gdp_file
+    , detectDates = TRUE
+)
+print(head(gdpDF))
+```
+
+This function can also read Excel data directly from files on the internet.
+
+```{r, eval=TRUE, echo=TRUE}
+library(openxlsx)
+gdpDF <- openxlsx::read.xlsx(
+    xlsxFile = gdp_url
+    , detectDates = TRUE
+)
+print(head(gdpDF))
+```
+
+Notice that that `observation_date` column has numbers that don't look like dates.
+Microsoft Excel stores dates as "number of days
+
+You can also use this package to write Excel files.
+You can do really complicated stuff (like conditional formatting, named ranges, and live formulas) from inside of R.
+It's tough to set up at first, but can be VERY useful if you find yourself spending a lot of time running routine reports whose format is the same from update to update.
+
+```{r writingExcel, eval = TRUE, echo = TRUE}
+library(openxlsx)
+
+# load mtcars
+data("mtcars")
+
+# create a workbook object in R
+testWB <- openxlsx::createWorkbook()
+
+# Add sheets and data
+openxlsx::addWorksheet(
+    wb = testWB
+    , sheetName = "car_data"
+)
+openxlsx::writeData(
+    wb = testWB
+    , sheet = "car_data"
+    , x = mtcars
+)
+
+# Write out the file
+testing_file <- "testing.xlsx"
+openxlsx::saveWorkbook(
+    wb = testWB
+    , file = testing_file
+)
+```
+
+## JSON
+
+JSON ("Javascript Object Notation") is a standard format for "semi-structured" or "nested" data.
+It's a plain-text format that can be used by many programs and programming languages.
+
+```javascript
+{
+  "status": 200,
+  "data": [
+    {"customer_name": "Lupe", "purchases": 10},
+    {"customer_name": "Wale", "purchases": 30}
+  ]
+}
+```
+
+To begin this example, download the example file from the course repository.
+
+```{r, eval=TRUE, echo=TRUE}
+data_url <- "https://raw.githubusercontent.com/jameslamb/intro-to-r/main/sample-data/data.json"
+data_file <- "data.json"
+download.file(
+  url = data_url
+  , destfile = data_file
+)
+```
+
+Open the file in a text editor and inspect its contents.
+It contains a sample response from the GitHub API.
+
+Here's a preview:
+
+```javascript
+{
+  "id": 77707418,
+  "node_id": "MDEwOlJlcG9zaXRvcnk3NzcwNzQxOA==",
+  "name": "teaching",
+  "owner": {
+    "login": "jameslamb",
+    "id": 7608904,
+    "node_id": "MDQ6VXNlcjc2MDg5MDQ=",
+    "avatar_url": "https://avatars.githubusercontent.com/u/7608904?v=4",
+  },
+  "html_url": "https://github.com/jameslamb/teaching",
+  "description": "Repository to hold slides, syllabi, etc. for courses I've taught.",
+  "fork": false,
+  "url": "https://api.github.com/repos/jameslamb/teaching",
+  "forks_url": "https://api.github.com/repos/jameslamb/teaching/forks",
+  "license": {
+    "key": "mit",
+    "name": "MIT License",
+    "spdx_id": "MIT",
+    "url": "https://api.github.com/licenses/mit",
+    "node_id": "MDc6TGljZW5zZTEz"
+  },
+  "topics": [
+    "r",
+    "rstats",
+    "teaching"
+  ]
+}
+```
+
+There are a few packages for reading this type of data in R.
+The example below uses one of the most popular, `{jsonlite}`.
+Read in the file with `jsonlite::fromJSON()` and view its contents with `str()`.
+
+```{r, eval=TRUE, echo=TRUE}
+library(jsonlite)
+
+responseList <- jsonlite::fromJSON(
+  txt = data_file
+  , simplifyDataFrame = FALSE
+)
+
+str(responseList, max.level = 2)
+```
+
+This function can also read JSON data directly from files on the internet.
+
+```{r, eval=TRUE, echo=TRUE}
+responseList <- jsonlite::fromJSON(
+  txt = data_url
+  , simplifyDataFrame = FALSE
+)
+str(responseList, max.level = 2)
+```
+
+## Unstructured Text files
+
+In the context of statistical programming, text files that are "unstructured" are those whose contents don't have an obvious representation in a data structure like a data frame, vector, or list.
+An example might be a large archive of product reviews or a collection of court transcripts.
+
+The code below examines a text file with all of Shakespeare's sonnets.
+
+```{r echo=FALSE}
+set.seed(708)
+```
+
+```{r unstructuredText}
+# Parameters
+shakespeare_url <- "https://ia800300.us.archive.org/5/items/shakespearessonn01041gut/wssnt10.txt"
+
+# Read all the text into a vector (one line per element)
+text_vec <- readLines(con = shakespeare_url)
+
+# Examine a few random lines:
+sample(text_vec, 5)
+```
+
+# Missing Values
+
+`NA` is a special object in R, used to capture the idea of "a value whose value is unknown".
+
+We're going to go through a few examples to get you feeling comfortable with missing values.
+They're an inevitability in real-world data.
+
+```{r introToNAs}
+# Create a vector w/ missing data
+some_nums <- c(1, 2, NA, 6, NA, 8)
+print(some_nums)
+
+# Use is.na() to get a vector of TRUE/FALSE for the question "is this element NA?"
+is.na(some_nums)
+
+# Confirm that even w/ NAs, R still knows this is a numeric vector
+class(some_nums)
+```
+
+See `?NA` for R's documentation on the nuances of `NA`.
+
+## Strategy 1: Total Removal
+
+The first approach you may take to dealing with `NA` values is to completely remove them from your data.
+
+If you don't think these missing data are meaningful and your dataset is big enough that you can afford to drop some rows / columns, this is a defensible choice.
+
+```{r removeNAs}
+# Removing NAs for vectors
+top5 <- c(
+  "Wale"
+  , "Chance"
+  , NA
+  , "Lupe Fiasco"
+  , "Shad"
+  , "Kanye"
+  , NA
+)
+print(top5)
+top5cleaned <- top5[!is.na(top5)]
+print(top5cleaned)
+
+# Removing rows with ANY NAs for data.frames
+myDF <- data.frame(
+    x = c(1, 2, NA, 4)
+    , y = c(NA, TRUE, FALSE, TRUE)
+    , z = c("hey", "there", NA, "friends")
+)
+cleanDF <- myDF[complete.cases(myDF), ]
+```
+
+## Strategy 2: Handle on Subsets
+
+You may find the "remove all the NAs everywhere" strategy a bit too aggressive for your use case.
+
+If you have a 100-variable dataset and a variable is 90\% NA values, do you really want to drop every row where that variable is NA?
+A better approach might be to selectively subset out columns where missing values are most severe before using `complete.cases()` to remove rows.
+
+```{r subsetNAwisely}
+# Create a data frame where some variable have more NAs than others
+testDF <- data.frame(
+    var1 = sample(c(rnorm(99), NA), 200, replace = TRUE)
+    , var2 = sample(c(rnorm(50), rep(NA, 50)), 200, replace = TRUE)
+    , var3 = sample(c(rnorm(5), rep(NA, 95)), 200, replace = TRUE)
+)
+
+# Find columns that are more than 90% missing values
+.percent_na <- function(a_vector) {
+    return(sum(is.na(a_vector) / length(a_vector)))
+}
+colsToDrop <- apply(testDF, MARGIN = 2, .percent_na) > 0.9
+cleanDF <- testDF[, !colsToDrop]
+print(str(cleanDF))
+
+# Remove rows w/ remaining NAs
+cleanDF <- cleanDF[complete.cases(cleanDF), ]
+print(str(cleanDF))
+```
+
+## Strategy 3: Imputation
+
+A final strategy, particularly useful in modeling contexts, is to use some [imputation strategy](https://www.analyticsvidhya.com/blog/2016/03/tutorial-powerful-packages-imputing-missing-values/) to replace `NA` values with reasonable alternatives.
+One commonly-used approach is the `roughfix` method.
+
+It works like this:
+
+- For numeric columns, replace NAs with the column median
+- For categorical columns, replace NAs with the most common value
+
+```{r imputation}
+# Create a data frame where some variable have more NAs than others
+testDF <- data.frame(
+  var1 = sample(c(rnorm(99), NA), 500, replace = TRUE)
+  , var2 = sample(c(rnorm(70), rep(NA, 30)), 500, replace = TRUE)
+  , var3 = sample(c(rnorm(85), rep(NA, 15)), 500, replace = TRUE)
+)
+
+# Clean up w/ roughfix
+library(randomForest)
+cleanDF <- randomForest::na.roughfix(testDF)
+```
+
+# Plotting
+
+## The Base Plotting System
+
+R is famous, in part, for its ability to create production-quality plots within the default graphics package it ships with.
+This plotting system is often referred to as "the base plotting system".
+
+The essential idea of the base plotting system is to build up plots in layers.
+You first create a simple scatter plot, for example, then "add on" a legend, more variables, other plot types, etc.
+We'll try a few examples using the sample data created below.
+
+```{r getPlotData}
+# Load up the famous iris dataset
+data("iris")
+head(iris, n = 10)
+```
+
+Let's start with a simple scatter plot to answer the question *"are sepal length and sepal width related?"*.
+
+```{r baseLinePlot}
+# Create a simple scatter plot
+plot(
+  x = iris$Sepal.Length
+  , y = iris$Sepal.Width
+  , type = "p"
+)
+
+# Try again, but with labels!
+plot(
+  x = iris$Sepal.Length
+  , y = iris$Sepal.Width
+  , main = "My Second R plot!"
+  , xlab = "sepal length"
+  , ylab = "sepal width"
+  , type = "p"
+)
+
+# Try it AGAIN, this time coloring by species and a legend
+plot(
+  x = iris$Sepal.Length
+  , y = iris$Sepal.Width
+  , main = "My Third R plot!"
+  , xlab = "sepal length"
+  , ylab = "sepal width"
+  , type = "p"
+  , col = iris$Species
+  , bg = iris$Species
+  , pch = 21
+)
+
+# Add a legend
+legend(
+  x = 7
+  , y = 4.3
+  , unique(iris$Species)
+  , col = seq_along(iris$Species)
+  , pch = 1
+)
+```
+
+The base plotting system can be a great tool for quick exploratory analysis of data, such as examination of the distribution of variables in your data.
+
+```{r histAndDensity}
+# Minimal Histogram
+hist(iris$Petal.Length)
+
+# Better histogram
+hist(
+  iris$Petal.Length
+  , main = "Distribution of petal length"
+  , xlab = "petal length"
+  , breaks = 25
+)
+
+# Empirical density
+plot(
+  density(iris$Petal.Length)
+  , main = "Empirical density of petal length"
+  , col = "blue"
+)
+```
+
+You can add more than one variable to these plots!
+Let's compare the densities of Sepal length by species.
+
+```{r compareDensities}
+# Overlay densities of Petal length by species
+plot(
+  density(iris[iris$Species == "setosa", "Petal.Length"])
+  , main = "Empirical density of petal length"
+  , col = "blue"
+  , xlim = c(0, 7)
+  , ylim = c(0, 2.5)
+)
+lines(density(iris[iris$Species == "versicolor", "Petal.Length"]), col = "red")
+lines(density(iris[iris$Species == "virginica", "Petal.Length"]), col = "black")
+
+# Add a legend
+legend(
+  x = 5.5
+  , y = 2.25
+  , legend = unique(iris$Species)
+  , col = c("blue", "red", "black")
+  , pch = 1
+)
+```
+
+You can control the plotting options to make a grid of plots.
+The code below creates a 2x2 grid with a density for Sepal Width and scatter plots of the other three variables against sepal width.
+
+```{r gridOfPlots}
+par(mfrow = c(2, 2))
+
+plot(
+  density(iris$Sepal.Width)
+  , main = "Empirical density of petal length"
+  , col = "red"
+)
+plot(
+    x = iris[iris$Species == "setosa", "Sepal.Width"]
+    , y = iris[iris$Species == "setosa", "Petal.Length"]
+    , ylab = "Petal Length"
+    , xlab = "Sepal Width"
+    , ylim = range(iris$Petal.Length)
+    , xlim = range(iris$Sepal.Width)
+    , main = "sepal width vs petal length (species = setosa)"
+    , col = 1
+    , bg = 1
+    , pch = 21
+)
+plot(
+    x = iris[iris$Species == "versicolor", "Sepal.Width"]
+    , y = iris[iris$Species == "versicolor", "Petal.Length"]
+    , ylab = "Petal Length"
+    , xlab = "Sepal Width"
+    , ylim = range(iris$Petal.Length)
+    , xlim = range(iris$Sepal.Width)
+    , main = "sepal width vs petal length (species = versicolor)"
+    , col = 2
+    , bg = 2
+    , pch = 21
+)
+plot(
+    x = iris[iris$Species == "virginica", "Sepal.Width"]
+    , y = iris[iris$Species == "virginica", "Petal.Length"]
+    , ylab = "Petal Length"
+    , xlab = "Sepal Width"
+    , ylim = range(iris$Petal.Length)
+    , xlim = range(iris$Sepal.Width)
+    , main = "sepal width vs petal length (species = virginica)"
+    , col = 3
+    , bg = 3
+    , pch = 21
+)
+
+# reset options
+par(mfrow = c(1, 1))
+```
+
+### A Note On Graphics Devices
+
+When R creates plots, it needs to know where to put them.
+
+When you call `plot()` or other commands from within an RStudio session, the default is to just display the resulting figure in the "Plots" pane.
+However, you can use other **graphics devices** to tell R to put your figures elsewhere.
+
+```{r path2png, eval = FALSE, echo = TRUE}
+outDir <- file.path(getwd(), "plots")
+
+if (!dir.exists(outDir)) {
+    dir.create("plots")
+}
+
+# Create 10 plots in a loop
+for (i in seq_len(10)) {
+    # Open a connection to a .png file
+    fileName <- paste0("plot_", i, ".png")
+    filePath <- file.path(outDir, fileName)
+    png(filePath)
+
+    # Write out a plot to that file
+    plot(x = rnorm(100), y = rnorm(100))
+
+    # Close the connection to that file
+    dev.off()
+}
+```
+
+# Manipulating Data Frames
+
+## Columnwise combination with cbind
+
+In situations where you have multiple data frames with the same rows but different columns, you can combine them column-wise with R's `cbind()` command.
+Note that this command will only work if the two data frames to be joined have the same number of rows AND those rows refer to the same observation.
+
+**cbind = "column-wise bind"**
+
+<center><img src="../slides/assets/img/cbind.png"></center>
+
+```{r cbindExample}
+x <- data.frame(
+    person = c(
+        "Emily", "Stephanie", "Chizom", "Corey",
+        "Vicki", "Victor", "Swift"
+    )
+    , followers = c(200, 1200, 800, 18000, 21775, 1123, 28965)
+)
+
+y <- data.frame(
+    type = c(
+        "personal", "tech", "personal", "tech",
+        "tech", "news", "tech"
+    )
+)
+
+cbind(x, y)
+```
+
+## Column Matching with merge
+
+`cbind()` works in the limited situation where you have two data frames that can just be jammed together (same number of rows + rows line up).
+This doesn't happen too often.
+However, it is VERY common in data science workflows to have two mismatched tables of data from different sources and to want to combine them by matching on one or more keys.
+Think `JOIN` in SQL or `VLOOKUP()` in Excel.
+To perform this operation in R, you can use the `merge()` command.
+
+<center><img src="../slides/assets/img/merge.png"></center>
+
+```{r mergeExample}
+x <- data.frame(
+    person = c(
+        "Emily", "Stephanie", "Chizom", "Corey",
+        "Vicki", "Victor", "Swift"
+    )
+    , followers = c(200, 1200, 800, 18000, 21775, 1123, 28965)
+    , type = c(
+        "personal", "tech", "personal", "tech",
+        "tech", "news", "tech"
+    )
+)
+
+y <- data.frame(
+    type = c("news", "personal", "tech")
+    , avg_followers = c(900, 55, 1300)
+)
+
+merge(x, y)
+```
+
+## Rowwise combination with rbind
+
+So far we've talked about merging columns from different tables.
+But what if you want to merge rows?
+For example, imagine that you are a researcher in a lab studying some natural phenomenon.
+You may take multiple samples (measuring the same variables) and then want to put them together into a single data frame to build a model.
+For this case, we can use R's `rbind()` function.
+
+**rbind = "row-wise bind"**
+
+<center><img src="../slides/assets/img/rbind.png"></center>
+
+```{r rbindExample}
+x <- data.frame(
+    grade = c("A", "B", "A")
+    , pct = c(95.1, 86.5, 98.3)
+    , col3 = rep(FALSE, 3)
+)
+
+y <- data.frame(
+    grade = c("B", "A", "A")
+    , pct = c(88.4, 99.9, 97.6)
+    , col3 = rep(TRUE, 3)
+)
+
+fullDF <- rbind(x, y)
+print(fullDF)
+
+# compare
+dim(x)
+dim(y)
+dim(fullDF)
+```
+
+## Rowwise Combination of Many Tables with rbindlist
+
+`rbind()` works as a strategy for combining two tables, but what if you have 5 tables? 10? 1000?
+For those situations, you should checkout `rbindlist()` from the `{data.table}` package.
+
+<center><img src="../slides/assets/img/rbindlist.png"></center>
+
+```{r rbindlistExample}
+library(data.table)
+
+df1 <- data.frame(
+    grade = c("A", "B", "A")
+    , pct = c(95.1, 86.5, 98.3)
+)
+
+df2 <- data.frame(
+    grade = c("B", "A", "A")
+    , pct = c(88.4, 99.9, 97.6)
+)
+
+df3 <- data.frame(
+  grade = c("C", "D", "F")
+  , pct = c(71.5, 68.7, 66.4)
+  , appeal = c(FALSE, FALSE, TRUE)
+)
+
+# put all the data frames in a list
+df_list <- list(df1, df2, df3)
+print(str(df_list, max.level = 1))
+
+# get one new big dataframe
+fullDF <- data.table::rbindlist(
+    l = df_list
+    , fill = TRUE
+)
+print(fullDF)
+```
+
+# Statistical Analysis
+
+R Was Made for Statistics!
+
+In this section, we're going to walk through all the steps of basic statistical analysis: getting data, exploring it, creating features, building models, evaluating models, and comparing those models' performance.
+
+<center><img src="../slides/assets/img/statistics.jpg"></center>
+
+## Getting and Splitting the Data
+
+We're going to work with R's [swiss](https://stat.ethz.ch/R-manual/R-devel/library/datasets/html/swiss.html) dataset.
+This cross-sectional dataset contains measures of fertility and some economic indicators collected in Switzerland in 1888.
+Our first task will be to load the data and immediately hold out a piece of it as [testing data](https://builtin.com/data-science/train-test-split).
+The idea here is that when we evaluate the performance of our models later on, it will be better to do it on data that the models haven't seen.
+This will give a more honest picture of how well they might perform on new data.
+
+In this exercise, we're going to evaluate the following question: **Can we predict fertility based on regional socioeconomic characteristics?**
+
+```{r getData}
+# Load in some data
+data("swiss")
+```
+
+```{r docs, eval = FALSE, echo = TRUE}
+# Research: What do the variables mean?
+?swiss
+```
+
+```{r, eval = TRUE, echo = TRUE}
+# make the sampling below the same every time this is knitted
+set.seed(708)
+```
+
+```{r traintest, eval = TRUE, echo = TRUE}
+# Test vs. Training Data: Let's hold out 40 random records right now for testing
+testIndx    <- sample(seq_len(nrow(swiss)), size = 10, replace = FALSE)
+swissTestDF <- swiss[testIndx, ]
+swiss       <- swiss[-testIndx, ]
+```
+
+## Examine Your Training Data
+
+Once you've split your data into training and test, you should start poking it a bit to see if you find anything interesting.
+You can use `str()` to view the contents of your data objects, `summary()` to view some basic summary statistics on data frame columns, and `cor()` to get a correlation matrix between all pairs of numeric variables.
+
+```{r eda}
+# Look at the structure
+str(swiss)
+
+# Tables of summary stats
+summary(swiss)
+
+# Correlation matrix
+round(cor(swiss), 2)
+```
+
+## Hypothesis Testing
+
+Hypothesis tests are valuable tools for discovering differences in datasets and evaluating relationships between variables.
+
+One approach to looking for statistically interesting features (right-hand-side variables) involves binning those variables into "above median" and "below median", and using a paired t-test to see whether or not the variable is statistically related to the target.
+
+```{r hypothesisTests}
+# t-tests
+
+# Is fertility very different in provinces with above-median % of men in Agriculture
+swiss$majority_agg <- swiss$Agriculture > median(swiss$Agriculture)
+t.test(Fertility ~ majority_agg, data = swiss)
+
+#  Let's create this feature for every variable (we'll re-use it)
+
+#=== Drop that majority_agg feature
+swiss$majority_agg <- NULL
+
+#=== Create the binary columns
+x_var_names <- names(swiss)[names(swiss) != "Fertility"]
+for (var_name in x_var_names) {
+
+    bin_var_name <- paste0(var_name, "_above_median")
+    swiss[, bin_var_name] <- swiss[, var_name] > median(swiss[, var_name])
+
+    # Remember to give the test set these new features!
+    swissTestDF[, bin_var_name] <- swissTestDF[, var_name] > median(swiss[, var_name])
+}
+```
+
+We can use `lapply()` to apply the same test to every variable in our data frame.
+
+```{r tTestFunc}
+# Could just loop over every non-Fertility column and do this test!
+bin_var_names <- grep("_above_median", names(swiss), value = TRUE, fixed = TRUE)
+t_tests <- lapply(bin_var_names, function(bin_var) {
+    t_test <- t.test(
+        Fertility ~ get(bin_var)
+        , data = swiss
+    )
+    p_val  <- t_test$p.value
+    return(data.frame(
+        signal = bin_var
+        , p_val = round(t_test$p.value, 2)
+        , t_stat = round(t_test$statistic, 2)
+    ))
+})
+tDT <- data.table::rbindlist(t_tests)
+tDT
+```
+
+## Simple OLS Model
+
+Ok now that we've done some preprocessing and exploration, it's time to start fitting models!
+Let's begin with a one-variable OLS regression, estimated using the `lm()` command.
+
+```{r simpleOLS}
+# Simple regression: Fertility = f(Agriculture)
+mod1 <- lm(Fertility ~ Agriculture, data = swiss)
+
+# model summary
+summary(mod1)
+
+# QQ plot (are the residuals normal?)
+plot(mod1, which = 2)
+```
+
+Once you have a fitted model, you can pass it and some new data to `predict()` to generate predictions.
+The code below also calculates the [mean absolute error](https://en.wikipedia.org/wiki/Mean_absolute_error), [mean squared error](https://en.wikipedia.org/wiki/Mean_squared_error), and [mean absolute percent error](https://en.wikipedia.org/wiki/Mean_absolute_percentage_error), common error metrics used in regression problems.
+
+```{r predOLS}
+# Check how well our model does on the held-out data
+preds <- predict(mod1, newdata = swissTestDF)
+errors <- swissTestDF$Fertility - preds
+
+MAE   <- mean(abs(errors))
+MSE   <- mean(errors^2)
+MAPE  <- 100 * mean(abs(errors) / swissTestDF$Fertility)
+
+# Actuals vs. Preds plot
+plot(
+    x = swissTestDF$Fertility
+    , y = preds
+    , xlab = "Actual Fertility"
+    , ylab = "Predicted Fertility"
+    , main = "Predictions from a simple OLS model"
+    , ylim = c(0, 100)
+    , xlim = c(0, 100)
+)
+lines(x = 0:100, y = 0:100, col = "red")
+```
+
+## Wrap Parts of Your Pipeline in Functions
+
+The error metric calculations and plotting we just did seem general enough to apply to other models of this phenomenon.
+Since we could reuse the code for other models, we should just wrap it in a function so it's easy to call downstream.
+
+```{r evalFunction}
+# Before moving on...lets wrap that pipeline in a function
+EvaluateModel <- function(model, testDF, modelName) {
+    # Check how well our model does on the held-out data
+    preds <- predict(model, newdata = testDF)
+    errors <- testDF$Fertility - preds
+
+    MAE   <- mean(abs(errors))
+    MSE   <- mean(errors^2)
+    MAPE  <- 100 * mean(abs(errors) / testDF$Fertility)
+
+    # Actuals vs. Preds plot
+    plot(
+        x = testDF$Fertility
+        , y = preds
+        , xlab = "Actual Fertility"
+        , ylab = "Predicted Fertility"
+        , main = paste0(modelName, ": predictions")
+        , ylim = c(0, 100)
+        , xlim = c(0, 100)
+    )
+
+    # Add a 45-degree line
+    lines(x = 0:100, y = 0:100, col = "red")
+
+    # add error metrics
+    text(x = rep(5, 3), y = c(72, 80, 88), labels = c("MAE: ", "MSE: ", "MAPE: "))
+    text(x = rep(15, 3), y = c(72, 80, 88), labels = round(c(MAE, MSE, MAPE), 2))
+
+    # Give back the preds in case user wants to do something customized
+    return(list(
+        pred = preds
+        , MAE = MAE
+        , MSE = MSE
+        , MAPE = MAPE
+    ))
+}
+
+EvaluateModel(
+    model = mod1
+    , testDF = swissTestDF
+    , modelName = "ols-1-var"
+)
+```
+
+## OLS with Multiple RHS Variables
+
+To add more variables to a model in R, you have to use formula notation.
+
+```{r olsMoreVars}
+# Fit
+mod2 <- lm(
+    Fertility ~ Education + Infant.Mortality + Examination_above_median
+    , data = swiss
+)
+
+# Predict + Evaluate
+regPreds2 <- EvaluateModel(
+    mod2
+    , testDF = swissTestDF
+    , modelName = "Expanded OLS"
+)
+```
+
+## Regression Trees
+
+Linear regressions are powerful tools, but there are certain classes of complex relationships that they are unable to express and therefore unable to "learn" when trained on data.
+
+Regression Trees are one tool used to fit non-linear functions.
+They recursively partition the dataset, trying to find "local" models of subsets of the data which, together, provide a better fit than the single "global" OLS model we're used to fitting.
+
+The details of tree-based learning are outside the scope of this class, but I encourage you to check out [A Visual Introduction to Machine Learning](http://www.r2d3.us/visual-intro-to-machine-learning-part-1/) to at least get the general intuition behind this and other ML techniques.
+
+```{r tree_seed, echo = FALSE, eval = TRUE, error = FALSE}
+# set random seed so we get the same model every time these docs are generated
+set.seed(708)
+```
+
+```{r decisionTrees}
+library(rpart)
+
+# Fit
+treeMod <- rpart::rpart(Fertility ~ ., data = swiss)
+
+# Evaluate
+dtPreds <- EvaluateModel(
+    treeMod
+    , swissTestDF
+    , "Decision Tree"
+)
+```
+
+You can walk through the tree with this awesome package called `rattle`.
+This package can be [super hard to build](https://gist.github.com/sebkopf/9405675)... if you run into any issues, there are lots of nice options available via the [rpart.plot package](https://cran.r-project.org/web/packages/rpart.plot/rpart.plot.pdf).
+
+```{r plotTheTree, eval = TRUE, echo = TRUE}
+# Plot the tree
+rattle::fancyRpartPlot(
+    treeMod
+    , main = "Single Decision Tree"
+    , sub = ""
+)
+```
+
+## Random Forests
+
+For larger datasets than the one we're working with in this exercise, you may find that a single decision tree is not expressive enough or that one strong signal overpowers all the other variables.
+
+To correct for this, you might use a "forest" of decision trees.
+The implementation details are outside the scope of this course: see [Leo Breiman's excellent site](https://www.stat.berkeley.edu/~breiman/RandomForests/cc_home.htm) if you're curious in learning more about this algorithm.
+
+I only mention the random forest here to demonstrate how easy it is to fit and predict with complex statistical models in R.
+
+```{r randomForest}
+library(randomForest)
+
+# Fit
+rfMod <- randomForest::randomForest(
+    Fertility ~ .
+    , data = swiss
+    , ntree = 50
+    , do.trace = TRUE
+)
+
+# Evaluate
+rfPreds <- EvaluateModel(
+  model = rfMod
+  , testDF = swissTestDF
+  , modelName = "Random Forest (ntree=50)"
+)
+```
+
+## Model Evaluation
+
+In a real project, at some point you will find yourself saying "ok, I have all these models. What should I actually use to generate predictions?".
+This question was our motivation for holding out a test set at the beginning of this walkthrough.
+Accuracy when predicting on previously unseen data is a totally defensible measure for choosing the "best" model from a set of candidate models.
+
+Let's see how the models we trained in this exercise performed:
+
+```{r modelEval}
+# Linear Model
+linear_model <- lm(
+    Fertility ~ Education + Infant.Mortality + Examination_above_median
+    , data = swiss
+)
+linearPreds <- EvaluateModel(
+    linear_model
+    , testDF = swissTestDF
+    , modelName = "Expanded OLS"
+)
+
+# Regression Tree
+treeMod <- rpart::rpart(Fertility ~ ., data = swiss)
+dtPreds <- EvaluateModel(
+    treeMod
+    , swissTestDF
+    , "Decision Tree"
+)
+
+# Random Forest
+rfMod <- randomForest::randomForest(
+    Fertility ~ .
+    , data = swiss
+    , ntree = 50
+    , do.trace = TRUE
+)
+rfPreds <- EvaluateModel(
+  model = rfMod
+  , testDF = swissTestDF
+  , modelName = "Random Forest (ntree=50)"
+)
+
+# Build a table showing performance of each model type on the holdout
+compDF <- data.frame(
+    modelName = c("Expanded OLS", "Decision Tree", "Random Forest (ntree=100)")
+    , MAE     = c(linearPreds$MAE, dtPreds$MAE, rfPreds$MAE)
+    , MSE     = c(linearPreds$MSE, dtPreds$MSE, rfPreds$MSE)
+    , MAPE    = c(linearPreds$MAPE, dtPreds$MAPE, rfPreds$MAPE)
+)
+compDF
+```
+
+# Text Processing
+
+## Common Preprocessing Steps
+
+In this section, we're going to use the [Shakespeare corpus](https://ia800300.us.archive.org/5/items/shakespearessonn01041gut/wssnt10.txt) and implement a basic "keyword extraction" pipeline.
+Let's start by loading it and doing some common string preprocessing on it.
+
+```{r startTextAnalysis}
+shakespeareFile <- "https://ia800300.us.archive.org/5/items/shakespearessonn01041gut/wssnt10.txt"
+bsText <- readLines(con = shakespeareFile)
+```
+
+If you navigate to in a web browser, you'll see that the beginning of that file has some text that isn't actually part of Shakespeare's sonnets.
+It's just legal disclaimers and background information.
+
+The sonnets officially begin a few lines after the text "THE SONNETS".
+So to start, find that line using `which()`, and remove the header text from the dataset.
+
+```{r removeHeader}
+# find where the sonnets begin
+START_TEXT <- "THE SONNETS"
+start_position <- which(bsText == START_TEXT) + 5
+bsText <- bsText[start_position:length(bsText)]
+```
+
+```{r textConversions}
+# Convert everything to lowercase
+bsText <- tolower(bsText)
+
+# Trim leading and trailing whitespace (e.g. change "   a" to "a")
+bsText <- trimws(bsText)
+
+# Remove empty lines
+bsText <- bsText[sapply(bsText, nchar) > 0]
+
+# sample a few lines
+print(head(bsText, n = 10))
+```
+
+## Regular Expressions
+
+After applying these basic steps, we're going to want to do some more powerful things like removing or replacing text based on particular character patterns.
+It is time to enter the mystical world of [regular expressions](https://stat.ethz.ch/R-manual/R-devel/library/base/html/regex.html).
+
+Regular expressions (used in many programming languages) offer a way to express complex pattern matching.
+Let's work through some examples to demonstrate the properties.
+
+```{r regex1}
+# Remove punctuation
+bsText <- gsub(
+    pattern = ";|,|!|?|\\.|\\:|<|>|\\]|\\["
+    , replacement = ""
+    , x =  bsText
+)
+```
+
+You can run `sample(bsText, 10)` and see that our data are looking cleaner...but we still have work to do!
+Next, let's use regular expressions (commonly just called "regex") to handle some other issues.
+
+```{r moreRegex}
+# split some common contractions into two words
+bsText <- gsub("he's", "he is", bsText, fixed = TRUE)
+bsText <- gsub("how's", "how is", bsText, fixed = TRUE)
+bsText <- gsub("it's", "it is", bsText, fixed = TRUE)
+bsText <- gsub("she's", "she is", bsText, fixed = TRUE)
+bsText <- gsub("that's", "that is", bsText, fixed = TRUE)
+bsText <- gsub("there's", "there is", bsText, fixed = TRUE)
+bsText <- gsub("what's", "what is", bsText, fixed = TRUE)
+bsText <- gsub("when's", "when is", bsText, fixed = TRUE)
+bsText <- gsub("where's", "where is", bsText, fixed = TRUE)
+bsText <- gsub("why's", "why is", bsText, fixed = TRUE)
+
+bsText <- gsub("'ll", " will", bsText, fixed = TRUE)
+```
+
+To experiment with regular expressions outside of R, try https://regexr.com/.
+
+## Tokenization
+
+The next task we need to accomplish is **tokenizing** our text, i.e. splitting lines and sentences into individual words.
+These individual words can then be used to build a language model and identify key terms.
+
+```{r tokenization}
+# Loop over the vector of lines, split on whitespace, create a list of data.frames
+library(stringr)
+library(data.table)
+allWords <- lapply(
+    X = bsText
+    , FUN = function(thisLine) {
+        return(data.frame(words = str_split(thisLine, stringr::fixed(" "))[[1]]))
+    }
+)
+
+# Put into a data.table and print that just to make sure it worked
+wordDT <- data.table::rbindlist(allWords)
+print(wordDT[1:10], row.names = FALSE)
+```
+
+## Counting Words in Text
+
+Now that our data are a bit cleaner, it's time to try finding key terms!
+
+Broadly speaking, "key terms" in a body of text are those that more common in the text than they are in the language as a whole (e.g. "the" will never be a key word).
+We aren't looking at any actual data on the distribution of words in Shakespeare-era English in this exercise, so we'll just drop the top 20 words and call the next 20 "key".
+
+The `{data.table}` package makes this operation easy to carry out.
+
+```{r countTheWords}
+# Get Word counts and sort by those counts
+wordCountDT <- wordDT[, .N, by = words]
+data.table::setnames(
+    wordCountDT
+    , old = "N"
+    , new = "word_count"
+)
+data.table::setorder(wordCountDT, -word_count)
+print(wordCountDT[1:10], row.names = FALSE)
+
+key_words <- wordCountDT[21:40]
+```
+
+# Software Principles
+
+## Getting Your Project Off the Ground
+
+Ok so you have a business question, you've chosen your toolchain (presumably with R), and you have some data in hand.
+You sit down to write code and, well...
+
+<center><img src="../slides/assets/img/spongebob.gif"></center>
+<br>
+Don't fear!
+In this section, we're going to walk through the process of building a non-trivial script from scratch.
+
+### Step 1: Build a Comment Skeleton
+
+Resist the urge to just start writing code.
+Investing a few minutes upfront in thinking through the structure of your code will pay off in a big way as the project evolves and grows more complicated.
+Trust me.
+
+First, just write down the main things you want to do.
+In this exercise, we're going to write some R code that can generate n-page "books" or random sentences in English.
+
+```{r fromScratch}
+#=== Write an R script that writes a book! ===#
+
+# Function to create random sentences
+
+# Function to create a "page" with n sentences
+
+# Function to create a "book" with m pages
+
+# Call the book function and create a 5-page book
+```
+
+### Step 2: Define Functions
+
+Next, fill in the high-level outline with slightly more specifics.
+Try to strategize about the functions you'll need to implement and the individual steps that will have to happen inside each of those functions.
+This will probably change once you start writing code, but in my experience it's always easier to have a plan and change it.
+
+```{r level2}
+# Function to create random sentences
+createSentence <- function() {
+
+    # Define a list of nouns
+
+    # Define a list of adjectives
+
+    # Define a list of adverbs
+
+    # Define a list of verbs
+
+    # Define a list of articles
+
+    # Define a list of prepositions
+
+    # Choose randomly from each, construct a sentence of the form
+    # article-adjective-noun-adverb-verb-preposition
+
+    # Return the sentence
+
+}
+
+# Function to create a "page" with n sentences
+createPage <- function(n) {
+
+    # Call the function to create a sentence n times
+
+    # Paste the n results together into one string, separated by a period and a space.
+
+    # Return that one string
+}
+
+# Function to create a "book" with m pages
+createBook <- function(n_pages, sentences_per_page) {
+
+    # Call the function to create pages n_pages times
+
+    # Return a list with 1 page per element
+}
+
+# Call the book function and create a 5-page book
+
+```
+
+## Pirate Book Example
+
+You'll spend the most time on this and you will have to go through it many times before you're feeling comfortable with the code.
+I've given one implementation below.
+The point here is not to show you how to create a book-writing app, but rather to demonstrate that this somewhat complicated task was made easier by breaking it into smaller, more manageable pieces.
+
+```{r level3}
+# Function to create random sentences
+createSentence <- function() {
+
+    # Define a list of nouns
+    nouns <- c("parrot", "giant squid", "whale", "captain", "first mate")
+
+    # Define a list of adjectives
+    adjectives <- c("hearty", "brave", "grimy", "tough", "swarthy")
+
+    # Define a list of adverbs
+    adverbs <- c("quickly", "carefully")
+
+    # Define a list of verbs
+    verbs <- c("scurried", "trundled", "rolled", "walked")
+
+    # Define a list of articles
+    articles <- c("a", "the")
+
+    # Define a list of prepositions
+    prepositions <- c("away", "below")
+
+    # Construct a sentence of the form article-adjective-noun-adverb-verb.
+    sentence <- paste(
+        sample(articles, 1)
+        , sample(adjectives, 1)
+        , sample(nouns, 1)
+        , sample(adverbs, 1)
+        , sample(verbs, 1)
+        , sample(prepositions, 1)
+    )
+
+    # Return the sentence
+    return(sentence)
+}
+
+# Function to create a "page" with n sentences
+createPage <- function(n) {
+
+    # Call the function to create a sentence n times
+    some_sentences <- sapply(
+        X = seq_len(n)
+        , FUN = function(x) {
+            createSentence()
+        }
+    )
+
+    # Paste the n results together into one string, separated by a period and a space.
+    a_page <- paste(some_sentences, collapse = ". ")
+
+    # Return that one string
+    return(a_page)
+}
+
+# Function to create a "book" with m pages
+createBook <- function(n_pages, sentences_per_page) {
+
+    # Call the function to create pages n_pages times
+    a_book <- lapply(
+        X = seq_len(n_pages)
+        , FUN = function(x) {
+            createPage(n = sentences_per_page)
+        }
+    )
+
+    # Return a list with 1 page per element
+    return(a_book)
+}
+
+# Call the book function and create a 5-page book
+aPirateTale <- createBook(n_pages = 5, sentences_per_page = 10)
+print(aPirateTale)
+```
+
+# R Programming Best Practices
+
+## Scripting: Style Notes
+
+Use this slide as a general reference of coding best practices.
+
+- Declare all the dependencies you need in a bunch of `library()` calls at the top of your script(s)
+- Set global variables (like file paths) in all-caps near the top of your script(s)
+- Use comments like `#===== Section 1 - Do Stuff =====#` to separate major sections of the code
+- Namespace any calls to external functions with `::` (e.g. `lubridate::ymd_hms()`)
+
+My script below shows an example of a typical layout for professional-quality R code.
+
+**make_plot.R**
+
+```{r someScript}
+#===== 1. Setup =====#
+
+# Load dependencies
+library(dygraphs)
+library(quantmod)
+
+# Set script-level constants
+FRED_SERIES <- "CPIAUCSL" # UNRATE
+TITLE       <- "U.S. CPI" # "U.S. unemployment""
+VAR_UNITS   <- "Index (1982-1984 = 100)" # "% of labor force"
+
+#===== 2. Get Data =====#
+
+# Get data from FRED
+cpiData <- quantmod::getSymbols(
+    Symbols = FRED_SERIES
+    , src = "FRED"
+    , auto.assign = FALSE
+)
+
+#===== 3. Plot it! =====#
+
+# Plot it!
+dygraphs::dygraph(
+    data = cpiData
+    , main = TITLE
+    , xlab = "date"
+    , ylab = VAR_UNITS
+    , elementId = "plot"
+) %>%
+    dygraphs::dyRangeSelector()
+```
+
+# Creating R Packages
+
+There are more than 20,000 packages currently on CRAN but MANY more privately-created packages in use by academics, professional data science teams, and hobbyists.
+
+Packages are an effective way to share your code with others.
+
+See the following to learn how to create packages:
+
+* "The CRAN Cookbook" ([link](https://contributor.r-project.org/cran-cookbook/))
+* R packages for creating and testing packages:
+  - `{remotes}` ([link](https://cran.r-project.org/web/packages/remotes/index.html)) = R wrappers around some command-line tools used to build R packages. Also includes some utilities for installing packages from source code.
+  - `{roxygen2}` ([link](https://cran.r-project.org/web/packages/roxygen2/index.html)) = provides a framework for turning specially-formatting comments in R functions into package documentation that you can call with `?`
+  - `{testthat}` ([link](https://cran.r-project.org/web/packages/testthat/index.html)) = a popular library for running unit tests, essentially tests that your code works as it should
+* "R packages" book - Hadley Wickham and Jenny Bryan ([link](https://r-pkgs.org/))

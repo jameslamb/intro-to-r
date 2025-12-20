@@ -1,0 +1,903 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>R Programming</title>
+  <meta charset="utf-8">
+  <meta name="description" content="R Programming">
+  <meta name="author" content="">
+  <meta name="generator" content="slidify" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/default.css" media="all" >
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/phone.css" 
+    media="only screen and (max-device-width: 480px)" >
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/slidify.css" >
+  <link rel="stylesheet" href="libraries/highlighters/highlight.js/css/tomorrow.css" />
+  <base target="_blank"> <!-- This amazingness opens all links in a new tab. -->  <link rel=stylesheet href="libraries/widgets/bootstrap/css/bootstrap.css"></link>
+<link rel=stylesheet href="./assets/css/my_custom_style.css"></link>
+
+  
+  <!-- Grab CDN jQuery, fall back to local if offline -->
+  <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.7.min.js"></script>
+  <script>window.jQuery || document.write('<script src="libraries/widgets/quiz/js/jquery.js"><\/script>')</script> 
+  <script data-main="libraries/frameworks/io2012/js/slides" 
+    src="libraries/frameworks/io2012/js/require-1.0.8.min.js">
+  </script>
+  
+  
+
+</head>
+<body style="opacity: 0">
+  <slides class="layout-widescreen">
+    
+    <!-- LOGO SLIDE -->
+        <slide class="title-slide segue nobackground">
+  
+  <hgroup class="auto-fadein">
+    <h1>R Programming</h1>
+    <h2>Week 3</h2>
+    <p><br/></p>
+  </hgroup>
+  
+  <article></article>  
+  
+</slide>
+    
+
+    <!-- SLIDES -->
+    <slide class="" id="slide-1" style="background:;">
+  
+  <article data-timings="">
+    <!--Define background image for title slide-->
+
+<style>
+.title-slide {
+  background-image:url("assets/img/statler-waldorf.jpeg");
+  background-size: cover;
+}
+</style>
+
+<p><footer>
+  <hr></hr>
+  <span style="float:right">R Programming</span>
+</footer></p>
+
+<h2>Welcome back!</h2>
+
+<p><center><img src="assets/img/programming.png" height=350px width = 650px></center></p>
+
+  </article>
+  <!-- Presenter Notes -->
+  
+</slide>
+
+<slide class="toc_slide" id="slide-2" style="background:;">
+  
+  <article data-timings="">
+    <p><footer>
+  <hr></hr>
+  <span style="float:right">R Programming</span>
+</footer></p>
+
+<h2>Contents</h2>
+
+<div style='float:left;width:48%;' class='centered'>
+  <p><b class="toc_header"> Programming Assignment 1 Review</b></p>
+
+<ol class="toc" type="none">
+    <li> In-class Walkthrough <span style="float:right"> 5 </span></li>
+</ol>
+
+<p><b class="toc_header"> Dealing with Missing Data </b></p>
+
+<ol class = "toc" type="none">
+    <li> Specialness of NAs <span style="float:right"> 7 </span></li>
+    <li> You Should Care About NA s<span style="float:right"> 8 </span></li>
+    <li> Strategy 1: Total Eradication <span style="float:right"> 9 </span></li>
+    <li> Strategy 2: Handle on Subsets <span style="float:right"> 10 </span></li>
+    <li> Strategy 3: Imputation <span style="float:right"> 11 </span></li>
+</ol>
+
+</div>
+<div style='float:right;width:48%;'>
+  <p><b class="toc_header"> Visualizing Data </b></p>
+
+<ol class = "toc" type="none">
+    <li> Base Plotting System <span style="float:right"> 13-17 </span></li>
+    <li> Other Plotting Systems in R <span style="float:right"> 18 </span></li>
+    <li> Graphics Devices <span style="float:right"> 19 </span></li>
+</ol>
+
+<p><b class="toc_header"> Combining and Transforming Data Frames</b></p>
+
+<ol class = "toc" type="none">
+    <li> Columnwise Combination <span style="float:right"> 21-22 </span></li>
+    <li> Rowwise Combination <span style="float:right"> 23-24 </span></li>
+</ol>
+
+<p><b class="toc_header"> Final Project Discussion </b></p>
+
+<ol class = "toc" type="none">
+    <li> Project Proposal Guidelines <span style="float:right"> 26 </span></li>
+    <li> Final Project Outline <span style="float:right"> 27 </span></li>
+</ol>
+
+</div>
+  </article>
+  <!-- Presenter Notes -->
+  
+</slide>
+
+<slide class="section_slide" id="slide-3" style="background:;">
+  
+  <article data-timings="">
+    <p></br></br></br></p>
+
+<h2>Programming Assignment 1 Review</h2>
+
+  </article>
+  <!-- Presenter Notes -->
+  
+</slide>
+
+<slide class="content_slide" id="slide-4" style="background:;">
+  
+  <article data-timings="">
+    <p><footer>
+  <hr>
+    Programming Assignment 1 Review <span style="float:right">R Programming</span>
+</footer></p>
+
+<h2>Assignment 1 Discussion</h2>
+
+<p>IMHO, <a href="../assignments/programming_assignment1.html">this assignment</a> was the single hardest thing you&#39;ll be asked to do in this class.</p>
+
+<p><center><img src="assets/img/aliens.jpg" height=200px width = 500px></center></p>
+
+  </article>
+  <!-- Presenter Notes -->
+  
+</slide>
+
+<slide class="section_slide" id="slide-5" style="background:;">
+  
+  <article data-timings="">
+    <p></br></br></br></p>
+
+<h2>Dealing with Missing Data</h2>
+
+  </article>
+  <!-- Presenter Notes -->
+  
+</slide>
+
+<slide class="content_slide" id="slide-6" style="background:;">
+  
+  <article data-timings="">
+    <p><footer>
+  <hr>
+    Dealing with Missing Data<span style="float:right">R Programming</span>
+</footer></p>
+
+<h2>Specialness of NAs</h2>
+
+<p><code>NA</code> is a special object in R, used to capture the idea of &quot;a value whose value is unknown&quot;.
+See <code>?NA</code> for R&#39;s documentation on the nuances of <code>NA</code></p>
+
+<pre><code class="r"># Create a vector w/ missing data
+some_nums &lt;- c(1,2,NA, 6, NA, 8)
+print(some_nums)
+</code></pre>
+
+<pre><code>## [1]  1  2 NA  6 NA  8
+</code></pre>
+
+<pre><code class="r"># Use is.na() to get a vector of TRUE/FALSE for the question &quot;is this element NA?&quot;
+is.na(some_nums)
+</code></pre>
+
+<pre><code>## [1] FALSE FALSE  TRUE FALSE  TRUE FALSE
+</code></pre>
+
+<pre><code class="r"># Confirm that even w/ NAs, R still knows this is a numeric vector
+class(some_nums)
+</code></pre>
+
+<pre><code>## [1] &quot;numeric&quot;
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+  
+</slide>
+
+<slide class="content_slide" id="slide-7" style="background:;">
+  
+  <article data-timings="">
+    <p><footer>
+  <hr>
+    Dealing with Missing Data<span style="float:right">R Programming</span>
+</footer></p>
+
+<h2>You Should Care About NAs</h2>
+
+<p><code>NA</code> values are not necessarily problems!</p>
+
+<p>NA` can actually hold valuable information. For example, imagine that you get a dump of data from Salesforce or some other CRM system with information like customer_name, date_of_first_contact, and date_of_second_contact.</p>
+
+<p><br></p>
+
+<p>Depending on how the system was set up, <code>date_of_second_contact1</code> may have dates only for customers who have been contacted at least twice, and be <code>NA</code> everywhere else. This is valuable information! If you want to build a model of 1-contact conversion, you could use the presence/absence of <code>NA</code> to help you identify the 1-contact customers that belong in your model.</p>
+
+  </article>
+  <!-- Presenter Notes -->
+  
+</slide>
+
+<slide class="content_slide" id="slide-8" style="background:;">
+  
+  <article data-timings="">
+    <p><footer>
+  <hr>
+    Dealing with Missing Data<span style="float:right">R Programming</span>
+</footer></p>
+
+<h2>Strategy 1: Total Removal</h2>
+
+<p>The first approach you may take to dealing with <code>NA</code> values is to simply drop them from your data. If you don&#39;t think these missing data have any business value and your dataset is big enough that you can afford to drop some rows / columns, this is the right move for you.</p>
+
+<pre><code class="r"># Removing NAs for vectors
+top5 &lt;- c(&quot;Wale&quot;, &quot;Chance&quot;, NA, &quot;Lupe Fiasco&quot;, &quot;Shad&quot;, &quot;Kanye&quot;, NA)
+print(top5)
+top5cleaned &lt;- top5[!is.na(top5)]
+print(top5cleaned)
+
+# Removing rows with ANY NAs for data.frames
+myDF &lt;- data.frame(x = c(1, 2, NA, 4), y = c(NA, TRUE, FALSE, TRUE),
+                   z = c(&quot;hey&quot;, &quot;there&quot;, NA, &quot;friends&quot;))
+cleanDF &lt;- myDF[complete.cases(myDF), ]
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+  
+</slide>
+
+<slide class="content_slide" id="slide-9" style="background:;">
+  
+  <article data-timings="">
+    <p><footer>
+  <hr>
+    Dealing with Missing Data<span style="float:right">R Programming</span>
+</footer></p>
+
+<h2>Strategy 2: Handle on Subsets</h2>
+
+<p>You may find the &quot;remove all the NAs everywhere&quot; strategy a bit too aggressive for your use case. If you have a 100-variable dataset and a single variable (column) is 90\% NA values, do you really want to drop every row where that variable is NA? A better approach might be to selectively subset out columns where missing values are most severe before using <code>complete.cases()</code> to remove rows.</p>
+
+<pre><code class="r"># Create a data frame where some variable have more NAs than others
+testDF &lt;- data.frame(var1 = sample(c(rnorm(99), NA), 200, replace = TRUE),
+                     var2 = sample(c(rnorm(50), rep(NA, 50)), 200, replace = TRUE),
+                     var3 = sample(c(rnorm(5), rep(NA, 95)), 200, replace = TRUE))
+
+# Find columns that are more than 90% missing values
+.percent_na &lt;- function(a_vector){return(sum(is.na(a_vector)/length(a_vector)))}
+colsToDrop &lt;- apply(testDF, MARGIN = 2, .percent_na) &gt; 0.9
+cleanDF &lt;- testDF[, !colsToDrop]
+
+# Remove rows w/ remaining NAs
+cleanDF &lt;- cleanDF[complete.cases(cleanDF),]
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+  
+</slide>
+
+<slide class="content_slide" id="slide-10" style="background:;">
+  
+  <article data-timings="">
+    <p><footer>
+  <hr>
+    Dealing with Missing Data<span style="float:right">R Programming</span>
+</footer></p>
+
+<h2>Strategy 3: Imputation</h2>
+
+<p>A final strategy, particularly useful in modeling contexts, is to use some <a href="https://www.analyticsvidhya.com/blog/2016/03/tutorial-powerful-packages-imputing-missing-values/">imputation strategy</a> to replace <code>NA</code> values with reasonable alternatives. One common approach (and my favorite), the <code>roughfix</code> method. It works like this:</p>
+
+<ul>
+<li>For numeric columns, replace NAs with the column median</li>
+<li>For categorical columns, replace NAs with the most common value</li>
+</ul>
+
+<pre><code class="r"># Create a data frame where some variable have more NAs than others
+testDF &lt;- data.frame(var1 = sample(c(rnorm(99), NA), 500, replace = TRUE),
+                     var2 = sample(c(rnorm(70), rep(NA, 30)), 500, replace = TRUE),
+                     var3 = sample(c(rnorm(85), rep(NA, 15)), 500, replace = TRUE))
+
+# Clean up w/ roughfix
+library(randomForest)
+cleanDF &lt;- randomForest::na.roughfix(testDF)
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+  
+</slide>
+
+<slide class="section_slide" id="slide-11" style="background:;">
+  
+  <article data-timings="">
+    <p></br></br></br></p>
+
+<h2>Visualizing Data</h2>
+
+  </article>
+  <!-- Presenter Notes -->
+  
+</slide>
+
+<slide class="content_slide" id="slide-12" style="background:;">
+  
+  <article data-timings="">
+    <p><footer>
+  <hr>
+    Visualizing Data<span style="float:right">R Programming</span>
+</footer></p>
+
+<h2>Base Plotting System</h2>
+
+<p>R&#39;s built-in plotting tools, called &quot;the base plotting system&quot;, is one of its most popular features.</p>
+
+<p><br></p>
+
+<p>The essential idea of the base plotting system is to build up plots in layers. You first create a simple plot, then &quot;add on&quot; a legend, more variables, other plot types, etc.</p>
+
+<p>See <a href="../code/programming-supplement.html#The_Base_Plotting_System">&quot;The Base Plotting System&quot;</a> in the programming supplement.</p>
+
+  </article>
+  <!-- Presenter Notes -->
+  
+</slide>
+
+<slide class="content_slide" id="slide-13" style="background:;">
+  
+  <article data-timings="">
+    <p><footer>
+  <hr>
+    Visualizing Data<span style="float:right">R Programming</span>
+</footer></p>
+
+<h2>Creating a Scatter Plot</h2>
+
+<p>Let&#39;s start with a simple scatter plot to answer the question <em>are sepal length and sepal width related?</em></p>
+
+<p><center><img src="assets/img/first-scatter-plot.png" style="max-width:80%;"></center></p>
+
+<p>See <a href="../code/programming-supplement.html#The_Base_Plotting_System">&quot;The Base Plotting System&quot;</a> in the programming supplement.</p>
+
+  </article>
+  <!-- Presenter Notes -->
+  
+</slide>
+
+<slide class="content_slide" id="slide-14" style="background:;">
+  
+  <article data-timings="">
+    <p><footer>
+  <hr>
+    Visualizing Data<span style="float:right">R Programming</span>
+</footer></p>
+
+<h2>Histograms and Densities</h2>
+
+<p>Histograms and densities are useful for examining distributions.</p>
+
+<p><center><img src="assets/img/hist-density.png" style="max-width:80%;"></center></p>
+
+<p>See <a href="../code/programming-supplement.html#The_Base_Plotting_System">&quot;The Base Plotting System&quot;</a> in the programming supplement.</p>
+
+  </article>
+  <!-- Presenter Notes -->
+  
+</slide>
+
+<slide class="content_slide" id="slide-15" style="background:;">
+  
+  <article data-timings="">
+    <p><footer>
+  <hr>
+    Visualizing Data<span style="float:right">R Programming</span>
+</footer></p>
+
+<h2>Multi-variable line charts</h2>
+
+<p>You can add more than one variable to these plots!</p>
+
+<p><center><img src="assets/img/multiline-plot.png" style="max-width:80%;"></center></p>
+
+  </article>
+  <!-- Presenter Notes -->
+  
+</slide>
+
+<slide class="content_slide" id="slide-16" style="background:;">
+  
+  <article data-timings="">
+    <p><footer>
+  <hr>
+    Visualizing Data<span style="float:right">R Programming</span>
+</footer></p>
+
+<h2>Creating a Grid of plots</h2>
+
+<p>You can combine multiple plots in a grid layout. See <a href="../code/programming-supplement.html#The_Base_Plotting_System">&quot;The Base Plotting System&quot;</a> for an example.</p>
+
+<p><center><img src="assets/img/plot-grid.png" style="max-width:75%;"></center></p>
+
+  </article>
+  <!-- Presenter Notes -->
+  
+</slide>
+
+<slide class="content_slide" id="slide-17" style="background:;">
+  
+  <article data-timings="">
+    <p><footer>
+  <hr>
+    Visualizing Data<span style="float:right">R Programming</span>
+</footer></p>
+
+<h2>Other Plotting Systems in R</h2>
+
+<p>We don&#39;t have time in this short class to go into great depth on data visualization, but I want you to know that there are a bunch of cool visualization libraries a short <code>install.packages()</code> away!</p>
+
+<ul>
+<li><a href="https://rstudio.github.io/dygraphs/">dygraphs</a>: high-level library for creating interactive charts that can be embedded directly in HTML</li>
+<li><a href="https://r-graph-gallery.com/ggplot2-package.html">ggplot2</a>: One of the most popular packages in the R world. Based on the &quot;grammar of graphics&quot; approach to building plots</li>
+<li><a href="https://cran.r-project.org/web/packages/googleVis/vignettes/googleVis_examples.html">googleVis</a>: Send your data to the google charts API to make fancy interactive visualizations</li>
+<li><a href="https://plotly.com/r/">plotly</a>: easy-to-use library for creating interactive data visualizations and dashboards</li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+  
+</slide>
+
+<slide class="content_slide" id="slide-18" style="background:;">
+  
+  <article data-timings="">
+    <p><footer>
+  <hr>
+    Visualizing Data<span style="float:right">R Programming</span>
+</footer></p>
+
+<h2>A Note On Graphics Devices</h2>
+
+<p>When R (or any other program!) creates plots, it needs to know where to put them! When you call <code>plot()</code> or other commands from within and RStudio session, the default is to just display the resulting figure in the &quot;Plots&quot; pane. However, you can use other <strong>graphics devices</strong> (places to put visual output) to tell R to put your figures elsewhere.</p>
+
+<p><center><img src="assets/img/plot-files.png" style="max-width:40%;"></center></p>
+
+  </article>
+  <!-- Presenter Notes -->
+  
+</slide>
+
+<slide class="section_slide" id="slide-19" style="background:;">
+  
+  <article data-timings="">
+    <p></br></br></br></p>
+
+<h2>Combining and Transforming Data Frames</h2>
+
+  </article>
+  <!-- Presenter Notes -->
+  
+</slide>
+
+<slide class="content_slide" id="slide-20" style="background:;">
+  
+  <article data-timings="">
+    <p><footer>
+  <hr>
+    Combining and Transforming Data Frames<span style="float:right">R Programming</span>
+</footer></p>
+
+<h2>Columnwise Combination With cbind</h2>
+
+<p>In situations where you have multiple data frames with the same rows but different columns, you can combine them column-wise with R&#39;s <code>cbind()</code> command. Note that this command will only work if the two data frames to be joined have the same number of rows AND those rows refer to the same observation.</p>
+
+<p><strong>cbind = &quot;column-wise bind&quot;</strong></p>
+
+<p><center><img src="assets/img/cbind.png" style="max-width:70%;"></center></p>
+
+  </article>
+  <!-- Presenter Notes -->
+  
+</slide>
+
+<slide class="content_slide" id="slide-21" style="background:;">
+  
+  <article data-timings="">
+    <p><footer>
+  <hr>
+    Combining and Transforming Data Frames<span style="float:right">R Programming</span>
+</footer></p>
+
+<h2>Column Matching with merge</h2>
+
+<p>It&#39;s common in data science workflows to have two mismatched tables of data from different sources and to want to combine them by matching on one or more keys. Think <code>JOIN</code> in SQL or <code>VLOOKUP</code> in Excel. To perform this operation in R, you can use the <code>merge()</code> command.</p>
+
+<p><center><img src="assets/img/merge.png" style="max-width:70%;"></center></p>
+
+  </article>
+  <!-- Presenter Notes -->
+  
+</slide>
+
+<slide class="content_slide" id="slide-22" style="background:;">
+  
+  <article data-timings="">
+    <p><footer>
+  <hr>
+    Combining and Transforming Data Frames<span style="float:right">R Programming</span>
+</footer></p>
+
+<h2>Rowwise Combination With rbind</h2>
+
+<p>So far we&#39;ve talked about merging columns from different tables. But what if you want to merge rows? For example, imagine that you are a researcher in a lab studying some natural phenomenon. You may take multiple samples (measuring the same variables) and then want to put them together into a single data frame to build a model. For this case, we can use R&#39;s <code>rbind()</code> function.</p>
+
+<p><strong>rbind = &quot;row-wise bind&quot;</strong></p>
+
+<p><center><img src="assets/img/rbind.png" style="max-width:70%;"></center></p>
+
+  </article>
+  <!-- Presenter Notes -->
+  
+</slide>
+
+<slide class="content_slide" id="slide-23" style="background:;">
+  
+  <article data-timings="">
+    <p><footer>
+  <hr>
+    Combining and Transforming Data Frames<span style="float:right">R Programming</span>
+</footer></p>
+
+<h2>Rowwise Combination of Many Tables with rbindlist</h2>
+
+<p>What if you have 5 tables? 10? 1000? Use <code>data.table::rbindlist()</code>.</p>
+
+<p><center><img src="assets/img/rbindlist.png" style="max-width:70%;"></center></p>
+
+  </article>
+  <!-- Presenter Notes -->
+  
+</slide>
+
+<slide class="section_slide" id="slide-24" style="background:;">
+  
+  <article data-timings="">
+    <p></br></br></br></p>
+
+<h2>Final Project Discussion</h2>
+
+  </article>
+  <!-- Presenter Notes -->
+  
+</slide>
+
+<slide class="content_slide" id="slide-25" style="background:;">
+  
+  <article data-timings="">
+    <p><footer>
+  <hr>
+    Final Project Discussion<span style="float:right">R Programming</span>
+</footer></p>
+
+<h2>Your Final Project Proposal is Due in Week 4</h2>
+
+<p><strong>Choosing External Packages</strong></p>
+
+<ul>
+<li>You need to choose one data retrieval package, one statistics package, and one visualization package from <a href="../assignments/final_project_packages.md">this list</a></li>
+<li>Don&#39;t stress! You can do all of the following:
+
+<ul>
+<li>Change which packages you actually use in the final project</li>
+<li>Use a package that isn&#39;t on the list (as long as you clear it with me)</li>
+<li>Use more than just 3 external packages</li>
+</ul></li>
+</ul>
+
+<p><strong>What Your Proposal Should Cover</strong></p>
+
+<ul>
+<li>What data set do you plan to use? Where can others find it? What variables does it contain?</li>
+<li>What is the question you&#39;re trying to answer?</li>
+<li>What packages do you plan to use?</li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+  
+</slide>
+
+<slide class="content_slide" id="slide-26" style="background:;">
+  
+  <article data-timings="">
+    <p><footer>
+  <hr>
+    Final Project Discussion<span style="float:right">R Programming</span>
+</footer></p>
+
+<h2>Your Final Project is Due in Week 5</h2>
+
+<ul>
+<li>let&#39;s go through the <a href="../assignments/final_project.html">Final Project description</a></li>
+</ul>
+
+<p><center><img src="assets/img/final-project-ski.jpg" height=350px width = 650px></center></p>
+
+  </article>
+  <!-- Presenter Notes -->
+  
+</slide>
+
+<slide class="section_slide" id="slide-27" style="background:;">
+  
+  <article data-timings="">
+    <p></br></br></br></p>
+
+<h2>Additional Resources</h2>
+
+  </article>
+  <!-- Presenter Notes -->
+  
+</slide>
+
+<slide class="content_slide" id="slide-28" style="background:;">
+  
+  <article data-timings="">
+    <p><footer>
+  <hr>
+    Additional Resources<span style="float:right">R Programming</span>
+</footer></p>
+
+<h2>Additional Resources</h2>
+
+<p><strong>Plotting in R</strong>: <a href="https://stat.ethz.ch/R-manual/R-devel/library/grDevices/html/Devices.html">graphics devices</a></p>
+
+<p><strong>Paths:</strong> <a href="https://www.redhat.com/en/blog/linux-path-absolute-relative">Relative vs absolute</a> | <a href="https://stat.ethz.ch/R-manual/R-devel/library/base/html/list.files.html">listing files in a directory in R</a></p>
+
+  </article>
+  <!-- Presenter Notes -->
+  
+</slide>
+
+    <slide class="backdrop"></slide>
+  </slides>
+  <div class="pagination pagination-small" id='io2012-ptoc' style="display:none;">
+    <ul>
+      
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=1 title='NA'>
+         1
+      </a>
+    </li>
+    
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=2 title='NA'>
+         2
+      </a>
+    </li>
+    
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=3 title='NA'>
+         3
+      </a>
+    </li>
+    
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=4 title='NA'>
+         4
+      </a>
+    </li>
+    
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=5 title='NA'>
+         5
+      </a>
+    </li>
+    
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=6 title='NA'>
+         6
+      </a>
+    </li>
+    
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=7 title='NA'>
+         7
+      </a>
+    </li>
+    
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=8 title='NA'>
+         8
+      </a>
+    </li>
+    
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=9 title='NA'>
+         9
+      </a>
+    </li>
+    
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=10 title='NA'>
+         10
+      </a>
+    </li>
+    
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=11 title='NA'>
+         11
+      </a>
+    </li>
+    
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=12 title='NA'>
+         12
+      </a>
+    </li>
+    
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=13 title='NA'>
+         13
+      </a>
+    </li>
+    
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=14 title='NA'>
+         14
+      </a>
+    </li>
+    
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=15 title='NA'>
+         15
+      </a>
+    </li>
+    
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=16 title='NA'>
+         16
+      </a>
+    </li>
+    
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=17 title='NA'>
+         17
+      </a>
+    </li>
+    
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=18 title='NA'>
+         18
+      </a>
+    </li>
+    
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=19 title='NA'>
+         19
+      </a>
+    </li>
+    
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=20 title='NA'>
+         20
+      </a>
+    </li>
+    
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=21 title='NA'>
+         21
+      </a>
+    </li>
+    
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=22 title='NA'>
+         22
+      </a>
+    </li>
+    
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=23 title='NA'>
+         23
+      </a>
+    </li>
+    
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=24 title='NA'>
+         24
+      </a>
+    </li>
+    
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=25 title='NA'>
+         25
+      </a>
+    </li>
+    
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=26 title='NA'>
+         26
+      </a>
+    </li>
+    
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=27 title='NA'>
+         27
+      </a>
+    </li>
+    
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=28 title='NA'>
+         28
+      </a>
+    </li>
+    
+    </ul>
+  </div>  <!--[if IE]>
+    <script 
+      src="http://ajax.googleapis.com/ajax/libs/chrome-frame/1/CFInstall.min.js">  
+    </script>
+    <script>CFInstall.check({mode: 'overlay'});</script>
+  <![endif]-->
+</body>
+  <!-- Load Javascripts for Widgets -->
+  <script src="libraries/widgets/bootstrap/js/bootstrap.min.js"></script>
+<script src="libraries/widgets/bootstrap/js/bootbox.min.js"></script>
+
+  <script>  
+  $(function (){ 
+    $("#example").popover(); 
+    $("[rel='tooltip']").tooltip(); 
+  });  
+  </script>  
+  <!-- LOAD HIGHLIGHTER JS FILES -->
+  <script src="libraries/highlighters/highlight.js/highlight.pack.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+  <!-- DONE LOADING HIGHLIGHTER JS FILES -->
+   
+  </html>

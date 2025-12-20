@@ -2,7 +2,7 @@
 exclude: |
   (?x)^(
       .*\.html$
-      |mu_rprog/slides/libraries/.*
+      |slides/libraries/.*
   )$
 
 repos:

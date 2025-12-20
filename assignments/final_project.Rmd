@@ -1,0 +1,365 @@
+---
+title : Final Project
+output:
+  html_document:
+    toc: true
+    theme: spacelab
+---
+
+<h2>Final Project Introduction</h2>
+
+This final project, which is worth 45\% of your final grade, is your opportunity to test the progress you've made as an R programmer.
+Once you've completed it, you'll be able to say that you have experience in the following:
+
+- Designing an end-to-end analysis pipeline in R
+- Cleaning messy real-world data
+- Using data visualization to communicate results
+
+Your task for the final project is construct a small analysis of a real-world dataset.
+The main deliverable will be one or more R scripts (you are more than welcome to have, for example, a `get_data.R` and a separate `analyze_data.R`) which accomplish all the following tasks:
+
+1. **Read in data from the internet**
+    - Anyone should be able to run your code to load the data, without needing any data files you provide. If you have manually-collected data, I can show you how to host it publicly.
+    - Please see this [list of example data sources](./some_data_sources.md) for some ideas to get you started
+2. **Preprocess those data so they are ready for analysis**
+    - Put the data into a data.frame, data.table, or matrix
+    - Ensure that all column types are correct
+    - Check for missing values and do something to handle them
+    - Any other preprocessing or transformations your project requires
+3. **Conduct a statistical analysis with the data**. Examples include:
+    - Estimating one or more regressions to examine relationships in the data
+    - Using summary statistics like grouped means to compare different subsets of data
+    - Using hypothesis tests like the t-test and chi-squared test to make assertions about similarities and differences between variables
+    - Training a classifier that can be used to make predictions on new, incoming data
+    - Anything else that interests you
+4. **Create at Least Two Visualizations to Communicate Results** Examples:
+    - Histograms/densities to compare probability distributions
+    - Line plots to compare progression of variables over time
+    - Tables of regression results (formatted with `{stargazer}`, perhaps) showing comparisons across models
+
+While it is certainly possible to complete the tasks listed above with the base functionality of R, you will likely find that using external libraries will make your code more powerful and expressive.
+The ability to use external packages is another key learning outcome for the course.
+For the remainder of this assignment, I'll refer to **the package list**, [this package list I've hosted on GitHub](./final_project_packages.md).
+In this assignment, you must use **at least one** external package from each of the three sections in **the package list**:
+
+* "Data Retrieval and Transformation"
+* "Math and Statistics"
+* "Visualization, Presentation, and Reporting"
+
+You are, of course, welcome to use any other packages you deem appropriate *in addition to this minimum requirement*.
+
+See the following sections for submission details on each of the four parts of this assignment
+
+---
+
+<h2>Part 1: Project Proposal</h2>
+
+<h3>Description</h3>
+
+The first deliverable for this project is a 1-2 page written report detailing your plans for the final project.
+This is not meant to lock you in to a particular data set, set of packages, or approach...all those details can change between this report and your final project submission.
+It is just meant to get your thinking about the project and ensure that you're on the right track.
+
+This report should answer the following items:
+
+- What is the research question you're trying to answer?
+    - good: *"I am using data on Japanese 10-year bond yields and inflation to predict BOJ monetary policy dovishness / hawkishness."*
+    - bad: *"I am analyzing bond data"*
+- What data set do you plan to use? Where can others find it? What variables does it contain?
+- What "Data Retrieval and Transformation" package do you plan to use? What does that package do?
+- What "Math and Statistics" package do you plan to use? What does that package do?
+- What "Visualization, Presentation, and Reporting" package do you plan to use? What does that package do?
+
+<h3>Submission</h3>
+
+Please submit your proposal (as a Word doc, PDF, or HTML doc) to the "Final Project Proposal" dropbox on D2L.
+
+The proposal must begin with a section titled "Research Question", which only contains your research question.
+For example:
+
+> **Research Question**
+>
+> *Do changes in the price of crude oil affect the wholesale prices of dairy-based commodities like non-fat dry milk?*
+
+A good research question is:
+
+- specific
+- feasible (relevant data can be collected)
+- researchable (the research can provide evidence that answers the question)
+- actually a question
+
+Example 1: Make it specific
+
+- bad: *"I'm looking at interest rate data to see what the relationships are."*
+- good: *"Did the relationship between CPI inflation and interest rates on long-term treasury bonds in the U.S. change after the 2007-2009 financial crisis?*
+
+Example 2: Make it feasible
+
+- bad: *"What are the determinants of unemployment?"*
+- good: *"If the Euro Area achieves 2% real GDP growth in 2025, what range might its unemployment rate fall in?"*
+
+Example 3: Make it researchable
+
+- bad: *"Are Wisconsinites buying a lot of electric vehicles?"*
+- good: *"From 2018-2023, how did the number of electric vehicles purchased in Wisconsin compare to what would have been expected based on the state's income, age, education distribution?"*
+
+Your proposal will be scored out of 100 points, using the following rubric:
+
+|Grade Item                                                                                  |Total Possible Points     |
+|:-------------------------------------------------------------------------------------------|:------------------------:|
+|**Research Question Description**                                                           |                          |
+|&nbsp;&nbsp;1. Report begins with a "Research Question" section                             |5                         |
+|&nbsp;&nbsp;2. "Research Question" section only contains the research question              |5                         |
+|&nbsp;&nbsp;3. "Research Question" meets expectations                                       |30                        |
+|&nbsp;&nbsp;&nbsp;&nbsp;*(25-30) question is specific, feasible, researchable*              |                          |
+|&nbsp;&nbsp;&nbsp;&nbsp;*(11-25) question is overly-broad or somewhat unclear*              |                          |
+|&nbsp;&nbsp;&nbsp;&nbsp;*(0-8) not a question, very unclear, or completely missing*         |                          |
+|**Dataset Description**                                                                     |                          |
+|&nbsp;&nbsp;1. How to acquire the dataset                                                   |15                        |
+|&nbsp;&nbsp;&nbsp;&nbsp;*(12-15) clearly describes where to find the dataset*               |                          |
+|&nbsp;&nbsp;&nbsp;&nbsp;*(0-11) insufficient detail for someone else to access the dataset* |                          |
+|&nbsp;&nbsp;2. Dataset contents                                                             |15                        |
+|&nbsp;&nbsp;&nbsp;&nbsp;*(12-15) clear, succinct, complete description of the contents*     |                          |
+|&nbsp;&nbsp;&nbsp;&nbsp;*(0-11) unclear or incomplete description*                          |                          |
+|**Planned Package Usage**                                                                   |                          |
+|&nbsp;&nbsp;1. Data Retrieval and Transformation package                                    |8                         |
+|&nbsp;&nbsp;&nbsp;&nbsp;*(7-8) mentions at least 1, and package is clearly relevant*        |                          |
+|&nbsp;&nbsp;&nbsp;&nbsp;*(0-6) 0 packages mentioned, or relevance is unclear*               |                          |
+|&nbsp;&nbsp;2. Math and Statistics package                                                  |8                         |
+|&nbsp;&nbsp;&nbsp;&nbsp;*(7-8) mentions at least 1, and package is clearly relevant*        |                          |
+|&nbsp;&nbsp;&nbsp;&nbsp;*(0-6) 0 packages mentioned, or relevance is unclear*               |                          |
+|&nbsp;&nbsp;3. Visualization, Presentation, and Reporting package                           |8                         |
+|&nbsp;&nbsp;&nbsp;&nbsp;*(7-8) mentions at least 1, and package is clearly relevant*        |                          |
+|&nbsp;&nbsp;&nbsp;&nbsp;*(0-6) 0 packages mentioned, or relevance is unclear*               |                          |
+|**Grammar and Formatting**                                                                  |                          |
+|&nbsp;&nbsp;1. Grammar and Formatting                                                       |6                         |
+|&nbsp;&nbsp;&nbsp;&nbsp;*(5-6) At most 2 minor grammatical issues*                          |                          |
+|&nbsp;&nbsp;&nbsp;&nbsp;*(0-4) Many grammatical or formatting issues*                       |                          |
+
+---
+
+<h2>Part 2: R Script(s)</h2>
+
+<h3>Description</h3>
+
+This code is the main deliverable for the class...it is worth 20\% of your final grade.
+This is the part of the assignment where you get to show off what you've learned!
+Your goal is to create one or more R scripts that meet the requirements listed in the project description above.
+
+<center><img src="assets/img/programming_not_sure.jpg"></center>
+
+<h3>Submission</h3>
+
+Please submit your code to the "Final Project (script + report)" dropbox on D2L.
+If you use multiple scripts (totally acceptable!), please include an additional script called "build.R" which species the order to run the scripts in.
+
+Your script will be scored out of 100 points, using the following rubric:
+
+|Grade Item                                                                          |Total Possible Points     |
+|:-----------------------------------------------------------------------------------|:------------------------:|
+|**All-or-Nothing Grade Items**                                                      |                          |
+|&nbsp;&nbsp;1. All code runs without error (with no reliance on local data)         |25                        |
+|&nbsp;&nbsp;2. Uses at least one Data Retrieval and Transformation package          |4                         |
+|&nbsp;&nbsp;3. Uses at least one Math and Statistics package                        |4                         |
+|&nbsp;&nbsp;4. Uses at least one Visualization, Presentation, and Reporting package |4                         |
+|&nbsp;&nbsp;5. Every external package used is imported with `library()`             |3                         |
+|&nbsp;&nbsp;6. All `library()` calls are at the top of submitted script(s)          |1                         |
+|&nbsp;&nbsp;7. Code does not call `install.packages()`, `install_github()`, etc.    |4                         |
+|**Code Quality Items**                                                              |                          |
+|&nbsp;&nbsp;1. Code commenting                                                      |5                         |
+|&nbsp;&nbsp;&nbsp;&nbsp;*(4-5) Clearly commented*                                   |                          |
+|&nbsp;&nbsp;&nbsp;&nbsp;*(1-3) Minimal comments, code is hard to understand*        |                          |
+|&nbsp;&nbsp;&nbsp;&nbsp;*(0) No comments*                                           |                          |
+|&nbsp;&nbsp;2. Use of External Functions                                            |15                        |
+|&nbsp;&nbsp;&nbsp;&nbsp;*(11-15) All/most external functions are called with `::`*  |                          |
+|&nbsp;&nbsp;&nbsp;&nbsp;*(6-10)  Some external function calls use `::`*             |                          |
+|&nbsp;&nbsp;&nbsp;&nbsp;*(0-5)  Unclear use of external functions*                  |                          |
+|&nbsp;&nbsp;3. Code Organization                                                    |15                        |
+|&nbsp;&nbsp;&nbsp;&nbsp;*(12-15) Well-organized, intuitive flow*                    |                          |
+|&nbsp;&nbsp;&nbsp;&nbsp;*(8-11)  Difficult to understand without comments*          |                          |
+|&nbsp;&nbsp;&nbsp;&nbsp;*(0-8)   Takes significant effort to understand*            |                          |
+|&nbsp;&nbsp;4. Problem Solving                                                      |20                        |
+|&nbsp;&nbsp;&nbsp;&nbsp;*(15-20) Excellent problem decomposition, R solution*       |                          |
+|&nbsp;&nbsp;&nbsp;&nbsp;*(8-14) Good solution, meets minimum requirements*          |                          |
+|&nbsp;&nbsp;&nbsp;&nbsp;*(0-7) Solution is significantly incomplete*                |                          |
+
+<h3>Tips</h3>
+
+There are definitely good and bad ways to comment code.
+For some tips, see [this code-commenting tutorial](https://www.learncpp.com/cpp-tutorial/comments/) I really like.
+
+---
+
+<h2>Part 3: Presentation</h2>
+
+In professional data science teams, it is common for team members to present their work in internal "code reviews",
+small meetings where a data scientist presents brief background on the problem they sought to solve and then
+invites criticism of their code.
+
+This can be a nerve-wracking experience in the context of a new job (trust me), so I'd like to give you the opportunity
+to practice sharing code with others in the safe setting of this introductory course.
+In the code review component of this project, you will do a 5-10 minutes live presentation of your final project.
+
+<h3>Submission (live video call)</h3>
+
+Code reviews will be a live, synchronous presentation near the end of the class.
+Details about timing will be sent out at the beginning of the term.
+
+You'll do this:
+
+* share your screen (showing the code)
+* describe your research question and data
+* talk through the code from top to bottom, explaining how it works and why you made certain design choices
+
+And you do NOT have to do any of the following:
+
+* run your code live
+* present slides or any other presentation-specific materials
+* turn in anything on D2L (like a recording, slides, etc.)
+
+When presentations begin, a Google Doc will be shared with the class.
+
+While you present, everyone in the class will have this doc up on their machines and use it to give you comments and questions.
+The benefit of this practice, in professional settings, is that days after your code review you'll have a written record of
+your audience's feedback.
+
+<h3>Description and Rubric</h3>
+
+Be prepared to show your code + report in front of the class.
+
+Your code review should consist of the following:
+
+- Introduce the problem you investigated.
+- Explain the data set *(where did it come from? what variables does it contain?)*
+- Show your code on-screen and explain the choices you made.
+- Share at least one thing you learned through this project which we did not explicitly cover in class.
+
+Your presentation will be scored out of 100 points, using the following rubric:
+
+|Grade Item                                                                             |Total Possible Points     |
+|:--------------------------------------------------------------------------------------|:------------------------:|
+|**All-or-Nothing Grade Items**                                                         |                          |
+|&nbsp;&nbsp;1. Shows at least one data visualization                                   |5                         |
+|&nbsp;&nbsp;2. Describes at least one learning or piece of advice for classmates       |5                         |
+|**Other Presentation Items**                                                           |                          |
+|&nbsp;&nbsp;1. Problem Introduction                                                    |10                        |
+|&nbsp;&nbsp;&nbsp;&nbsp;*(5-10) introduction is clear and concise*                     |                          |
+|&nbsp;&nbsp;&nbsp;&nbsp;*(1-4) introduction is confusing or rambling*                  |                          |
+|&nbsp;&nbsp;&nbsp;&nbsp;*(0) no introduction of the problem*                           |                          |
+|&nbsp;&nbsp;2. Explanation of the dataset                                              |30                        |
+|&nbsp;&nbsp;&nbsp;&nbsp;*(20-30) explains source and real-world meaning of the data*   |                          |
+|&nbsp;&nbsp;&nbsp;&nbsp;*(10-19) overly-literal description or unclear connection to the problem"*    |           |
+|&nbsp;&nbsp;&nbsp;&nbsp;*(0-9) inaccurate or confusing explanation*                    |                          |
+|&nbsp;&nbsp;3. Explanation of the Code                                                 |50                        |
+|&nbsp;&nbsp;&nbsp;&nbsp;*(30-40) clear explanation of how the code solves the problem* |                          |
+|&nbsp;&nbsp;&nbsp;&nbsp;*(10-29) literal description of the code as-is*                |                          |
+|&nbsp;&nbsp;&nbsp;&nbsp;*(0-9) inaccurate or confusing explanation*                    |                          |
+
+<h3>Tips</h3>
+
+Avoid these common code review issues:
+
+* introducing the problem by just describing what you did
+  * bad: *"I used data from FRED with R"*
+  * good: *"I attempted to understand the links between foreign exchange rate fluctuations and consumer price inflation"*
+* using column names instead of real world meaning for a dataset
+  * bad: *"CPIAUCSL_IDX had a coefficient of 6.5 and a p-value of 0.04"*
+  * good: *"CPI inflation had a positive effect and there is evidence that it's real"*
+* describing the literal code and not the logical meaning
+  * bad: *"here, I took DF2 and merged it with DF3"*
+  * good: *"here, I combined the data from the U.S. and China into one data frame"*
+* not being prepared to answer questions about the code
+  * you'll be asked about design decisions to test your understanding
+  * in the past, students have lost points on "explanation of the code" because they copied code from somewhere else (LLMs, Stack Overflow, etc.) and did not understand how it worked
+
+You'll do great!
+
+<center><img src = "assets/img/lumbergh_code_review.jpg"></center>
+
+---
+
+<h2>Part 4: Written Report</h2>
+
+<h3>Description</h3>
+
+The final deliverable for this project is a written report with your findings.
+This should be a 2-4 page "executive briefing", the type that you would write if you were doing this analysis for a consulting client.
+
+Your report should focus on the problem, not the specifics of the code.
+None of the following should be included:
+
+* "R", "RStudio", etc.
+* names of any R packages
+
+It should describe the problem, a brief summary of the work that was done (including the data that was used), and the result.
+
+The problem should be stated as a falsifiable research question.
+
+**Bad**
+
+> *Every knows inflation is a big problem. I looked at how high inflation is.*
+
+**Good**
+
+> *This project explored whether the relationship between observed inflation and consumer sentiment in the U.S. changed in the period 2021-2023.*
+
+The description of the dataset should be sufficiently detailed for anyone trying to replicate your research to retrieve the exact same data.
+
+Your report should NOT include any raw R code, but it should include the output of the visualization step of your script (i.e. a table, plot, or other viz).
+
+This report should be free from statistical jargon, or such jargon should be clearly and concisely explained in the report.
+
+**Bad**
+
+> *I used a Breusch-Pagan test to check for heteroskedasticity, and it had a Chi-squared statistic of 46.98 with a p-value of 0.00715.*
+
+**Good**
+
+> *I observed larger model errors for higher-value stocks, so I'm not confident that these results would hold for a portfolio with a different mix of company sizes.*
+
+For example, none of the following phrases should be used (unless they're clearly explained in jargon-free language):
+
+* "coefficient"
+* "F-statistic"
+* "heteroskedasticity"
+* "hypothesis test"
+* "p-value"
+* "regression"
+* "R squared"
+* "statistically significant"
+* "t-test"
+* "variance inflation factor"
+
+<h3>Submission</h3>
+
+Please upload your report to the "Final Project (script + report)" dropbox on D2L.
+
+Your report will be scored out of 100 points, using the following rubric:
+
+|Grade Item                                                                                              |Total Possible Points |
+|:-------------------------------------------------------------------------------------------------------|:--------------------:|
+|**All-or-Nothing Grade Items**                                                                          |                      |
+|&nbsp;&nbsp;1. Report does not contain any raw R code                                                   |5                     |
+|&nbsp;&nbsp;2. Report contains data visualizations created by the code                                  |10                    |
+|**Other Report  Items**                                                                                 |                      |
+|&nbsp;&nbsp;1. Problem Explanation                                                                      |10                    |
+|&nbsp;&nbsp;&nbsp;&nbsp;*(5-10) introduction is clear and concise*                                      |                      |
+|&nbsp;&nbsp;&nbsp;&nbsp;*(1-4) introduction is not clear*                                               |                      |
+|&nbsp;&nbsp;&nbsp;&nbsp;*(0) no introduction of the problem*                                            |                      |
+|&nbsp;&nbsp;2. Explanation of where the data came from                                                  |10                    |
+|&nbsp;&nbsp;&nbsp;&nbsp;*(8-10) clear explanation*                                                      |                      |
+|&nbsp;&nbsp;&nbsp;&nbsp;*(0-7) unclear or inaccurate explanation*                                       |                      |
+|&nbsp;&nbsp;3. Explanation what the dataset contains                                                    |20                    |
+|&nbsp;&nbsp;&nbsp;&nbsp;*(15-20) clear, executive-level explanation*                                    |                      |
+|&nbsp;&nbsp;&nbsp;&nbsp;*(10-14) overly-technical description or somewhat unclear or inaccurate*        |                      |
+|&nbsp;&nbsp;&nbsp;&nbsp;*(0-9) very unclea, inaccurate, or confusing explanation or no explanation*     |                      |
+|&nbsp;&nbsp;4. Explanation of the result                                                                |25                    |
+|&nbsp;&nbsp;&nbsp;&nbsp;*(20-25) result of the project clearly expressed in business terms*             |                      |
+|&nbsp;&nbsp;&nbsp;&nbsp;*(10-19) overly-technical explanation of the result*                            |                      |
+|&nbsp;&nbsp;&nbsp;&nbsp;*(0-10) inaccurate, confusing, or missing explanation of the result*            |                      |
+|&nbsp;&nbsp;5. Grammar and Formatting                                                                   |20                    |
+|&nbsp;&nbsp;&nbsp;&nbsp;*(18-20) at most two minor grammar and spelling issues*                         |                      |
+|&nbsp;&nbsp;&nbsp;&nbsp;*(8-17) some grammar and spelling issues*                                       |                      |
+|&nbsp;&nbsp;&nbsp;&nbsp;*(0-7) many grammar and spelling issues*                                        |                      |
+
+---
