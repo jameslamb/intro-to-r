@@ -435,4 +435,4 @@ What if you have 5 tables? 10? 1000? Use `data.table::rbindlist()`.
 
 **Plotting in R**: [graphics devices](https://stat.ethz.ch/R-manual/R-devel/library/grDevices/html/Devices.html)
 
-**Paths:** [Relative vs absolute](http://www.geeksengine.com/article/absolute-relative-path.html) | [listing files in a directory in R](https://stat.ethz.ch/R-manual/R-devel/library/base/html/list.files.html)
+**Paths:** [Relative vs absolute](https://www.redhat.com/en/blog/linux-path-absolute-relative) | [listing files in a directory in R](https://stat.ethz.ch/R-manual/R-devel/library/base/html/list.files.html)
