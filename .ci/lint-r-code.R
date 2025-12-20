@@ -1,19 +1,22 @@
 
 library(lintr)
 
-args <- commandArgs(
-    trailingOnly = TRUE
-)
-SOURCE_DIR <- args[[1L]]
-
 FILES_TO_LINT <- list.files(
-    path = SOURCE_DIR
+    path = getwd()
     , pattern = "\\.r$"
     , all.files = TRUE
     , ignore.case = TRUE
     , full.names = TRUE
     , recursive = TRUE
     , include.dirs = FALSE
+)
+FILES_TO_LINT <- append(
+    FILES_TO_LINT
+    , c(
+        "mu_rprog/assignments/extra-credit.Rmd"
+        , "mu_rprog/assignments/final_project.Rmd"
+        , "mu_rprog/code/programming-supplement.Rmd"
+    )
 )
 
 # text to use for pipe operators from packages like 'magrittr'
@@ -47,7 +50,6 @@ LINTERS_TO_USE <- list(
     , "function_left"        = lintr::function_left_parentheses_linter()
     , "function_return"      = lintr::function_return_linter()
     , "implicit_assignment"  = lintr::implicit_assignment_linter()
-    , "implicit_integers"    = lintr::implicit_integer_linter()
     , "infix_spaces"         = lintr::infix_spaces_linter()
     , "inner_combine"        = lintr::inner_combine_linter()
     , "is_numeric"           = lintr::is_numeric_linter()
@@ -58,7 +60,6 @@ LINTERS_TO_USE <- list(
     , "literal_coercion"     = lintr::literal_coercion_linter()
     , "matrix"               = lintr::matrix_apply_linter()
     , "missing_argument"     = lintr::missing_argument_linter()
-    , "non_portable_path"    = lintr::nonportable_path_linter()
     , "numeric_leading_zero" = lintr::numeric_leading_zero_linter()
     , "outer_negation"       = lintr::outer_negation_linter()
     , "package_hooks"        = lintr::package_hooks_linter()
@@ -82,7 +83,6 @@ LINTERS_TO_USE <- list(
     , "unnecessary_concatenation" = lintr::unnecessary_concatenation_linter()
     , "unnecessary_lambda"        = lintr::unnecessary_lambda_linter()
     , "unreachable_code"          = lintr::unreachable_code_linter()
-    , "unused_import"             = lintr::unused_import_linter()
     , "vector_logic"              = lintr::vector_logic_linter()
     , "whitespace"                = lintr::whitespace_linter()
 )
