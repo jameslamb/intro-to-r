@@ -1,0 +1,1503 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>R Programming</title>
+  <meta charset="utf-8">
+  <meta name="description" content="R Programming">
+  <meta name="author" content="">
+  <meta name="generator" content="slidify" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/default.css" media="all" >
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/phone.css" 
+    media="only screen and (max-device-width: 480px)" >
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/slidify.css" >
+  <link rel="stylesheet" href="libraries/highlighters/highlight.js/css/tomorrow.css" />
+  <base target="_blank"> <!-- This amazingness opens all links in a new tab. -->  <link rel=stylesheet href="libraries/widgets/bootstrap/css/bootstrap.css"></link>
+<link rel=stylesheet href="./assets/css/my_custom_style.css"></link>
+
+  
+  <!-- Grab CDN jQuery, fall back to local if offline -->
+  <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.7.min.js"></script>
+  <script>window.jQuery || document.write('<script src="libraries/widgets/quiz/js/jquery.js"><\/script>')</script> 
+  <script data-main="libraries/frameworks/io2012/js/slides" 
+    src="libraries/frameworks/io2012/js/require-1.0.8.min.js">
+  </script>
+  
+  
+
+</head>
+<body style="opacity: 0">
+  <slides class="layout-widescreen">
+    
+    <!-- LOGO SLIDE -->
+        <slide class="title-slide segue nobackground">
+  
+  <hgroup class="auto-fadein">
+    <h1>R Programming</h1>
+    <h2></h2>
+    <p><br/></p>
+  </hgroup>
+  
+  <article></article>  
+  
+</slide>
+    
+
+    <!-- SLIDES -->
+    <slide class="" id="slide-1" style="background:;">
+  
+  <article data-timings="">
+    <!--Define background image for title slide-->
+
+<style>
+.title-slide {
+  background-image:url("assets/img/animal.jpg");
+  background-size: cover;
+}
+</style>
+
+<p><footer>
+  <hr></hr>
+  <span style="float:right">R Programming</span>
+</footer></p>
+
+<h2>Welcome back!</h2>
+
+<p><center><img src="assets/img/you-are-brave.jpg"></center></p>
+
+  </article>
+  <!-- Presenter Notes -->
+  
+</slide>
+
+<slide class="toc_slide" id="slide-2" style="background:;">
+  
+  <article data-timings="">
+    <p><footer>
+  <hr></hr>
+  <span style="float:right">R Programming</span>
+</footer></p>
+
+<h2>Contents</h2>
+
+<div style='float:left;width:48%;' class='centered'>
+  <p><b class="toc_header"> Review and Catchup </b></p>
+
+<ol class="toc" type="none">
+    <li> Quiz 1 Review <span style="float:right"> 6 </span></li>
+</ol>
+
+<p><b class="toc_header"> Functions </b></p>
+
+<ol class="toc" type="none">
+    <li> Intro to Functional Programming <span style="float:right"> 8 </span></li>
+    <li> Intro to Functional Positional and Keyword Arguments <span style="float:right"> 9 </span></li>
+    <li> Required and Default Arguments <span style="float:right"> 10-11 </span></li>
+    <li> Functions That Return Stuff <span style="float:right"> 12 </span></li>
+    <li> Functions That Return Nothing <span style="float:right"> 13 </span></li>
+    <li> Scoping <span style="float:right"> 14 </span></li>
+    <li> The "apply" family of functions <span style="float:right"> 15-17 </span></li>
+</ol>
+
+</div>
+<div style='float:right;width:48%;'>
+  <p><b class="toc_header"> Using External Packages </b></p>
+
+<ol class="toc" type="none">
+    <li> Loading Installed Packages <span style="float:right"> 19 </span></li>
+    <li> Installing from CRAN <span style="float:right"> 20 </span></li>
+    <li> Installing from GitHub <span style="float:right"> 21 </span></li>
+    <li> Installing Local Code <span style="float:right"> 22 </span></li>
+    <li> Namespacing Calls <span style="float:right"> 23 </span></li>
+    <li> library() vs. require() <span style="float:right"> 24 </span></li>
+    <li> Using Local Code with source() <span style="float:right"> 25 </span></li>
+</ol>
+
+</div>
+  </article>
+  <!-- Presenter Notes -->
+  
+</slide>
+
+<slide class="toc_slide" id="slide-3" style="background:;">
+  
+  <article data-timings="">
+    <p><footer>
+  <hr></hr>
+  <span style="float:right"> R Programming </span>
+</footer></p>
+
+<h2>Contents</h2>
+
+<div style='float:left;width:48%;' class='centered'>
+  <p><b class="toc_header"> Debugging Strategies </b></p>
+
+<ol class = "toc">
+    <li> Print Debugging <span style="float:right"> 27 </span></li>
+    <li> Googling Around <span style="float:right"> 28-29 </span></li>
+    <li> Stack Overflow <span style="float:right"> 30 </span></li>
+    <li> Building an MWE  <span style="float:right"> 31 </span></li>
+    <li> Built-in Docs with "?" <span style="float:right"> 32 </span></li>
+    <li> Package Vignettes <span style="float:right"> 33 </span></li>
+    <li> Looking at Source Code <span style="float:right"> 34 </span></li>
+</ol>
+
+</div>
+<div style='float:right;width:48%;'>
+  <p><b class="toc_header"> Working with Files </b></p>
+
+<ol class = "toc" type="none">
+    <li> File Paths <span style="float:right"> 36-37 </span></li>
+    <li> Downloading files from the internet <span style="float:right"> 38 </span></li>
+    <li> Delimited Files <span style="float:right"> 39 </span></li>
+    <li> CSV <span style="float:right"> 40 </span></li>
+    <li> Excel <span style="float:right"> 41 </span></li>
+    <li> JSON <span style="float:right"> 42 </span></li>
+    <li> Unstructured Text Files <span style="float:right"> 43 </span></li>
+</ol>
+
+<p><b class="toc_header"> Additional Resources </b></p>
+
+<ol class="toc" type="none">
+    <li> Learning More on Your Own <span style="float:right"> 45 </span></li>
+</ol>
+
+</div>
+  </article>
+  <!-- Presenter Notes -->
+  
+</slide>
+
+<slide class="section_slide" id="slide-4" style="background:;">
+  
+  <article data-timings="">
+    <p></br></br></br></p>
+
+<h2>Review and Catchup</h2>
+
+  </article>
+  <!-- Presenter Notes -->
+  
+</slide>
+
+<slide class="content_slide" id="slide-5" style="background:;">
+  
+  <article data-timings="">
+    <p><footer>
+  <hr>
+    Review and Catchup<span style="float:right">R Programming</span>
+</footer></p>
+
+<h2>Quiz 1 Review</h2>
+
+<p>I will show the questions from quiz 1 that some students struggled with. Not including them in these slides in case I teach the course again in the future.</p>
+
+<p>If you&#39;re arriving at this slide and are disappointed not to find quiz answers, I&#39;m sorry but I&#39;ll at least give you this bit of entertainment. Go check out <a href="https://flowingdata.com/2015/12/15/a-day-in-the-life-of-americans/">A Day in the Life of Americans</a></p>
+
+  </article>
+  <!-- Presenter Notes -->
+  
+</slide>
+
+<slide class="section_slide" id="slide-6" style="background:;">
+  
+  <article data-timings="">
+    <p></br></br></br></p>
+
+<h2>Functions</h2>
+
+  </article>
+  <!-- Presenter Notes -->
+  
+</slide>
+
+<slide class="content_slide" id="slide-7" style="background:;">
+  
+  <article data-timings="">
+    <p><footer>
+  <hr>
+  Functions<span style="float:right">R Programming</span>
+</footer></p>
+
+<h2>Intro to Functional Programming</h2>
+
+<p>R is a <a href="https://adv-r.hadley.nz/functions.html">functional programming language</a>. To write powerful, concise code, you&#39;ll need to master the use and creation of functions.</p>
+
+<blockquote>
+<p>&quot;If you find yourself copying and pasting the same code more than twice, it&#39;s time to write a function.&quot; - Hadley Wickham</p>
+</blockquote>
+
+<pre><code class="r"># Function to return only the numbers smaller than 10
+nums &lt;- c(1, 3, 4, 8, 13, 24)
+
+getLittleNumbers &lt;- function(some_numbahs){
+    lil_ones &lt;- some_numbahs[some_numbahs &lt; 10]
+    return(lil_ones)
+}
+
+getLittleNumbers(nums)
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+  
+</slide>
+
+<slide class="content_slide" id="slide-8" style="background:;">
+  
+  <article data-timings="">
+    <p><footer>
+  <hr>
+  Functions<span style="float:right">R Programming</span>
+</footer></p>
+
+<h2>Positional and Keyword Arguments</h2>
+
+<p>When you call a function with arguments in R, you can provide those arguments two ways:</p>
+
+<ul>
+<li>&quot;positional&quot; = based on the order</li>
+<li>&quot;keyword&quot; = matching a specific argument by name</li>
+</ul>
+
+<pre><code class="r"># all positional
+rnorm(10, 0, 0.5)
+
+# all keyword
+rnorm(n = 10, mean = 0, sd = 0.5)
+
+# mix
+rnorm(10, mean = 0, sd = 0.5)
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+  
+</slide>
+
+<slide class="content_slide" id="slide-9" style="background:;">
+  
+  <article data-timings="">
+    <p><footer>
+  <hr>
+  Functions<span style="float:right">R Programming</span>
+</footer></p>
+
+<h2>Required Arguments</h2>
+
+<ul>
+<li>R functions take 0 or more arguments...basically named variables that the function uses to do it&#39;s work</li>
+<li>Take a look at <code>?sqrt</code>. You&#39;ll see that it takes one argument, named <code>x</code>. You can pass any vector of numeric values to this argument and <code>sqrt()</code> will return the square root of each element</li>
+<li>In this case, we&#39;d say <code>x</code> is a <em>required argument</em> of <code>sqrt()</code></li>
+</ul>
+
+<pre><code class="r"># Take the square root of a vector of numbers
+sqrt(x = c(1, 4, 9, 16, 25))
+
+# Note that calling this function without the argument will throw an error!
+sqrt()
+### Error in sqrt(): 0 arguments passed to `sqrt` which requires 1
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+  
+</slide>
+
+<slide class="content_slide" id="slide-10" style="background:;">
+  
+  <article data-timings="">
+    <p><footer>
+  <hr>
+  Functions<span style="float:right">R Programming</span>
+</footer></p>
+
+<h2>Default Argument Values</h2>
+
+<ul>
+<li>For more complicated functions, passing values to each argument can get burdensome</li>
+<li>To handle this, R allows function authors to specify <em>default arguments</em>. These are values that certain arguments will take automatically unless you decide to overwrite them</li>
+<li>Example: look at <code>?rnorm</code>. You&#39;ll see that this function&#39;s signature reads <code>rnorm(n, mean = 0, sd = 1)</code>.</li>
+</ul>
+
+<pre><code class="r"># 100 random draws from a normal distribution w/ mean 0 and standard deviation 1
+rand_nums &lt;- rnorm(n = 100)
+
+# 100 random draws from a normal distribution w/ mean 4.5 and standard deviation 1
+rand_nums &lt;- rnorm(n = 100, mean = 4.5)
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+  
+</slide>
+
+<slide class="content_slide" id="slide-11" style="background:;">
+  
+  <article data-timings="">
+    <p><footer>
+  <hr>
+    Functions<span style="float:right">R Programming</span>
+</footer></p>
+
+<h2>Functions That Return Stuff</h2>
+
+<p>As you&#39;ve seen in previous examples, the R special word <code>return</code> tells a function to &quot;give back&quot; some value. When you execute an expression like <code>x &lt;- someFunction()</code>, that function&#39;s return value (an R object) is stored in a variable called &quot;x&quot;.</p>
+
+<p>Unlike in some other programming languages, R allows you to use multiple <code>return</code> values inside the body of a function. The first time that the code inside the function reaches a <code>return</code> value, it will pass that value back out of the function and immediately stop executing the function.</p>
+
+<p><br></p>
+
+<p>See <a href="../code/programming-supplement.html#Functions_That_Return_Stuff">&quot;Functions That Return Stuff&quot;</a> in the programming supplement.</p>
+
+  </article>
+  <!-- Presenter Notes -->
+  
+</slide>
+
+<slide class="content_slide" id="slide-12" style="background:;">
+  
+  <article data-timings="">
+    <p><footer>
+  <hr>
+    Functions<span style="float:right">R Programming</span>
+</footer></p>
+
+<h2>Functions That Return Nothing</h2>
+
+<p>Not all functions have to return something! Sometimes you may want to create a function that just has some side effect like creating a plot, writing to a file, or print to the console.</p>
+
+<p>These are called &quot;null functions&quot; and they&#39;re common in scripting languages like R. By default, these functions return the R special value <code>NULL</code>.</p>
+
+<pre><code class="r">printSentence &lt;- function(theSentence){
+    words &lt;- strsplit(x = theSentence, split = &quot; &quot;)
+    for (word in words){
+        print(word)
+    }
+}
+
+# Assigning to an object is irrelevant...this function doesn&#39;t return anything
+x &lt;- printSentence(&quot;Hip means to know, it&#39;s a form of intelligence&quot;)
+x
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+  
+</slide>
+
+<slide class="content_slide" id="slide-13" style="background:;">
+  
+  <article data-timings="">
+    <p><footer>
+  <hr>
+    Functions<span style="float:right">R Programming</span>
+</footer></p>
+
+<h2>Scoping</h2>
+
+<p>Remember when we talked about namespaces and how R searches for objects? It&#39;s time to extend that logic to functions...which is where things get a bit weird and hard to understand.</p>
+
+<p>R uses a search technique called <a href="https://bit.ly/2DlfkDi">lexical scoping</a></p>
+
+<p><br></p>
+
+<p>See <a href="../code/programming-supplement.html#Scoping">&quot;Scoping&quot;</a> in the programming supplement.</p>
+
+  </article>
+  <!-- Presenter Notes -->
+  
+</slide>
+
+<slide class="content_slide" id="slide-14" style="background:;">
+  
+  <article data-timings="">
+    <p><footer>
+  <hr>
+    Functions<span style="float:right">R Programming</span>
+</footer></p>
+
+<h2>Looping with lapply()</h2>
+
+<p>R&#39;s <code>*apply</code> family of functions are a bit difficult to understand at first, but soon you&#39;ll come to love them. They make your code more expressive, flexible, and parallelizable (more on that final point later). One of the most popular is <code>lapply()</code> (&quot;list apply&quot;), which loops over a thing (e.g. vector, list) and returns a 1-level list. Let&#39;s try it out:</p>
+
+<pre><code class="r"># Create a list
+studentList &lt;- list(
+  kanye = c(80, 90, 100)
+  , talib = c(95, 85, 99)
+  , common = c(100, 100, 99)
+)
+
+# Better way with lapply
+grades &lt;- lapply(studentList, mean)
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+  
+</slide>
+
+<slide class="content_slide" id="slide-15" style="background:;">
+  
+  <article data-timings="">
+    <p><footer>
+  <hr>
+    Functions<span style="float:right">R Programming</span>
+</footer></p>
+
+<h2>Looping with sapply()</h2>
+
+<p>Remember that you cannot execute statistical operations like <code>mean()</code> over a list. For that, we&#39;d probably prefer to have a <em>vector</em> of results. This is where R&#39;s <code>sapply()</code> (&quot;simplified apply&quot;) comes in. <code>sapply()</code> works the same way that <code>lapply()</code> does but returns a vector. Try it for yourself:</p>
+
+<pre><code class="r">data(&quot;ChickWeight&quot;)
+weights &lt;- ChickWeight$weight
+
+# Loop over and encode &quot;above mean&quot; and &quot;below mean&quot;
+the_mean &lt;- mean(weights)
+meanCheck &lt;- function(val, ref_mean){
+    if (val &gt; ref_mean){return(&quot;above mean&quot;)}
+    if (val &lt; ref_mean){return(&quot;below mean&quot;)}
+    return(&quot;equal to the mean&quot;)
+}
+check_vec &lt;- sapply(weights, FUN = function(x){meanCheck(val = x, ref_mean = the_mean)})
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+  
+</slide>
+
+<slide class="content_slide" id="slide-16" style="background:;">
+  
+  <article data-timings="">
+    <p><footer>
+  <hr>
+    Functions<span style="float:right">R Programming</span>
+</footer></p>
+
+<h2>Looping with apply()</h2>
+
+<p>When analyzing real-world datasets, you may want to use the same looping convention we&#39;ve been discussing, but apply it over many items and the get some summary (such as the median) of the results. This is where R&#39;s <code>apply()</code> function comes in! Check it out</p>
+
+<pre><code class="r">data(&quot;ChickWeight&quot;)
+
+# Calculate column-wise range
+apply(ChickWeight, MARGIN = 2, FUN = function(x){range(as.numeric(x))})
+
+# Calculate row-wise range
+apply(ChickWeight, MARGIN = 1, FUN = function(blah){range(as.numeric(blah))})
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+  
+</slide>
+
+<slide class="section_slide" id="slide-17" style="background:;">
+  
+  <article data-timings="">
+    <p></br></br></br></p>
+
+<h2>Debugging Strategies</h2>
+
+  </article>
+  <!-- Presenter Notes -->
+  
+</slide>
+
+<slide class="content_slide" id="slide-18" style="background:;">
+  
+  <article data-timings="">
+    <p><footer>
+  <hr>
+    Debugging Strategies<span style="float:right">R Programming</span>
+</footer></p>
+
+<h2>Print Debugging</h2>
+
+<p>As you&#39;ve probably already learned, writing code involves a never-ending process of trying this, fixing errors, trying other things, fixing new errors, etc. The process of identifying and fixing errors/bugs is called <strong>debugging</strong>.</p>
+
+<p>The simplest way to debug an issue in your code is to use <strong>print debugging</strong>. This approach involves forming expectations about the state of the objects in your environment at each point in your code, then printing those states at each point to find where things broke.</p>
+
+<p>Please see <a href="../code/programming-supplement.html#Print_Debugging">&quot;Print Debugging&quot;</a> in the programming supplement for an example of this approach.</p>
+
+  </article>
+  <!-- Presenter Notes -->
+  
+</slide>
+
+<slide class="content_slide" id="slide-19" style="background:;">
+  
+  <article data-timings="">
+    <p><footer>
+  <hr>
+    Debugging Strategies<span style="float:right">R Programming</span>
+</footer></p>
+
+<h2>Googling Around</h2>
+
+<p>The second most popular debugging strategy:</p>
+
+<p><center><img src="assets/img/google-it.jpg"></center></p>
+
+  </article>
+  <!-- Presenter Notes -->
+  
+</slide>
+
+<slide class="content_slide" id="slide-20" style="background:;">
+  
+  <article data-timings="">
+    <p><footer>
+  <hr>
+    Debugging Strategies<span style="float:right">R Programming</span>
+</footer></p>
+
+<h2>Googling Around (continued)</h2>
+
+<p>But really...Google is your best friend. It will be particularly useful in the cases where your code is returning an error or warning. Simple pasting that output into google (in quotes to get an exact match) will typically get you to an answer within 5 minutes.</p>
+
+<p>Let&#39;s try an example.</p>
+
+<p><br></p>
+
+<p>Imagine that you got this error:</p>
+
+<p><code>Error in sum(c(1, 2, &quot;5&quot;)) : invalid &#39;type&#39; (character) of argument</code>.</p>
+
+<p>Try to figure out what went wrong. HINT: it often helps to type the function name outside quotes. e.g. <code>function &quot;this is some error text&quot;</code></p>
+
+  </article>
+  <!-- Presenter Notes -->
+  
+</slide>
+
+<slide class="content_slide" id="slide-21" style="background:;">
+  
+  <article data-timings="">
+    <p><footer>
+  <hr>
+    Debugging Strategies<span style="float:right">R Programming</span>
+</footer></p>
+
+<h2>Stack Overflow</h2>
+
+<p>You&#39;ll find yourself at <a href="https://stackoverflow.com/">https://stackoverflow.com/</a> OFTEN.</p>
+
+<p><center><img src="assets/img/stack-overflow.jpg" height=700px width=400px></center></p>
+
+  </article>
+  <!-- Presenter Notes -->
+  
+</slide>
+
+<slide class="content_slide" id="slide-22" style="background:;">
+  
+  <article data-timings="">
+    <p><footer>
+  <hr>
+    Debugging Strategies<span style="float:right">R Programming</span>
+</footer></p>
+
+<h2>Building an MWE</h2>
+
+<p>If print debugging doesn&#39;t work, you may want to ask someone (a colleague, a package author, your teach) for help in debugging the issue. Before asking for someone&#39;s help, you owe it to them to try to reduce the problem to a <strong>Minimum Working Example (MWE)</strong>, the simplest possible code that reproduces the error.</p>
+
+<ul>
+<li><a href="https://github.com/uptake/uptasticsearch/issues/140">this is bad</a></li>
+<li><a href="https://github.com/uptake/pkgnet/issues/70">this is good</a></li>
+</ul>
+
+<p><br></p>
+
+<p>In many instances, you&#39;ll find that just doing this exercise will reveal the problem before you even have to ask for anyone&#39;s help.</p>
+
+<p><br></p>
+
+<p>For more on building an MWE, see: <a href="https://stackoverflow.com/help/mcve">the Stack Overflow guidelines on MWE construction</a></p>
+
+  </article>
+  <!-- Presenter Notes -->
+  
+</slide>
+
+<slide class="content_slide" id="slide-23" style="background:;">
+  
+  <article data-timings="">
+    <p><footer>
+  <hr>
+    Debugging Strategies<span style="float:right">R Programming</span>
+</footer></p>
+
+<h2>Built-in Docs with "?"</h2>
+
+<p>As we&#39;ve covered before, R packages have a built-in documentation system. All packages submitted to CRAN must supply some basic documentation for each function they contain. If a function is behaving strangely, it&#39;s often useful to look at the documentation under <code>?function_name</code>.</p>
+
+<p>For example, you may be surprised to learn that <code>sum(c(1,2,NA,3))</code> evaluates to <code>NA</code>. You might have thought it would be 6. If we call <code>?sum</code> in R, you&#39;ll see the answer...the default behavior of this function is to leave <code>NA</code> values in when calculating the sum, but there is an option argument <code>na.rm</code> that allows you to remove them if you wish.</p>
+
+<p>Many IDEs (including RStudio) offer automatic <a href="https://support.rstudio.com/hc/en-us/articles/205273297-Code-Completion">code completion</a> that will suggest these other arguments in the UI as you type!</p>
+
+  </article>
+  <!-- Presenter Notes -->
+  
+</slide>
+
+<slide class="content_slide" id="slide-24" style="background:;">
+  
+  <article data-timings="">
+    <p><footer>
+  <hr>
+    Debugging Strategies<span style="float:right">R Programming</span>
+</footer></p>
+
+<h2>Package Vignettes</h2>
+
+<p>So far, we&#39;ve talked about cases where you know exactly which functions are behaving strangely and want to just learn more about their behavior. But what about fuzzier cases where you just want to figure out what other functionality a package has? At least one source for this information is the package vignettes.</p>
+
+<p><br></p>
+
+<p>Let&#39;s take a look at the online documentation for the <code>{stringr}</code> package:</p>
+
+<ul>
+<li>CRAN docs: <a href="https://cran.r-project.org/web/packages/stringr/index.html">https://cran.r-project.org/web/packages/stringr/index.html</a></li>
+<li>package vignette: <a href="https://cran.r-project.org/web/packages/stringr/stringr.pdf">https://cran.r-project.org/web/packages/stringr/stringr.pdf</a></li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+  
+</slide>
+
+<slide class="content_slide" id="slide-25" style="background:;">
+  
+  <article data-timings="">
+    <p><footer>
+  <hr>
+    Debugging Strategies<span style="float:right">R Programming</span>
+</footer></p>
+
+<h2>Looking at Source Code</h2>
+
+<p>If you try all the strategies we just discussed and STILL don&#39;t know why your code isn&#39;t working, there is at least one option left to you: look at the source code! Recall the following facts:</p>
+
+<ul>
+<li>R is open-source, which means that all R source code can be found online (typically on GitHub) and visually inspected</li>
+<li>Errors thrown by programs are not magical...they had to be written into the source code by a developer</li>
+</ul>
+
+<p>For example, let&#39;s search for the error: <code>each element of valids must have a name</code> in the <code>{lightgbm}</code> source code. Please visit:</p>
+
+<p><a href="https://github.com/microsoft/LightGBM">https://github.com/microsoft/LightGBM</a></p>
+
+  </article>
+  <!-- Presenter Notes -->
+  
+</slide>
+
+<slide class="section_slide" id="slide-26" style="background:;">
+  
+  <article data-timings="">
+    <p></br></br></br></p>
+
+<h2>Installing and Using External Packages</h2>
+
+  </article>
+  <!-- Presenter Notes -->
+  
+</slide>
+
+<slide class="content_slide" id="slide-27" style="background:;">
+  
+  <article data-timings="">
+    <p><footer>
+  <hr>
+    Using External Packages<span style="float:right">R Programming</span>
+</footer></p>
+
+<h2>Loading Installed Packages</h2>
+
+<p>As you advance in R, you will find that the functions provided by packages like <code>{base}</code>, <code>{stats}</code>, and <code>{utils}</code> are not sufficient. For example, you may want to use <code>{dygraphs}</code> to make interactive plots.</p>
+
+<pre><code class="r"># Load dependencies
+library(data.table); library(dygraphs); library(quantmod);
+
+# Get data
+cpiData &lt;- quantmod::getSymbols(
+    Symbols = &quot;CPIAUCSL&quot;, src = &quot;FRED&quot;, auto.assign = FALSE
+)[&quot;1947-01-01/2023-11-01&quot;]
+
+# Plot it
+dygraphs::dygraph(
+    data = cpiData, main = &quot;U.S. CPI&quot;, xlab = &quot;date&quot;, ylab = &quot;Index (1982-1984 = 100)&quot;, elementId = &quot;plot&quot;
+) %&gt;%
+    dygraphs::dyRangeSelector()
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+  
+</slide>
+
+<slide class="content_slide" id="slide-28" style="background:;">
+  
+  <article data-timings="">
+    <p><footer>
+  <hr>
+    Using External Packages<span style="float:right">R Programming</span>
+</footer></p>
+
+<h2>Installing from CRAN</h2>
+
+<p><strong><a href="https://cran.r-project.org/">CRAN</a></strong>, &quot;The Comprehensive R Archive Network&quot;, is the main server from which you&#39;ll download external packages. It provides an easy framework for distributing code (way better than passing around hundreds of links to GitHub repos).</p>
+
+<p>To download and install packages, do the following:</p>
+
+<pre><code class="r"># Install packages + their dependencies with install.packages()
+install.packages(c(&quot;data.table&quot;, &quot;jsonlite&quot;),
+                 dependencies = c(&quot;Depends&quot;, &quot;Imports&quot;))
+
+# Load package namespace with library()
+library(data.table)
+
+# (A few months later...) Check CRAN for new versions of your packages
+utils::update.packages()
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+  
+</slide>
+
+<slide class="content_slide" id="slide-29" style="background:;">
+  
+  <article data-timings="">
+    <p><footer>
+  <hr>
+    Using External Packages<span style="float:right">R Programming</span>
+</footer></p>
+
+<h2>Installing from GitHub</h2>
+
+<p>While there are <a href="https://cran.r-project.org/">many many packages available from CRAN</a>, you may sometimes want to install directly from a source control site like GitHub. R developers will often release bleeding-edge (&quot;dev&quot;) features on GitHub before they make it to CRAN.</p>
+
+<pre><code class="r"># Load deps
+library(remotes)
+
+# Install from GitHub
+remotes::install_github(&quot;terrytangyuan/dml&quot;)
+
+# Check where R put this package on your machine
+find.package(&quot;dml&quot;)
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+  
+</slide>
+
+<slide class="content_slide" id="slide-30" style="background:;">
+  
+  <article data-timings="">
+    <p><footer>
+  <hr>
+    Using External Packages<span style="float:right">R Programming</span>
+</footer></p>
+
+<h2>Namespacing Calls</h2>
+
+<p>You may have noticed that I use <code>::</code> frequently in my code. Remember when we used <code>search()</code> to print the ordered list of namespaces that R searches for objects? <code>::</code> is used to circumvent this process. <code>lubridate::ymd_hms()</code> tells R <em>&quot;Use the function ymd_hms from the &#39;lubridate&#39; package&quot;</em></p>
+
+<p>Without namespacing, R will search through the list of namespaces until it finds what it wants. When you load a new package that has a function with the same name as one already loaded in your session, R will warn you that that version has been &quot;masked&quot;.</p>
+
+<pre><code class="r">library(lubridate)
+</code></pre>
+
+<pre><code>Attaching package: &#39;lubridate&#39;
+
+The following object is masked from &#39;package:base&#39;:
+
+    date
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+  
+</slide>
+
+<slide class="content_slide" id="slide-31" style="background:;">
+  
+  <article data-timings="">
+    <p><footer>
+  <hr>
+    Using External Packages<span style="float:right">R Programming</span>
+</footer></p>
+
+<h2>library() vs. require()</h2>
+
+<p>In this course, I&#39;ve been using the <code>library()</code> command to load package namespaces. If you look around online, you will probably see many examples where people use <code>require()</code> instead.</p>
+
+<p><strong>what&#39;s the difference?</strong></p>
+
+<ul>
+<li><code>library()</code> is used in scripts. It will throw an <em>error</em> if you do not have the package</li>
+<li><code>require()</code> is used in functions. It will throw a <em>warning</em> if you don&#39;t have the package</li>
+<li><TEXT COLOR="red">Errors</TEXT> will break your code immediately, while <TEXT COLOR="purple">warnings</TEXT> will print a note but allow the code to keep running</li>
+</ul>
+
+<pre><code class="r">library(some_package_that_does_not_exist)
+
+my_func &lt;- function(n){
+    require(some_package_that_does_not_exist)
+    print(&quot;JaVale McGee!!!!&quot;)
+}
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+  
+</slide>
+
+<slide class="content_slide" id="slide-32" style="background:;">
+  
+  <article data-timings="">
+    <p><footer>
+  <hr>
+    Using External Packages<span style="float:right">R Programming</span>
+</footer></p>
+
+<h2>Using Local Code with source()</h2>
+
+<p>There is one other option we have not discussed yet, in part because it doesn&#39;t technically involve the use of packages. Many analysts working in R prefer to define a file with their function and use <code>source()</code> to make those functions available to other scripts.</p>
+
+<p><br></p>
+
+<p><strong>my_script.R</strong></p>
+
+<pre><code class="r"># load function
+source(&quot;helper_functions.R&quot;)
+
+myData &lt;- createRandomData(100, &quot;norm&quot;)
+
+head(myData)
+</code></pre>
+
+<p>See <a href="../code/programming-supplement.html#Sourcing_Helper_Functions">&quot;Sourcing Helper Functions&quot;</a> in the programming supplement for an example.</p>
+
+<div style='float:left;width:48%;' class='centered'>
+  
+</div>
+<div style='float:right;width:48%;'>
+  
+</div>
+  </article>
+  <!-- Presenter Notes -->
+  
+</slide>
+
+<slide class="section_slide" id="slide-33" style="background:;">
+  
+  <article data-timings="">
+    <p></br></br></br></p>
+
+<h2>Working with Files</h2>
+
+  </article>
+  <!-- Presenter Notes -->
+  
+</slide>
+
+<slide class="content_slide" id="slide-34" style="background:;">
+  
+  <article data-timings="">
+    <p><footer>
+  <hr>
+    Working with Files<span style="float:right">R Programming</span>
+</footer></p>
+
+<h2>File Paths</h2>
+
+<p>Whenever you find yourself reading data into R or writing data out of it, you will need to work with file paths. File paths are just addresses on your computer&#39;s file system. These paths can either be <em>relative</em> (expressed as steps above/below your current location) or <em>absolute</em> (full addresses).</p>
+
+<p>All relative paths in R are relative to your <strong>working directory</strong>, a single location that you can set and reset any time in your session.</p>
+
+<p><br></p>
+
+<p><strong>relative path</strong>: <code>&quot;file.txt&quot;</code></p>
+
+<p><strong>absolute path</strong>: <code>&quot;/Users/jlamb/repos/some-project/data/file.txt&quot;</code></p>
+
+<p><br></p>
+
+<p><br></p>
+
+<p>See <a href="../code/programming-supplement.html#Working_with_Files">&quot;File Paths&quot;</a> in the programming supplement.</p>
+
+  </article>
+  <!-- Presenter Notes -->
+  
+</slide>
+
+<slide class="content_slide" id="slide-35" style="background:;">
+  
+  <article data-timings="">
+    <p><footer>
+  <hr>
+    Working with Files<span style="float:right">R Programming</span>
+</footer></p>
+
+<h2>File Paths</h2>
+
+<p>R provides a few other utilities for working with file paths and directory structures.</p>
+
+<p><br></p>
+
+<ul>
+<li><code>getwd()</code>: print the current working directory</li>
+<li><code>list.files()</code>: get a character vector with names of all files found in a directory</li>
+<li><code>file.path()</code>: create a filepath from multiple parts</li>
+<li><code>file.exists()</code>: returns <code>TRUE</code> is a file exists and  <code>FALSE</code> if it doesn&#39;t</li>
+<li><code>dir.exists()</code>: returns <code>TRUE</code> is a directory exists and  <code>FALSE</code> if it doesn&#39;t</li>
+<li><code>dir.create()</code>: create a new directory</li>
+</ul>
+
+<p><br></p>
+
+<p>See <a href="../code/programming-supplement.html#Working_with_Files">&quot;File Paths&quot;</a> in the programming supplement.</p>
+
+  </article>
+  <!-- Presenter Notes -->
+  
+</slide>
+
+<slide class="content_slide" id="slide-36" style="background:;">
+  
+  <article data-timings="">
+    <p><footer>
+  <hr>
+    Working with Files<span style="float:right">R Programming</span>
+</footer></p>
+
+<h2>Downloading files from the internet</h2>
+
+<p>To download files hosted on the internet, you can use <code>download.file()</code>.</p>
+
+<pre><code class="r">iris_url &lt;- paste(
+    &quot;https://raw.githubusercontent.com/jameslamb/intro-to-r/main/sample-data/iris.csv&quot;
+    , collapse = &quot;/&quot;
+)
+
+download.file(
+  url = iris_url
+  , destfile = &quot;iris.csv&quot;
+)
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+  
+</slide>
+
+<slide class="content_slide" id="slide-37" style="background:;">
+  
+  <article data-timings="">
+    <p><footer>
+  <hr>
+    Working with Files<span style="float:right">R Programming</span>
+</footer></p>
+
+<h2>Delimited Files</h2>
+
+<p>Out in the wild, one of the most common types of flat file you will find is a delimited file. In these files, bits of data are separated by a common character (&quot;delimiter&quot;). Common types include comma separated values (CSV), tab-separated values, and space-delimited. When these files are opened by a program like R, SAS, or Excel, those programs can figure out what the delimiter is and use it to split data into columns.</p>
+
+<p><br></p>
+
+<p><center><img src="assets/img/iris-csv.png"></center></p>
+
+  </article>
+  <!-- Presenter Notes -->
+  
+</slide>
+
+<slide class="content_slide" id="slide-38" style="background:;">
+  
+  <article data-timings="">
+    <p><footer>
+  <hr>
+    Working with Files<span style="float:right">R Programming</span>
+</footer></p>
+
+<h2>CSV</h2>
+
+<p>CSV (&quot;comma-separated values&quot;) is a really common format to share small datasets because it is just a text file, and can be ready by many different types of programs. R has several options for reading this type of file.</p>
+
+<ul>
+<li><code>read.csv()</code>: base R function for reading CSVs into a <code>data.frame</code></li>
+<li><code>read.delim()</code>: similar to <code>read.csv()</code>, but can read files with any delimiter</li>
+<li><code>arrow::read_csv_arrow()</code>: fast CSV reader using a high-performance data frame library called Apache Arrow</li>
+<li><code>data.table::fread()</code>: super-fast CSV reader that creates a special type of <code>data.frame</code> called a <code>data.table</code></li>
+<li><code>readr::read_csv()</code>: CSV reader from RStudio</li>
+</ul>
+
+<p><br></p>
+
+<p>See <a href="../code/programming-supplement.html#CSV">&quot;CSV&quot;</a> in the programming supplement for an example of working with CSVs.</p>
+
+  </article>
+  <!-- Presenter Notes -->
+  
+</slide>
+
+<slide class="content_slide" id="slide-39" style="background:;">
+  
+  <article data-timings="">
+    <p><footer>
+  <hr>
+    Working with Files<span style="float:right">R Programming</span>
+</footer></p>
+
+<h2>Excel</h2>
+
+<p>In the Economics / Business world (and many other areas!), Microsoft Excel is pretty much unavoidable. You&#39;ll get data from the internet, your colleagues, clients, etc. in Excel format and may want to work with it in R.</p>
+
+<p>There are a few packages for reading (and writing!) Excel files.</p>
+
+<ul>
+<li><code>{openxlsx}</code></li>
+<li><code>{readxl}</code></li>
+<li><code>{xlsx}</code></li>
+</ul>
+
+<p><br></p>
+
+<p>See <a href="../code/programming-supplement.html#Excel">&quot;Excel&quot;</a> in the programming supplement for an example with <code>{openxlsx}</code>.</p>
+
+  </article>
+  <!-- Presenter Notes -->
+  
+</slide>
+
+<slide class="content_slide" id="slide-40" style="background:;">
+  
+  <article data-timings="">
+    <p><footer>
+  <hr>
+    Working with Files<span style="float:right">R Programming</span>
+</footer></p>
+
+<h2>JSON</h2>
+
+<p>JSON (&quot;Javascript Object Notation&quot;) is a standard format for &quot;semi-structured&quot; or &quot;nested&quot; data. It&#39;s a plain-text format that can be used by many programs and programming languages.</p>
+
+<p><br></p>
+
+<pre><code class="json">{
+  &quot;status&quot;: 200,
+  &quot;data&quot;: [
+    {&quot;customer_name&quot;: &quot;Lupe&quot;, &quot;purchases&quot;: 10},
+    {&quot;customer_name&quot;: &quot;Wale&quot;, &quot;purchases&quot;: 30}
+  ]
+}
+</code></pre>
+
+<p><br></p>
+
+<p>This type of data is commonly represented as an R <code>list</code>. See <a href="../code/programming-supplement.html#JSON">&quot;JSON&quot;</a> in the programming supplement for an example using some JSON data from the GitHub API.</p>
+
+  </article>
+  <!-- Presenter Notes -->
+  
+</slide>
+
+<slide class="content_slide" id="slide-41" style="background:;">
+  
+  <article data-timings="">
+    <p><footer>
+  <hr>
+    Working with Files<span style="float:right">R Programming</span>
+</footer></p>
+
+<h2>Unstructured Text Files</h2>
+
+<p>Text files that are &quot;unstructured&quot; don&#39;t cleanly map to an R data structure like a data frame, matrix, or list. An example might be a collection of court transcripts.</p>
+
+<p>The best we can do with these is read them into character vectors, where each element in the vector corresponds to one line in the file.</p>
+
+<p>See <a href="../code/programming-supplement.html##Unstructured_Text_files">&quot;Unstructured Text Files&quot;</a> in the programming supplement for some hands-on experience with this approach.</p>
+
+  </article>
+  <!-- Presenter Notes -->
+  
+</slide>
+
+<slide class="section_slide" id="slide-42" style="background:;">
+  
+  <article data-timings="">
+    <p></br></br></br></p>
+
+<h2>Additional Resources</h2>
+
+  </article>
+  <!-- Presenter Notes -->
+  
+</slide>
+
+<slide class="content_slide" id="slide-43" style="background:;">
+  
+  <article data-timings="">
+    <p><footer>
+  <hr>
+  Additional Resources<span style="float:right">R Programming</span>
+</footer></p>
+
+<h2>Learning More on Your Own</h2>
+
+<p>See the links below to learn more about some of the topics we covered this week</p>
+
+<p><strong>Debugging R code</strong>: <a href="https://support.rstudio.com/hc/en-us/articles/205612627-Debugging-with-RStudio">RStudio debug mode</a> | <a href="https://www.r-bloggers.com/debugging-in-r/">R-bloggers</a> | <a href="https://stackoverflow.com/questions/4442518/general-suggestions-for-debugging-in-r">Stack Overflow</a></p>
+
+<p><strong>External R Packages</strong>: <a href="https://cran.r-project.org/web/views/Econometrics.html">econometrics packages</a> | <a href="https://cran.r-project.org/web/views/Finance.html">finance packages</a> | <a href="https://cran.r-project.org/web/views/TimeSeries.html">time series packages</a></p>
+
+<p><strong>Lexical Scoping</strong>: <a href="https://www.coursera.org/learn/r-programming/lecture/FkTgn/scoping-rules-r-scoping-rules">JHU Coursera</a></p>
+
+<div style='float:left;width:48%;' class='centered'>
+  
+</div>
+<div style='float:right;width:48%;'>
+  
+</div>
+  </article>
+  <!-- Presenter Notes -->
+  
+</slide>
+
+    <slide class="backdrop"></slide>
+  </slides>
+  <div class="pagination pagination-small" id='io2012-ptoc' style="display:none;">
+    <ul>
+      
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=1 title='NA'>
+         1
+      </a>
+    </li>
+    
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=2 title='NA'>
+         2
+      </a>
+    </li>
+    
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=3 title='NA'>
+         3
+      </a>
+    </li>
+    
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=4 title='NA'>
+         4
+      </a>
+    </li>
+    
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=5 title='NA'>
+         5
+      </a>
+    </li>
+    
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=6 title='NA'>
+         6
+      </a>
+    </li>
+    
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=7 title='NA'>
+         7
+      </a>
+    </li>
+    
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=8 title='NA'>
+         8
+      </a>
+    </li>
+    
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=9 title='NA'>
+         9
+      </a>
+    </li>
+    
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=10 title='NA'>
+         10
+      </a>
+    </li>
+    
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=11 title='NA'>
+         11
+      </a>
+    </li>
+    
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=12 title='NA'>
+         12
+      </a>
+    </li>
+    
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=13 title='NA'>
+         13
+      </a>
+    </li>
+    
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=14 title='NA'>
+         14
+      </a>
+    </li>
+    
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=15 title='NA'>
+         15
+      </a>
+    </li>
+    
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=16 title='NA'>
+         16
+      </a>
+    </li>
+    
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=17 title='NA'>
+         17
+      </a>
+    </li>
+    
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=18 title='NA'>
+         18
+      </a>
+    </li>
+    
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=19 title='NA'>
+         19
+      </a>
+    </li>
+    
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=20 title='NA'>
+         20
+      </a>
+    </li>
+    
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=21 title='NA'>
+         21
+      </a>
+    </li>
+    
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=22 title='NA'>
+         22
+      </a>
+    </li>
+    
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=23 title='NA'>
+         23
+      </a>
+    </li>
+    
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=24 title='NA'>
+         24
+      </a>
+    </li>
+    
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=25 title='NA'>
+         25
+      </a>
+    </li>
+    
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=26 title='NA'>
+         26
+      </a>
+    </li>
+    
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=27 title='NA'>
+         27
+      </a>
+    </li>
+    
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=28 title='NA'>
+         28
+      </a>
+    </li>
+    
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=29 title='NA'>
+         29
+      </a>
+    </li>
+    
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=30 title='NA'>
+         30
+      </a>
+    </li>
+    
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=31 title='NA'>
+         31
+      </a>
+    </li>
+    
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=32 title='NA'>
+         32
+      </a>
+    </li>
+    
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=33 title='NA'>
+         33
+      </a>
+    </li>
+    
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=34 title='NA'>
+         34
+      </a>
+    </li>
+    
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=35 title='NA'>
+         35
+      </a>
+    </li>
+    
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=36 title='NA'>
+         36
+      </a>
+    </li>
+    
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=37 title='NA'>
+         37
+      </a>
+    </li>
+    
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=38 title='NA'>
+         38
+      </a>
+    </li>
+    
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=39 title='NA'>
+         39
+      </a>
+    </li>
+    
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=40 title='NA'>
+         40
+      </a>
+    </li>
+    
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=41 title='NA'>
+         41
+      </a>
+    </li>
+    
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=42 title='NA'>
+         42
+      </a>
+    </li>
+    
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=43 title='NA'>
+         43
+      </a>
+    </li>
+    
+    </ul>
+  </div>  <!--[if IE]>
+    <script 
+      src="http://ajax.googleapis.com/ajax/libs/chrome-frame/1/CFInstall.min.js">  
+    </script>
+    <script>CFInstall.check({mode: 'overlay'});</script>
+  <![endif]-->
+</body>
+  <!-- Load Javascripts for Widgets -->
+  <script src="libraries/widgets/bootstrap/js/bootstrap.min.js"></script>
+<script src="libraries/widgets/bootstrap/js/bootbox.min.js"></script>
+
+  <script>  
+  $(function (){ 
+    $("#example").popover(); 
+    $("[rel='tooltip']").tooltip(); 
+  });  
+  </script>  
+  <!-- LOAD HIGHLIGHTER JS FILES -->
+  <script src="libraries/highlighters/highlight.js/highlight.pack.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+  <!-- DONE LOADING HIGHLIGHTER JS FILES -->
+   
+  </html>

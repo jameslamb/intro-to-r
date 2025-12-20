@@ -1,0 +1,58 @@
+/*Suppress page numbers*/
+slides > slide:not(.nobackground):after {
+  content: ""
+}
+
+/*=== Content Slide Theme ===*/
+slide.content_slide {
+	background-color: #FFFFFF;
+}
+
+slide.content_slide h2 {
+	color: #C94D00;
+}
+
+/*Footers*/
+footer {
+	color: #C94D00;
+	font-size: 3;
+}
+
+/*=== Table-of-Contents Slide Theme ===*/
+
+/*TOC headers*/
+b.toc_header {
+	color: #C94D00;
+	font-size: 4;
+}
+
+/*TOC list items*/
+ol.toc li {
+	color: #C94D00;
+	font-size: 4;
+}
+
+slides > slide.toc_slide h2{
+	color: #C94D00;
+}
+
+/*=== Section Start Slide Theme ===*/
+
+slide.section_slide {
+	background-color: #2554C7;
+}
+
+slide.section_slide h2 {
+	color: #FFFFFF;
+}
+
+/*=== Code formatting ===*/
+/*code.r {
+	font-size: 8pt;
+}*/
+
+/*=== Title slide fonts ===*/
+.title-slide hgroup > h1,
+.title-slide hgroup > h2 {
+  color: #ffa500;
+}

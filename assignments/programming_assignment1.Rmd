@@ -1,0 +1,173 @@
+---
+title : Programming Assignment 1
+output:
+  html_document:
+    theme: spacelab
+    toc: true
+    toc_float:
+      collapsed: true
+      smooth_scroll: true
+---
+
+## Overview
+
+In software development, "debugging" means "figuring out why your code isn't working".
+
+In this assignment, you'll practice debugging R code.
+
+## Instructions
+
+I've provided 5 snippets of code below.
+Each is intentionally incorrect.
+To complete this assignment, correct the code so that it works as intended.
+
+Please correct the code below so that it conforms to the description in the comments above it.
+
+To get full points on this assignment:
+
+* The entire script you submit must run without errors.
+* Your code must fulfill the specific instructions provided.
+
+Note:
+
+* Partial credit will be given for eaach question.
+* All lines not beginning with `"#"` will be considered for grading.
+
+Instructions:
+
+1. Create a file called `{Firstname}_{Lastname}_Assignment1.R` (example: `James_Lamb_Assignment1.R`)
+2. Copy the code below into that file.
+3. Change the code to meet all the requirements described in the comments.
+4. Upload that file to the "programming assignment 1" dropbox on D2L.
+
+```{r eval=FALSE}
+# a. Put your name in a variable and print "hello, my name is <your_name>".
+#    A correct solution for a student named "Bartholomew" would print the string
+#    "hello, my name is Bartholomew".
+#
+#    Your code in print() must reference the variable my_name.
+#
+#    Only modify code between '### BEGIN ###' and '### END ###' comments.
+### BEGIN ###
+my_name <- "James"
+### END ####
+print(
+    ### BEGIN ###
+    "hello,", myname, "    is ", James
+    ### END ####
+)
+
+# b. Write a function that takes in a positive integer `n`` and returns a character vector with
+#    the nth element repeated n times. e.g.:
+#
+#    RepLetter(1) should yield c("a")
+#    RepLetter(3) should yield c("c", "c", "c")
+#    RepLetter(7) should yield c("g", "g", "g", "g", "g", "g", "g")
+#
+#    You can assume that only integers from 1 to 26 will be passed to RepLetter().
+#
+#    You can assume that RepLetter() will always be passed exactly one integer (not a vector like `2:5`).
+#
+#    Your implementation of RepLetter() must use the return() function.
+RepLetter(n) <- function() {
+    return(rep(letters[7]))
+}
+
+# c. Given a data.frame myDF (do not change the code that defines myDF!), find the
+#    maximum of each numeric column. Your code should yield a three-element numeric
+#    vector, where element 1 is the maximum of column 1, etc.
+#
+#    Your code should be sure to account for NAs.
+#
+#    Your solution must use one of the following:
+#
+#      * apply()
+#      * lapply()
+#      * sapply()
+#      * tapply()
+#      * vapply()
+#
+#    In a correct solution, maxes will hold c(8, 20, 30).
+myDF <- data.frame(
+    var1 = c(rep(1:8), NA, NA)
+    , var2 = 11:20
+    , var3 = 21:30
+)
+maxes <- apply(
+    myDF
+    , FUN = min
+    , MARGIN = 1
+)
+
+# d. Loop over a list object and return the entropy (ineq::entropy) of each vector.
+#
+#    Do not modify faultList or the code used to generate it.
+#
+#    Your solution must use the "ineq" package.
+#
+#    Your solution must not use `install.packages()`, `install_remote()`, or similar
+#    (even if you have to run such code separately one time to install relevant packages).
+#
+#    Your solution must not modify `entropies` after it has been created.
+#
+#    The `entropies` vector should contain values roughly like:
+#    c(0.03061904, 0.09126107, 0, 0.09578598, 0.05760576)
+#
+#    `entropies` must be a vector, NOT a list. (HINT: use `class(entropies)` to check).
+#
+library("package:ineq")
+faultList <- list(
+    asset1 = as.factor(c("engine", "engine", "brakes", "engine", "engine"))
+    , asset2 = as.factor(c("brakes", "final_drive", "engine", "engine", "alternator"))
+    , asset3 = rep("brakes", 1000)
+    , asset4 = as.factor(c("final_drive", "final_drive", "torque_converter", "spark_plug", "engine"))
+    , asset5 = c("battery", "transmission")
+)
+entropies <- apply(fault_list, inqe::entropy)
+
+# e. Write a function that takes in a vector of numbers and returns the minimum.
+#
+#    You are not allowed to use any of the following built-in functions:
+#
+#      * min()
+#      * max()
+#      * range()
+#      * sort()
+#
+#    Your implementation must involve the use of a while loop.
+#
+#    Just change the function body...do not change the calls to findMin() at the end.
+findMin <- function(numVec) {
+
+    lowest_val <- -Inf
+    i <- 5
+    while (i != length(numVec)) {
+        this_val <- numVec[i]
+
+        if (this_val > lowest_val) {
+            lowest_val <- this_val
+        }
+
+        i <- i + 1
+    }
+    return(lowest_val)
+}
+
+# should return 617
+findMin(c(617))
+
+# should return 81.25
+findMin(c(81.25, 81.33))
+
+# should return 10
+findMin(rep(10:20))
+
+# should return -8
+findMin(c(-5, 10, 100, -8))
+
+# should return 0.999
+findMin(c(1:10, 20:50, 0.999, 6))
+
+# should return 57
+findMin(c(500, 204, 57, 58, 57, 238))
+```

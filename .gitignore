@@ -25,9 +25,9 @@ dask-worker-space/
 *.json
 *.log
 *.msi
-mu_rprog/slides/*.md
-mu_rprog/slides/.cache
-mu_rprog/code/*_files/
+slides/*.md
+slides/.cache
+code/*_files/
 .mypy_cache/
 *.ndjson
 *.npy
@@ -58,5 +58,5 @@ mu_rprog/code/*_files/
 *.zip
 
 # exclusions
-!mu_rprog/sample-data/data.json
-!mu_rprog/sample-data/gdp.xlsx
+!sample-data/data.json
+!sample-data/gdp.xlsx

@@ -1,0 +1,1670 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>R Programming</title>
+  <meta charset="utf-8">
+  <meta name="description" content="R Programming">
+  <meta name="author" content="">
+  <meta name="generator" content="slidify" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/default.css" media="all" >
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/phone.css" 
+    media="only screen and (max-device-width: 480px)" >
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/slidify.css" >
+  <link rel="stylesheet" href="libraries/highlighters/highlight.js/css/tomorrow.css" />
+  <base target="_blank"> <!-- This amazingness opens all links in a new tab. -->  <link rel=stylesheet href="libraries/widgets/bootstrap/css/bootstrap.css"></link>
+<link rel=stylesheet href="./assets/css/my_custom_style.css"></link>
+
+  
+  <!-- Grab CDN jQuery, fall back to local if offline -->
+  <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.7.min.js"></script>
+  <script>window.jQuery || document.write('<script src="libraries/widgets/quiz/js/jquery.js"><\/script>')</script> 
+  <script data-main="libraries/frameworks/io2012/js/slides" 
+    src="libraries/frameworks/io2012/js/require-1.0.8.min.js">
+  </script>
+  
+  
+
+</head>
+<body style="opacity: 0">
+  <slides class="layout-widescreen">
+    
+    <!-- LOGO SLIDE -->
+        <slide class="title-slide segue nobackground">
+  
+  <hgroup class="auto-fadein">
+    <h1>R Programming</h1>
+    <h2>Week 1</h2>
+    <p><br/></p>
+  </hgroup>
+  
+  <article></article>  
+  
+</slide>
+    
+
+    <!-- SLIDES -->
+    <slide class="" id="slide-1" style="background:;">
+  
+  <article data-timings="">
+    <!--Define background image for title slide-->
+
+<style>
+.title-slide {
+  background-image:url("assets/img/beaker.jpg");
+  background-size: cover;
+}
+</style>
+
+<p><footer>
+  <hr></hr>
+  <span style="float:right">R Programming</span>
+</footer></p>
+
+<h2 class="content_slide">Welcome to Class!</h2>
+
+  </article>
+  <!-- Presenter Notes -->
+  
+</slide>
+
+<slide class="toc_slide" id="slide-2" style="background:;">
+  
+  <article data-timings="">
+    <p><footer>
+  <hr></hr>
+  <span style="float:right">R Programming</span>
+</footer></p>
+
+<h2>Contents</h2>
+
+<div style='float:left;width:48%;' class='centered'>
+  <p><b class="toc_header"> Introduction </b></p>
+
+<ol class="toc" type="none">
+    <li> Introduction <span style="float:right"> 6 </span></li>
+    <li> Syllabus Review <span style="float:right"> 7 </span></li>
+    <li> Course Objectives <span style="float:right"> 8 </span></li>
+</ol>
+
+<p><b class="toc_header"> Setting Up Your Environment </b></p>
+
+<ol class = "toc" type="none">
+    <li> Installing R + RStudio <span style="float:right"> 10  </span></li>
+    <li> Authoring Scripts in RStudio <span style="float:right"> 11 </span></li>
+    <li> Authoring Scripts in a Text Editor <span style="float:right"> 12 </span></li>
+    <li> Executing R Code <span style="float:right"> 13-14 </span></li>
+</ol>
+
+</div>
+<div style='float:right;width:48%;'>
+  <p><b class="toc_header"> Introduction to R </b></p>
+
+<ol class = "toc" type="none">
+    <li> R is an interpreted language <span style="float:right"> 16 </span></li>
+    <li> R is dynamically typed language <span style="float:right"> 17 </span></li>
+    <li> R has a few of its own file types <span style="float:right"> 18 </span></li>
+</ol>
+
+<p><b class="toc_header"> Programming Fundamentals </b></p>
+
+<ol class = "toc" type="none">
+    <li> Variables and Namespaces <span style="float:right"> 20 </span></li>
+    <li> Introduction to Types <span style="float:right"> 21 </span></li>
+    <li> Dollarstore Calculator Math <span style="float:right"> 22-24 </span></li>
+</ol>
+
+</div>
+  </article>
+  <!-- Presenter Notes -->
+  
+</slide>
+
+<slide class="toc_slide" id="slide-3" style="background:;">
+  
+  <article data-timings="">
+    <p><footer>
+  <hr></hr>
+  <span style="float:right"> R Programming </span>
+</footer></p>
+
+<h2>Contents</h2>
+
+<div style='float:left;width:48%;' class='centered'>
+  <p><b class="toc_header"> R Data Structures </b></p>
+
+<ol class="toc" type="none">
+    <li> Vectors <span style="float:right"> 26-27 </span></li>
+    <li> Lists <span style="float:right"> 28 </span></li>
+    <li> Factors <span style="float:right"> 29 </span></li>
+    <li> Data Frames <span style="float:right"> 30 </span></li>
+</ol>
+
+<p><b class="toc_header"> Logical Operators </b></p>
+
+<ol class="toc" type="none">
+    <li> Logical Operators <span style="float:right"> 32-34 </span></li>
+</ol>
+
+</div>
+<div style='float:right;width:48%;'>
+  <p><b class="toc_header"> Subsetting </b></p>
+
+<ol class="toc" type="none">
+    <li> Subsetting Vectors <span style="float:right"> 36 </span></li>
+    <li> Subsetting Lists <span style="float:right"> 37 </span></li>
+    <li> Subsetting Data Frames <span style="float:right"> 38 </span></li>
+    <li> Using Logical Vectors <span style="float:right"> 39 </span></li>
+</ol>
+
+<p><b class="toc_header"> Controlling Program Flow </b></p>
+
+<ol class = "toc" type="none">
+    <li> If-Else <span style="float:right"> 40-42 </span></li>
+    <li> For Loops <span style="float:right"> 43 </span></li>
+    <li> While Loops <span style="float:right"> 44 </span></li>
+</ol>
+
+<p><b class="toc_header"> Additional Resources </b></p>
+
+<ol class = "toc" type="none">
+    <li> Learning More on Your Own<span style="float:right"> 46 </span></li>
+</ol>
+
+</div>
+  </article>
+  <!-- Presenter Notes -->
+  
+</slide>
+
+<slide class="section_slide" id="slide-4" style="background:;">
+  
+  <article data-timings="">
+    <p></br></br></br></p>
+
+<h2>Introduction</h2>
+
+  </article>
+  <!-- Presenter Notes -->
+  
+</slide>
+
+<slide class="content_slide" id="slide-5" style="background:;">
+  
+  <article data-timings="">
+    <p><footer>
+  <hr>
+    Introduction<span style="float:right">R Programming</span>
+</footer></p>
+
+<h2>Personal Introduction</h2>
+
+<ul class = "build incremental">
+<li><p><b>My Marquette Experience:</b></p>
+
+<ul>
+<li>B.S., Economics &amp; Marketing (2013), M.S.A.E. (2014)</li>
+</ul></li>
+<li><p><b>Since Marquette:</b></p>
+
+<ul>
+<li>Software Engineer @ <a href="https://www.nvidia.com/">NVIDIA</a>, 2023-present</li>
+<li>Data Scientist/Engineer @ <a href="https://uptake.com/">Uptake</a>, <a href="https://aws.amazon.com/">AWS</a>, <a href="https://www.saturncloud.io/s/">Saturn Cloud</a>, <a href="https://spothero.com/">SpotHero</a> 2016-2023</li>
+<li>M.I. in Data Science, University of California - Berkeley (<a href="https://datascience.berkeley.edu/">MIDS</a>)</li>
+<li>Co-author and maintainer of <a href="https://github.com/UptakeOpenSource/uptasticsearch"><code>{uptasticsearch}</code></a> and <a href="https://github.com/UptakeOpenSource/pkgnet"><code>{pkgnet}</code></a> packages on CRAN</li>
+<li>Maintainer on <a href="https://lightgbm.readthedocs.io/en/latest/FAQ.html#critical-issues"><code>LightGBM</code></a></li>
+<li>Created &quot;Timeseries with data.table in R&quot; DataCamp course</li>
+<li>Analyst/Economist @ IHS Economics, Abbott Laboratories, 2014-2015</li>
+</ul></li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+  
+</slide>
+
+<slide class="content_slide" id="slide-6" style="background:;">
+  
+  <article data-timings="">
+    <p><footer>
+  <hr>
+    Introduction<span style="float:right">R Programming</span>
+</footer></p>
+
+<h2>Syllabus review</h2>
+
+<p><center><img src="./assets/img/spongemock-syllabus.png"></center></p>
+
+  </article>
+  <!-- Presenter Notes -->
+  
+</slide>
+
+<slide class="content_slide" id="slide-7" style="background:;">
+  
+  <article data-timings="">
+    <p><footer>
+  <hr>
+    Introduction<span style="float:right">R Programming</span>
+</footer></p>
+
+<h2>Course Objectives</h2>
+
+<p><br>
+The main objectives for the course are as follows:</p>
+
+<ul>
+<li>Set up a data science software stack on your machine</li>
+<li>Learn how to author and manage a statistical code base</li>
+<li>Learn the basics of manipulating data using R</li>
+<li>Learn how to incorporate external packages to make your scripts more powerful</li>
+<li>Practice solving problems in R and presenting solutions in a code review format</li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+  
+</slide>
+
+<slide class="section_slide" id="slide-8" style="background:;">
+  
+  <article data-timings="">
+    <p></br></br></br></p>
+
+<h2>Setting Up Your Environment</h2>
+
+  </article>
+  <!-- Presenter Notes -->
+  
+</slide>
+
+<slide class="content_slide" id="slide-9" style="background:;">
+  
+  <article data-timings="">
+    <p><footer>
+  <hr>
+  Setting Up Your Environment<span style="float:right">R Programming</span>
+</footer></p>
+
+<h2>Installing R + RStudio</h2>
+
+<p>Programming in R begins with installing R!</p>
+
+<ul>
+<li>Go to <a href="https://cran.r-project.org/">https://cran.r-project.org/</a></li>
+<li>Choose the appropriate download for your operating system (you&#39;ll see links like &quot;Download R for Mac OS&quot;)</li>
+<li>Open the file and follow the prompts on the screen</li>
+</ul>
+
+<p>R comes with a command-line client and a default GUI, but most users prefer to use other IDEs (<em>&quot;integrated development environment&quot;</em>). The most popular IDE for R, and the one we&#39;ll use in this class, is RStudio:</p>
+
+<ul>
+<li>Go to <a href="https://posit.co/products/open-source/rstudio/">https://posit.co/products/open-source/rstudio/</a></li>
+<li>Choose the appropriate download under &quot;All Installers&quot;</li>
+<li>Open the file and follow the prompts on the screen</li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+  
+</slide>
+
+<slide class="content_slide" id="slide-10" style="background:;">
+  
+  <article data-timings="">
+    <p><footer>
+  <hr>
+  Setting Up Your Environment<span style="float:right">R Programming</span>
+</footer></p>
+
+<h2>Authoring Scripts in RStudio</h2>
+
+<p>Sequences of R code are typically saved in scripts with the file extension &quot;.R&quot;. To open a blank script in RStudio and start editing, you can either go to &quot;File --&gt; New File --&gt; R script&quot; or choose &quot;R Script&quot; from the paper image in RStudio:</p>
+
+<p><center><img src="./assets/img/rstudio-rscript.png"></center></p>
+
+  </article>
+  <!-- Presenter Notes -->
+  
+</slide>
+
+<slide class="content_slide" id="slide-11" style="background:;">
+  
+  <article data-timings="">
+    <p><footer>
+  <hr>
+  Setting Up Your Environment<span style="float:right">R Programming</span>
+</footer></p>
+
+<h2>Authoring Scripts in a Text Editor</h2>
+
+<p>When you author a script in RStudio, the file you create will be stored with the file extension &quot;.R&quot; by default. Out in the wild (i.e. editing in text editors), you are responsible for saving files with the appropriate file extension so the software that uses them can interpret them correctly. Trust me, there are <a href="https://en.wikipedia.org/wiki/List_of_file_formats">a lot of them</a></p>
+
+<p>A few common ones you&#39;ll want to know for this course:</p>
+
+<div style='float:left;width:48%;' class='centered'>
+  <p><strong>Scripts and Docs</strong></p>
+
+<ul>
+<li>General text files (.md, .txt)</li>
+<li>R scripts (.R, .r)</li>
+<li>SQL queries (.sql)</li>
+<li>Slides and reports (.css, .html, .pdf, .rmd)</li>
+</ul>
+
+</div>
+<div style='float:right;width:48%;'>
+  <p><strong>Data</strong></p>
+
+<ul>
+<li>API response data (.csv, .json, .xml)</li>
+<li>R data formats (.rda, .rds, .RData)</li>
+<li>MS Excel (.xls, .xlsx, .xlsm)</li>
+<li>Zip archives (.zip, .tar, .gz, .bzip2)</li>
+</ul>
+
+</div>
+  </article>
+  <!-- Presenter Notes -->
+  
+</slide>
+
+<slide class="content_slide" id="slide-12" style="background:;">
+  
+  <article data-timings="">
+    <p><footer>
+  <hr>
+  Setting Up Your Environment<span style="float:right">R Programming</span>
+</footer></p>
+
+<h2>Executing R Code: RStudio</h2>
+
+<p>R is an <a href="https://en.wikipedia.org/wiki/Interpreted_language">interpreted language</a> (more on this later). TL;DR, you need to send your code to some software that knows what to do with it (&quot;R&quot;). RStudio makes this super easy to do. You can execute your code interactively (one line at a time) in the R console or run your .R scripts using the &quot;run&quot; button.</p>
+
+<div style='float:left;width:48%;' class='centered'>
+  <p><strong>Using Scripts</strong></p>
+
+<p><img src="./assets/img/rstudio-runscript.png"></p>
+
+</div>
+<div style='float:right;width:48%;'>
+  <p><strong>The Console</strong></p>
+
+<p><img src="./assets/img/r-console.png"></p>
+
+</div>
+  </article>
+  <!-- Presenter Notes -->
+  
+</slide>
+
+<slide class="content_slide" id="slide-13" style="background:;">
+  
+  <article data-timings="">
+    <p><footer>
+  <hr>
+  Setting Up Your Environment<span style="float:right">R Programming</span>
+</footer></p>
+
+<h2>Executing R Code: The Command Line</h2>
+
+<p>When R is just one of the tools in your stack, it&#39;s often quicker to execute your code from a terminal rather than going into a dedicated application for each type of file.</p>
+
+<p><strong>The R REPL</strong></p>
+
+<ul>
+<li>R comes with a REPL (<a href="https://en.wikipedia.org/wiki/Read%E2%80%93eval%E2%80%93print_loop">read-eval-print loop</a>) which allows you to quickly turn a terminal command line into an R console.</li>
+<li>To activate: <code>R</code> from the command line</li>
+<li>To close: <code>quit()</code> or <code>q()</code></li>
+</ul>
+
+<p><strong>Rscript</strong></p>
+
+<ul>
+<li>If your commands are stored in a &quot;.R&quot; script, you can execute that script from the command line with the <code>Rscript</code> command.</li>
+<li>This command will run all the lines in the file in the order they&#39;ve been written and potentially output some messages to the terminal.</li>
+</ul>
+
+<div style='float:left;width:48%;' class='centered'>
+  
+</div>
+<div style='float:right;width:48%;'>
+  
+</div>
+  </article>
+  <!-- Presenter Notes -->
+  
+</slide>
+
+<slide class="section_slide" id="slide-14" style="background:;">
+  
+  <article data-timings="">
+    <p></br></br></br></p>
+
+<h2>Introduction to R</h2>
+
+  </article>
+  <!-- Presenter Notes -->
+  
+</slide>
+
+<slide class="content_slide" id="slide-15" style="background:;">
+  
+  <article data-timings="">
+    <p><footer>
+  <hr>
+  Introduction to R<span style="float:right">R Programming</span>
+</footer></p>
+
+<h2>R is an Interpreted Language</h2>
+
+<p>Interpreted languages are those which break commands down into building blocks called &quot;subroutines&quot; that have already been compiled in machine code (source: <a href="https://en.wikipedia.org/wiki/Interpreted_language">Wikipedia</a>). Much of the R source code (including these subroutines) is actually written in C.</p>
+
+<p>To ensure that that process of breaking down (&quot;interpreting&quot;) code goes smoothly, R needs to use a few keywords to identify crucial operations. Like other scripting languages, it has a set of &quot;reserved words&quot; which you cannot use as object names.
+<br><br></p>
+
+<p><strong>Run <code>?reserved</code> in RStudio</strong></p>
+
+<p><strong>Run <code>TRUE = 4</code> in RStudio</strong></p>
+
+  </article>
+  <!-- Presenter Notes -->
+  
+</slide>
+
+<slide class="content_slide" id="slide-16" style="background:;">
+  
+  <article data-timings="">
+    <p><footer>
+  <hr>
+  Introduction to R<span style="float:right">R Programming</span>
+</footer></p>
+
+<h2>R is a Dynamically Typed Language</h2>
+
+<ul>
+<li><p>Some languages like Java required you to declare the <strong>types</strong> of objects you create</p>
+
+<ul>
+<li>for example: string, numeric, integer, or boolean</li>
+<li>pros: strong typing makes software faster and more reliable (broadly speaking)</li>
+<li>cons: code is very verbose, difficult to prototype in and debug</li>
+</ul></li>
+<li><p>R is &quot;dynamically typed&quot;</p>
+
+<ul>
+<li>this means that you can create objects without explicitly telling R &quot;this is an integer&quot;</li>
+<li>in addition, you&#39;re free to re-assign variable names to different types at any time in scripts</li>
+</ul></li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+  
+</slide>
+
+<slide class="content_slide" id="slide-17" style="background:;">
+  
+  <article data-timings="">
+    <p><footer>
+  <hr>
+  Introduction to R<span style="float:right">R Programming</span>
+</footer></p>
+
+<h2>R has its own File Types</h2>
+
+<table><thead>
+<tr>
+<th align="center">Extension</th>
+<th align="center">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td align="center">.r, .R</td>
+<td align="center">Text format for scripts.</td>
+</tr>
+<tr>
+<td align="center">.rda, .RData</td>
+<td align="center">R data format. One or many R objects</td>
+</tr>
+<tr>
+<td align="center">.rds</td>
+<td align="center">R data format. Single R object. Can be loaded into a named object</td>
+</tr>
+</tbody></table>
+
+<p><br></p>
+
+<pre><code class="r"># .r and .R scripts can be run inside R with source()
+source(&quot;my_script.R&quot;)
+
+# .rda and .RData files can be loaded into an R session with load()
+load(&quot;all_of_the_data.rda&quot;)
+
+# .rds files can be read directly into an R object
+someData &lt;- readRDS(&quot;my_data.rds&quot;)
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+  
+</slide>
+
+<slide class="section_slide" id="slide-18" style="background:;">
+  
+  <article data-timings="">
+    <p></br></br></br></p>
+
+<h2>Programming Fundamentals</h2>
+
+  </article>
+  <!-- Presenter Notes -->
+  
+</slide>
+
+<slide class="content_slide" id="slide-19" style="background:;">
+  
+  <article data-timings="">
+    <p><footer>
+  <hr>
+  Programming Fundamentals<span style="float:right">R Programming</span>
+</footer></p>
+
+<h2>Variables and Namespaces</h2>
+
+<p>When you execute a statement like <code>x &lt;- 5</code> in R, you are creating an <strong>object</strong> in memory which holds the numeric <strong>value</strong> 5 and is referenced by the <strong>variable name</strong> &quot;x&quot;.</p>
+
+<p>If you later ask R to do something like <code>y &lt;- x + 2</code>, it will search through a series of <strong>namespaces</strong> until it finds a variable called &quot;x&quot;. Namespaces can be thought of as collections of labels pointing to places in memory. You can use R&#39;s <code>search()</code> command to examine the ordered list of namespaces that R will search in for variables.</p>
+
+<pre><code class="r"># Check the search path of namespaces
+search()
+
+# use ls() to list the objects in one of those namespaces
+ls(&quot;package:stats&quot;)
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+  
+</slide>
+
+<slide class="content_slide" id="slide-20" style="background:;">
+  
+  <article data-timings="">
+    <p><footer>
+  <hr>
+  Programming Fundamentals<span style="float:right">R Programming</span>
+</footer></p>
+
+<h2>Introduction to Types</h2>
+
+<p>Languages like Java and C are more verbose than R partially because they require programmers to explicitly declare <em>types</em> for data values. We will not go into the intricacy of typing in this course, but you should be familiar with the following types (this knowledge will serve you well across all languages):</p>
+
+<ul>
+<li><em>integer</em>: non-complex whole numbers. created with an L like <code>anInteger &lt;- 1L</code></li>
+<li><em>numeric</em>: all real numbers. Default type for numbers in R <code>someNums &lt;- c(1.005, 2)</code></li>
+<li><em>logical</em>: TRUE or FALSE. <code>someLogicals &lt;- c(TRUE, FALSE, FALSE)</code></li>
+<li><em>character</em>: strings of arbitrary characters. Sometimes referred to informally as &quot;text data&quot;. <code>stringVar &lt;- &quot;Chicago Heights&quot;</code></li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+  
+</slide>
+
+<slide class="content_slide" id="slide-21" style="background:;">
+  
+  <article data-timings="">
+    <p><footer>
+  <hr>
+  Programming Fundamentals<span style="float:right">R Programming</span>
+</footer></p>
+
+<h2>Dollarstore Calculator Math (pt 1)</h2>
+
+<pre><code class="r"># Addition with &quot;+&quot;
+4 + 5
+</code></pre>
+
+<pre><code>## [1] 9
+</code></pre>
+
+<pre><code class="r"># Subtraction with &quot;-&quot;
+100 - 99
+</code></pre>
+
+<pre><code>## [1] 1
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+  
+</slide>
+
+<slide class="content_slide" id="slide-22" style="background:;">
+  
+  <article data-timings="">
+    <p><footer>
+  <hr>
+  Programming Fundamentals<span style="float:right">R Programming</span>
+</footer></p>
+
+<h2>Dollarstore Calculator Math (pt 2)</h2>
+
+<pre><code class="r"># Multiplication with &quot;*&quot;
+4 * 5
+</code></pre>
+
+<pre><code>## [1] 20
+</code></pre>
+
+<pre><code class="r"># Division with &quot;/&quot;
+15 / 3
+</code></pre>
+
+<pre><code>## [1] 5
+</code></pre>
+
+<pre><code class="r"># Exponentiation with &quot;^&quot;
+2^3
+</code></pre>
+
+<pre><code>## [1] 8
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+  
+</slide>
+
+<slide class="content_slide" id="slide-23" style="background:;">
+  
+  <article data-timings="">
+    <p><footer>
+  <hr>
+  Programming Fundamentals<span style="float:right">R Programming</span>
+</footer></p>
+
+<h2>Dollarstore Calculator Math (pt 3)</h2>
+
+<pre><code class="r"># Order of Operations
+4 * 5 + 5 / 5
+</code></pre>
+
+<pre><code>## [1] 21
+</code></pre>
+
+<pre><code class="r"># Control with parentheses
+4 * (5 + 5) / 5
+</code></pre>
+
+<pre><code>## [1] 8
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+  
+</slide>
+
+<slide class="section_slide" id="slide-24" style="background:;">
+  
+  <article data-timings="">
+    <p></br></br></br></p>
+
+<h2>Data Structures</h2>
+
+  </article>
+  <!-- Presenter Notes -->
+  
+</slide>
+
+<slide class="content_slide" id="slide-25" style="background:;">
+  
+  <article data-timings="">
+    <p><footer>
+  <hr>
+  Data Structures<span style="float:right">R Programming</span>
+</footer></p>
+
+<h2>Vectors (pt 1)</h2>
+
+<ul>
+<li>Because R was designed for use with statistics, most of its operations are <a href="http://www.cs.cornell.edu/courses/cs1112/2016sp/Exams/exam2/vectorizedCode.pdf">vectorized</a></li>
+<li>You can create vectors a few ways:</li>
+</ul>
+
+<pre><code class="r"># Ordered sequence of integers
+1:5
+
+# Counting by 2s
+seq(from = 0, to = 14, by = 2)
+
+# Replicate the same values
+rep(TRUE, 6)
+
+# Concatenate multiple values with the &quot;c&quot; operator
+c(&quot;all&quot;, &quot;of&quot;, &quot;the&quot;, &quot;lights&quot;)
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+  
+</slide>
+
+<slide class="content_slide" id="slide-26" style="background:;">
+  
+  <article data-timings="">
+    <p><footer>
+  <hr>
+  Data Structures<span style="float:right">R Programming</span>
+</footer></p>
+
+<h2>Vectors (pt 2)</h2>
+
+<ul>
+<li>Vectors are at the heart of many R operations. Try a few more practice exercises:</li>
+</ul>
+
+<pre><code class="r"># Watch out! Mixing types will lead to silent coercion
+c(1, TRUE, &quot;hellos&quot;)
+
+# Some functions, when applied over a vector, return a single value
+is.numeric(rnorm(100))
+
+# Others will return a vector of results
+is.na(c(1, 5, 10, NA, 8))
+
+# Vectors can be named
+batting_avg &lt;- c(youkilis = 0.300, ortiz = 0.355, nixon = 0.285)
+
+# You can combine two vectors with c()
+x &lt;- c(&quot;a&quot;, &quot;b&quot;, &quot;c&quot;)
+y &lt;- c(&quot;1&quot;, &quot;2&quot;, &quot;3&quot;)
+c(x, y)
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+  
+</slide>
+
+<slide class="content_slide" id="slide-27" style="background:;">
+  
+  <article data-timings="">
+    <p><footer>
+  <hr>
+  Data Structures<span style="float:right">R Programming</span>
+</footer></p>
+
+<h2>Lists</h2>
+
+<p>Vectors are the first multi-item data structure all R programmers learn. Soon, though, you may find yourself frustrated with the fact that they can only hold a single type. To handle cases where you want to package multiple types (and even multiple objects!) together, we will turn to a data structure called a <code>list</code>.</p>
+
+<table><thead>
+<tr>
+<th align="center">Capabilities</th>
+<th align="center">Vectors</th>
+<th align="center">Lists</th>
+</tr>
+</thead><tbody>
+<tr>
+<td align="center">Optional use of named elements</td>
+<td align="center">&#x2714;</td>
+<td align="center">&#x2714;</td>
+</tr>
+<tr>
+<td align="center">Support math operations like mean()</td>
+<td align="center">&#x2714;</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">Hold multiple types</td>
+<td align="center"></td>
+<td align="center">&#x2714;</td>
+</tr>
+<tr>
+<td align="center">Hold multiple objects</td>
+<td align="center"></td>
+<td align="center">&#x2714;</td>
+</tr>
+</tbody></table>
+
+<pre><code class="r"># Create a list with list()
+myList &lt;- list(a = 1, b = rep(TRUE, 10), x = c(&quot;shakezoola&quot;, &quot;mic&quot;, &quot;rulah&quot;))
+
+# Examine it with str()
+str(myList)
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+  
+</slide>
+
+<slide class="content_slide" id="slide-28" style="background:;">
+  
+  <article data-timings="">
+    <p><footer>
+  <hr>
+    R Data Structures<span style="float:right">R Programming</span>
+</footer></p>
+
+<h2>Factors</h2>
+
+<p>R comes with a special type called a &quot;factor&quot; for modelling categorical variables. To save memory, internally R will convert factor values to integers and then keep around a single table that says, for example, 1 = &quot;Africa&quot;, 2 = &quot;Asia&quot;, etc.</p>
+
+<pre><code class="r">regions &lt;- as.factor(c(&quot;Africa&quot;, &quot;Asia&quot;, &quot;Europe&quot;, &quot;Asia&quot;))
+region_fac &lt;- as.factor(regions)
+print(region_fac)
+</code></pre>
+
+<pre><code>## [1] Africa Asia   Europe Asia  
+## Levels: Africa Asia Europe
+</code></pre>
+
+<pre><code class="r">print(as.integer(region_fac))
+</code></pre>
+
+<pre><code>## [1] 1 2 3 2
+</code></pre>
+
+<p>See <a href="../code/programming-supplement.html#Factors">&quot;Factors&quot;</a> in the programming supplement for an example.</p>
+
+  </article>
+  <!-- Presenter Notes -->
+  
+</slide>
+
+<slide class="content_slide" id="slide-29" style="background:;">
+  
+  <article data-timings="">
+    <p><footer>
+  <hr>
+  Data Structures<span style="float:right">R Programming</span>
+</footer></p>
+
+<h2>Data Frames</h2>
+
+<p>Data frames are tables of data. Each column of a data frame can be a different type, but all values within a column must be the same type.</p>
+
+<p><center><img src="./assets/img/data-frame.png"></center></p>
+
+<p>See <a href="../code/programming-supplement.html#Data_Frames">&quot;Data Frames&quot;</a> in the programming supplement for some examples.</p>
+
+  </article>
+  <!-- Presenter Notes -->
+  
+</slide>
+
+<slide class="section_slide" id="slide-30" style="background:;">
+  
+  <article data-timings="">
+    <p></br></br></br></p>
+
+<h2>Logical Operators</h2>
+
+  </article>
+  <!-- Presenter Notes -->
+  
+</slide>
+
+<slide class="content_slide" id="slide-31" style="background:;">
+  
+  <article data-timings="">
+    <p><footer>
+  <hr>
+    Logical Operators<span style="float:right">R Programming</span>
+</footer></p>
+
+<h2>Logical Operators</h2>
+
+<p>Often in your code, you&#39;ll want to do/not do something or select / not select some data based on a logical condition (a statement that evaluates to TRUE or FALSE).</p>
+
+<pre><code class="r"># &quot;and&quot; logic is expressed with &quot;&amp;&quot;
+TRUE &amp; TRUE   # TRUE
+TRUE &amp; FALSE  # FALSE
+FALSE &amp; FALSE # FALSE
+-5 &lt; 5 &amp; 3 &gt; 2 # TRUE
+
+# &quot;or&quot; logic is expressed with &quot;|&quot;
+TRUE | TRUE    # TRUE
+TRUE | FALSE   # TRUE
+FALSE | FALSE  # FALSE
+3 &lt; 8 | 8 &gt; 19 # TRUE
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+  
+</slide>
+
+<slide class="content_slide" id="slide-32" style="background:;">
+  
+  <article data-timings="">
+    <p><footer>
+  <hr>
+    Logical Operators<span style="float:right">R Programming</span>
+</footer></p>
+
+<h2>Logical Operators (continued)</h2>
+
+<p>The most common operators used to generate logicals are <code>&gt;</code>, <code>&lt;</code>, <code>==</code>, and <code>!=</code></p>
+
+<pre><code class="r"># &quot;equality&quot; logic is specified with &quot;==&quot;
+3 == 3   # TRUE
+4 == 4.1 # FALSE
+
+# &quot;not&quot; logic is specified with !. In a special case, != signifies &quot;not equal&quot;
+!TRUE            # FALSE
+!FALSE           # TRUE
+! (TRUE | FALSE) # FALSE
+4 != 5           # TRUE
+
+# &quot;greater than&quot; and &quot;less than&quot; logic are specified in the way you might expect
+5 &lt; 5  # FALSE
+6 &lt;= 6 # TRUE
+4 &gt; 2  # TRUE
+3 &gt;= 3 # TRUE
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+  
+</slide>
+
+<slide class="content_slide" id="slide-33" style="background:;">
+  
+  <article data-timings="">
+    <p><footer>
+  <hr>
+    Logical Operators<span style="float:right">R Programming</span>
+</footer></p>
+
+<h2>Logical Operators (continued)</h2>
+
+<p>As a general rule, when you put a vector on the left-hand side of a logical condition like <code>==</code> or <code>&gt;</code>, you will get back a vector as a result.</p>
+
+<pre><code class="r">vehicleSizes &lt;- c(1, 5, 5, 2, 4)
+
+# Create a logical index. Note that we get a VECTOR of logicals back
+bigCarIndex &lt;- vehicleSizes &gt; 4
+
+# Taking the SUM of a logical vector tells you the number of TRUEs.
+sum(bigCarIndex)
+
+# Taking the MEAN of a logical vector tells you the proportion of TRUEs
+mean(bigCarIndex)
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+  
+</slide>
+
+<slide class="section_slide" id="slide-34" style="background:;">
+  
+  <article data-timings="">
+    <p></br></br></br></p>
+
+<h2>Subsetting</h2>
+
+  </article>
+  <!-- Presenter Notes -->
+  
+</slide>
+
+<slide class="content_slide" id="slide-35" style="background:;">
+  
+  <article data-timings="">
+    <p><footer>
+  <hr>
+    Subsetting<span style="float:right">R Programming</span>
+</footer></p>
+
+<h2>Subsetting Vectors</h2>
+
+<p><strong>Subsetting</strong> is the act of retrieving a portion of an object, usually based on some logical condition (e.g. &quot;all elements greater than 5&quot;). In R, this is done with the <code>[</code> operator.</p>
+
+<pre><code class="r"># Create a vector to work with
+myVec &lt;- c(var1 = 10, var2 = 15, var3 = 20, av4 = 6)
+
+# &quot;the first element&quot;
+myVec[1]
+</code></pre>
+
+<pre><code>## var1 
+##   10
+</code></pre>
+
+<pre><code class="r"># &quot;second to fourth elements&quot;
+myVec[2:4]
+</code></pre>
+
+<pre><code>## var2 var3  av4 
+##   15   20    6
+</code></pre>
+
+<pre><code class="r"># &quot;the element named var3&quot;
+myVec[&quot;var3&quot;]
+</code></pre>
+
+<pre><code>## var3 
+##   20
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+  
+</slide>
+
+<slide class="content_slide" id="slide-36" style="background:;">
+  
+  <article data-timings="">
+    <p><footer>
+  <hr>
+    Subsetting<span style="float:right">R Programming</span>
+</footer></p>
+
+<h2>Subsetting Lists</h2>
+
+<p>Lists, arbitrary collections of R objects, support three subsetting operators.</p>
+
+<ul>
+<li><code>[</code> = returns a 1-element list
+
+<ul>
+<li><code>someList[&quot;grades&quot;]</code></li>
+<li><code>someList[1]</code></li>
+</ul></li>
+<li><code>[[</code> = returns the object in its natural form (whatever it would look like if it wasn&#39;t in a list)
+
+<ul>
+<li><code>someList[[&quot;grades&quot;]]</code></li>
+<li><code>someList[[1]]</code></li>
+</ul></li>
+<li><code>$</code> = similar to <code>[[</code>, but uses unquoted keys and cannot use positions
+
+<ul>
+<li><code>someList$grades</code></li>
+</ul></li>
+</ul>
+
+<p><br></p>
+
+<p>Please see <a href="../code/programming-supplement.html#Subsetting_Lists">&quot;Subsetting Lists&quot;</a> in the programming supplement.</p>
+
+  </article>
+  <!-- Presenter Notes -->
+  
+</slide>
+
+<slide class="content_slide" id="slide-37" style="background:;">
+  
+  <article data-timings="">
+    <p><footer>
+  <hr>
+    Subsetting<span style="float:right">R Programming</span>
+</footer></p>
+
+<h2>Subsetting Data Frames</h2>
+
+<p>Data frames are the workhorse data structure of statistics in R. The best way to learn data frame subsetting is to just walk through the examples below:</p>
+
+<pre><code class="r"># Create a data frame
+someDF &lt;- data.frame(
+    , conference  = c(&quot;Big East&quot;, &quot;Big Ten&quot;, &quot;Big East&quot;, &quot;ACC&quot;, &quot;SEC&quot;)
+    , school_name = c(&quot;Villanova&quot;, &quot;Minnesota&quot;, &quot;Marquette&quot;, &quot;Duke&quot;, &quot;LSU&quot;)
+    , wins        = c(18, 14, 19, 24, 12)
+    , ppg         = c(71.5, 45.8, 66.9, 83.4, 58.7)
+)
+
+# Grab the wins column (NOTE: will give you back a vector)
+someDF[, &quot;wins&quot;]
+
+# Grab the first 3 rows and the two numeric columns
+someDF[1:3, c(&quot;wins&quot;, &quot;ppg&quot;)]
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+  
+</slide>
+
+<slide class="content_slide" id="slide-38" style="background:;">
+  
+  <article data-timings="">
+    <p><footer>
+  <hr>
+    Subsetting<span style="float:right">R Programming</span>
+</footer></p>
+
+<h2>Using Logical Vectors</h2>
+
+<p>So far, we&#39;ve seen how to subset R objects using numeric indices and named elements. These are useful approaches, but both require you to know something about the contents of the object you&#39;re working with.</p>
+
+<p>Using these methods (especially numeric indices like saying <em>give me columns 2-4</em>) can make your code confusing and hard for others to reason about. Wherever possible, I strongly recommend using logical vectors for subsetting. This makes your code intuitive and more flexible to change.</p>
+
+<p>Please see <a href="../code/programming-supplement.html#Using_Logical_Vectors">&quot;Using Logical Vectors&quot;</a> in the programming supplement for an example.</p>
+
+  </article>
+  <!-- Presenter Notes -->
+  
+</slide>
+
+<slide class="section_slide" id="slide-39" style="background:;">
+  
+  <article data-timings="">
+    <p></br></br></br></p>
+
+<h2>Controlling Program Flow</h2>
+
+  </article>
+  <!-- Presenter Notes -->
+  
+</slide>
+
+<slide class="content_slide" id="slide-40" style="background:;">
+  
+  <article data-timings="">
+    <p><footer>
+  <hr>
+  Programming Fundamentals<span style="float:right">R Programming</span>
+</footer></p>
+
+<h2>Controlling Program Flow: If-Else</h2>
+
+<p>Soon after you start writing code (in any language), you&#39;ll find yourself saying &quot;I only want to do this thing if certain conditions are met&quot;. This type of logic is expressed using <a href="https://en.wikipedia.org/wiki/Conditional_(computer_programming">if-else syntax</a>)</p>
+
+<p><br></p>
+
+<pre><code class="r">x &lt;- 4
+if (x &gt; 5){
+    print(&quot;x is above the threshold&quot;)
+}
+</code></pre>
+
+<p>See <a href="../code/programming-supplement.html#Controlling_Program_Flow">&quot;If-Else&quot;</a> in the programming supplement for more examples.</p>
+
+  </article>
+  <!-- Presenter Notes -->
+  
+</slide>
+
+<slide class="content_slide" id="slide-41" style="background:;">
+  
+  <article data-timings="">
+    <p><footer>
+  <hr>
+  Controlling Program Flow<span style="float:right">R Programming</span>
+</footer></p>
+
+<h2>If-Else (continued)</h2>
+
+<p>What if you want to express more than two possible outcomes? For this, we could use R&#39;s <code>else if</code> construct to nest conditions. Note that conditional blocks can have any number of &quot;else if&quot; statements, but only one &quot;else&quot; block.</p>
+
+<pre><code class="r"># Try to think through what this will do before you run it yourself
+if (4 &gt; 5){
+    print(&quot;3&quot;)
+} else if (6 &lt;= (5/10)) {
+    print(&quot;1&quot;)
+} else if (4 + 4 + 4 == 12.0001) {
+    print(&quot;4&quot;)
+} else {
+    print(&quot;2&quot;)
+}
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+  
+</slide>
+
+<slide class="content_slide" id="slide-42" style="background:;">
+  
+  <article data-timings="">
+    <p><footer>
+  <hr>
+  Controlling Program Flow<span style="float:right">R Programming</span>
+</footer></p>
+
+<h2>For Loops</h2>
+
+<p>One of the most powerful characteristics of general purpose programming languages is their ability to automate repetitive tasks. When you know that you want to do something a fixed number of times (say, squaring each item in a vector), you can use a <code>for</code> loop.</p>
+
+<pre><code class="r"># Create a vector
+x &lt;- c(1, 4, 6)
+
+# Print the square of each element one at a time
+print(1^2)
+print(4^2)
+print(6^2)
+
+# BETTER: Loop over the vector and print the square of each element
+for (some_number in x){
+    print(some_number^2)
+}
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+  
+</slide>
+
+<slide class="content_slide" id="slide-43" style="background:;">
+  
+  <article data-timings="">
+    <p><footer>
+  <hr>
+  Controlling Program Flow<span style="float:right">R Programming</span>
+</footer></p>
+
+<h2>While Loops</h2>
+
+<p>For loops are suitable for many applications, but they can be too restrictive in some cases. When you want to say &quot;run this code until some condition is met&quot;, a <code>while</code> loops is more appropriate.</p>
+
+<pre><code class="r">i &lt;- 1
+while (i &lt; 5) {
+    print(i)
+    i &lt;- i + 1
+}
+</code></pre>
+
+<pre><code>## [1] 1
+## [1] 2
+## [1] 3
+## [1] 4
+</code></pre>
+
+<p>See <a href="../code/programming-supplement.html#While_Loops">&quot;While Loops&quot;</a> in the programming supplement for a hands-on example.</p>
+
+  </article>
+  <!-- Presenter Notes -->
+  
+</slide>
+
+<slide class="section_slide" id="slide-44" style="background:;">
+  
+  <article data-timings="">
+    <p></br></br></br></p>
+
+<h2>Additional Resources</h2>
+
+  </article>
+  <!-- Presenter Notes -->
+  
+</slide>
+
+<slide class="content_slide" id="slide-45" style="background:;">
+  
+  <article data-timings="">
+    <p><footer>
+  <hr>
+  Additional Resources<span style="float:right">R Programming</span>
+</footer></p>
+
+<h2>Learning More on Your Own</h2>
+
+<p>For the brave and curious, I&#39;ve included a few online free resources for learning more about the technologies we discussed.</p>
+
+<p><strong>R</strong>: <a href="http://swirlstats.com/">swirl</a> | <a href="https://www.coursera.org/specializations/jhu-data-science">JHU Data Science</a></p>
+
+<p><strong>RStudio</strong>: <a href="https://blog.rstudio.org/">RStudio blog</a></p>
+
+<p><strong>Subsetting</strong>: <a href="http://www.statmethods.net/management/subset.html">Quick-R</a> | <a href="https://www.r-bloggers.com/taking-a-subset-of-a-data-frame-in-r/">R-bloggers</a> | <a href="http://adv-r.had.co.nz/Subsetting.html">Advanced R book</a></p>
+
+<div style='float:left;width:48%;' class='centered'>
+  
+</div>
+<div style='float:right;width:48%;'>
+  
+</div>
+  </article>
+  <!-- Presenter Notes -->
+  
+</slide>
+
+    <slide class="backdrop"></slide>
+  </slides>
+  <div class="pagination pagination-small" id='io2012-ptoc' style="display:none;">
+    <ul>
+      
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=1 title='NA'>
+         1
+      </a>
+    </li>
+    
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=2 title='NA'>
+         2
+      </a>
+    </li>
+    
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=3 title='NA'>
+         3
+      </a>
+    </li>
+    
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=4 title='NA'>
+         4
+      </a>
+    </li>
+    
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=5 title='NA'>
+         5
+      </a>
+    </li>
+    
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=6 title='NA'>
+         6
+      </a>
+    </li>
+    
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=7 title='NA'>
+         7
+      </a>
+    </li>
+    
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=8 title='NA'>
+         8
+      </a>
+    </li>
+    
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=9 title='NA'>
+         9
+      </a>
+    </li>
+    
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=10 title='NA'>
+         10
+      </a>
+    </li>
+    
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=11 title='NA'>
+         11
+      </a>
+    </li>
+    
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=12 title='NA'>
+         12
+      </a>
+    </li>
+    
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=13 title='NA'>
+         13
+      </a>
+    </li>
+    
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=14 title='NA'>
+         14
+      </a>
+    </li>
+    
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=15 title='NA'>
+         15
+      </a>
+    </li>
+    
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=16 title='NA'>
+         16
+      </a>
+    </li>
+    
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=17 title='NA'>
+         17
+      </a>
+    </li>
+    
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=18 title='NA'>
+         18
+      </a>
+    </li>
+    
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=19 title='NA'>
+         19
+      </a>
+    </li>
+    
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=20 title='NA'>
+         20
+      </a>
+    </li>
+    
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=21 title='NA'>
+         21
+      </a>
+    </li>
+    
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=22 title='NA'>
+         22
+      </a>
+    </li>
+    
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=23 title='NA'>
+         23
+      </a>
+    </li>
+    
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=24 title='NA'>
+         24
+      </a>
+    </li>
+    
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=25 title='NA'>
+         25
+      </a>
+    </li>
+    
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=26 title='NA'>
+         26
+      </a>
+    </li>
+    
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=27 title='NA'>
+         27
+      </a>
+    </li>
+    
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=28 title='NA'>
+         28
+      </a>
+    </li>
+    
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=29 title='NA'>
+         29
+      </a>
+    </li>
+    
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=30 title='NA'>
+         30
+      </a>
+    </li>
+    
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=31 title='NA'>
+         31
+      </a>
+    </li>
+    
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=32 title='NA'>
+         32
+      </a>
+    </li>
+    
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=33 title='NA'>
+         33
+      </a>
+    </li>
+    
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=34 title='NA'>
+         34
+      </a>
+    </li>
+    
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=35 title='NA'>
+         35
+      </a>
+    </li>
+    
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=36 title='NA'>
+         36
+      </a>
+    </li>
+    
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=37 title='NA'>
+         37
+      </a>
+    </li>
+    
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=38 title='NA'>
+         38
+      </a>
+    </li>
+    
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=39 title='NA'>
+         39
+      </a>
+    </li>
+    
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=40 title='NA'>
+         40
+      </a>
+    </li>
+    
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=41 title='NA'>
+         41
+      </a>
+    </li>
+    
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=42 title='NA'>
+         42
+      </a>
+    </li>
+    
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=43 title='NA'>
+         43
+      </a>
+    </li>
+    
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=44 title='NA'>
+         44
+      </a>
+    </li>
+    
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=45 title='NA'>
+         45
+      </a>
+    </li>
+    
+    </ul>
+  </div>  <!--[if IE]>
+    <script 
+      src="http://ajax.googleapis.com/ajax/libs/chrome-frame/1/CFInstall.min.js">  
+    </script>
+    <script>CFInstall.check({mode: 'overlay'});</script>
+  <![endif]-->
+</body>
+  <!-- Load Javascripts for Widgets -->
+  <script src="libraries/widgets/bootstrap/js/bootstrap.min.js"></script>
+<script src="libraries/widgets/bootstrap/js/bootbox.min.js"></script>
+
+  <script>  
+  $(function (){ 
+    $("#example").popover(); 
+    $("[rel='tooltip']").tooltip(); 
+  });  
+  </script>  
+  <!-- LOAD HIGHLIGHTER JS FILES -->
+  <script src="libraries/highlighters/highlight.js/highlight.pack.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+  <!-- DONE LOADING HIGHLIGHTER JS FILES -->
+   
+  </html>

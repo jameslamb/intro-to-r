@@ -13,9 +13,9 @@ FILES_TO_LINT <- list.files(
 FILES_TO_LINT <- append(
     FILES_TO_LINT
     , c(
-        "mu_rprog/assignments/extra-credit.Rmd"
-        , "mu_rprog/assignments/final_project.Rmd"
-        , "mu_rprog/code/programming-supplement.Rmd"
+        "assignments/extra-credit.Rmd"
+        , "assignments/final_project.Rmd"
+        , "code/programming-supplement.Rmd"
     )
 )
 
