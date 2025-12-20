@@ -257,6 +257,10 @@ Follow the instructions at https://jameslamb.github.io/teaching/mu_rprog/assignm
 
 This extra credit must be submitted prior to midnight on February 17, 2026.
 
+## D. Deadlines and Late Policy
+
+Any work submitted after a deadline, without an approved extension, will receive a grade of 0.
+
 ## E. Grade Appeal
 
 The grading policies described above will be used to calculate your final grade for the course.
