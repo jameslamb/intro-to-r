@@ -2160,7 +2160,7 @@ library(data.table)
 allWords <- lapply(
     X = bsText
     , FUN = function(thisLine) {
-        return(data.frame(words = str_split(thisLine, " ", fixed = TRUE)[[1]]))
+        return(data.frame(words = str_split(thisLine, stringr::fixed(" "))[[1]]))
     }
 )
 

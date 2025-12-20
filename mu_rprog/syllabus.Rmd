@@ -146,7 +146,7 @@ Recommended sequence:
       - "Software Principles"
       - "R Programming Best Practices"
 20. **(due February 14, 2026)** Submit `Final Project Script(s)`
-21. **(due February 14, 2026)** Attend `Final Project Code Review` (video call)
+21. **(due February 14, 2026)** Attend `Final Project Presentation` (video call)
   * present your final project code to your classmates
   * provide peer review feedback to your classmates
 22. **(due February 17, 2026)** *(optional)* complete `Extra Credit Assignment`
@@ -167,7 +167,7 @@ Grades will be assigned using the following scheme (also available under the "Gr
 |Programming Assignment 2        |15\%                      |
 |Final Project - Proposal        |10\%                      |
 |Final Project - R script        |20\%                      |
-|Final Project - Code Review     |10\%                      |
+|Final Project - Presentation    |10\%                      |
 |Final Project - Written Report  |5\%                       |
 
 <br>
@@ -237,16 +237,16 @@ The project comprises the following parts:
 1. *Final project proposal*: A 1-2 page briefing on your planned project
 2. *Final project script*: The R script/scripts supporting your project
 3. *Final project report*: A 2-4 page report detailing the outcome of your analysis
-4. *Final project code review*: A 5-10 minute overview of your project, presented live in the final week of the course.
+4. *Final project presentation*: A 5-10 minute overview of your project, presented live in the final week of the course.
 
 Full details of the project and each of its components are available at [https://jameslamb.github.io/teaching/mu_rprog/assignments/final_project.html](https://jameslamb.github.io/teaching/mu_rprog/assignments/final_project.html).
 All times below are in Central Time.
 
-|Assignment                             |Materials Available | Due                          |
-|:-------------------------------------:|:------------------:|:----------------------------:|
-|Final Project proposal                 | Immediately        |11:00p on February 7, 2026    |
-|Final Project (script + report)        | Immediately        |11:00p on February 14, 2026   |
-|Final Project code review presentation | Immediately        |live, 9:00a February 14, 2026 |
+|Assignment                      |Materials Available | Due                          |
+|:-------------------------------:|:------------------:|:---------------------------:|
+|Final Project proposal          | Immediately        |11:00p on February 7, 2026    |
+|Final Project (script + report) | Immediately        |11:00p on February 14, 2026   |
+|Final Project presentation      | Immediately        |live, 9:00a February 14, 2026 |
 
 <br>
 
