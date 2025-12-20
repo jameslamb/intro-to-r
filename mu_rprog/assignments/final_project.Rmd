@@ -190,11 +190,11 @@ For some tips, see [this code-commenting tutorial](https://www.learncpp.com/cpp-
 
 ---
 
-<h2>Part 3: Code Review</h2>
+<h2>Part 3: Presentation</h2>
 
 In professional data science teams, it is common for team members to present their work in internal "code reviews",
-small meetings where a data scientist shares brief background on the problem he/she sought to solve and then
-invites criticism of his/her code.
+small meetings where a data scientist presents brief background on the problem they sought to solve and then
+invites criticism of their code.
 
 This can be a nerve-wracking experience in the context of a new job (trust me), so I'd like to give you the opportunity
 to practice sharing code with others in the safe setting of this introductory course.
@@ -239,8 +239,8 @@ Your presentation will be scored out of 100 points, using the following rubric:
 |Grade Item                                                                             |Total Possible Points     |
 |:--------------------------------------------------------------------------------------|:------------------------:|
 |**All-or-Nothing Grade Items**                                                         |                          |
-|&nbsp;&nbsp;1. Shows at least one data visualization                                   |10                        |
-|&nbsp;&nbsp;2. Describes at least one learning or piece of advice for classmates       |10                        |
+|&nbsp;&nbsp;1. Shows at least one data visualization                                   |5                         |
+|&nbsp;&nbsp;2. Describes at least one learning or piece of advice for classmates       |5                         |
 |**Other Presentation Items**                                                           |                          |
 |&nbsp;&nbsp;1. Problem Introduction                                                    |10                        |
 |&nbsp;&nbsp;&nbsp;&nbsp;*(5-10) introduction is clear and concise*                     |                          |
@@ -248,9 +248,9 @@ Your presentation will be scored out of 100 points, using the following rubric:
 |&nbsp;&nbsp;&nbsp;&nbsp;*(0) no introduction of the problem*                           |                          |
 |&nbsp;&nbsp;2. Explanation of the dataset                                              |30                        |
 |&nbsp;&nbsp;&nbsp;&nbsp;*(20-30) explains source and real-world meaning of the data*   |                          |
-|&nbsp;&nbsp;&nbsp;&nbsp;*(10-19) overly-literal description or unclear connection to the problem"*    |                          |
+|&nbsp;&nbsp;&nbsp;&nbsp;*(10-19) overly-literal description or unclear connection to the problem"*    |           |
 |&nbsp;&nbsp;&nbsp;&nbsp;*(0-9) inaccurate or confusing explanation*                    |                          |
-|&nbsp;&nbsp;3. Explanation of the Code                                                 |40                        |
+|&nbsp;&nbsp;3. Explanation of the Code                                                 |50                        |
 |&nbsp;&nbsp;&nbsp;&nbsp;*(30-40) clear explanation of how the code solves the problem* |                          |
 |&nbsp;&nbsp;&nbsp;&nbsp;*(10-29) literal description of the code as-is*                |                          |
 |&nbsp;&nbsp;&nbsp;&nbsp;*(0-9) inaccurate or confusing explanation*                    |                          |
@@ -268,6 +268,9 @@ Avoid these common code review issues:
 * describing the literal code and not the logical meaning
   * bad: *"here, I took DF2 and merged it with DF3"*
   * good: *"here, I combined the data from the U.S. and China into one data frame"*
+* not being prepared to answer questions about the code
+  * you'll be asked about design decisions to test your understanding
+  * in the past, students have lost points on "explanation of the code" because they copied code from somewhere else (LLMs, Stack Overflow, etc.) and did not understand how it worked
 
 You'll do great!
 
