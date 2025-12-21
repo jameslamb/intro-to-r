@@ -771,7 +771,7 @@ Let's try it out:
 ```{r listLapply}
 # Create a list
 studentList <- list(
-  kanye = c(80, 90, 100)
+  wale = c(80, 90, 100)
   , talib = c(95, 85, 99)
   , common = c(100, 100, 99)
 )
@@ -1347,7 +1347,7 @@ top5 <- c(
   , NA
   , "Lupe Fiasco"
   , "Shad"
-  , "Kanye"
+  , "Tobe Nwigwe"
   , NA
 )
 print(top5)
@@ -2419,3 +2419,4 @@ See the following to learn how to create packages:
   - `{roxygen2}` ([link](https://cran.r-project.org/web/packages/roxygen2/index.html)) = provides a framework for turning specially-formatting comments in R functions into package documentation that you can call with `?`
   - `{testthat}` ([link](https://cran.r-project.org/web/packages/testthat/index.html)) = a popular library for running unit tests, essentially tests that your code works as it should
 * "R packages" book - Hadley Wickham and Jenny Bryan ([link](https://r-pkgs.org/))
+* "R Programming for Data SCience" - RD Peng ([link](https://bookdown.org/rdpeng/rprogdatascience/))

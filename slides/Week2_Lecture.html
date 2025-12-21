@@ -191,9 +191,11 @@
 
 <h2>Quiz 1 Review</h2>
 
-<p>I will show the questions from quiz 1 that some students struggled with. Not including them in these slides in case I teach the course again in the future.</p>
+<p>I will show the questions from quiz 1 that some students struggled with.
+Not including them in these slides in case I teach the course again in the future.</p>
 
-<p>If you&#39;re arriving at this slide and are disappointed not to find quiz answers, I&#39;m sorry but I&#39;ll at least give you this bit of entertainment. Go check out <a href="https://flowingdata.com/2015/12/15/a-day-in-the-life-of-americans/">A Day in the Life of Americans</a></p>
+<p>If you&#39;re arriving at this slide and are disappointed not to find quiz answers, I&#39;m sorry but I&#39;ll at least give you this bit of entertainment.
+Go check out <a href="https://flowingdata.com/2015/12/15/a-day-in-the-life-of-americans/">A Day in the Life of Americans</a></p>
 
   </article>
   <!-- Presenter Notes -->
@@ -222,7 +224,8 @@
 
 <h2>Intro to Functional Programming</h2>
 
-<p>R is a <a href="https://adv-r.hadley.nz/functions.html">functional programming language</a>. To write powerful, concise code, you&#39;ll need to master the use and creation of functions.</p>
+<p>R is a <a href="https://adv-r.hadley.nz/functions.html">functional programming language</a>.
+Functions enable you to write powerful, concise code.</p>
 
 <blockquote>
 <p>&quot;If you find yourself copying and pasting the same code more than twice, it&#39;s time to write a function.&quot; - Hadley Wickham</p>
@@ -343,9 +346,11 @@ rand_nums &lt;- rnorm(n = 100, mean = 4.5)
 
 <h2>Functions That Return Stuff</h2>
 
-<p>As you&#39;ve seen in previous examples, the R special word <code>return</code> tells a function to &quot;give back&quot; some value. When you execute an expression like <code>x &lt;- someFunction()</code>, that function&#39;s return value (an R object) is stored in a variable called &quot;x&quot;.</p>
+<p>As you&#39;ve seen in previous examples, the R special word <code>return</code> tells a function to &quot;give back&quot; some value
+When you execute an expression like <code>x &lt;- someFunction()</code>, that function&#39;s return value (an R object) is stored in a variable called &quot;x&quot;.</p>
 
-<p>Unlike in some other programming languages, R allows you to use multiple <code>return</code> values inside the body of a function. The first time that the code inside the function reaches a <code>return</code> value, it will pass that value back out of the function and immediately stop executing the function.</p>
+<p>Unlike in some other programming languages, R allows you to use multiple <code>return</code> values inside the body of a function.
+The first time that the code inside the function reaches a <code>return</code> value, it will pass that value back out of the function and immediately stop executing the function.</p>
 
 <p><br></p>
 
@@ -366,9 +371,11 @@ rand_nums &lt;- rnorm(n = 100, mean = 4.5)
 
 <h2>Functions That Return Nothing</h2>
 
-<p>Not all functions have to return something! Sometimes you may want to create a function that just has some side effect like creating a plot, writing to a file, or print to the console.</p>
+<p>Not all functions have to return something!
+Sometimes you may want to create a function that just has some side effect like creating a plot, writing to a file, or print to the console.</p>
 
-<p>These are called &quot;null functions&quot; and they&#39;re common in scripting languages like R. By default, these functions return the R special value <code>NULL</code>.</p>
+<p>These are called &quot;null functions&quot; and they&#39;re common in scripting languages like R.
+By default, these functions return the R special value <code>NULL</code>.</p>
 
 <pre><code class="r">printSentence &lt;- function(theSentence){
     words &lt;- strsplit(x = theSentence, split = &quot; &quot;)
@@ -397,7 +404,8 @@ x
 
 <h2>Scoping</h2>
 
-<p>Remember when we talked about namespaces and how R searches for objects? It&#39;s time to extend that logic to functions...which is where things get a bit weird and hard to understand.</p>
+<p>Remember when we talked about namespaces and how R searches for objects?
+It&#39;s time to extend that logic to functions...which is where things get a bit weird and hard to understand.</p>
 
 <p>R uses a search technique called <a href="https://bit.ly/2DlfkDi">lexical scoping</a></p>
 
@@ -420,11 +428,14 @@ x
 
 <h2>Looping with lapply()</h2>
 
-<p>R&#39;s <code>*apply</code> family of functions are a bit difficult to understand at first, but soon you&#39;ll come to love them. They make your code more expressive, flexible, and parallelizable (more on that final point later). One of the most popular is <code>lapply()</code> (&quot;list apply&quot;), which loops over a thing (e.g. vector, list) and returns a 1-level list. Let&#39;s try it out:</p>
+<p>R&#39;s <code>*apply</code> family of functions are a bit difficult to understand at first, but soon you&#39;ll come to love them.
+They make your code more expressive, flexible, and parallelizable (more on that final point later).
+One of the most popular is <code>lapply()</code> (&quot;list apply&quot;), which loops over a thing (e.g. vector, list) and returns a 1-level list.
+Let&#39;s try it out:</p>
 
 <pre><code class="r"># Create a list
 studentList &lt;- list(
-  kanye = c(80, 90, 100)
+  wale = c(80, 90, 100)
   , talib = c(95, 85, 99)
   , common = c(100, 100, 99)
 )
@@ -448,7 +459,11 @@ grades &lt;- lapply(studentList, mean)
 
 <h2>Looping with sapply()</h2>
 
-<p>Remember that you cannot execute statistical operations like <code>mean()</code> over a list. For that, we&#39;d probably prefer to have a <em>vector</em> of results. This is where R&#39;s <code>sapply()</code> (&quot;simplified apply&quot;) comes in. <code>sapply()</code> works the same way that <code>lapply()</code> does but returns a vector. Try it for yourself:</p>
+<p>Remember that you cannot execute statistical operations like <code>mean()</code> over a list.
+For that, you&#39;ll want a <em>vector</em> of results.
+This is where R&#39;s <code>sapply()</code> (&quot;simplified apply&quot;) comes in.
+<code>sapply()</code> works the same way that <code>lapply()</code> does but returns a vector.
+Try it for yourself:</p>
 
 <pre><code class="r">data(&quot;ChickWeight&quot;)
 weights &lt;- ChickWeight$weight
@@ -478,7 +493,9 @@ check_vec &lt;- sapply(weights, FUN = function(x){meanCheck(val = x, ref_mean = 
 
 <h2>Looping with apply()</h2>
 
-<p>When analyzing real-world datasets, you may want to use the same looping convention we&#39;ve been discussing, but apply it over many items and the get some summary (such as the median) of the results. This is where R&#39;s <code>apply()</code> function comes in! Check it out</p>
+<p>When analyzing real-world datasets, you may want to use the same looping convention we&#39;ve been discussing, but apply it over many items and the get some summary (such as the median) of the results.
+This is where R&#39;s <code>apply()</code> function comes in!
+Check it out:</p>
 
 <pre><code class="r">data(&quot;ChickWeight&quot;)
 
@@ -516,11 +533,13 @@ apply(ChickWeight, MARGIN = 1, FUN = function(blah){range(as.numeric(blah))})
 
 <h2>Print Debugging</h2>
 
-<p>As you&#39;ve probably already learned, writing code involves a never-ending process of trying this, fixing errors, trying other things, fixing new errors, etc. The process of identifying and fixing errors/bugs is called <strong>debugging</strong>.</p>
+<p>Writing code involves a never-ending process of trying this, fixing errors, trying other things, fixing new errors, etc.
+The process of identifying and fixing errors/bugs is called <strong>debugging</strong>.</p>
 
-<p>The simplest way to debug an issue in your code is to use <strong>print debugging</strong>. This approach involves forming expectations about the state of the objects in your environment at each point in your code, then printing those states at each point to find where things broke.</p>
+<p>The simplest way to debug an issue in your code is to use <strong>print debugging</strong>.
+This approach involves forming expectations about the state of the objects in your environment at each point in your code, then printing those states at each point to find where things broke.</p>
 
-<p>Please see <a href="../code/programming-supplement.html#Print_Debugging">&quot;Print Debugging&quot;</a> in the programming supplement for an example of this approach.</p>
+<p>See <a href="../code/programming-supplement.html#Print_Debugging">&quot;Print Debugging&quot;</a> in the programming supplement for an example of this approach.</p>
 
   </article>
   <!-- Presenter Notes -->
@@ -556,7 +575,9 @@ apply(ChickWeight, MARGIN = 1, FUN = function(blah){range(as.numeric(blah))})
 
 <h2>Googling Around (continued)</h2>
 
-<p>But really...Google is your best friend. It will be particularly useful in the cases where your code is returning an error or warning. Simple pasting that output into google (in quotes to get an exact match) will typically get you to an answer within 5 minutes.</p>
+<p>But really...Google is your best friend.
+It will be particularly useful in the cases where your code is returning an error or warning.
+Simply pasting that output into a search engine (in quotes to get an exact match) will typically get you to an answer within 5 minutes.</p>
 
 <p>Let&#39;s try an example.</p>
 
@@ -566,7 +587,9 @@ apply(ChickWeight, MARGIN = 1, FUN = function(blah){range(as.numeric(blah))})
 
 <p><code>Error in sum(c(1, 2, &quot;5&quot;)) : invalid &#39;type&#39; (character) of argument</code>.</p>
 
-<p>Try to figure out what went wrong. HINT: it often helps to type the function name outside quotes. e.g. <code>function &quot;this is some error text&quot;</code></p>
+<p>Try to figure out what went wrong.
+HINT: it often helps to type the function name outside quotes.
+e.g. <code>function &quot;this is some error text&quot;</code></p>
 
   </article>
   <!-- Presenter Notes -->
@@ -602,7 +625,8 @@ apply(ChickWeight, MARGIN = 1, FUN = function(blah){range(as.numeric(blah))})
 
 <h2>Building an MWE</h2>
 
-<p>If print debugging doesn&#39;t work, you may want to ask someone (a colleague, a package author, your teach) for help in debugging the issue. Before asking for someone&#39;s help, you owe it to them to try to reduce the problem to a <strong>Minimum Working Example (MWE)</strong>, the simplest possible code that reproduces the error.</p>
+<p>If print debugging doesn&#39;t work, you may want to ask someone (a colleague, a package author, your teach) for help in debugging the issue.
+Before asking for someone&#39;s help, you owe it to them to try to reduce the problem to a <strong>Minimum Working Example (MWE)</strong>, the simplest possible code that reproduces the error.</p>
 
 <ul>
 <li><a href="https://github.com/uptake/uptasticsearch/issues/140">this is bad</a></li>
@@ -615,7 +639,7 @@ apply(ChickWeight, MARGIN = 1, FUN = function(blah){range(as.numeric(blah))})
 
 <p><br></p>
 
-<p>For more on building an MWE, see: <a href="https://stackoverflow.com/help/mcve">the Stack Overflow guidelines on MWE construction</a></p>
+<p>For more on building an MWE, see: &quot;How to create a minimal, reproducible example&quot; (<a href="https://stackoverflow.com/help/mcve">link</a>).</p>
 
   </article>
   <!-- Presenter Notes -->
@@ -632,9 +656,12 @@ apply(ChickWeight, MARGIN = 1, FUN = function(blah){range(as.numeric(blah))})
 
 <h2>Built-in Docs with "?"</h2>
 
-<p>As we&#39;ve covered before, R packages have a built-in documentation system. All packages submitted to CRAN must supply some basic documentation for each function they contain. If a function is behaving strangely, it&#39;s often useful to look at the documentation under <code>?function_name</code>.</p>
+<p>All R packages submitted to CRAN must supply some basic documentation for each function they contain.
+If a function is behaving strangely, it&#39;s often useful to look at the documentation under <code>?function_name</code>.</p>
 
-<p>For example, you may be surprised to learn that <code>sum(c(1,2,NA,3))</code> evaluates to <code>NA</code>. You might have thought it would be 6. If we call <code>?sum</code> in R, you&#39;ll see the answer...the default behavior of this function is to leave <code>NA</code> values in when calculating the sum, but there is an option argument <code>na.rm</code> that allows you to remove them if you wish.</p>
+<p>For example, you may be surprised to learn that <code>sum(c(1,2,NA,3))</code> evaluates to <code>NA</code>.
+You might have thought it would be 6.
+If we call <code>?sum</code> in R, you&#39;ll see the answer...the default behavior of this function is to leave <code>NA</code> values in when calculating the sum, but there is an option argument <code>na.rm</code> that allows you to remove them if you wish.</p>
 
 <p>Many IDEs (including RStudio) offer automatic <a href="https://support.rstudio.com/hc/en-us/articles/205273297-Code-Completion">code completion</a> that will suggest these other arguments in the UI as you type!</p>
 
@@ -653,7 +680,8 @@ apply(ChickWeight, MARGIN = 1, FUN = function(blah){range(as.numeric(blah))})
 
 <h2>Package Vignettes</h2>
 
-<p>So far, we&#39;ve talked about cases where you know exactly which functions are behaving strangely and want to just learn more about their behavior. But what about fuzzier cases where you just want to figure out what other functionality a package has? At least one source for this information is the package vignettes.</p>
+<p>What if you&#39;re not sure what functionality a package has?
+At least one source for this information is the package vignettes.</p>
 
 <p><br></p>
 
@@ -679,14 +707,16 @@ apply(ChickWeight, MARGIN = 1, FUN = function(blah){range(as.numeric(blah))})
 
 <h2>Looking at Source Code</h2>
 
-<p>If you try all the strategies we just discussed and STILL don&#39;t know why your code isn&#39;t working, there is at least one option left to you: look at the source code! Recall the following facts:</p>
+<p>If you try all the strategies we just discussed and STILL don&#39;t know why your code isn&#39;t working, try looking at the source code!
+Recall the following facts:</p>
 
 <ul>
 <li>R is open-source, which means that all R source code can be found online (typically on GitHub) and visually inspected</li>
 <li>Errors thrown by programs are not magical...they had to be written into the source code by a developer</li>
 </ul>
 
-<p>For example, let&#39;s search for the error: <code>each element of valids must have a name</code> in the <code>{lightgbm}</code> source code. Please visit:</p>
+<p>For example, let&#39;s search for the error: <code>each element of valids must have a name</code> in the <code>{lightgbm}</code> source code.
+Please visit:</p>
 
 <p><a href="https://github.com/microsoft/LightGBM">https://github.com/microsoft/LightGBM</a></p>
 
@@ -717,7 +747,8 @@ apply(ChickWeight, MARGIN = 1, FUN = function(blah){range(as.numeric(blah))})
 
 <h2>Loading Installed Packages</h2>
 
-<p>As you advance in R, you will find that the functions provided by packages like <code>{base}</code>, <code>{stats}</code>, and <code>{utils}</code> are not sufficient. For example, you may want to use <code>{dygraphs}</code> to make interactive plots.</p>
+<p>As you advance in R, you will find that the functions provided by packages like <code>{base}</code>, <code>{stats}</code>, and <code>{utils}</code> are not sufficient.
+For example, you may want to use <code>{dygraphs}</code> to make interactive plots.</p>
 
 <pre><code class="r"># Load dependencies
 library(data.table); library(dygraphs); library(quantmod);
@@ -749,7 +780,8 @@ dygraphs::dygraph(
 
 <h2>Installing from CRAN</h2>
 
-<p><strong><a href="https://cran.r-project.org/">CRAN</a></strong>, &quot;The Comprehensive R Archive Network&quot;, is the main server from which you&#39;ll download external packages. It provides an easy framework for distributing code (way better than passing around hundreds of links to GitHub repos).</p>
+<p><strong><a href="https://cran.r-project.org/">CRAN</a></strong>, &quot;The Comprehensive R Archive Network&quot;, is the main server from which you&#39;ll download external packages.
+It provides an easy framework for distributing code (way better than passing around hundreds of links to GitHub repos).</p>
 
 <p>To download and install packages, do the following:</p>
 
@@ -779,7 +811,8 @@ utils::update.packages()
 
 <h2>Installing from GitHub</h2>
 
-<p>While there are <a href="https://cran.r-project.org/">many many packages available from CRAN</a>, you may sometimes want to install directly from a source control site like GitHub. R developers will often release bleeding-edge (&quot;dev&quot;) features on GitHub before they make it to CRAN.</p>
+<p>While there are <a href="https://cran.r-project.org/">many many packages available from CRAN</a>, you may sometimes want to install directly from a source control site like GitHub.
+R developers will often release bleeding-edge (&quot;dev&quot;) features on GitHub before they make it to CRAN.</p>
 
 <pre><code class="r"># Load deps
 library(remotes)
@@ -806,9 +839,13 @@ find.package(&quot;dml&quot;)
 
 <h2>Namespacing Calls</h2>
 
-<p>You may have noticed that I use <code>::</code> frequently in my code. Remember when we used <code>search()</code> to print the ordered list of namespaces that R searches for objects? <code>::</code> is used to circumvent this process. <code>lubridate::ymd_hms()</code> tells R <em>&quot;Use the function ymd_hms from the &#39;lubridate&#39; package&quot;</em></p>
+<p>You may have noticed that I use <code>::</code> frequently in my code.
+Remember when we used <code>search()</code> to print the ordered list of namespaces that R searches for objects?
+<code>::</code> is used to circumvent this process.
+<code>lubridate::ymd_hms()</code> tells R <em>&quot;Use the function ymd_hms from the &#39;lubridate&#39; package&quot;</em></p>
 
-<p>Without namespacing, R will search through the list of namespaces until it finds what it wants. When you load a new package that has a function with the same name as one already loaded in your session, R will warn you that that version has been &quot;masked&quot;.</p>
+<p>Without namespacing, R will search through the list of namespaces until it finds what it wants.
+When you load a new package that has a function with the same name as one already loaded in your session, R will warn you that that version has been &quot;masked&quot;.</p>
 
 <pre><code class="r">library(lubridate)
 </code></pre>
@@ -835,7 +872,8 @@ The following object is masked from &#39;package:base&#39;:
 
 <h2>library() vs. require()</h2>
 
-<p>In this course, I&#39;ve been using the <code>library()</code> command to load package namespaces. If you look around online, you will probably see many examples where people use <code>require()</code> instead.</p>
+<p>In this course, I&#39;ve been using the <code>library()</code> command to load package namespaces.
+If you look around online, you will probably see many examples where people use <code>require()</code> instead.</p>
 
 <p><strong>what&#39;s the difference?</strong></p>
 
@@ -868,7 +906,7 @@ my_func &lt;- function(n){
 
 <h2>Using Local Code with source()</h2>
 
-<p>There is one other option we have not discussed yet, in part because it doesn&#39;t technically involve the use of packages. Many analysts working in R prefer to define a file with their function and use <code>source()</code> to make those functions available to other scripts.</p>
+<p>For your own reusable code, you may find it convenient to define functions in a separate file and use <code>source()</code> to make those functions available to other scripts.</p>
 
 <p><br></p>
 
@@ -917,7 +955,9 @@ head(myData)
 
 <h2>File Paths</h2>
 
-<p>Whenever you find yourself reading data into R or writing data out of it, you will need to work with file paths. File paths are just addresses on your computer&#39;s file system. These paths can either be <em>relative</em> (expressed as steps above/below your current location) or <em>absolute</em> (full addresses).</p>
+<p>Whenever you find yourself reading data into R or writing data out of it, you will need to work with file paths.
+File paths are just addresses on your computer&#39;s file system.
+These paths can either be <em>relative</em> (expressed as steps above/below your current location) or <em>absolute</em> (full addresses).</p>
 
 <p>All relative paths in R are relative to your <strong>working directory</strong>, a single location that you can set and reset any time in your session.</p>
 
@@ -1008,7 +1048,10 @@ download.file(
 
 <h2>Delimited Files</h2>
 
-<p>Out in the wild, one of the most common types of flat file you will find is a delimited file. In these files, bits of data are separated by a common character (&quot;delimiter&quot;). Common types include comma separated values (CSV), tab-separated values, and space-delimited. When these files are opened by a program like R, SAS, or Excel, those programs can figure out what the delimiter is and use it to split data into columns.</p>
+<p>Out in the wild, one of the most common types of flat file you will find is a delimited file.
+In these files, bits of data are separated by a common character (&quot;delimiter&quot;).
+Common types include comma separated values (CSV), tab-separated values, and space-delimited.
+When these files are opened by a program like R, SAS, or Excel, those programs can figure out what the delimiter is and use it to split data into columns.</p>
 
 <p><br></p>
 
@@ -1029,7 +1072,8 @@ download.file(
 
 <h2>CSV</h2>
 
-<p>CSV (&quot;comma-separated values&quot;) is a really common format to share small datasets because it is just a text file, and can be ready by many different types of programs. R has several options for reading this type of file.</p>
+<p>CSV (&quot;comma-separated values&quot;) is a really common format to share small datasets because it is just a text file, and can be ready by many different types of programs.
+R has several options for reading this type of file.</p>
 
 <ul>
 <li><code>read.csv()</code>: base R function for reading CSVs into a <code>data.frame</code></li>
@@ -1058,9 +1102,9 @@ download.file(
 
 <h2>Excel</h2>
 
-<p>In the Economics / Business world (and many other areas!), Microsoft Excel is pretty much unavoidable. You&#39;ll get data from the internet, your colleagues, clients, etc. in Excel format and may want to work with it in R.</p>
+<p>Many organizations share data in Microsoft Excel workbooks.</p>
 
-<p>There are a few packages for reading (and writing!) Excel files.</p>
+<p>There are a few packages for reading and writing Excel files in R.</p>
 
 <ul>
 <li><code>{openxlsx}</code></li>
@@ -1087,7 +1131,8 @@ download.file(
 
 <h2>JSON</h2>
 
-<p>JSON (&quot;Javascript Object Notation&quot;) is a standard format for &quot;semi-structured&quot; or &quot;nested&quot; data. It&#39;s a plain-text format that can be used by many programs and programming languages.</p>
+<p>JSON (&quot;Javascript Object Notation&quot;) is a standard format for &quot;semi-structured&quot; or &quot;nested&quot; data.
+It&#39;s a plain-text format that can be used by many programs and programming languages.</p>
 
 <p><br></p>
 
@@ -1102,7 +1147,8 @@ download.file(
 
 <p><br></p>
 
-<p>This type of data is commonly represented as an R <code>list</code>. See <a href="../code/programming-supplement.html#JSON">&quot;JSON&quot;</a> in the programming supplement for an example using some JSON data from the GitHub API.</p>
+<p>This type of data is commonly represented as an R <code>list</code>.
+See <a href="../code/programming-supplement.html#JSON">&quot;JSON&quot;</a> in the programming supplement for an example using some JSON data from the GitHub API.</p>
 
   </article>
   <!-- Presenter Notes -->
@@ -1119,7 +1165,8 @@ download.file(
 
 <h2>Unstructured Text Files</h2>
 
-<p>Text files that are &quot;unstructured&quot; don&#39;t cleanly map to an R data structure like a data frame, matrix, or list. An example might be a collection of court transcripts.</p>
+<p>Text files that are &quot;unstructured&quot; don&#39;t cleanly map to an R data structure like a data frame, matrix, or list.
+An example might be a collection of court transcripts.</p>
 
 <p>The best we can do with these is read them into character vectors, where each element in the vector corresponds to one line in the file.</p>
 
@@ -1158,7 +1205,7 @@ download.file(
 
 <p><strong>External R Packages</strong>: <a href="https://cran.r-project.org/web/views/Econometrics.html">econometrics packages</a> | <a href="https://cran.r-project.org/web/views/Finance.html">finance packages</a> | <a href="https://cran.r-project.org/web/views/TimeSeries.html">time series packages</a></p>
 
-<p><strong>Lexical Scoping</strong>: <a href="https://www.coursera.org/learn/r-programming/lecture/FkTgn/scoping-rules-r-scoping-rules">JHU Coursera</a></p>
+<p><strong>Lexical Scoping</strong>: <a href="https://bookdown.org/rdpeng/rprogdatascience/scoping-rules-of-r.html">&quot;R Programming for Data Science&quot; book</a></p>
 
 <div style='float:left;width:48%;' class='centered'>
   

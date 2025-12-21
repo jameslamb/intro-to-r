@@ -190,10 +190,11 @@ Programming in R begins with installing R!
 * Choose the appropriate download for your operating system (you'll see links like "Download R for Mac OS")
 * Open the file and follow the prompts on the screen
 
-R comes with a command-line client and a default GUI, but most users prefer to use other IDEs (*"integrated development environment"*). The most popular IDE for R, and the one we'll use in this class, is RStudio:
+R comes with a command-line client and a default GUI, but most users prefer to use other IDEs (*"integrated development environment"*).
+The most popular IDE for R, and the one we'll use in this class, is RStudio:
 
 * Go to https://posit.co/products/open-source/rstudio/
-* Choose the appropriate download under "All Installers"
+* Click "Download RStudio Desktop" (the free one!)
 * Open the file and follow the prompts on the screen
 
 --- .content_slide
@@ -205,7 +206,8 @@ R comes with a command-line client and a default GUI, but most users prefer to u
 
 <h2>Authoring Scripts in RStudio</h2>
 
-Sequences of R code are typically saved in scripts with the file extension ".R". To open a blank script in RStudio and start editing, you can either go to "File --> New File --> R script" or choose "R Script" from the paper image in RStudio:
+Sequences of R code are typically saved in scripts with the file extension ".R".
+To open a blank script in RStudio and start editing, you can either go to "File --> New File --> R script" or choose "R Script" from the paper image in RStudio:
 
 <center><img src="./assets/img/rstudio-rscript.png"></center>
 
@@ -218,7 +220,8 @@ Sequences of R code are typically saved in scripts with the file extension ".R".
 
 <h2>Authoring Scripts in a Text Editor</h2>
 
-When you author a script in RStudio, the file you create will be stored with the file extension ".R" by default. Out in the wild (i.e. editing in text editors), you are responsible for saving files with the appropriate file extension so the software that uses them can interpret them correctly. Trust me, there are [a lot of them](https://en.wikipedia.org/wiki/List_of_file_formats)
+When you author a script in RStudio, the file you create will be stored with the file extension ".R" by default.
+Out in the wild (i.e. editing in text editors), you are responsible for saving files with the appropriate file extension so the software that uses them can interpret them correctly. Trust me, there are [a lot of them](https://en.wikipedia.org/wiki/List_of_file_formats)
 
 A few common ones you'll want to know for this course:
 
@@ -228,17 +231,16 @@ A few common ones you'll want to know for this course:
 
 - General text files (.md, .txt)
 - R scripts (.R, .r)
-- SQL queries (.sql)
 - Slides and reports (.css, .html, .pdf, .rmd)
 
 *** =right
 
 **Data**
 
-- API response data (.csv, .json, .xml)
+- Structured text formats (.csv, .json, .xml)
 - R data formats (.rda, .rds, .RData)
 - MS Excel (.xls, .xlsx, .xlsm)
-- Zip archives (.zip, .tar, .gz, .bzip2)
+- Compressed archives (.zip, .tar, .gz, .bz2)
 
 --- .content_slide  &twocol
 
@@ -249,7 +251,10 @@ A few common ones you'll want to know for this course:
 
 <h2>Executing R Code: RStudio</h2>
 
-R is an [interpreted language](https://en.wikipedia.org/wiki/Interpreted_language) (more on this later). TL;DR, you need to send your code to some software that knows what to do with it ("R"). RStudio makes this super easy to do. You can execute your code interactively (one line at a time) in the R console or run your .R scripts using the "run" button.
+R is an [interpreted language](https://en.wikipedia.org/wiki/Interpreted_language) (more on this later).
+TL;DR, you need to send your code to some software that knows what to do with it ("R").
+RStudio makes this super easy to do.
+You can execute your code interactively (one line at a time) in the R console or run your .R scripts using the "run" button.
 
 *** =left
 
@@ -271,8 +276,6 @@ R is an [interpreted language](https://en.wikipedia.org/wiki/Interpreted_languag
 </footer>
 
 <h2>Executing R Code: The Command Line</h2>
-
-When R is just one of the tools in your stack, it's often quicker to execute your code from a terminal rather than going into a dedicated application for each type of file.
 
 **The R REPL**
 
@@ -299,9 +302,12 @@ When R is just one of the tools in your stack, it's often quicker to execute you
 
 <h2>R is an Interpreted Language</h2>
 
-Interpreted languages are those which break commands down into building blocks called "subroutines" that have already been compiled in machine code (source: [Wikipedia](https://en.wikipedia.org/wiki/Interpreted_language)). Much of the R source code (including these subroutines) is actually written in C.
+Interpreted languages are those which break commands down into building blocks called "subroutines" that have already been compiled in machine code (source: [Wikipedia](https://en.wikipedia.org/wiki/Interpreted_language)).
+Much of the R source code (including these subroutines) is actually written in C.
 
-To ensure that that process of breaking down ("interpreting") code goes smoothly, R needs to use a few keywords to identify crucial operations. Like other scripting languages, it has a set of "reserved words" which you cannot use as object names.
+To ensure that that process of breaking down ("interpreting") code goes smoothly, R needs to use a few keywords to identify crucial operations
+Like other scripting languages, it has a set of "reserved words" which you cannot use as object names.
+
 <br><br>
 
 **Run `?reserved` in RStudio**
@@ -319,8 +325,8 @@ To ensure that that process of breaking down ("interpreting") code goes smoothly
 
 - Some languages like Java required you to declare the **types** of objects you create
     - for example: string, numeric, integer, or boolean
-    - pros: strong typing makes software faster and more reliable (broadly speaking)
-    - cons: code is very verbose, difficult to prototype in and debug
+    - **pros:** strong typing makes software faster and more reliable (broadly speaking)
+    - **cons:** code is very verbose, difficult to prototype in and debug
 
 - R is "dynamically typed"
     - this means that you can create objects without explicitly telling R "this is an integer"
@@ -369,7 +375,9 @@ someData <- readRDS("my_data.rds")
 
 When you execute a statement like `x <- 5` in R, you are creating an **object** in memory which holds the numeric **value** 5 and is referenced by the **variable name** "x".
 
-If you later ask R to do something like `y <- x + 2`, it will search through a series of **namespaces** until it finds a variable called "x". Namespaces can be thought of as collections of labels pointing to places in memory. You can use R's `search()` command to examine the ordered list of namespaces that R will search in for variables.
+If you later ask R to do something like `y <- x + 2`, it will search through a series of **namespaces** until it finds a variable called "x".
+Namespaces can be thought of as collections of labels pointing to places in memory.
+You can use R's `search()` command to examine the ordered list of namespaces that R will search in for variables.
 
 ```{r namespaces, eval = FALSE}
 # Check the search path of namespaces
@@ -388,7 +396,8 @@ ls("package:stats")
 
 <h2>Introduction to Types</h2>
 
-Languages like Java and C are more verbose than R partially because they require programmers to explicitly declare *types* for data values. We will not go into the intricacy of typing in this course, but you should be familiar with the following types (this knowledge will serve you well across all languages):
+Languages like Java and C are more verbose than R partially because they require programmers to explicitly declare *types* for data values.
+We will not go into the intricacy of typing in this course, but you should be familiar with the following types (this knowledge will serve you well across all languages):
 
 - *integer*: non-complex whole numbers. created with an L like `anInteger <- 1L`
 - *numeric*: all real numbers. Default type for numbers in R `someNums <- c(1.005, 2)`
@@ -519,7 +528,9 @@ c(x, y)
 
 <h2>Lists</h2>
 
-Vectors are the first multi-item data structure all R programmers learn. Soon, though, you may find yourself frustrated with the fact that they can only hold a single type. To handle cases where you want to package multiple types (and even multiple objects!) together, we will turn to a data structure called a `list`.
+Vectors are the first multi-item data structure all R programmers learn.
+Soon, though, you may find yourself frustrated with the fact that they can only hold a single type.
+To handle cases where you want to package multiple types (and even multiple objects!) together, we will turn to a data structure called a `list`.
 
 |Capabilities                        |Vectors |Lists   |
 |:----------------------------------:|:------:|:------:|
@@ -546,11 +557,11 @@ str(myList)
 
 <h2>Factors</h2>
 
-R comes with a special type called a "factor" for modelling categorical variables. To save memory, internally R will convert factor values to integers and then keep around a single table that says, for example, 1 = "Africa", 2 = "Asia", etc.
+R comes with a special type called a "factor" for modelling categorical variables.
+To save memory, internally R will convert factor values to integers and then keep around a single table that says, for example, 1 = "Africa", 2 = "Asia", etc.
 
 ```{r factorExample}
 regions <- as.factor(c("Africa", "Asia", "Europe", "Asia"))
-region_fac <- as.factor(regions)
 print(region_fac)
 print(as.integer(region_fac))
 ```
@@ -566,7 +577,8 @@ See ["Factors"](../code/programming-supplement.html#Factors) in the programming 
 
 <h2>Data Frames</h2>
 
-Data frames are tables of data. Each column of a data frame can be a different type, but all values within a column must be the same type.
+Data frames are tables of data.
+Each column of a data frame can be a different type, but all values within a column must be the same type.
 
 <center><img src="./assets/img/data-frame.png"></center>
 
@@ -611,7 +623,7 @@ FALSE | FALSE  # FALSE
 
 <h2>Logical Operators (continued)</h2>
 
-The most common operators used to generate logicals are `>`, `<`, `==`, and `!=`
+Some common operators used to generate logicals are `>`, `<`, `==`, and `!=`
 
 ```{r logicalCond2, echo = TRUE, eval = FALSE}
 # "equality" logic is specified with "=="
@@ -669,7 +681,8 @@ mean(bigCarIndex)
 
 <h2>Subsetting Vectors</h2>
 
-**Subsetting** is the act of retrieving a portion of an object, usually based on some logical condition (e.g. "all elements greater than 5"). In R, this is done with the `[` operator.
+**Subsetting** is the act of retrieving a portion of an object, usually based on some logical condition (e.g. "all elements greater than 5").
+In R, this is done with the `[` operator.
 
 ```{r subsetVecs}
 # Create a vector to work with
@@ -718,7 +731,8 @@ Please see ["Subsetting Lists"](../code/programming-supplement.html#Subsetting_L
 
 <h2>Subsetting Data Frames</h2>
 
-Data frames are the workhorse data structure of statistics in R. The best way to learn data frame subsetting is to just walk through the examples below:
+Data frames are important data structures for doing statistics in R.
+Practice subsetting them using the examples below.
 
 ```{r subsetDF, eval = FALSE}
 # Create a data frame
@@ -745,9 +759,12 @@ someDF[1:3, c("wins", "ppg")]
 
 <h2>Using Logical Vectors</h2>
 
-So far, we've seen how to subset R objects using numeric indices and named elements. These are useful approaches, but both require you to know something about the contents of the object you're working with.
+So far, we've seen how to subset R objects using numeric indices and named elements.
+These are useful approaches, but both require you to know something about the contents of the object you're working with.
 
-Using these methods (especially numeric indices like saying *give me columns 2-4*) can make your code confusing and hard for others to reason about. Wherever possible, I strongly recommend using logical vectors for subsetting. This makes your code intuitive and more flexible to change.
+Using these methods (especially numeric indices like saying *give me columns 2-4*) can make your code confusing and hard for others to reason about.
+Wherever possible, I strongly recommend using logical vectors for subsetting.
+This makes your code intuitive and more flexible to change.
 
 Please see ["Using Logical Vectors"](../code/programming-supplement.html#Using_Logical_Vectors) in the programming supplement for an example.
 
@@ -765,7 +782,8 @@ Please see ["Using Logical Vectors"](../code/programming-supplement.html#Using_L
 
 <h2>Controlling Program Flow: If-Else</h2>
 
-Soon after you start writing code (in any language), you'll find yourself saying "I only want to do this thing if certain conditions are met". This type of logic is expressed using [if-else syntax](https://en.wikipedia.org/wiki/Conditional_(computer_programming))
+Soon after you start writing code (in any language), you'll find yourself saying "I only want to do this thing if certain conditions are met"
+This type of logic is expressed using [if-else syntax](https://en.wikipedia.org/wiki/Conditional_(computer_programming))
 
 <br>
 
@@ -787,7 +805,9 @@ See ["If-Else"](../code/programming-supplement.html#Controlling_Program_Flow) in
 
 <h2>If-Else (continued)</h2>
 
-What if you want to express more than two possible outcomes? For this, we could use R's `else if` construct to nest conditions. Note that conditional blocks can have any number of "else if" statements, but only one "else" block.
+What if you want to express more than two possible outcomes?
+For this, we could use R's `else if` construct to nest conditions.
+Note that conditional blocks can have any number of "else if" statements, but only one "else" block.
 
 ```{r ifElse2, eval = FALSE, echo = TRUE}
 # Try to think through what this will do before you run it yourself
@@ -811,7 +831,8 @@ if (4 > 5){
 
 <h2>For Loops</h2>
 
-One of the most powerful characteristics of general purpose programming languages is their ability to automate repetitive tasks. When you know that you want to do something a fixed number of times (say, squaring each item in a vector), you can use a `for` loop.
+One of the most powerful characteristics of general purpose programming languages is their ability to automate repetitive tasks.
+When you know that you want to do something a fixed number of times (say, squaring each item in a vector), you can use a `for` loop.
 
 ```{r forLoop, eval = FALSE, echo = TRUE}
 # Create a vector
@@ -837,7 +858,8 @@ for (some_number in x){
 
 <h2>While Loops</h2>
 
-For loops are suitable for many applications, but they can be too restrictive in some cases. When you want to say "run this code until some condition is met", a `while` loops is more appropriate.
+For loops are suitable for many applications, but they can be too restrictive in some cases.
+When you want to say "run this code until some condition is met", a `while` loops is more appropriate.
 
 ```{r, whileExample}
 i <- 1
@@ -869,4 +891,4 @@ For the brave and curious, I've included a few online free resources for learnin
 
 **RStudio**: [RStudio blog](https://blog.rstudio.org/)
 
-**Subsetting**: [Quick-R](http://www.statmethods.net/management/subset.html) | [R-bloggers](https://www.r-bloggers.com/taking-a-subset-of-a-data-frame-in-r/) | [Advanced R book](http://adv-r.had.co.nz/Subsetting.html)
+**Subsetting**: [Quick-R](http://www.statmethods.net/management/subset.html) | [R-bloggers](https://www.r-bloggers.com/taking-a-subset-of-a-data-frame-in-r/) | [Advanced R book](http://adv-r.had.co.nz/Subsetting.html) | ["R Programming for Data Science" book](https://bookdown.org/rdpeng/rprogdatascience/subsetting-r-objects.html)

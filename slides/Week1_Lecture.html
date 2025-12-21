@@ -297,11 +297,12 @@ The main objectives for the course are as follows:</p>
 <li>Open the file and follow the prompts on the screen</li>
 </ul>
 
-<p>R comes with a command-line client and a default GUI, but most users prefer to use other IDEs (<em>&quot;integrated development environment&quot;</em>). The most popular IDE for R, and the one we&#39;ll use in this class, is RStudio:</p>
+<p>R comes with a command-line client and a default GUI, but most users prefer to use other IDEs (<em>&quot;integrated development environment&quot;</em>).
+The most popular IDE for R, and the one we&#39;ll use in this class, is RStudio:</p>
 
 <ul>
 <li>Go to <a href="https://posit.co/products/open-source/rstudio/">https://posit.co/products/open-source/rstudio/</a></li>
-<li>Choose the appropriate download under &quot;All Installers&quot;</li>
+<li>Click &quot;Download RStudio Desktop&quot; (the free one!)</li>
 <li>Open the file and follow the prompts on the screen</li>
 </ul>
 
@@ -320,7 +321,8 @@ The main objectives for the course are as follows:</p>
 
 <h2>Authoring Scripts in RStudio</h2>
 
-<p>Sequences of R code are typically saved in scripts with the file extension &quot;.R&quot;. To open a blank script in RStudio and start editing, you can either go to &quot;File --&gt; New File --&gt; R script&quot; or choose &quot;R Script&quot; from the paper image in RStudio:</p>
+<p>Sequences of R code are typically saved in scripts with the file extension &quot;.R&quot;.
+To open a blank script in RStudio and start editing, you can either go to &quot;File --&gt; New File --&gt; R script&quot; or choose &quot;R Script&quot; from the paper image in RStudio:</p>
 
 <p><center><img src="./assets/img/rstudio-rscript.png"></center></p>
 
@@ -339,7 +341,8 @@ The main objectives for the course are as follows:</p>
 
 <h2>Authoring Scripts in a Text Editor</h2>
 
-<p>When you author a script in RStudio, the file you create will be stored with the file extension &quot;.R&quot; by default. Out in the wild (i.e. editing in text editors), you are responsible for saving files with the appropriate file extension so the software that uses them can interpret them correctly. Trust me, there are <a href="https://en.wikipedia.org/wiki/List_of_file_formats">a lot of them</a></p>
+<p>When you author a script in RStudio, the file you create will be stored with the file extension &quot;.R&quot; by default.
+Out in the wild (i.e. editing in text editors), you are responsible for saving files with the appropriate file extension so the software that uses them can interpret them correctly. Trust me, there are <a href="https://en.wikipedia.org/wiki/List_of_file_formats">a lot of them</a></p>
 
 <p>A few common ones you&#39;ll want to know for this course:</p>
 
@@ -349,7 +352,6 @@ The main objectives for the course are as follows:</p>
 <ul>
 <li>General text files (.md, .txt)</li>
 <li>R scripts (.R, .r)</li>
-<li>SQL queries (.sql)</li>
 <li>Slides and reports (.css, .html, .pdf, .rmd)</li>
 </ul>
 
@@ -358,10 +360,10 @@ The main objectives for the course are as follows:</p>
   <p><strong>Data</strong></p>
 
 <ul>
-<li>API response data (.csv, .json, .xml)</li>
+<li>Structured text formats (.csv, .json, .xml)</li>
 <li>R data formats (.rda, .rds, .RData)</li>
 <li>MS Excel (.xls, .xlsx, .xlsm)</li>
-<li>Zip archives (.zip, .tar, .gz, .bzip2)</li>
+<li>Compressed archives (.zip, .tar, .gz, .bz2)</li>
 </ul>
 
 </div>
@@ -380,7 +382,10 @@ The main objectives for the course are as follows:</p>
 
 <h2>Executing R Code: RStudio</h2>
 
-<p>R is an <a href="https://en.wikipedia.org/wiki/Interpreted_language">interpreted language</a> (more on this later). TL;DR, you need to send your code to some software that knows what to do with it (&quot;R&quot;). RStudio makes this super easy to do. You can execute your code interactively (one line at a time) in the R console or run your .R scripts using the &quot;run&quot; button.</p>
+<p>R is an <a href="https://en.wikipedia.org/wiki/Interpreted_language">interpreted language</a> (more on this later).
+TL;DR, you need to send your code to some software that knows what to do with it (&quot;R&quot;).
+RStudio makes this super easy to do.
+You can execute your code interactively (one line at a time) in the R console or run your .R scripts using the &quot;run&quot; button.</p>
 
 <div style='float:left;width:48%;' class='centered'>
   <p><strong>Using Scripts</strong></p>
@@ -408,8 +413,6 @@ The main objectives for the course are as follows:</p>
 </footer></p>
 
 <h2>Executing R Code: The Command Line</h2>
-
-<p>When R is just one of the tools in your stack, it&#39;s often quicker to execute your code from a terminal rather than going into a dedicated application for each type of file.</p>
 
 <p><strong>The R REPL</strong></p>
 
@@ -459,10 +462,13 @@ The main objectives for the course are as follows:</p>
 
 <h2>R is an Interpreted Language</h2>
 
-<p>Interpreted languages are those which break commands down into building blocks called &quot;subroutines&quot; that have already been compiled in machine code (source: <a href="https://en.wikipedia.org/wiki/Interpreted_language">Wikipedia</a>). Much of the R source code (including these subroutines) is actually written in C.</p>
+<p>Interpreted languages are those which break commands down into building blocks called &quot;subroutines&quot; that have already been compiled in machine code (source: <a href="https://en.wikipedia.org/wiki/Interpreted_language">Wikipedia</a>).
+Much of the R source code (including these subroutines) is actually written in C.</p>
 
-<p>To ensure that that process of breaking down (&quot;interpreting&quot;) code goes smoothly, R needs to use a few keywords to identify crucial operations. Like other scripting languages, it has a set of &quot;reserved words&quot; which you cannot use as object names.
-<br><br></p>
+<p>To ensure that that process of breaking down (&quot;interpreting&quot;) code goes smoothly, R needs to use a few keywords to identify crucial operations
+Like other scripting languages, it has a set of &quot;reserved words&quot; which you cannot use as object names.</p>
+
+<p><br><br></p>
 
 <p><strong>Run <code>?reserved</code> in RStudio</strong></p>
 
@@ -488,8 +494,8 @@ The main objectives for the course are as follows:</p>
 
 <ul>
 <li>for example: string, numeric, integer, or boolean</li>
-<li>pros: strong typing makes software faster and more reliable (broadly speaking)</li>
-<li>cons: code is very verbose, difficult to prototype in and debug</li>
+<li><strong>pros:</strong> strong typing makes software faster and more reliable (broadly speaking)</li>
+<li><strong>cons:</strong> code is very verbose, difficult to prototype in and debug</li>
 </ul></li>
 <li><p>R is &quot;dynamically typed&quot;</p>
 
@@ -575,7 +581,9 @@ someData &lt;- readRDS(&quot;my_data.rds&quot;)
 
 <p>When you execute a statement like <code>x &lt;- 5</code> in R, you are creating an <strong>object</strong> in memory which holds the numeric <strong>value</strong> 5 and is referenced by the <strong>variable name</strong> &quot;x&quot;.</p>
 
-<p>If you later ask R to do something like <code>y &lt;- x + 2</code>, it will search through a series of <strong>namespaces</strong> until it finds a variable called &quot;x&quot;. Namespaces can be thought of as collections of labels pointing to places in memory. You can use R&#39;s <code>search()</code> command to examine the ordered list of namespaces that R will search in for variables.</p>
+<p>If you later ask R to do something like <code>y &lt;- x + 2</code>, it will search through a series of <strong>namespaces</strong> until it finds a variable called &quot;x&quot;.
+Namespaces can be thought of as collections of labels pointing to places in memory.
+You can use R&#39;s <code>search()</code> command to examine the ordered list of namespaces that R will search in for variables.</p>
 
 <pre><code class="r"># Check the search path of namespaces
 search()
@@ -599,7 +607,8 @@ ls(&quot;package:stats&quot;)
 
 <h2>Introduction to Types</h2>
 
-<p>Languages like Java and C are more verbose than R partially because they require programmers to explicitly declare <em>types</em> for data values. We will not go into the intricacy of typing in this course, but you should be familiar with the following types (this knowledge will serve you well across all languages):</p>
+<p>Languages like Java and C are more verbose than R partially because they require programmers to explicitly declare <em>types</em> for data values.
+We will not go into the intricacy of typing in this course, but you should be familiar with the following types (this knowledge will serve you well across all languages):</p>
 
 <ul>
 <li><em>integer</em>: non-complex whole numbers. created with an L like <code>anInteger &lt;- 1L</code></li>
@@ -799,7 +808,9 @@ c(x, y)
 
 <h2>Lists</h2>
 
-<p>Vectors are the first multi-item data structure all R programmers learn. Soon, though, you may find yourself frustrated with the fact that they can only hold a single type. To handle cases where you want to package multiple types (and even multiple objects!) together, we will turn to a data structure called a <code>list</code>.</p>
+<p>Vectors are the first multi-item data structure all R programmers learn.
+Soon, though, you may find yourself frustrated with the fact that they can only hold a single type.
+To handle cases where you want to package multiple types (and even multiple objects!) together, we will turn to a data structure called a <code>list</code>.</p>
 
 <table><thead>
 <tr>
@@ -852,21 +863,20 @@ str(myList)
 
 <h2>Factors</h2>
 
-<p>R comes with a special type called a &quot;factor&quot; for modelling categorical variables. To save memory, internally R will convert factor values to integers and then keep around a single table that says, for example, 1 = &quot;Africa&quot;, 2 = &quot;Asia&quot;, etc.</p>
+<p>R comes with a special type called a &quot;factor&quot; for modelling categorical variables.
+To save memory, internally R will convert factor values to integers and then keep around a single table that says, for example, 1 = &quot;Africa&quot;, 2 = &quot;Asia&quot;, etc.</p>
 
 <pre><code class="r">regions &lt;- as.factor(c(&quot;Africa&quot;, &quot;Asia&quot;, &quot;Europe&quot;, &quot;Asia&quot;))
-region_fac &lt;- as.factor(regions)
 print(region_fac)
 </code></pre>
 
-<pre><code>## [1] Africa Asia   Europe Asia  
-## Levels: Africa Asia Europe
+<pre><code>## Error: object &#39;region_fac&#39; not found
 </code></pre>
 
 <pre><code class="r">print(as.integer(region_fac))
 </code></pre>
 
-<pre><code>## [1] 1 2 3 2
+<pre><code>## Error: object &#39;region_fac&#39; not found
 </code></pre>
 
 <p>See <a href="../code/programming-supplement.html#Factors">&quot;Factors&quot;</a> in the programming supplement for an example.</p>
@@ -886,7 +896,8 @@ print(region_fac)
 
 <h2>Data Frames</h2>
 
-<p>Data frames are tables of data. Each column of a data frame can be a different type, but all values within a column must be the same type.</p>
+<p>Data frames are tables of data.
+Each column of a data frame can be a different type, but all values within a column must be the same type.</p>
 
 <p><center><img src="./assets/img/data-frame.png"></center></p>
 
@@ -949,7 +960,7 @@ FALSE | FALSE  # FALSE
 
 <h2>Logical Operators (continued)</h2>
 
-<p>The most common operators used to generate logicals are <code>&gt;</code>, <code>&lt;</code>, <code>==</code>, and <code>!=</code></p>
+<p>Some common operators used to generate logicals are <code>&gt;</code>, <code>&lt;</code>, <code>==</code>, and <code>!=</code></p>
 
 <pre><code class="r"># &quot;equality&quot; logic is specified with &quot;==&quot;
 3 == 3   # TRUE
@@ -1024,7 +1035,8 @@ mean(bigCarIndex)
 
 <h2>Subsetting Vectors</h2>
 
-<p><strong>Subsetting</strong> is the act of retrieving a portion of an object, usually based on some logical condition (e.g. &quot;all elements greater than 5&quot;). In R, this is done with the <code>[</code> operator.</p>
+<p><strong>Subsetting</strong> is the act of retrieving a portion of an object, usually based on some logical condition (e.g. &quot;all elements greater than 5&quot;).
+In R, this is done with the <code>[</code> operator.</p>
 
 <pre><code class="r"># Create a vector to work with
 myVec &lt;- c(var1 = 10, var2 = 15, var3 = 20, av4 = 6)
@@ -1109,7 +1121,8 @@ myVec[&quot;var3&quot;]
 
 <h2>Subsetting Data Frames</h2>
 
-<p>Data frames are the workhorse data structure of statistics in R. The best way to learn data frame subsetting is to just walk through the examples below:</p>
+<p>Data frames are important data structures for doing statistics in R.
+Practice subsetting them using the examples below.</p>
 
 <pre><code class="r"># Create a data frame
 someDF &lt;- data.frame(
@@ -1141,9 +1154,12 @@ someDF[1:3, c(&quot;wins&quot;, &quot;ppg&quot;)]
 
 <h2>Using Logical Vectors</h2>
 
-<p>So far, we&#39;ve seen how to subset R objects using numeric indices and named elements. These are useful approaches, but both require you to know something about the contents of the object you&#39;re working with.</p>
+<p>So far, we&#39;ve seen how to subset R objects using numeric indices and named elements.
+These are useful approaches, but both require you to know something about the contents of the object you&#39;re working with.</p>
 
-<p>Using these methods (especially numeric indices like saying <em>give me columns 2-4</em>) can make your code confusing and hard for others to reason about. Wherever possible, I strongly recommend using logical vectors for subsetting. This makes your code intuitive and more flexible to change.</p>
+<p>Using these methods (especially numeric indices like saying <em>give me columns 2-4</em>) can make your code confusing and hard for others to reason about.
+Wherever possible, I strongly recommend using logical vectors for subsetting.
+This makes your code intuitive and more flexible to change.</p>
 
 <p>Please see <a href="../code/programming-supplement.html#Using_Logical_Vectors">&quot;Using Logical Vectors&quot;</a> in the programming supplement for an example.</p>
 
@@ -1174,7 +1190,8 @@ someDF[1:3, c(&quot;wins&quot;, &quot;ppg&quot;)]
 
 <h2>Controlling Program Flow: If-Else</h2>
 
-<p>Soon after you start writing code (in any language), you&#39;ll find yourself saying &quot;I only want to do this thing if certain conditions are met&quot;. This type of logic is expressed using <a href="https://en.wikipedia.org/wiki/Conditional_(computer_programming">if-else syntax</a>)</p>
+<p>Soon after you start writing code (in any language), you&#39;ll find yourself saying &quot;I only want to do this thing if certain conditions are met&quot;
+This type of logic is expressed using <a href="https://en.wikipedia.org/wiki/Conditional_(computer_programming">if-else syntax</a>)</p>
 
 <p><br></p>
 
@@ -1201,7 +1218,9 @@ if (x &gt; 5){
 
 <h2>If-Else (continued)</h2>
 
-<p>What if you want to express more than two possible outcomes? For this, we could use R&#39;s <code>else if</code> construct to nest conditions. Note that conditional blocks can have any number of &quot;else if&quot; statements, but only one &quot;else&quot; block.</p>
+<p>What if you want to express more than two possible outcomes?
+For this, we could use R&#39;s <code>else if</code> construct to nest conditions.
+Note that conditional blocks can have any number of &quot;else if&quot; statements, but only one &quot;else&quot; block.</p>
 
 <pre><code class="r"># Try to think through what this will do before you run it yourself
 if (4 &gt; 5){
@@ -1230,7 +1249,8 @@ if (4 &gt; 5){
 
 <h2>For Loops</h2>
 
-<p>One of the most powerful characteristics of general purpose programming languages is their ability to automate repetitive tasks. When you know that you want to do something a fixed number of times (say, squaring each item in a vector), you can use a <code>for</code> loop.</p>
+<p>One of the most powerful characteristics of general purpose programming languages is their ability to automate repetitive tasks.
+When you know that you want to do something a fixed number of times (say, squaring each item in a vector), you can use a <code>for</code> loop.</p>
 
 <pre><code class="r"># Create a vector
 x &lt;- c(1, 4, 6)
@@ -1261,7 +1281,8 @@ for (some_number in x){
 
 <h2>While Loops</h2>
 
-<p>For loops are suitable for many applications, but they can be too restrictive in some cases. When you want to say &quot;run this code until some condition is met&quot;, a <code>while</code> loops is more appropriate.</p>
+<p>For loops are suitable for many applications, but they can be too restrictive in some cases.
+When you want to say &quot;run this code until some condition is met&quot;, a <code>while</code> loops is more appropriate.</p>
 
 <pre><code class="r">i &lt;- 1
 while (i &lt; 5) {
@@ -1311,7 +1332,7 @@ while (i &lt; 5) {
 
 <p><strong>RStudio</strong>: <a href="https://blog.rstudio.org/">RStudio blog</a></p>
 
-<p><strong>Subsetting</strong>: <a href="http://www.statmethods.net/management/subset.html">Quick-R</a> | <a href="https://www.r-bloggers.com/taking-a-subset-of-a-data-frame-in-r/">R-bloggers</a> | <a href="http://adv-r.had.co.nz/Subsetting.html">Advanced R book</a></p>
+<p><strong>Subsetting</strong>: <a href="http://www.statmethods.net/management/subset.html">Quick-R</a> | <a href="https://www.r-bloggers.com/taking-a-subset-of-a-data-frame-in-r/">R-bloggers</a> | <a href="http://adv-r.had.co.nz/Subsetting.html">Advanced R book</a> | <a href="https://bookdown.org/rdpeng/rprogdatascience/subsetting-r-objects.html">&quot;R Programming for Data Science&quot; book</a></p>
 
 <div style='float:left;width:48%;' class='centered'>
   

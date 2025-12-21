@@ -113,7 +113,11 @@ In this section, we're going to walk through all the steps of basic statistical 
 
 <h2>Getting and Splitting the Data</h2>
 
-We're going to work with R's [swiss](https://stat.ethz.ch/R-manual/R-devel/library/datasets/html/swiss.html) dataset. This cross-sectional dataset contains measures of fertility and some economic indicators collected in Switzerland in 1888. Our first task will be to load the data and immediately hold out a piece of it as [testing data](http://info.salford-systems.com/blog/bid/337783/Why-Data-Scientists-Split-Data-into-Train-and-Test). The idea here is that when we evaluate the performance of our models later on, it will be better to do it on data that the models haven't seen. This will give a more honest picture of how well they might perform on new data.
+We're going to work with R's [swiss](https://stat.ethz.ch/R-manual/R-devel/library/datasets/html/swiss.html) dataset.
+This cross-sectional dataset contains measures of fertility and some economic indicators collected in Switzerland in 1888.
+Our first task will be to load the data and immediately hold out a piece of it as [testing data](http://info.salford-systems.com/blog/bid/337783/Why-Data-Scientists-Split-Data-into-Train-and-Test).
+The idea here is that when we evaluate the performance of our models later on, it will be better to do it on data that the models haven't seen.
+This will give a more honest picture of how well they might perform on new data.
 
 In this exercise, we're going to evaluate the following question: **Can we predict fertility based on regional socioeconomic characteristics?**
 
@@ -129,7 +133,8 @@ Please follow along in ["Statistical Analysis"](../code/programming-supplement.h
 
 <h2>Examine Your Training Data</h2>
 
-Once you've split your data into training and test, you should start poking it a bit to see if you find anything interesting. You can use `str()` to view the contents of your data objects, `summary()` to view some basic summary statistics on data frame columns, and `cor()` to get a correlation matrix between all pairs of numeric variables.
+Once you've split your data into training and test, you should start poking it a bit to see if you find anything interesting
+You can use `str()` to view the contents of your data objects, `summary()` to view some basic summary statistics on data frame columns, and `cor()` to get a correlation matrix between all pairs of numeric variables.
 
 ```{r eda}
 # Look at the structure
@@ -145,7 +150,7 @@ str(swiss)
 
 <h2>Hypothesis Testing</h2>
 
-Hypothesis tests can be enormously valuable tools for discovering differences in datasets and evaluates relationships between variables.
+Hypothesis tests can be really helpful for discovering differences in datasets and evaluating relationships between variables.
 
 One approach to looking for statistically interesting features (right-hand-side variables) involves binning those variables into "above median" and "below median", and using a paired t-test to see whether or not the variable is statistically related to the target.
 
@@ -170,7 +175,8 @@ For more, see ["Hypothesis Testing"](../code/programming-supplement.html#Hypothe
 
 <h2>Simple OLS Model</h2>
 
-OK now that we've done some basic preprocessing and exploration, it's time to start fitting models! Let's begin with a simple one-variable OLS regression, estimated using the `lm()` command.
+Let's start fitting models!
+Let's begin with a simple one-variable OLS regression, estimated using the `lm()` command.
 
 ```{r simpleOLS, eval = FALSE}
 # Simple regression: Fertility = f(Agriculture)
@@ -180,7 +186,9 @@ mod1 <- lm(
 )
 ```
 
-Once you have the fitted model, you can pass it and some new data to `predict()` to generate predictions. Model evaluation metrics commonly used in regression problems:
+Once you have the fitted model, you can pass it and some new data to `predict()` to generate predictions.
+Model evaluation metrics commonly used in regression problems:
+
 - [mean absolute error](https://en.wikipedia.org/wiki/Mean_absolute_error)
 - [mean squared error](https://en.wikipedia.org/wiki/Mean_squared_error)
 - [mean absolute percent error](https://en.wikipedia.org/wiki/Mean_absolute_percentage_error)
@@ -194,7 +202,8 @@ Once you have the fitted model, you can pass it and some new data to `predict()`
 
 <h2>Wrap Parts of Your Pipeline in Functions</h2>
 
-The error metric calculations and plotting we just did seem general enough to apply to other models of this phenomenon. Since we could reuse the code for other models, we should just wrap it in a function so it's easy to call downstream.
+The error metric calculations and plotting we just did seem general enough to apply to other models of this phenomenon.
+Since we could reuse the code for other models, we should just wrap it in a function so it's easy to call downstream.
 
 Wrapping your analytics pipeline in a function has a few other benefits:
 - Easy to test many different configurations
@@ -213,7 +222,8 @@ For more, see the ["Wrap Parts of Your Pipeline in Functions"](../code/programmi
 
 <h2>OLS With Multiple RHS Variables</h2>
 
-To add more variables to a model in R, you have to use formula notation. I've specified specific right-hand side variables in this case, but if you want to express the idea "all of the X variables", you can use a statement like `Fertility ~ .`.
+To add more variables to a model in R, you have to use formula notation.
+I've chosen specific right-hand side variables in this case, but if you want to say "all of the X variables", you can use `.` like `Fertility ~ .`.
 
 ```{r olsMoreVars, eval = FALSE}
 # Fit
@@ -239,7 +249,8 @@ regPreds2 <- EvaluateModel(
 
 <h2>Regression Trees</h2>
 
-Linear regressions aren't the right tool when the relationships between the independent variables and the target are non-linear. In this situation, regression trees might perform better.
+Linear regressions aren't the right tool when the relationships between the independent variables and the target are non-linear.
+In this situation, regression trees might perform better.
 
 <center><img src="assets/img/regression-tree.png" style="max-width:50%;"></center>
 
@@ -254,7 +265,8 @@ See  [A Visual Introduction to Machine Learning](http://www.r2d3.us/visual-intro
 
 <h2>Random Forests</h2>
 
-For larger datasets, you may find that a single decision tree does not perform well. It's common to use a "forest" of decision trees.
+For larger datasets, you may find that a single decision tree does not perform well.
+It's common to use a "forest" of decision trees.
 
 <center><img src="assets/img/random-forest.png" style="max-width:50%;"></center>
 
@@ -271,7 +283,8 @@ See the ["Random Forests"](../code/programming-supplement.html#Random_Forests) i
 
 <h2>Model Evaluation</h2>
 
-For a prediction tasks, you want the model that you think will perform best on new data. To get at this, you can compare how well different models perform on the held-out "test" dataset.
+For a prediction tasks, you want the model that you think will perform best on new data.
+To get at this, you can compare how well different models perform on the held-out "test" dataset.
 
 <br><br>
 <center><img src="assets/img/model-evaluation.png" style="max-width:100%;"></center>
@@ -306,7 +319,8 @@ See ["Text Processing"](../code/programming-supplement.html#Text_Processing)  in
 
 <h2>Regular Expressions</h2>
 
-Working with text often involves searching for patterns. Many programming languages can understand "regular expressions", a special format for expressing the pattern you want to find.
+Working with text often involves searching for patterns.
+Many programming languages can understand "regular expressions", a special format for expressing the pattern you want to find.
 
 <center><img src="assets/img/regular-expressions.png" style="max-width:60%;"></center>
 
@@ -323,7 +337,8 @@ See ["Regular Expressions"](../code/programming-supplement.html#Regular_Expressi
 
 <h2>Tokenization</h2>
 
-The next task we need to accomplish is **tokenizing** our text, i.e. splitting lines and sentences into individual words. These individual words can then be used downstream to build a language model and identify key terms.
+The next task we need to accomplish is **tokenizing** our text, i.e. splitting lines and sentences into individual words.
+These individual words can then be used downstream to build a language model and identify key terms.
 
 <br><br>
 
@@ -347,7 +362,8 @@ See ["Tokenization"](../code/programming-supplement.html#Regular_Expressions) in
 
 <h2>Getting Your Project Off the Ground</h2>
 
-OK so you have a business question, you've chosen your toolchain (presumably with R), and you have some data in hand. You sit down to write code and, well...
+OK so you have a business question, you've chosen your toolchain (presumably with R), and you have some data in hand.
+You sit down to write code and, well...
 
 <center><img src="assets/img/spongebob.gif" style="max-width:80%;"></center>
 
@@ -362,9 +378,12 @@ In this section, we'll to walk through the process of building a non-trivial scr
 
 <h2>Step 1: Build a Comment Skeleton</h2>
 
-Resist the urge to just start writing code. Investing a few minutes upfront in thinking through the structure of your code will pay off in a big way as the project evolves and grows more complicated. Trust me.
+Resist the urge to just start writing code.
+Investing a few minutes upfront in thinking through the structure of your code will pay off in a big way as the project evolves and grows more complicated.
+Trust me.
 
-First, just write down the main things you want to do. In this exercise, we're going to write some R code that can generate n-page "books" or random sentences in English.
+First, just write down the main things you want to do.
+In this exercise, we're going to write some R code that can generate n-page "books" or random sentences in English.
 
 ```{r fromScratch}
 #=== Write an R script that writes a book! ===#
@@ -387,7 +406,9 @@ First, just write down the main things you want to do. In this exercise, we're g
 
 <h2>Step 2: Define Functions</h2>
 
-Next, fill in the high-level outline with slightly more specifics. Try to strategize about the functions you'll need to implement and the individual steps that will have to happen inside each of those functions. This will probably change once you start writing code, but in my experience it's always easier to have a plan and change it.
+Next, fill in the high-level outline with slightly more specifics.
+Try to strategize about the functions you'll need to implement and the individual steps that will have to happen inside each of those functions.
+This will probably change once you start writing code, but in my experience it's always easier to have a plan and change it.
 
 <center><img src="assets/img/functions.jpg"></center>
 
@@ -418,11 +439,12 @@ See ["Pirate Book Example"](../code/code/programming-supplement.html#Pirate_Book
     Final Project Discussion<span style="float:right">R Programming</span>
 </footer>
 
-<h2>Code Review Tips</h2>
+<h2>Code Review (Presentation) Tips</h2>
 
-For your final project, you'll be presenting your code to your classmates in a "code review" style presentation. This should be an informal conversation, not a formal presentation with slides.
+For your final project, you'll be presenting your code to your classmates in a "code review" style presentation.
+This should be an informal conversation, not a formal presentation with slides.
 
-Try to hit these main points:
+Try to cover these main points:
 
 - Introduce the problem you investigated
 - Explain the data set

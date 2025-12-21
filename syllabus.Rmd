@@ -97,7 +97,7 @@ Recommended sequence:
 5. **(due January 17, 2026)** Take the `pre-course survey` on D2L
 6. Set up your development environment
     * install R on your personal computer (https://cloud.r-project.org/)
-    * install RStudio on your personal computer (https://posit.co/products/open-source/rstudio/)
+    * install RStudio (the free one!!!) on your personal computer (https://posit.co/products/open-source/rstudio/)
 7. Review Week 1 lecture materials
     * lecture videos ([link](https://drive.google.com/drive/folders/1wR0qZgDKSiOnhwlEkWiMjvhavuGi4WK2))
     * Programming Supplement topics ([link](https://jameslamb.github.io/intro-to-r/code/programming-supplement.html)):
@@ -146,10 +146,11 @@ Recommended sequence:
       - "Software Principles"
       - "R Programming Best Practices"
 20. **(due February 14, 2026)** Submit `Final Project Script(s)`
-21. **(due February 14, 2026)** Attend `Final Project Presentation` (video call)
+21. **(due February 14, 2026)** Submit `Final Project Written Report`
+22. **(due February 14, 2026)** Attend `Final Project Presentation` (video call)
   * present your final project code to your classmates
   * provide peer review feedback to your classmates
-22. **(due February 17, 2026)** *(optional)* complete `Extra Credit Assignment`
+23. **(due February 17, 2026)** *(optional)* complete `Extra Credit Assignment`
 
 \pagebreak
 
@@ -197,13 +198,12 @@ In addition, quizzes may require you to interpret pseudo-code or to write a bit 
 Quizzes are delivered online via D2L (see the "Quizzes" section of the course site).
 Quizzes have no time limit.
 You will be allowed two attempts for each quiz and your grade on each quiz will be the better of your two scores.
-All times below are in Central Time.
 
-|Quiz                       |Opens                             |Due                         |
-|:-------------------------:|:--------------------------------:|:--------------------------:|
-|Pre-course survey          | Immediately                      | 11:00p on January 17, 2026 |
-|Quiz 1                     | Immediately                      | 11:00p on January 24, 2026 |
-|Quiz 2                     | Immediately                      | 11:00p on January 31, 2026 |
+|Quiz              |Opens        |Due                            |
+|:----------------:|:-----------:|:-----------------------------:|
+|Pre-course survey | Immediately | 11:00p CT on January 17, 2026 |
+|Quiz 1            | Immediately | 11:00p CT on January 24, 2026 |
+|Quiz 2            | Immediately | 11:00p CT on January 31, 2026 |
 
 ## B. Programming Assignments (30\%)
 
@@ -218,13 +218,12 @@ Assignment rubrics are available on the course site.
 Your completed assignment must be uploaded to the appropriate folder in the "Dropbox" section on the course D2L page by the due date listed in the table below.
 <br>
 
-|Quiz                       |Opens                             |Due                         |
-|:-------------------------:|:--------------------------------:|:--------------------------:|
-|Programming Assignment 1   | Immediately                      | 11:00p on January 24, 2026 |
-|Programming Assignment 2   | Immediately                      | 11:00p on January 31, 2026 |
+|Quiz                      |Opens        |Due                            |
+|:------------------------:|:-----------:|:-----------------------------:|
+|Programming Assignment 1  | Immediately | 11:00p CT on January 24, 2026 |
+|Programming Assignment 2  | Immediately | 11:00p CT on January 31, 2026 |
 
 <br>
-All times below are in Central Time.
 
 ## C. Final Project (45\%)
 
@@ -240,13 +239,13 @@ The project comprises the following parts:
 4. *Final project presentation*: A 5-10 minute overview of your project, presented live in the final week of the course.
 
 Full details of the project and each of its components are available at [https://jameslamb.github.io/intro-to-r/assignments/final_project.html](https://jameslamb.github.io/intro-to-r/assignments/final_project.html).
-All times below are in Central Time.
 
-|Assignment                      |Materials Available | Due                          |
-|:-------------------------------:|:------------------:|:---------------------------:|
-|Final Project proposal          | Immediately        |11:00p on February 7, 2026    |
-|Final Project (script + report) | Immediately        |11:00p on February 14, 2026   |
-|Final Project presentation      | Immediately        |live, 9:00a February 14, 2026 |
+|Assignment                 | Due                             |
+|:-------------------------:|:-------------------------------:|
+|Final Project proposal     |11:00p CT on February 7, 2026    |
+|Final Project script(s)    |11:00p CT on February 14, 2026   |
+|Final Project report       |11:00p CT on February 14, 2026   |
+|Final Project presentation |live, 9:00a CT February 14, 2026 |
 
 <br>
 
@@ -255,7 +254,9 @@ All times below are in Central Time.
 There is an optional Extra Credit assignment available, worth up to 3 percentage points on your final grade.
 Follow the instructions at https://jameslamb.github.io/intro-to-r/assignments/extra-credit.html.
 
-This extra credit must be submitted prior to midnight on February 17, 2026.
+|Assignment              | Due                           |
+|:----------------------:|:-----------------------------:|
+|Extra Credit Assignment |11:59p CT on February 17, 2026 |
 
 ## D. Deadlines and Late Policy
 
@@ -272,7 +273,7 @@ If you disagree with any grade assigned to you in this course, please refer to t
 
 ## A. Special Needs
 
-Please inform me during the first week of class if you have any conditions that may limit or affect your ability to participate in this course so that we can make necessary arrangements.
+Please inform me before the first assignment deadline if you have any conditions that may limit or affect your ability to participate in this course so that we can make necessary arrangements.
 You may also contact the Office of Student Disability Services (https://www.marquette.edu/disability-services/).
 
 ## B. Emergency Plan
@@ -290,13 +291,12 @@ There is only 1 synchronous meeting in this course... the final project presenta
 
 All students are expected to complete all quizzes, assignments, and the final project.
 
-There are a handful of situations which are considered "excused" absences:
+Example situations which are considered "excused" absences:
 
 * legal obligations (such as jury duty)
 * university-sanctioned activities and related travel
 * religious observance
-
-If you anticipate missing any classes, please let me know as early as possible so we can plan accordingly.
+* other situations with written approval from the professor
 
 For more, see https://bulletin.marquette.edu/policies/attendance/management/
 
