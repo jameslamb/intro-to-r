@@ -472,7 +472,7 @@ We will not go into the intricacy of typing in this course, but you should be fa
 
 <h2>Vectors (pt 1)</h2>
 
-- Because R was designed for use with statistics, most of its operations are [vectorized](http://www.cs.cornell.edu/courses/cs1112/2016sp/Exams/exam2/vectorizedCode.pdf)
+- Because R was designed for statistical work, most of its operations are [vectorized](http://www.cs.cornell.edu/courses/cs1112/2016sp/Exams/exam2/vectorizedCode.pdf)
 - You can create vectors a few ways:
 
 ```{r vectors_pt1, eval = FALSE}

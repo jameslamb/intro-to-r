@@ -1,6 +1,9 @@
 # this 403s but is still there
 https://blog.revolutionanalytics.com/2014/08/using-r-inside-the-enterprise-integration-with-existing-systems.html
 
+# links to assignment solution videos will 401/403 when they're locked (most of the time)
+https://drive.google.com/*
+
 # at least as of mid-June 2025, support.rstudio.com links redirected to a placeholder
 # page on support.posit.co with the message "The page you were looking for doesn't exist" :/
 https://support.rstudio.com/*
