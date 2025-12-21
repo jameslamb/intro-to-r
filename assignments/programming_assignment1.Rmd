@@ -35,7 +35,7 @@ Note:
 
 Instructions:
 
-1. Create a file called `{Firstname}_{Lastname}_Assignment1.R` (example: `James_Lamb_Assignment1.R`)
+1. Create a file called `{Firstname}_{Lastname}_Assignment1.R` (example: `James_Lamb_Assignment1.R`). Failure to follow this file-naming format will result in a grade penalty.
 2. Copy the code below into that file.
 3. Change the code to meet all the requirements described in the comments.
 4. Upload that file to the "programming assignment 1" dropbox on D2L.

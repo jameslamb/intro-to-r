@@ -48,7 +48,7 @@ Try running these yourself, but you do not need to include the output in your su
 
 <h3>Submission</h3>
 
-Upload a file to the **Programming Assignment 2** dropbox on D2L with a name like *firstname_lastname_assignment2pt1.R*.
+Upload a file to the **Programming Assignment 2** dropbox on D2L with a name like `{Firstname}_{Lastname}_Assignment2pt1.R` (example: `James_Lamb_Assignment2pt1.R`).
 This file should contain 10 sections, one for each of the functions above.
 Please copy one example per function into your script, and use the format given in the example below:
 
@@ -89,7 +89,7 @@ Then you'll join them into a single `data.frame` and plot them against each othe
 
 <h3>Submission</h3>
 
-Upload a file to the **Programming Assignment 2** dropbox on D2L with a name like *firstname_lastname_assignment2pt2.R*.
+Upload a file to the **Programming Assignment 2** dropbox on D2L with a name like `{Firstname}_{Lastname}_Assignment2pt2.R` (example: `James_Lamb_Assignment2pt2.R`).
 In the example script below, I've filled in the pieces needed to pull the U.S. data.
 Your task is to fill out the rest of this script so that it produces a plot comparing Japan and the U.S.
 
@@ -179,7 +179,7 @@ In this part of the assignment, you'll practice this important skill.
 
 <h3>Submission</h3>
 
-Upload a file to the **Programming Assignment 2** dropbox on D2L with a name like *firstname_lastname_assignment2pt3.R*.
+Upload a file to the **Programming Assignment 2** dropbox on D2L with a name like `{Firstname}_{Lastname}_Assignment2pt3.R` (example: `James_Lamb_Assignment2pt3.R`).
 
 In the file, implement 2 functions:
 
