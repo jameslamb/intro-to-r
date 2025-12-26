@@ -75,7 +75,7 @@ Math in R looks very similar to how you might write it by hand.
 
 ## Vectors
 
-Because R was designed for use with statistics, most of its operations are "vectorized" ([click here to learn more](https://www.cs.cornell.edu/courses/cs1112/2016sp/Exams/exam2/vectorizedCode.pdf)) [vectorized]().
+Because R was designed for statistical work, most of its operations are "vectorized" ([click here to learn more](https://www.cs.cornell.edu/courses/cs1112/2016sp/Exams/exam2/vectorizedCode.pdf)) [vectorized]().
 
 ```{r vectors_pt1}
 # Ordered sequence of integers
@@ -771,13 +771,14 @@ Let's try it out:
 ```{r listLapply}
 # Create a list
 studentList <- list(
-  kanye = c(80, 90, 100)
+  wale = c(80, 90, 100)
   , talib = c(95, 85, 99)
   , common = c(100, 100, 99)
 )
 
 # Better way with lapply
 grades <- lapply(studentList, mean)
+str(grades)
 ```
 
 ## Looping with sapply
@@ -812,6 +813,7 @@ check_vec <- sapply(
         meanCheck(val = x, ref_mean = the_mean)
     }
 )
+str(check_vec)
 ```
 
 ## Looping with apply
@@ -843,6 +845,7 @@ rwRanges <- apply(
         range(as.numeric(blah))
     }
 )
+str(rwRanges)
 ```
 
 # Using External Packages
@@ -1238,18 +1241,93 @@ Here's a preview:
 {
   "id": 77707418,
   "node_id": "MDEwOlJlcG9zaXRvcnk3NzcwNzQxOA==",
-  "name": "teaching",
+  "name": "intro-to-r",
+  "full_name": "jameslamb/intro-to-r",
+  "private": false,
   "owner": {
     "login": "jameslamb",
     "id": 7608904,
     "node_id": "MDQ6VXNlcjc2MDg5MDQ=",
     "avatar_url": "https://avatars.githubusercontent.com/u/7608904?v=4",
+    "gravatar_id": "",
+    "url": "https://api.github.com/users/jameslamb",
+    "html_url": "https://github.com/jameslamb",
+    "followers_url": "https://api.github.com/users/jameslamb/followers",
+    "following_url": "https://api.github.com/users/jameslamb/following{/other_user}",
+    "gists_url": "https://api.github.com/users/jameslamb/gists{/gist_id}",
+    "starred_url": "https://api.github.com/users/jameslamb/starred{/owner}{/repo}",
+    "subscriptions_url": "https://api.github.com/users/jameslamb/subscriptions",
+    "organizations_url": "https://api.github.com/users/jameslamb/orgs",
+    "repos_url": "https://api.github.com/users/jameslamb/repos",
+    "events_url": "https://api.github.com/users/jameslamb/events{/privacy}",
+    "received_events_url": "https://api.github.com/users/jameslamb/received_events",
+    "type": "User",
+    "user_view_type": "public",
+    "site_admin": false
   },
-  "html_url": "https://github.com/jameslamb/teaching",
-  "description": "Repository to hold slides, syllabi, etc. for courses I've taught.",
+  "html_url": "https://github.com/jameslamb/intro-to-r",
+  "description": "Materials for my \"Intro to R Programming\" course",
   "fork": false,
-  "url": "https://api.github.com/repos/jameslamb/teaching",
-  "forks_url": "https://api.github.com/repos/jameslamb/teaching/forks",
+  "url": "https://api.github.com/repos/jameslamb/intro-to-r",
+  "forks_url": "https://api.github.com/repos/jameslamb/intro-to-r/forks",
+  "keys_url": "https://api.github.com/repos/jameslamb/intro-to-r/keys{/key_id}",
+  "collaborators_url": "https://api.github.com/repos/jameslamb/intro-to-r/collaborators{/collaborator}",
+  "teams_url": "https://api.github.com/repos/jameslamb/intro-to-r/teams",
+  "hooks_url": "https://api.github.com/repos/jameslamb/intro-to-r/hooks",
+  "issue_events_url": "https://api.github.com/repos/jameslamb/intro-to-r/issues/events{/number}",
+  "events_url": "https://api.github.com/repos/jameslamb/intro-to-r/events",
+  "assignees_url": "https://api.github.com/repos/jameslamb/intro-to-r/assignees{/user}",
+  "branches_url": "https://api.github.com/repos/jameslamb/intro-to-r/branches{/branch}",
+  "tags_url": "https://api.github.com/repos/jameslamb/intro-to-r/tags",
+  "blobs_url": "https://api.github.com/repos/jameslamb/intro-to-r/git/blobs{/sha}",
+  "git_tags_url": "https://api.github.com/repos/jameslamb/intro-to-r/git/tags{/sha}",
+  "git_refs_url": "https://api.github.com/repos/jameslamb/intro-to-r/git/refs{/sha}",
+  "trees_url": "https://api.github.com/repos/jameslamb/intro-to-r/git/trees{/sha}",
+  "statuses_url": "https://api.github.com/repos/jameslamb/intro-to-r/statuses/{sha}",
+  "languages_url": "https://api.github.com/repos/jameslamb/intro-to-r/languages",
+  "stargazers_url": "https://api.github.com/repos/jameslamb/intro-to-r/stargazers",
+  "contributors_url": "https://api.github.com/repos/jameslamb/intro-to-r/contributors",
+  "subscribers_url": "https://api.github.com/repos/jameslamb/intro-to-r/subscribers",
+  "subscription_url": "https://api.github.com/repos/jameslamb/intro-to-r/subscription",
+  "commits_url": "https://api.github.com/repos/jameslamb/intro-to-r/commits{/sha}",
+  "git_commits_url": "https://api.github.com/repos/jameslamb/intro-to-r/git/commits{/sha}",
+  "comments_url": "https://api.github.com/repos/jameslamb/intro-to-r/comments{/number}",
+  "issue_comment_url": "https://api.github.com/repos/jameslamb/intro-to-r/issues/comments{/number}",
+  "contents_url": "https://api.github.com/repos/jameslamb/intro-to-r/contents/{+path}",
+  "compare_url": "https://api.github.com/repos/jameslamb/intro-to-r/compare/{base}...{head}",
+  "merges_url": "https://api.github.com/repos/jameslamb/intro-to-r/merges",
+  "archive_url": "https://api.github.com/repos/jameslamb/intro-to-r/{archive_format}{/ref}",
+  "downloads_url": "https://api.github.com/repos/jameslamb/intro-to-r/downloads",
+  "issues_url": "https://api.github.com/repos/jameslamb/intro-to-r/issues{/number}",
+  "pulls_url": "https://api.github.com/repos/jameslamb/intro-to-r/pulls{/number}",
+  "milestones_url": "https://api.github.com/repos/jameslamb/intro-to-r/milestones{/number}",
+  "notifications_url": "https://api.github.com/repos/jameslamb/intro-to-r/notifications{?since,all,participating}",
+  "labels_url": "https://api.github.com/repos/jameslamb/intro-to-r/labels{/name}",
+  "releases_url": "https://api.github.com/repos/jameslamb/intro-to-r/releases{/id}",
+  "deployments_url": "https://api.github.com/repos/jameslamb/intro-to-r/deployments",
+  "created_at": "2016-12-30T19:58:07Z",
+  "updated_at": "2025-12-20T05:29:40Z",
+  "pushed_at": "2025-12-21T00:48:45Z",
+  "git_url": "git://github.com/jameslamb/intro-to-r.git",
+  "ssh_url": "git@github.com:jameslamb/intro-to-r.git",
+  "clone_url": "https://github.com/jameslamb/intro-to-r.git",
+  "svn_url": "https://github.com/jameslamb/intro-to-r",
+  "homepage": "https://jameslamb.github.io/intro-to-r/",
+  "size": 58208,
+  "stargazers_count": 9,
+  "watchers_count": 9,
+  "language": "HTML",
+  "has_issues": true,
+  "has_projects": false,
+  "has_downloads": true,
+  "has_wiki": false,
+  "has_pages": true,
+  "has_discussions": false,
+  "forks_count": 6,
+  "mirror_url": null,
+  "archived": false,
+  "disabled": false,
+  "open_issues_count": 5,
   "license": {
     "key": "mit",
     "name": "MIT License",
@@ -1257,11 +1335,22 @@ Here's a preview:
     "url": "https://api.github.com/licenses/mit",
     "node_id": "MDc6TGljZW5zZTEz"
   },
+  "allow_forking": true,
+  "is_template": false,
+  "web_commit_signoff_required": false,
   "topics": [
     "r",
     "rstats",
     "teaching"
-  ]
+  ],
+  "visibility": "public",
+  "forks": 6,
+  "open_issues": 5,
+  "watchers": 9,
+  "default_branch": "main",
+  "temp_clone_token": null,
+  "network_count": 6,
+  "subscribers_count": 1
 }
 ```
 
@@ -1347,7 +1436,7 @@ top5 <- c(
   , NA
   , "Lupe Fiasco"
   , "Shad"
-  , "Kanye"
+  , "Tobe Nwigwe"
   , NA
 )
 print(top5)
@@ -1361,6 +1450,7 @@ myDF <- data.frame(
     , z = c("hey", "there", NA, "friends")
 )
 cleanDF <- myDF[complete.cases(myDF), ]
+print(cleanDF)
 ```
 
 ## Strategy 2: Handle on Subsets
@@ -1412,6 +1502,7 @@ testDF <- data.frame(
 # Clean up w/ roughfix
 library(randomForest)
 cleanDF <- randomForest::na.roughfix(testDF)
+print(cleanDF)
 ```
 
 # Plotting
@@ -1819,6 +1910,7 @@ for (var_name in x_var_names) {
     # Remember to give the test set these new features!
     swissTestDF[, bin_var_name] <- swissTestDF[, var_name] > median(swiss[, var_name])
 }
+print(head(swissTestDF, 5))
 ```
 
 We can use `lapply()` to apply the same test to every variable in our data frame.
@@ -2419,3 +2511,9 @@ See the following to learn how to create packages:
   - `{roxygen2}` ([link](https://cran.r-project.org/web/packages/roxygen2/index.html)) = provides a framework for turning specially-formatting comments in R functions into package documentation that you can call with `?`
   - `{testthat}` ([link](https://cran.r-project.org/web/packages/testthat/index.html)) = a popular library for running unit tests, essentially tests that your code works as it should
 * "R packages" book - Hadley Wickham and Jenny Bryan ([link](https://r-pkgs.org/))
+
+# Learning More On Your Own
+
+Explore these links to learn even more about R.
+
+* "R Programming for Data SCience" - RD Peng ([link](https://bookdown.org/rdpeng/rprogdatascience/))

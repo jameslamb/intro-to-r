@@ -46,6 +46,8 @@ In this assignment, you must use **at least one** external package from each of 
 * "Math and Statistics"
 * "Visualization, Presentation, and Reporting"
 
+**NOTE: "external" means that packages that do not come pre-installed with R. The following can be used, but don't count towards this requirement: `{base}`, `{datasets}`, `{graphics}`, `{grDevices}`, `{methods}`, `{stats}`, and `{utils}`.
+
 You are, of course, welcome to use any other packages you deem appropriate *in addition to this minimum requirement*.
 
 See the following sections for submission details on each of the four parts of this assignment
@@ -66,9 +68,9 @@ This report should answer the following items:
     - good: *"I am using data on Japanese 10-year bond yields and inflation to predict BOJ monetary policy dovishness / hawkishness."*
     - bad: *"I am analyzing bond data"*
 - What data set do you plan to use? Where can others find it? What variables does it contain?
-- What "Data Retrieval and Transformation" package do you plan to use? What does that package do?
-- What "Math and Statistics" package do you plan to use? What does that package do?
-- What "Visualization, Presentation, and Reporting" package do you plan to use? What does that package do?
+- What is one "Data Retrieval and Transformation" package you plan to use? What does that package do?
+- What is one "Math and Statistics" package you plan to use? What does that package do?
+- What is one "Visualization, Presentation, and Reporting" package you plan to use? What does that package do?
 
 <h3>Submission</h3>
 

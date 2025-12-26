@@ -223,11 +223,14 @@ class(some_nums)
 
 <p><code>NA</code> values are not necessarily problems!</p>
 
-<p>NA` can actually hold valuable information. For example, imagine that you get a dump of data from Salesforce or some other CRM system with information like customer_name, date_of_first_contact, and date_of_second_contact.</p>
+<p>NA` can actually hold valuable information
+For example, imagine that you get a dump of data from Salesforce or some other CRM system with information like customer_name, date_of_first_contact, and date_of_second_contact.</p>
 
 <p><br></p>
 
-<p>Depending on how the system was set up, <code>date_of_second_contact1</code> may have dates only for customers who have been contacted at least twice, and be <code>NA</code> everywhere else. This is valuable information! If you want to build a model of 1-contact conversion, you could use the presence/absence of <code>NA</code> to help you identify the 1-contact customers that belong in your model.</p>
+<p>Depending on how the system was set up, <code>date_of_second_contact1</code> may have dates only for customers who have been contacted at least twice, and be <code>NA</code> everywhere else.
+This is valuable information!
+If you want to build a model of 1-contact conversion, you could use the presence/absence of <code>NA</code> to help you identify the 1-contact customers that belong in your model.</p>
 
   </article>
   <!-- Presenter Notes -->
@@ -244,7 +247,8 @@ class(some_nums)
 
 <h2>Strategy 1: Total Removal</h2>
 
-<p>The first approach you may take to dealing with <code>NA</code> values is to simply drop them from your data. If you don&#39;t think these missing data have any business value and your dataset is big enough that you can afford to drop some rows / columns, this is the right move for you.</p>
+<p>The first approach you may take to dealing with <code>NA</code> values is to simply drop them from your data
+If you don&#39;t think these missing data have any business value and your dataset is big enough that you can afford to drop some rows / columns, this is the right move for you.</p>
 
 <pre><code class="r"># Removing NAs for vectors
 top5 &lt;- c(&quot;Wale&quot;, &quot;Chance&quot;, NA, &quot;Lupe Fiasco&quot;, &quot;Shad&quot;, &quot;Kanye&quot;, NA)
@@ -273,7 +277,9 @@ cleanDF &lt;- myDF[complete.cases(myDF), ]
 
 <h2>Strategy 2: Handle on Subsets</h2>
 
-<p>You may find the &quot;remove all the NAs everywhere&quot; strategy a bit too aggressive for your use case. If you have a 100-variable dataset and a single variable (column) is 90\% NA values, do you really want to drop every row where that variable is NA? A better approach might be to selectively subset out columns where missing values are most severe before using <code>complete.cases()</code> to remove rows.</p>
+<p>You may find the &quot;remove all the NAs everywhere&quot; strategy a bit too aggressive for your use case.
+If you have a 100-variable dataset and a single variable (column) is 90\% NA values, do you really want to drop every row where that variable is NA?
+A better approach might be to selectively subset out columns where missing values are most severe before using <code>complete.cases()</code> to remove rows.</p>
 
 <pre><code class="r"># Create a data frame where some variable have more NAs than others
 testDF &lt;- data.frame(var1 = sample(c(rnorm(99), NA), 200, replace = TRUE),
@@ -304,7 +310,9 @@ cleanDF &lt;- cleanDF[complete.cases(cleanDF),]
 
 <h2>Strategy 3: Imputation</h2>
 
-<p>A final strategy, particularly useful in modeling contexts, is to use some <a href="https://www.analyticsvidhya.com/blog/2016/03/tutorial-powerful-packages-imputing-missing-values/">imputation strategy</a> to replace <code>NA</code> values with reasonable alternatives. One common approach (and my favorite), the <code>roughfix</code> method. It works like this:</p>
+<p>It may be useful to try an <a href="https://www.analyticsvidhya.com/blog/2016/03/tutorial-powerful-packages-imputing-missing-values/">imputation strategy</a> to replace <code>NA</code> values with reasonable alternatives.
+One common approach (and my favorite), the <code>roughfix</code> method.
+It works like this:</p>
 
 <ul>
 <li>For numeric columns, replace NAs with the column median</li>
@@ -352,7 +360,8 @@ cleanDF &lt;- randomForest::na.roughfix(testDF)
 
 <p><br></p>
 
-<p>The essential idea of the base plotting system is to build up plots in layers. You first create a simple plot, then &quot;add on&quot; a legend, more variables, other plot types, etc.</p>
+<p>The essential idea of the base plotting system is to build up plots in layers.
+You first create a simple plot, then &quot;add on&quot; a legend, more variables, other plot types, etc.</p>
 
 <p>See <a href="../code/programming-supplement.html#The_Base_Plotting_System">&quot;The Base Plotting System&quot;</a> in the programming supplement.</p>
 
@@ -432,7 +441,8 @@ cleanDF &lt;- randomForest::na.roughfix(testDF)
 
 <h2>Creating a Grid of plots</h2>
 
-<p>You can combine multiple plots in a grid layout. See <a href="../code/programming-supplement.html#The_Base_Plotting_System">&quot;The Base Plotting System&quot;</a> for an example.</p>
+<p>You can combine multiple plots in a grid layout.
+See <a href="../code/programming-supplement.html#The_Base_Plotting_System">&quot;The Base Plotting System&quot;</a> for an example.</p>
 
 <p><center><img src="assets/img/plot-grid.png" style="max-width:75%;"></center></p>
 
@@ -475,7 +485,9 @@ cleanDF &lt;- randomForest::na.roughfix(testDF)
 
 <h2>A Note On Graphics Devices</h2>
 
-<p>When R (or any other program!) creates plots, it needs to know where to put them! When you call <code>plot()</code> or other commands from within and RStudio session, the default is to just display the resulting figure in the &quot;Plots&quot; pane. However, you can use other <strong>graphics devices</strong> (places to put visual output) to tell R to put your figures elsewhere.</p>
+<p>When R (or any other program!) creates plots, it needs to know where to put them!
+When you call <code>plot()</code> or other commands from within and RStudio session, the default is to just display the resulting figure in the &quot;Plots&quot; pane.
+However, you can use other <strong>graphics devices</strong> (places to put visual output) to tell R to put your figures elsewhere.</p>
 
 <p><center><img src="assets/img/plot-files.png" style="max-width:40%;"></center></p>
 
@@ -506,7 +518,8 @@ cleanDF &lt;- randomForest::na.roughfix(testDF)
 
 <h2>Columnwise Combination With cbind</h2>
 
-<p>In situations where you have multiple data frames with the same rows but different columns, you can combine them column-wise with R&#39;s <code>cbind()</code> command. Note that this command will only work if the two data frames to be joined have the same number of rows AND those rows refer to the same observation.</p>
+<p>In situations where you have multiple data frames with the same rows but different columns, you can combine them column-wise with R&#39;s <code>cbind()</code> command.
+Note that this command will only work if the two data frames to be joined have the same number of rows AND those rows refer to the same observation.</p>
 
 <p><strong>cbind = &quot;column-wise bind&quot;</strong></p>
 
@@ -527,7 +540,9 @@ cleanDF &lt;- randomForest::na.roughfix(testDF)
 
 <h2>Column Matching with merge</h2>
 
-<p>It&#39;s common in data science workflows to have two mismatched tables of data from different sources and to want to combine them by matching on one or more keys. Think <code>JOIN</code> in SQL or <code>VLOOKUP</code> in Excel. To perform this operation in R, you can use the <code>merge()</code> command.</p>
+<p>It&#39;s common in data science workflows to have two mismatched tables of data from different sources and to want to combine them by matching on one or more keys.
+Think <code>JOIN</code> in SQL or <code>VLOOKUP</code> in Excel.
+To perform this operation in R, you can use the <code>merge()</code> command.</p>
 
 <p><center><img src="assets/img/merge.png" style="max-width:70%;"></center></p>
 
@@ -546,7 +561,10 @@ cleanDF &lt;- randomForest::na.roughfix(testDF)
 
 <h2>Rowwise Combination With rbind</h2>
 
-<p>So far we&#39;ve talked about merging columns from different tables. But what if you want to merge rows? For example, imagine that you are a researcher in a lab studying some natural phenomenon. You may take multiple samples (measuring the same variables) and then want to put them together into a single data frame to build a model. For this case, we can use R&#39;s <code>rbind()</code> function.</p>
+<p>But what if you want to merge rows instead of columns?
+For example, imagine that you are a researcher in a lab studying some natural phenomenon.
+You may take multiple samples (measuring the same variables) and then want to put them together into a single data frame to build a model.
+For this case, we can use R&#39;s <code>rbind()</code> function.</p>
 
 <p><strong>rbind = &quot;row-wise bind&quot;</strong></p>
 
@@ -601,7 +619,7 @@ cleanDF &lt;- randomForest::na.roughfix(testDF)
 <p><strong>Choosing External Packages</strong></p>
 
 <ul>
-<li>You need to choose one data retrieval package, one statistics package, and one visualization package from <a href="../assignments/final_project_packages.md">this list</a></li>
+<li>You need to choose at least one data retrieval package, one statistics package, and one visualization package from <a href="../assignments/final_project_packages.md">this list</a></li>
 <li>Don&#39;t stress! You can do all of the following:
 
 <ul>

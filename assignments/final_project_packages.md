@@ -13,7 +13,6 @@
 - foreach
 - foreign
 - haven
-- httr
 - httr2
 - jsonlite
 - lubridate
@@ -22,6 +21,7 @@
 - purrr
 - quantmod
 - readxl
+- recipes
 - reshape2
 - rvest
 - stringr
@@ -45,6 +45,7 @@ Or any of the packages from these:
 - forecast
 - forcats
 - glmnet
+- infer
 - lightgbm
 - lmtest
 - marginaleffects
@@ -60,6 +61,7 @@ Or any of the packages from these:
 - tidymodels
 - treesnip
 - xgboost
+- yardstick
 - zoo
 
 Or any of the packages from these:
@@ -77,6 +79,7 @@ Or any of the packages from these:
 - ggbump
 - ggforce
 - gghighlight
+- ggiraph
 - ggplot2
 - ggvis
 - googleVis
