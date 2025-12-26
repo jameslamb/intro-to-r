@@ -1,3 +1,6 @@
+# requires auth
+https://api.github.com/*
+
 # this 403s but is still there
 https://blog.revolutionanalytics.com/2014/08/using-r-inside-the-enterprise-integration-with-existing-systems.html
 
