@@ -306,6 +306,20 @@ Don't cheat.
 
 For more, see https://www.marquette.edu/provost/integrity-pledge.php.
 
-## E. Important Dates
+## E. AI Policy
+
+The university's policies on artificial intelligence ("AI"), including large language models ("LLMs"), can be found at https://www.marquette.edu/center-for-teaching-and-learning/emerging-technologies-artificial-intelligence.php.
+
+In this course, you are permitted to use LLMs (sometimes called "generative AI" or "agentic AI") if you think they will aid your learning.
+
+If you use those technologies, I encourage you to only use them for limiting debugging help, similar to the way you'd use a search engine or conversation with a trusted colleague.
+The assignments are designed to gradually increase in difficulty and to teach you the fundamental skills needed to write R code, and it will be difficult to keep progressing if you rely too heavily on AI-generated code you don't fully understand.
+
+Regardless of the technologies you use, you are responsible for everything you submit and will receive a grade consistent with the rubrics for those assignments.
+_"this AI tool told me this is how R works"_ will not be considered an acceptable excuse for submissions that fail to meet the requirements.
+
+Your understanding of your final project code will be tested during the **Final Project Presentation**, and failure to demonstrate understanding there will result in lost points.
+
+## F. Important Dates
 
 See https://www.marquette.edu/central/registrar/2026-spring-academic-calendar.php for dates like the deadlines for dropping or withdrawing from the course.
