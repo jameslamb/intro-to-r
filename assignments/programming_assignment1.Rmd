@@ -57,7 +57,7 @@ print(
     ### END ####
 )
 
-# b. Write a function that takes in a positive integer `n`` and returns a character vector with
+# b. Write a function that takes in a positive integer `n` and returns a character vector with
 #    the nth element repeated n times. e.g.:
 #
 #    RepLetter(1) should yield c("a")
