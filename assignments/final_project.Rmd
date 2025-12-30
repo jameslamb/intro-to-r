@@ -46,7 +46,7 @@ In this assignment, you must use **at least one** external package from each of 
 * "Math and Statistics"
 * "Visualization, Presentation, and Reporting"
 
-**NOTE: "external" means that packages that do not come pre-installed with R. The following can be used, but don't count towards this requirement: `{base}`, `{datasets}`, `{graphics}`, `{grDevices}`, `{methods}`, `{stats}`, and `{utils}`.
+**NOTE:** "external" means that packages that do not come pre-installed with R. The following can be used, but don't count towards this requirement: `{base}`, `{datasets}`, `{graphics}`, `{grDevices}`, `{methods}`, `{stats}`, and `{utils}`.
 
 You are, of course, welcome to use any other packages you deem appropriate *in addition to this minimum requirement*.
 
