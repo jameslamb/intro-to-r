@@ -523,6 +523,7 @@ while (KEEP_SEARCHING) {
         print(paste0(i, ": found it!"))
         KEEP_SEARCHING <- FALSE
     } else {
+        # if it wasn't found, increment the counter
         print(paste0(i, ": not found"))
         i <- i + 1
     }
