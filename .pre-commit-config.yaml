@@ -28,7 +28,7 @@ repos:
       - id: shellcheck
         args: ["--exclude=SC2002"]
   - repo: https://github.com/adrienverge/yamllint
-    rev: v1.37.1
+    rev: v1.38.0
     hooks:
       - id: yamllint
   - repo: https://github.com/codespell-project/codespell
