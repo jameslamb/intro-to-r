@@ -1,5 +1,5 @@
 ---
-title : Programming Assignment 2
+title : Programming Assignment 2 (alternative)
 output:
   html_document:
     theme: spacelab
@@ -9,7 +9,13 @@ output:
       smooth_scroll: true
 ---
 
-<h2>Assignment Introduction</h2>
+## "Alternative"
+
+This is not a required assignment for most students in the course.
+
+It's an alternative to **Programming Assignment 2**, for students who cannot complete that assignment on time because of an excused absence.
+
+## Assignment Introduction
 
 In this assignment, you'll practice some of the R skills you'll need for the final project.
 The assignment is broken into 3 parts:
@@ -18,9 +24,9 @@ The assignment is broken into 3 parts:
 * `Part 2: Getting and Cleaning Data` (40 points)
 * `Part 3: Reading Remote Files` (40 points)
 
-<h2>Part 1: Reading Package Docs</h2>
+## Part 1: Reading Package Docs
 
-<h3>Description</h3>
+### Description
 
 In the final project, you'll be asked to use some external packages to create an R processing pipeline that gets data, cleans it, analyzes it, and present results.
 In this assignment, we're going to work with some of those packages to get familiar with them.
@@ -46,7 +52,7 @@ Try running these yourself, but you do not need to include the output in your su
 
 **NOTE: Please, just COPY from these packages' documentation... do not write your own custom examples.**
 
-<h3>Submission</h3>
+### Submission
 
 Upload a file to the **Programming Assignment 2** dropbox on D2L with a name like `{Firstname}_{Lastname}_Assignment2pt1.R` (example: `James_Lamb_Assignment2pt1.R`).
 This file should contain 10 sections, one for each of the functions above.
@@ -71,9 +77,9 @@ cor(1:10, 2:11) # == 1
 #==============================================================================#
 ```
 
-<h2>Part 2: Getting and Cleaning Data</h2>
+## Part 2: Getting and Cleaning Data
 
-<h3>Description</h3>
+### Description
 
 As you go further into the world of data science, you'll hear this said often: **most of a data scientist's time is spent getting and cleaning data**.
 Let's practice that crucial activity.
@@ -87,7 +93,7 @@ Then you'll join them into a single `data.frame` and plot them against each othe
 - Brief R + `{quantmod}` + FRED tutorial: https://www.quantmod.com/documentation/getSymbols.FRED.html
 - Tutorial on creating line plots in R's base plotting system: https://www.harding.edu/fmccown/r/
 
-<h3>Submission</h3>
+### Submission
 
 Upload a file to the **Programming Assignment 2** dropbox on D2L with a name like `{Firstname}_{Lastname}_Assignment2pt2.R` (example: `James_Lamb_Assignment2pt2.R`).
 In the example script below, I've filled in the pieces needed to pull the U.S. data.
@@ -96,15 +102,24 @@ Your task is to fill out the rest of this script so that it produces a plot comp
 You need to complete all of the following steps, indicated by the phrase `### FILL THIS IN ###` in the example script below:
 
 - add the command to pull the Japanese inflation data (https://fred.stlouisfed.org/series/FPCPITOTLZGJPN)
-- rename the columns of the Japanese data so that the inflation series is called "JPN_INF_YOY"
+- rename the columns of the Japanese data so that the inflation series is called "JPN_INFLATION_YOY"
 - add the Japanese data to the `merge()` command to create a single dataset for plotting
     - please look at the documentation for `?merge`
-- ensure the plot is a line plot (hint: see `?graphics::plot`)
-- set the plot title to "Inflation Data"
-- set the plot y-axis label to "CPI Inflation (%yoy)"
-- set the plot x-axis label to "time"
-- add the U.S. data to the plot with `lines(type = "l")`
-    - use the `col` argument within `lines()` to set the color of this line to "red"
+- initialize the plot grid to hold 2 plots in 1 row (hint: see `?par` and look for `mfrow`)
+- plot the Japanese data on the left:
+    - ensure the plot is a line plot (hint: see `?graphics::plot`)
+    - ensure the line is blue (hint: see `col` argument)
+    - set the y-axis limits to `(0, 25)`
+    - set the plot title to "CPI Inflation (Japan)"
+    - set the plot y-axis label to "Inflation (%YoY)"
+    - set the plot x-axis label to "date-time"
+- plot the U.S. data on the right
+    - ensure the plot is a line plot (hint: see `?graphics::plot`)
+    - ensure the line is blue (hint: see `col` argument)
+    - set the y-axis limits to `(0, 25)`
+    - set the plot title to "CPI Inflation (USA)"
+    - set the plot y-axis label to "Inflation (%YoY)"
+    - set the plot x-axis label to "date-time"
 
 ```{r quandlData, eval = FALSE, echo = TRUE, message = FALSE, warning=FALSE}
 # Load dependencies
@@ -128,7 +143,7 @@ jpnDF <- as.data.frame(
 jpnDF["Date"] <- as.Date(row.names(jpnDF))
 
 # rename columns
-names(usaDF) <- c("USA_INF_YOY", "Date")
+names(usaDF) <- c("USA_INFLATION_YOY", "Date")
 names(jpnDF) <- ### FILL THIS IN ###
 
 # Combine the two data.frames with merge()
@@ -138,38 +153,42 @@ mergedDF <- merge(
     by = "Date"
 )
 
-# Plot the two series
+par(
+    ### FILL THIS IN ###,
+)
+
+# Plot the Japanese data on the left
 plot(
     x = mergedDF$Date,
-    y = mergedDF$JPN_INF_YOY,
+    y = mergedDF$JPN_INFLATION_YOY,
     type = ### FILL THIS IN ###,
     main = ### FILL THIS IN ###,
     xlab = ### FILL THIS IN ###,
-    ylab = ### FILL THIS IN ###
+    ylab = ### FILL THIS IN ###,
+    col = ### FILL THIS IN ###,
+    ylim = ### FILL THIS IN ###
 )
 
-lines(
-    x = ### FILL THIS IN ###,
-    y = ### FILL THIS IN ###,
-    type = "l",
-    col = ### FILL THIS IN ###
-)
-
-legend(
-    x = "topright"
-    , col = c("black", "red")
-    , legend = c("JPN", "USA")
-    , lty = c(1, 1)
+# Plot the U.S. data on the right
+plot(
+    x = mergedDF$Date,
+    y = mergedDF$USA_INFLATION_YOY,
+    type = ### FILL THIS IN ###,
+    main = ### FILL THIS IN ###,
+    xlab = ### FILL THIS IN ###,
+    ylab = ### FILL THIS IN ###,
+    col = ### FILL THIS IN ###,
+    ylim = ### FILL THIS IN ###
 )
 ```
 
 If this works correctly, you should see a plot similar to this:
 
-<center><img src = "assets/img/assignment_2.png"></center>
+<center><img src = "assets/img/alt_assignment_2.png"></center>
 
-<h2>Part 3: Reading Remote Files</h2>
+## Part 3: Reading Remote Files
 
-<h3>Description</h3>
+### Description
 
 In the final project, you'll be asked to submit code that reads in data from remote storage.
 
@@ -177,28 +196,33 @@ In this part of the assignment, you'll practice this important skill.
 
 **hint:** Read https://jameslamb.github.io/intro-to-r/code/programming-supplement.html#Working_with_Files for some information about reading data from files.
 
-<h3>Submission</h3>
+### Submission
 
 Upload a file to the **Programming Assignment 2** dropbox on D2L with a name like `{Firstname}_{Lastname}_Assignment2pt3.R` (example: `James_Lamb_Assignment2pt3.R`).
 
 In the file, implement 2 functions:
 
 * `get_remote_data()`
-    - takes 1 argument:
+    - takes 2 arguments:
         - `url`: string containing a URL pointing to a CSV file on the internet
+        - `data_path`: file path to write the output data to
     - prints the following message: `"Downloaded data from '<url>'. Full dataset has <m> rows and <n> columns."`
         - `<url>` is replaced with the URL passed via `via`
         - `<m>` is replaced with the number of rows in the data
         - `<n>` is replaced with the number of columns in the data
     - returns a `data.frame` representation of the file's contents
-    - does not directly call `download.file()`, or otherwise leave files on the filesystem
+    - writes the `data.frame`'s content as a CSV to the path indicated by `data_path`
+    - if a file already exists at `data_path`, reads that file in and does not try to re-download from `url`
 * `get_dataset()`
-    - takes 2 arguments:
+    - takes 4 arguments:
         - `url`: same interpretation as above
+        - `data_path`: same interpretation as above
         - `num_rows`: an integer. If `>=1`, the function returns the first `num_rows` rows of the data. If `<= 0`, the function returns all rows.
+        - `num_cols`: an integer. If `>=1`, the function returns the first `num_cols` columns of the data. If `<= 0`, the function returns all rows
+        - if `num_rows` is greater than the total number of rows in the data frame, the function throws an error with the message `"num_rows (<num_rows>) is too high (full dataset has <m> rows)"`, where `<num_rows>` and `<m>` replaced with the actual values as described above
+        - if `num_cols` is greater than the total number of rows in the data frame, the function throws an error with the message `"num_cols (<num_cols>) is too high (full dataset has <n> columns)"`, where `<num_cols>` and `<n>` replaced with the actual values as described above
     - calls `get_remote_data()` and uses its result
-    - returns a `data.frame` with the first `num_rows` of the data indicated by `url`
-    - does not directly call `download.file()`, or otherwise leave files on the filesystem
+    - returns a `data.frame` with the first `num_rows` and `num_cols` of the data indicated by `url`
 
 Your submitted script should only contain `library()` calls (if you choose to use external packages) and your implementations
 of those 2 functions.
@@ -212,13 +236,13 @@ Follow the template below, only adding code between the `###` comments.
 # (optional - add library() calls here)
 ### END CODE ###
 
-get_remote_data <- function(url){
+get_remote_data <- function(url, data_path){
     ### BEGIN CODE ###
     # (add code here)
     ### END CODE ###
 }
 
-get_dataset <- function(url, num_rows){
+get_dataset <- function(url, data_path, num_rows, num_cols){
     ### BEGIN CODE ###
     # (add code here)
     ### END CODE ###
@@ -232,23 +256,61 @@ Test your code using the following snippet.
 ```r
 #--- test 1: should print and return the expected data ---#
 fullDF <- get_remote_data(
-    url = "https://raw.githubusercontent.com/jameslamb/intro-to-r/refs/heads/main/sample-data/iris.csv"
+    url = "https://raw.githubusercontent.com/jameslamb/intro-to-r/refs/heads/main/sample-data/iris.csv",
+    data_path = "out.csv"
 )
 # "Downloaded data from 'https://raw.githubusercontent.com/jameslamb/intro-to-r/refs/heads/main/sample-data/iris.csv'. Dataset has 150 rows and 6 columns."
 
-#--- test 2: should subset rows ---#
+#--- test 2: should use the local file ---#
+fullDF <- get_remote_data(
+    url = "irrelevant-because-the-local-file-should-be-used-instead",
+    data_path = "out.csv"
+)
+# "Downloaded data from 'https://raw.githubusercontent.com/jameslamb/intro-to-r/refs/heads/main/sample-data/iris.csv'. Dataset has 150 rows and 6 columns."
+
+#--- test 3: should subset rows ---#
 subsetDF <- get_dataset(
     url = "https://raw.githubusercontent.com/jameslamb/intro-to-r/refs/heads/main/sample-data/iris.csv"
+    , data_path = "out.csv"
     , num_rows = 27
+    , num_cols = -1
 )
 stopifnot(dim(subsetDF) == c(27, 6))
 
-#--- test 3: should return all rows if num_rows == -1 ---#
+#--- test 4: should return all rows and columns if num_rows == -1 and num_cols == -1 ---#
 subsetDF <- get_dataset(
     url = "https://raw.githubusercontent.com/jameslamb/intro-to-r/refs/heads/main/sample-data/iris.csv"
     , num_rows = -1
+    , num_cols = -1
 )
 stopifnot(dim(subsetDF) == c(150, 6))
+
+#--- test 5: should subset columns ---#
+subsetDF <- get_dataset(
+    url = "https://raw.githubusercontent.com/jameslamb/intro-to-r/refs/heads/main/sample-data/iris.csv"
+    , data_path = "out.csv"
+    , num_rows = -1
+    , num_cols = 2
+)
+stopifnot(dim(subsetDF) == c(150, 2))
+
+#--- test 6: should raise expected error if num_rows too high ---#
+subsetDF <- get_dataset(
+    url = "https://raw.githubusercontent.com/jameslamb/intro-to-r/refs/heads/main/sample-data/iris.csv"
+    , data_path = "out.csv"
+    , num_rows = 500
+    , num_cols = -1
+)
+# error: "num_rows (500) is too high (full dataset has <150> rows)"
+
+#--- test 7: should raise expected error if num_cols too high ---#
+subsetDF <- get_dataset(
+    url = "https://raw.githubusercontent.com/jameslamb/intro-to-r/refs/heads/main/sample-data/iris.csv"
+    , data_path = "out.csv"
+    , num_rows = -1
+    , num_cols = 18
+)
+# error: "num_cols (18) is too high (full dataset has <6> columns)"
 ```
 
 <br><br><br>

@@ -1,0 +1,90 @@
+---
+title : Quiz 2 (alternative)
+output:
+  html_document:
+    toc: true
+    toc_float:
+      collapsed: true
+      smooth_scroll: true
+    toc_depth: 2
+    theme: spacelab
+---
+
+## "Alternative"
+
+This is not a required assignment for most students in the course.
+It's an alternative to **Quiz 2**, for students who cannot complete that assignment on time because of an excused absence.
+
+## Instructions
+
+### Part 1 (25%)
+
+First, take **Quiz 2** on D2L.
+
+Completing this, regardless of the score you receive on the quiz, is worth 25% of your grade for **Quiz 2**.
+
+You are welcome to review the **Quiz 2** solution video ([link](https://drive.google.com/file/d/1LvTJXAe9_zeA8ISH2D1iTJWQFjO5suLs/view?usp=drive_link)) before, but I encourage you to attempt the quiz without watching that first.
+**Quiz 2** includes important information you're expected to understand at this point in the course.
+
+### Part 2 (75%)
+
+1. Install the following R packages: `{data.table}` and `{jsonlite}'
+2. Create a file called `{Firstname}_{Lastname}_Quiz2.R` (example: `James_Lamb_Quiz2.R`). Failure to follow this file-naming format will result in a grade penalty.
+3. Copy the code below into that file.
+4. Change the code to meet all the requirements described in the comments.
+5. Email that file to the instructor by the deadline he's provided.
+
+```r
+# tryToLoadLibraries() should meet the following requirements:
+#
+#   * accepts 2 arguments, `libraryVec` and `error_if_missing`
+#     * `libraryVec` = a character vector of library names
+#     * `error_if_missing` = a boolean (TRUE or FALSE)
+#   * tries to load each library
+#     * if `error_if_missing` is `TRUE`, immediately raises an error library could not be loaded
+#     * if `error_if_missing` is `FALSE`, warns but does not error about a library that could not be loaded,
+#       and continues trying to load the remaining libraries
+#   * uses `require()` and `library()`
+#   * does not use `installed.packages()`
+#
+# Only modify the code between '### BEGIN ###' and '### END ###'.
+#
+# There are test cases included after the "#--- tests ---#" comment.
+# Use them to test your implementation.
+# Try clearing your session between re-runs to ensure they work correctly.
+#
+# Do not delete or modify any of that code.
+#
+tryToLoadLibraries <- function(libraryVec, error_if_missing) {
+    ### BEGIN ###
+    ### END ###
+}
+
+#--- tests ---#
+
+# test 1: errors out and does not load data.table
+tryToLoadLibraries(
+    libraryVec = c("does-not-exist", "data.table")
+    , error_if_missing = TRUE
+)
+stopifnot(names(sessionInfo()$otherPkgs) == "")
+
+# test 2: warns about {does-not-exist} and loads {data.table}
+tryToLoadLibraries(
+    libraryVec = c("does-not-exist", "data.table")
+    , error_if_missing = FALSE
+)
+stopifnot(names(sessionInfo()$otherPkgs) == c("data.table"))
+
+# test 3: loads {data.table} and {jsonlite}
+tryToLoadLibraries(
+    libraryVec = c("data.table", "jsonlite")
+    , error_if_missing = FALSE
+)
+stopifnot(
+    identical(
+        sort(names(sessionInfo()$otherPkgs))
+        , c("data.table", "jsonlite")
+    )
+)
+```
