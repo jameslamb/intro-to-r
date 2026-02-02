@@ -271,6 +271,11 @@ Follow the instructions at https://jameslamb.github.io/intro-to-r/assignments/ex
 
 Any work submitted after a deadline, without an approved extension, will receive a grade of 0.
 
+The assignments are teaching tools and each is accompanied with a lecture video explaining the answers.
+These videos are released promptly after assignments are due, so students have time to watch and learn from them.
+
+Therefore, **if an extension is approved for any assignments, you will have to complete an alternative version of the assignment**.
+
 ## E. Grade Appeal
 
 The grading policies described above will be used to calculate your final grade for the course.

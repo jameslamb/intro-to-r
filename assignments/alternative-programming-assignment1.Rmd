@@ -1,0 +1,178 @@
+---
+title : Programming Assignment 1 (alternative)
+output:
+  html_document:
+    theme: spacelab
+    toc: true
+    toc_float:
+      collapsed: true
+      smooth_scroll: true
+---
+
+## "Alternative"
+
+This is not a required assignment for most students in the course.
+
+It's an alternative to **Programming Assignment 1**, for students who cannot complete that assignment on time because of an excused absence.
+
+## Overview
+
+In software development, "debugging" means "figuring out why your code isn't working".
+
+In this assignment, you'll practice debugging R code.
+
+## Instructions
+
+I've provided 5 snippets of code below.
+Each is intentionally incorrect.
+To complete this assignment, correct the code so that it works as intended.
+
+Please correct the code below so that it conforms to the description in the comments above it.
+
+To get full points on this assignment:
+
+* The entire script you submit must run without errors.
+* Your code must fulfill the specific instructions provided.
+
+Note:
+
+* Partial credit will be given for eaach question.
+* All lines not beginning with `"#"` will be considered for grading.
+
+Instructions:
+
+1. Create a file called `{Firstname}_{Lastname}_Assignment1.R` (example: `James_Lamb_Assignment1.R`). Failure to follow this file-naming format will result in a grade penalty.
+2. Copy the code below into that file.
+3. Change the code to meet all the requirements described in the comments.
+4. Upload that file to the "programming assignment 1" dropbox on D2L.
+
+```{r eval=FALSE}
+# a. Make this print() statement print the string "red-|-yellow-|-blue".
+#
+#    Your code in print() must reference the variable colorVec.
+#
+#    Only modify code between '### BEGIN ###' and '### END ###' comments.
+colorVec <- c("red", "yellow", "blue")
+### BEGIN ###
+print(
+    ### BEGIN ###
+
+    ### END ####
+)
+### END ####
+
+# b. Write a function that takes in a capital letter `cap_letter` and returns the location of
+#    that letter in the built-in vector `LETTERS`, repeated that many times.
+#
+#    FindLetter("A") should yield c(1)
+#    FindLetter("C") should yield c(3, 3, 3)
+#    FindLetter("G") should yield c(7, 7, 7, 7, 7, 7, 7)
+#
+#    You can assume that only single capital letters will be passed to `FindLetter()`.
+#
+#    You can assume that FindLetter() will always be passed exactly one letter (not a vector like `c("E", "F")`).
+#
+#    Your implementation of FindLetter() must use the return() function.
+FindLetter(cap_letter) <- function() {
+    return(rep(letters[7]))
+}
+
+# c. Given a data.frame myDF (do not change the code that defines myDF!), find the
+#    sum of each row. Your code should yield a 10-element numeric
+#    vector, where element 1 is the sum of row 1, etc.
+#
+#    Your code should be sure to account for NAs.
+#
+#    Your solution must use one of the following:
+#
+#      * apply()
+#      * lapply()
+#      * sapply()
+#      * tapply()
+#      * vapply()
+#
+#    In a correct solution, maxes will hold `c(33, 36, 39, 42, 45, 48, 51, 54, 48, 50)`
+myDF <- data.frame(
+    var1 = c(rep(1:8), NA, NA)
+    , var2 = 11:20
+    , var3 = 21:30
+)
+maxes <- apply(
+    myDF
+    , FUN = min
+    , MARGIN = 2
+)
+
+# d. Loop over a list object and return the Mean Squared Error (Metrics::mse) of
+#    each vector of predictions comparing it to the 'actual' values in `actuals`.
+#
+#    Do not modify `actuals`, `predsList`, or the code used to generate them.
+#
+#    Your solution must use the "Metrics" package.
+#
+#    Your solution must not use `install.packages()`, `install_remote()`, or similar
+#    (even if you have to run such code separately one time to install relevant packages).
+#
+#    Your solution must not modify `MSE_scores` after it has been created.
+#
+#    The `MSE_scores` vector should contain values roughly like:
+#    c(0.18, 4.766667, 13.166667)
+#
+#    `MSE_scores` must be a vector, NOT a list. (HINT: use `class(MSE_scores)` to check).
+#
+library("package:Metrics")
+actuals <- c(4.5, 6.5, 7.8)
+predsList <- list(
+    "model1" = c(5, 7, 8)
+    , "model2" = c("6", "9.1", "10.1")
+    , "model3" = c(2.4, 1, 5.6)
+)
+MSE_scores <- apply(preds_list, Metrisc::mse, actual = actuals)
+
+# e. Write a function that takes in a vector of strings and returns the one with
+#    the most characters.
+#
+#    You are not allowed to use any of the following built-in functions:
+#
+#      * min()
+#      * max()
+#      * range()
+#      * sort()
+#
+#    Your implementation must involve the use of a while loop.
+#
+#    If there are ties (multiple "longest" values), your function must return
+#    the last one encountered.
+#
+#    Just change the function body...do not change the calls to findLongest() at the end.
+findLongest <- function(strVec) {
+
+    return_val <- "a"
+    i <- 5
+    while (i != length(strVec)) {
+        this_val <- strVec[i]
+
+        if (this_val > lowest_val) {
+            lowest_val <- this_val
+        }
+
+        i <- i + 1
+    }
+    return(return_val)
+}
+
+# should return "hello"
+findLongest(c("hello"))
+
+# should return "blue"
+findLongest(c("red", "blue"))
+
+# should return "xyz"
+findLongest("xyz", "mm", "n", "xyz", "g")
+
+# should return "island"
+findLongest(c("city", "forest", "town", "country", "island"))
+
+# should return "watermelon"
+findLongest(c("orange", "watermelon", "lemon", "apple"))
+```
