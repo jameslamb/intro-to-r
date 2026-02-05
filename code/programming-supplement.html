@@ -8134,7 +8134,7 @@ problem.</p>
     , &quot;v for vendetta&quot;
     , &quot;zoolander&quot;
 )
-MOVIE_TO_SEARCH_FOR &lt;- &quot;apocalypse now&quot;
+MOVIE_TO_SEARCH_FOR &lt;- &quot;boop&quot;
 
 # Faster while loop implementation
 KEEP_SEARCHING &lt;- TRUE
@@ -8151,14 +8151,18 @@ while (KEEP_SEARCHING) {
         i &lt;- i + 1
     }
 
-    # If we&#39;ve reached the end, break out
-    if (i == length(movies)) {
+    # If we&#39;ve reached the end, stop searching
+    if (i &gt; length(movies)) {
         print(&quot;Done searching. This movie isn&#39;t in the list&quot;)
         KEEP_SEARCHING &lt;- FALSE
     }
 }</code></pre>
 <pre><code>## [1] &quot;1: not found&quot;
-## [1] &quot;2: found it!&quot;</code></pre>
+## [1] &quot;2: not found&quot;
+## [1] &quot;3: not found&quot;
+## [1] &quot;4: not found&quot;
+## [1] &quot;5: not found&quot;
+## [1] &quot;Done searching. This movie isn&#39;t in the list&quot;</code></pre>
 </div>
 </div>
 <div id="functions" class="section level1">
