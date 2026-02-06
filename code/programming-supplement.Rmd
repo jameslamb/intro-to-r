@@ -511,7 +511,7 @@ movies <- c(
     , "v for vendetta"
     , "zoolander"
 )
-MOVIE_TO_SEARCH_FOR <- "boop"
+MOVIE_TO_SEARCH_FOR <- "apocalypse now"
 
 # Faster while loop implementation
 KEEP_SEARCHING <- TRUE
@@ -528,8 +528,8 @@ while (KEEP_SEARCHING) {
         i <- i + 1
     }
 
-    # If we've reached the end, stop searching
-    if (i > length(movies)) {
+    # If we've reached the end, break out
+    if (i == length(movies)) {
         print("Done searching. This movie isn't in the list")
         KEEP_SEARCHING <- FALSE
     }
