@@ -528,8 +528,8 @@ while (KEEP_SEARCHING) {
         i <- i + 1
     }
 
-    # If we've reached the end, break out
-    if (i == length(movies)) {
+    # If we've reached the end, stop searching
+    if (i > length(movies)) {
         print("Done searching. This movie isn't in the list")
         KEEP_SEARCHING <- FALSE
     }
