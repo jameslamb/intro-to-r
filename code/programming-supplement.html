@@ -8151,8 +8151,8 @@ while (KEEP_SEARCHING) {
         i &lt;- i + 1
     }
 
-    # If we&#39;ve reached the end, break out
-    if (i == length(movies)) {
+    # If we&#39;ve reached the end, stop searching
+    if (i &gt; length(movies)) {
         print(&quot;Done searching. This movie isn&#39;t in the list&quot;)
         KEEP_SEARCHING &lt;- FALSE
     }
