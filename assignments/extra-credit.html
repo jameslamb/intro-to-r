@@ -419,9 +419,9 @@ directly, which is called “modifying in place” or “pass-by-reference”.
 One such package, <code>{data.table}</code>, allows you to modify data
 frames in R without copying them.</p>
 <p>See the example below.</p>
-<pre class="r"><code>library(data.table)
-
-randomDT &lt;- data.table::data.table(
+<pre class="r"><code>library(data.table)</code></pre>
+<pre><code>## Warning: package &#39;data.table&#39; was built under R version 4.4.3</code></pre>
+<pre class="r"><code>randomDT &lt;- data.table::data.table(
     x = rnorm(10)
     , y = rnorm(10)
 )

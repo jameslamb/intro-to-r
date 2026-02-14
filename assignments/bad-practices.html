@@ -1638,8 +1638,9 @@ data.table(
 )</code></pre>
 <pre><code>## Error in data.table(x = rnorm(10), y = rnorm(10)): could not find function &quot;data.table&quot;</code></pre>
 <p>When I load the package, this command now succeeds.</p>
-<pre class="r"><code>library(data.table)
-set.seed(708)
+<pre class="r"><code>library(data.table)</code></pre>
+<pre><code>## Warning: package &#39;data.table&#39; was built under R version 4.4.3</code></pre>
+<pre class="r"><code>set.seed(708)
 data.table(
     x = rnorm(10)
     , y = rnorm(10)

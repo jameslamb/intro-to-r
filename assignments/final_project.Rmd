@@ -153,7 +153,7 @@ Your goal is to create one or more R scripts that meet the requirements listed i
 <h3>Submission</h3>
 
 Please submit your code to the "Final Project (script + report)" dropbox on D2L.
-If you use multiple scripts (totally acceptable!), please include an additional script called "build.R" which species the order to run the scripts in.
+If you use multiple scripts (totally acceptable!), please include an additional script called "build.R" which specifies the order to run the scripts in.
 
 Your script will be scored out of 100 points, using the following rubric:
 
@@ -253,8 +253,8 @@ Your presentation will be scored out of 100 points, using the following rubric:
 |&nbsp;&nbsp;&nbsp;&nbsp;*(10-19) overly-literal description or unclear connection to the problem"*    |           |
 |&nbsp;&nbsp;&nbsp;&nbsp;*(0-9) inaccurate or confusing explanation*                    |                          |
 |&nbsp;&nbsp;3. Explanation of the Code                                                 |50                        |
-|&nbsp;&nbsp;&nbsp;&nbsp;*(30-40) clear explanation of how the code solves the problem* |                          |
-|&nbsp;&nbsp;&nbsp;&nbsp;*(10-29) literal description of the code as-is*                |                          |
+|&nbsp;&nbsp;&nbsp;&nbsp;*(35-50) clear explanation of how the code solves the problem* |                          |
+|&nbsp;&nbsp;&nbsp;&nbsp;*(10-34) literal description of the code as-is*                |                          |
 |&nbsp;&nbsp;&nbsp;&nbsp;*(0-9) inaccurate or confusing explanation*                    |                          |
 
 <h3>Tips</h3>
