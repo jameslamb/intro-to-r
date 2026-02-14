@@ -354,7 +354,7 @@ Your report will be scored out of 100 points, using the following rubric:
 |&nbsp;&nbsp;3. Explanation what the dataset contains                                                    |20                    |
 |&nbsp;&nbsp;&nbsp;&nbsp;*(15-20) clear, executive-level explanation*                                    |                      |
 |&nbsp;&nbsp;&nbsp;&nbsp;*(10-14) overly-technical description or somewhat unclear or inaccurate*        |                      |
-|&nbsp;&nbsp;&nbsp;&nbsp;*(0-9) very unclea, inaccurate, or confusing explanation or no explanation*     |                      |
+|&nbsp;&nbsp;&nbsp;&nbsp;*(0-9) very unclear, inaccurate, or confusing explanation or no explanation*     |                      |
 |&nbsp;&nbsp;4. Explanation of the result                                                                |25                    |
 |&nbsp;&nbsp;&nbsp;&nbsp;*(20-25) result of the project clearly expressed in business terms*             |                      |
 |&nbsp;&nbsp;&nbsp;&nbsp;*(10-19) overly-technical explanation of the result*                            |                      |
