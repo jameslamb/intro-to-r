@@ -51,15 +51,13 @@ Instructions:
 #
 #    Your code in print() must reference the variable colorVec.
 #
-#    Only modify code between '### BEGIN ###' and '### END ###' comments.
+#    Only add code between the '### BEGIN ###' and '### END ###' comments.
 colorVec <- c("red", "yellow", "blue")
-### BEGIN ###
 print(
     ### BEGIN ###
 
     ### END ####
 )
-### END ####
 
 # b. Write a function that takes in a capital letter `cap_letter` and returns the location of
 #    that letter in the built-in vector `LETTERS`, repeated that many times.
@@ -139,9 +137,9 @@ MSE_scores <- apply(preds_list, Metrisc::mse, actual = actuals)
 #      * range()
 #      * sort()
 #
-#    Your implementation must involve the use of a while loop.
+#    Your implementation must use a `while` loop.
 #
-#    If there are ties (multiple "longest" values), your function must return
+#    If there are ties (multiple longest values), your function must return
 #    the last one encountered.
 #
 #    Just change the function body...do not change the calls to findLongest() at the end.
@@ -168,10 +166,10 @@ findLongest(c("hello"))
 findLongest(c("red", "blue"))
 
 # should return "xyz"
-findLongest("xyz", "mm", "n", "xyz", "g")
+findLongest(c("xyz", "mm", "n", "xyz", "g"))
 
 # should return "island"
-findLongest(c("city", "forest", "town", "country", "island"))
+findLongest(c("city", "forest", "town", "garden", "island"))
 
 # should return "watermelon"
 findLongest(c("orange", "watermelon", "lemon", "apple"))

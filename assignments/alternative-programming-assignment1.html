@@ -1554,15 +1554,13 @@ D2L.</li>
 #
 #    Your code in print() must reference the variable colorVec.
 #
-#    Only modify code between &#39;### BEGIN ###&#39; and &#39;### END ###&#39; comments.
+#    Only add code between the &#39;### BEGIN ###&#39; and &#39;### END ###&#39; comments.
 colorVec &lt;- c(&quot;red&quot;, &quot;yellow&quot;, &quot;blue&quot;)
-### BEGIN ###
 print(
     ### BEGIN ###
 
     ### END ####
 )
-### END ####
 
 # b. Write a function that takes in a capital letter `cap_letter` and returns the location of
 #    that letter in the built-in vector `LETTERS`, repeated that many times.
@@ -1642,9 +1640,9 @@ MSE_scores &lt;- apply(preds_list, Metrisc::mse, actual = actuals)
 #      * range()
 #      * sort()
 #
-#    Your implementation must involve the use of a while loop.
+#    Your implementation must use a `while` loop.
 #
-#    If there are ties (multiple &quot;longest&quot; values), your function must return
+#    If there are ties (multiple longest values), your function must return
 #    the last one encountered.
 #
 #    Just change the function body...do not change the calls to findLongest() at the end.
@@ -1671,10 +1669,10 @@ findLongest(c(&quot;hello&quot;))
 findLongest(c(&quot;red&quot;, &quot;blue&quot;))
 
 # should return &quot;xyz&quot;
-findLongest(&quot;xyz&quot;, &quot;mm&quot;, &quot;n&quot;, &quot;xyz&quot;, &quot;g&quot;)
+findLongest(c(&quot;xyz&quot;, &quot;mm&quot;, &quot;n&quot;, &quot;xyz&quot;, &quot;g&quot;))
 
 # should return &quot;island&quot;
-findLongest(c(&quot;city&quot;, &quot;forest&quot;, &quot;town&quot;, &quot;country&quot;, &quot;island&quot;))
+findLongest(c(&quot;city&quot;, &quot;forest&quot;, &quot;town&quot;, &quot;garden&quot;, &quot;island&quot;))
 
 # should return &quot;watermelon&quot;
 findLongest(c(&quot;orange&quot;, &quot;watermelon&quot;, &quot;lemon&quot;, &quot;apple&quot;))</code></pre>
