@@ -184,7 +184,7 @@ plot(
 
 If this works correctly, you should see a plot similar to this:
 
-<center><img src = "assets/img/alt_assignment_2.png"></center>
+<center><img src = "assets/img/alt_assignment2.png"></center>
 
 ## Part 3: Reading Remote Files
 
