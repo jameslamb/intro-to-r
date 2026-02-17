@@ -1780,6 +1780,7 @@ function returns the first <code>num_rows</code> rows of the data. If
 <li><code>num_cols</code>: an integer. If <code>&gt;=1</code>, the
 function returns the first <code>num_cols</code> columns of the data. If
 <code>&lt;= 0</code>, the function returns all rows</li>
+</ul></li>
 <li>if <code>num_rows</code> is greater than the total number of rows in
 the data frame, the function throws an error with the message
 <code>&quot;num_rows (&lt;num_rows&gt;) is too high (full dataset has &lt;m&gt; rows)&quot;</code>,
@@ -1790,7 +1791,6 @@ the data frame, the function throws an error with the message
 <code>&quot;num_cols (&lt;num_cols&gt;) is too high (full dataset has &lt;n&gt; columns)&quot;</code>,
 where <code>&lt;num_cols&gt;</code> and <code>&lt;n&gt;</code> replaced
 with the actual values as described above</li>
-</ul></li>
 <li>calls <code>get_remote_data()</code> and uses its result</li>
 <li>returns a <code>data.frame</code> with the first
 <code>num_rows</code> and <code>num_cols</code> of the data indicated by
@@ -1848,6 +1848,7 @@ stopifnot(dim(subsetDF) == c(27, 6))
 #--- test 4: should return all rows and columns if num_rows == -1 and num_cols == -1 ---#
 subsetDF &lt;- get_dataset(
     url = &quot;https://raw.githubusercontent.com/jameslamb/intro-to-r/refs/heads/main/sample-data/iris.csv&quot;
+    , data_path = tempfile(fileext = &quot;.csv&quot;)
     , num_rows = -1
     , num_cols = -1
 )
