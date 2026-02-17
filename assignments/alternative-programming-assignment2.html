@@ -1848,7 +1848,7 @@ stopifnot(dim(subsetDF) == c(27, 6))
 #--- test 4: should return all rows and columns if num_rows == -1 and num_cols == -1 ---#
 subsetDF &lt;- get_dataset(
     url = &quot;https://raw.githubusercontent.com/jameslamb/intro-to-r/refs/heads/main/sample-data/iris.csv&quot;
-    , data_path = 
+    , data_path = tempfile(fileext = &quot;.csv&quot;)
     , num_rows = -1
     , num_cols = -1
 )
