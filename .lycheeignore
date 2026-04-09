@@ -25,5 +25,8 @@ http://softwaremaniacs.org/*
 # Network error: HTTP/2 protocol error. Server may not support HTTP/2 properly
 https://fred.stlouisfed.org/*
 
+# Rejected status code: 999 Unknown status code
+https://www.linkedin.com/*
+
 # other misc. errors
 https://www.saturncloud.io/*
