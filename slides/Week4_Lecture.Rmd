@@ -254,7 +254,7 @@ In this situation, regression trees might perform better.
 
 <center><img src="assets/img/regression-tree.png" style="max-width:50%;"></center>
 
-See  [A Visual Introduction to Machine Learning](http://www.r2d3.us/visual-intro-to-machine-learning-part-1/) for a nice visual overview of the key concepts.
+See  [A Visual Introduction to Machine Learning](https://r2d3.us/visual-intro-to-machine-learning-part-1/) for a nice visual overview of the key concepts.
 
 --- .content_slide
 
