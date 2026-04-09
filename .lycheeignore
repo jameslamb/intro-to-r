@@ -24,3 +24,6 @@ http://softwaremaniacs.org/*
 
 # Network error: HTTP/2 protocol error. Server may not support HTTP/2 properly
 https://fred.stlouisfed.org/*
+
+# other misc. errors
+https://www.saturncloud.io/*
