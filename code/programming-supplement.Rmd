@@ -2052,7 +2052,7 @@ Linear regressions are powerful tools, but there are certain classes of complex 
 Regression Trees are one tool used to fit non-linear functions.
 They recursively partition the dataset, trying to find "local" models of subsets of the data which, together, provide a better fit than the single "global" OLS model we're used to fitting.
 
-The details of tree-based learning are outside the scope of this class, but I encourage you to check out [A Visual Introduction to Machine Learning](http://www.r2d3.us/visual-intro-to-machine-learning-part-1/) to at least get the general intuition behind this and other ML techniques.
+The details of tree-based learning are outside the scope of this class, but I encourage you to check out [A Visual Introduction to Machine Learning](https://r2d3.us/visual-intro-to-machine-learning-part-1/) to at least get the general intuition behind this and other ML techniques.
 
 ```{r tree_seed, echo = FALSE, eval = TRUE, error = FALSE}
 # set random seed so we get the same model every time these docs are generated
