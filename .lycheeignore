@@ -20,3 +20,6 @@ https://superuser.com*
 https://cdn.rawgit.com/ramnathv/*
 https://code.google.com/p/io-2012-slides
 http://github.com/isagalaev/highlight.js/blob/master/classref.txt
+
+# Network error: HTTP/2 protocol error. Server may not support HTTP/2 properly
+https://fred.stlouisfed.org/*
