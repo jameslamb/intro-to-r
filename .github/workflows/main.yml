@@ -41,7 +41,7 @@ jobs:
             --no-progress
             --timeout 10
             --max-retries 2
-            --accept 200,429
+            --accept 200,202,429
             --exclude-path docs/conf.py
             './**/*.md'
             './**/*.R'
