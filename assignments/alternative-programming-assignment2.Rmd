@@ -220,7 +220,7 @@ In the file, implement 2 functions:
         - `num_rows`: an integer. If `>=1`, the function returns the first `num_rows` rows of the data. If `<= 0`, the function returns all rows.
         - `num_cols`: an integer. If `>=1`, the function returns the first `num_cols` columns of the data. If `<= 0`, the function returns all rows
     - if `num_rows` is greater than the total number of rows in the data frame, the function throws an error with the message `"num_rows (<num_rows>) is too high (full dataset has <m> rows)"`, where `<num_rows>` and `<m>` replaced with the actual values as described above
-    - if `num_cols` is greater than the total number of rows in the data frame, the function throws an error with the message `"num_cols (<num_cols>) is too high (full dataset has <n> columns)"`, where `<num_cols>` and `<n>` replaced with the actual values as described above
+    - if `num_cols` is greater than the total number of columns in the data frame, the function throws an error with the message `"num_cols (<num_cols>) is too high (full dataset has <n> columns)"`, where `<num_cols>` and `<n>` replaced with the actual values as described above
     - calls `get_remote_data()` and uses its result
     - returns a `data.frame` with the first `num_rows` and `num_cols` of the data indicated by `url`
 

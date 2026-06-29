@@ -28,7 +28,7 @@ You are welcome to review the **Quiz 2** solution video ([link](https://drive.go
 
 ### Part 2 (75%)
 
-1. Install the following R packages: `{data.table}` and `{jsonlite}'
+1. Install the following R packages: `{data.table}` and `{jsonlite}`
 2. Create a file called `{Firstname}_{Lastname}_Quiz2.R` (example: `James_Lamb_Quiz2.R`). Failure to follow this file-naming format will result in a grade penalty.
 3. Copy the code below into that file.
 4. Change the code to meet all the requirements described in the comments.

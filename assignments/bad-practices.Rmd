@@ -56,7 +56,7 @@ if (T && F){
 
 ## Generating vectors with `1:length(x)`
 
-> Never use `1:length(x)`, use`seq_len()` or `seq_along()` instead.
+> Never use `1:length(x)`, use `seq_len()` or `seq_along()` instead.
 
 It's inevitable that you'll encounter a situation where you want to loop over every element of a vector and do something with it.
 
@@ -251,7 +251,7 @@ The following is a better way to write this:
 MILES_PER_KILOMETER <- 0.621371
 MINUTES_PER_HOUR <- 60
 
-distance_travelled <- distance_travelled * MILES_PER_KILOMETERS
+distance_travelled <- distance_travelled * MILES_PER_KILOMETER
 hours_spent <- travel_time / 60
 mph <- distance_travelled / hours_spent
 ```

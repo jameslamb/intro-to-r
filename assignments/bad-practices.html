@@ -1555,7 +1555,7 @@ if (T &amp;&amp; F){
 <div id="generating-vectors-with-1lengthx" class="section level2">
 <h2>Generating vectors with <code>1:length(x)</code></h2>
 <blockquote>
-<p>Never use <code>1:length(x)</code>, use<code>seq_len()</code> or
+<p>Never use <code>1:length(x)</code>, use <code>seq_len()</code> or
 <code>seq_along()</code> instead.</p>
 </blockquote>
 <p>It’s inevitable that you’ll encounter a situation where you want to
@@ -1642,7 +1642,11 @@ data.table(
 ## ! could not find function &quot;data.table&quot;</code></pre>
 <p>When I load the package, this command now succeeds.</p>
 <pre class="r"><code>library(data.table)</code></pre>
-<pre><code>## Warning: package &#39;data.table&#39; was built under R version 4.4.3</code></pre>
+<pre><code>## 
+## Attaching package: &#39;data.table&#39;</code></pre>
+<pre><code>## The following object is masked from &#39;package:base&#39;:
+## 
+##     %notin%</code></pre>
 <pre class="r"><code>set.seed(708)
 data.table(
     x = rnorm(10)
@@ -1784,7 +1788,7 @@ divided by 60”.</p>
 <pre class="r"><code>MILES_PER_KILOMETER &lt;- 0.621371
 MINUTES_PER_HOUR &lt;- 60
 
-distance_travelled &lt;- distance_travelled * MILES_PER_KILOMETERS
+distance_travelled &lt;- distance_travelled * MILES_PER_KILOMETER
 hours_spent &lt;- travel_time / 60
 mph &lt;- distance_travelled / hours_spent</code></pre>
 </div>

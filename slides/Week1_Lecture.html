@@ -867,18 +867,17 @@ str(myList)
 To save memory, internally R will convert factor values to integers and then keep around a single table that says, for example, 1 = &quot;Africa&quot;, 2 = &quot;Asia&quot;, etc.</p>
 
 <pre><code class="r">regions &lt;- as.factor(c(&quot;Africa&quot;, &quot;Asia&quot;, &quot;Europe&quot;, &quot;Asia&quot;))
-print(region_fac)
+print(regions)
 </code></pre>
 
-<pre><code>## Error:
-## ! object &#39;region_fac&#39; not found
+<pre><code>## [1] Africa Asia   Europe Asia  
+## Levels: Africa Asia Europe
 </code></pre>
 
-<pre><code class="r">print(as.integer(region_fac))
+<pre><code class="r">print(as.integer(regions))
 </code></pre>
 
-<pre><code>## Error:
-## ! object &#39;region_fac&#39; not found
+<pre><code>## [1] 1 2 3 2
 </code></pre>
 
 <p>See <a href="../code/programming-supplement.html#Factors">&quot;Factors&quot;</a> in the programming supplement for an example.</p>
@@ -1128,7 +1127,7 @@ Practice subsetting them using the examples below.</p>
 
 <pre><code class="r"># Create a data frame
 someDF &lt;- data.frame(
-    , conference  = c(&quot;Big East&quot;, &quot;Big Ten&quot;, &quot;Big East&quot;, &quot;ACC&quot;, &quot;SEC&quot;)
+    conference  = c(&quot;Big East&quot;, &quot;Big Ten&quot;, &quot;Big East&quot;, &quot;ACC&quot;, &quot;SEC&quot;)
     , school_name = c(&quot;Villanova&quot;, &quot;Minnesota&quot;, &quot;Marquette&quot;, &quot;Duke&quot;, &quot;LSU&quot;)
     , wins        = c(18, 14, 19, 24, 12)
     , ppg         = c(71.5, 45.8, 66.9, 83.4, 58.7)

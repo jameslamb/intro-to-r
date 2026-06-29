@@ -108,7 +108,7 @@ IMHO, [this assignment](../assignments/programming_assignment1.html) was the sin
 `NA` is a special object in R, used to capture the idea of "a value whose value is unknown".
 See `?NA` for R's documentation on the nuances of `NA`
 
-```{r introToNAs, eval - FALSE, echo = TRUE}
+```{r introToNAs, eval = FALSE, echo = TRUE}
 # Create a vector w/ missing data
 some_nums <- c(1,2,NA, 6, NA, 8)
 print(some_nums)
@@ -131,12 +131,12 @@ class(some_nums)
 
 `NA` values are not necessarily problems!
 
-NA` can actually hold valuable information
+`NA` can actually hold valuable information
 For example, imagine that you get a dump of data from Salesforce or some other CRM system with information like customer_name, date_of_first_contact, and date_of_second_contact.
 
 <br>
 
-Depending on how the system was set up, `date_of_second_contact1` may have dates only for customers who have been contacted at least twice, and be `NA` everywhere else.
+Depending on how the system was set up, `date_of_second_contact` may have dates only for customers who have been contacted at least twice, and be `NA` everywhere else.
 This is valuable information!
 If you want to build a model of 1-contact conversion, you could use the presence/absence of `NA` to help you identify the 1-contact customers that belong in your model.
 

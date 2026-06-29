@@ -30,7 +30,7 @@ To get full points on this assignment:
 
 Note:
 
-* Partial credit will be given for eaach question.
+* Partial credit will be given for each question.
 * All lines not beginning with `"#"` will be considered for grading.
 
 Instructions:
