@@ -13,6 +13,26 @@ linkcolor: blue
 urlcolor: blue
 ---
 
+```{r calculateDates, echo = FALSE}
+fp_pres_dt <- as.Date("2026-08-08")
+
+# full month name, day, 4-digit year
+fmt <- "%B %d, %Y"
+
+due_dates <- list(
+    "survey"         = format(fp_pres_dt - 28L, fmt)
+    , "quiz1"        = format(fp_pres_dt - 21L, fmt)
+    , "quiz2"        = format(fp_pres_dt - 14L, fmt)
+    , "assignment1"  = format(fp_pres_dt - 14L, fmt)
+    , "assignment2"  = format(fp_pres_dt - 7L, fmt)
+    , "fp_proposal"  = format(fp_pres_dt - 7L, fmt)
+    , "fp_report"    = format(fp_pres_dt, fmt)
+    , "fp_pres"      = format(fp_pres_dt, fmt)
+    , "fp_script"    = format(fp_pres_dt, fmt)
+    , "extra_credit" = format(fp_pres_dt + 3L, fmt)
+)
+```
+
 \hrulefill
 
 **Instructor:** James Lamb
@@ -62,7 +82,7 @@ Bookmark these:
 
 All lectures are delivered asynchronously, via those pre-recorded videos.
 
-**YOU WILL PRESENT YOUR FINAL PROJECT ON A VIDEO CALL SATURDAY, February 14, 9:00a-12:00P CT**.
+**YOU WILL PRESENT YOUR FINAL PROJECT ON A VIDEO CALL SATURDAY, `r due_dates[["fp_pres"]]`, 9:00a-12:00P CT**.
 
 Videos describing the solutions to quizzes and assignments will be made available after the deadlines for those items.
 
@@ -101,7 +121,7 @@ Recommended sequence:
     * programming supplement: ([link](https://jameslamb.github.io/intro-to-r/code/programming-supplement.html))
     * office hours link: https://calendar.app.google/iKAUGVQjBhegyLHH8
 5. Watch the course intro video ([link](https://drive.google.com/file/d/1BHRiFxOTSNRXyD1rAF7CPa7MC3xD3sRf/view?usp=drive_link))
-6. **(due January 17, 2026)** Take the `pre-course survey` on D2L
+6. **(due `r due_dates[["survey"]]`)** Take the `pre-course survey` on D2L
 7. Set up your development environment
     * install R on your personal computer (https://cloud.r-project.org/)
     * install RStudio (the free one!!!) on your personal computer (https://posit.co/products/open-source/rstudio/)
@@ -115,7 +135,7 @@ Recommended sequence:
       - "Subsetting"
       - "Controlling Program Flow"
     * *(optional)* Quiz Description video ([link](https://drive.google.com/file/d/1mA5umVuGeezZIVapP9t2ZMCMKdsDMzic/view?usp=sharing))
-9. **(due January 24, 2026)** Complete `Quiz 1`
+9. **(due `r due_dates[["quiz1"]]`)** Complete `Quiz 1`
 10. Watch solution videos:
     * Quiz 1 ([link](https://drive.google.com/file/d/1Yz0eF37P7BmW6C1t1-QFFeOwt_MyWogg/view?usp=drive_link))
 11. Review Week 2 lecture materials
@@ -125,8 +145,8 @@ Recommended sequence:
       - "Debugging"
       - "Working with Files"
     * *(optional)* Programming Assignment 1 description video ([link](https://drive.google.com/file/d/16jiwXodqZi5X1S1mKnAdTkVP3zD80KbW/view?usp=drive_link))
-12. **(due January 31, 2026)** Complete `Quiz 2`
-13. **(due January 31, 2026)** Submit `Programming Assignment 1`
+12. **(due `r due_dates[["quiz2"]]`)** Complete `Quiz 2`
+13. **(due `r due_dates[["assignment1"]]`)** Submit `Programming Assignment 1`
 14. Watch solution videos
     * Quiz 2 ([link](https://drive.google.com/file/d/1LvTJXAe9_zeA8ISH2D1iTJWQFjO5suLs/view?usp=drive_link))
     * Programming Assignment 1 ([link](https://drive.google.com/file/d/1G2hKqfHmE9paQLSZGVy4YEJCD9b5rRq8/view?usp=drive_link))
@@ -141,8 +161,8 @@ Recommended sequence:
     * videos ([link](https://drive.google.com/drive/folders/1zP8VsIt9vpvD5LvLn4aUk5CtT9uJ-vmU))
     * rubrics ([link](https://jameslamb.github.io/intro-to-r/assignments/final_project.html))
     * "Practices to Avoid in R Programming" ([link](https://jameslamb.github.io/intro-to-r/assignments/bad-practices.html))
-17. **(due February 7, 2026)** Submit `Programming Assignment 2`
-18. **(due February 7, 2026)** Submit `Final Project Proposal`
+17. **(due `r due_dates[["assignment2"]]`)** Submit `Programming Assignment 2`
+18. **(due `r due_dates[["fp_proposal"]]`)** Submit `Final Project Proposal`
 19. Watch solution videos
     * Programming Assignment 2 pt.1 ([link](https://drive.google.com/file/d/15R8ljhqBiOcIl92ombhjDyhXBLzTvenK/view?usp=drive_link))
     * Programming Assignment 2 pt.2 ([link](https://drive.google.com/file/d/1KLByaC232y6pDQEy7y1Naw7L-xusC8Cn/view?usp=sharing))
@@ -154,12 +174,12 @@ Recommended sequence:
       - "Text Processing"
       - "Software Principles"
       - "R Programming Best Practices"
-21. **(due February 14, 2026)** Submit `Final Project Script(s)`
-22. **(due February 14, 2026)** Submit `Final Project Written Report`
-23. **(due February 14, 2026)** Attend `Final Project Presentation` (video call)
+21. **(due `r due_dates[["fp_script"]]`)** Submit `Final Project Script(s)`
+22. **(due `r due_dates[["fp_report"]]`)** Submit `Final Project Written Report`
+23. **(due `r due_dates[["fp_pres"]]`)** Attend `Final Project Presentation` (video call)
   * present your final project code to your classmates
   * provide peer review feedback to your classmates
-24. **(due February 17, 2026)** *(optional)* complete `Extra Credit Assignment`
+24. **(due `r due_dates[["extra_credit"]]`)** *(optional)* complete `Extra Credit Assignment`
 
 \pagebreak
 
@@ -208,11 +228,11 @@ Quizzes are delivered online via D2L (see the "Quizzes" section of the course si
 Quizzes have no time limit.
 You will be allowed two attempts for each quiz and your grade on each quiz will be the better of your two scores.
 
-|Quiz              |Opens        |Due                            |
-|:----------------:|:-----------:|:-----------------------------:|
-|Pre-course survey | Immediately | 11:00p CT on January 17, 2026 |
-|Quiz 1            | Immediately | 11:00p CT on January 24, 2026 |
-|Quiz 2            | Immediately | 11:00p CT on January 31, 2026 |
+|Quiz              |Opens        |Due                                     |
+|:----------------:|:-----------:|:--------------------------------------:|
+|Pre-course survey | Immediately | 11:00p CT on `r due_dates[["survey"]]` |
+|Quiz 1            | Immediately | 11:00p CT on `r due_dates[["quiz1"]]`  |
+|Quiz 2            | Immediately | 11:00p CT on `r due_dates[["quiz2"]]`  |
 
 ## B. Programming Assignments (30\%)
 
@@ -227,10 +247,10 @@ Assignment rubrics are available on the course site.
 Your completed assignment must be uploaded to the appropriate folder in the "Dropbox" section on the course D2L page by the due date listed in the table below.
 <br>
 
-|Quiz                      |Opens        |Due                            |
-|:------------------------:|:-----------:|:-----------------------------:|
-|Programming Assignment 1  | Immediately | 11:00p CT on January 24, 2026 |
-|Programming Assignment 2  | Immediately | 11:00p CT on January 31, 2026 |
+|Quiz                      |Opens        |Due                                          |
+|:------------------------:|:-----------:|:-------------------------------------------:|
+|Programming Assignment 1  | Immediately | 11:00p CT on `r due_dates[["assignment1"]]` |
+|Programming Assignment 2  | Immediately | 11:00p CT on `r due_dates[["assignment2"]]` |
 
 <br>
 
@@ -249,12 +269,12 @@ The project comprises the following parts:
 
 Full details of the project and each of its components are available at [https://jameslamb.github.io/intro-to-r/assignments/final_project.html](https://jameslamb.github.io/intro-to-r/assignments/final_project.html).
 
-|Assignment                 | Due                             |
-|:-------------------------:|:-------------------------------:|
-|Final Project proposal     |11:00p CT on February 7, 2026    |
-|Final Project script(s)    |11:00p CT on February 14, 2026   |
-|Final Project report       |11:00p CT on February 14, 2026   |
-|Final Project presentation |live, 9:00a CT February 14, 2026 |
+|Assignment                 | Due                                        |
+|:-------------------------:|:------------------------------------------:|
+|Final Project proposal     |11:00p CT on `r due_dates[["fp_proposal"]]` |
+|Final Project script(s)    |11:00p CT on `r due_dates[["fp_script"]]`   |
+|Final Project report       |11:00p CT on `r due_dates[["fp_report"]]`   |
+|Final Project presentation |live, 9:00a CT `r due_dates[["fp_pres"]]`   |
 
 <br>
 
@@ -263,9 +283,9 @@ Full details of the project and each of its components are available at [https:/
 There is an optional Extra Credit assignment available, worth up to 3 percentage points on your final grade.
 Follow the instructions at https://jameslamb.github.io/intro-to-r/assignments/extra-credit.html.
 
-|Assignment              | Due                           |
-|:----------------------:|:-----------------------------:|
-|Extra Credit Assignment |11:59p CT on February 17, 2026 |
+|Assignment              | Due                                         |
+|:----------------------:|:-------------------------------------------:|
+|Extra Credit Assignment |11:59p CT on `r due_dates[["extra_credit"]]` |
 
 ## D. Deadlines and Late Policy
 
