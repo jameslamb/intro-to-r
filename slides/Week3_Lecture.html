@@ -187,23 +187,12 @@ See <code>?NA</code> for R&#39;s documentation on the nuances of <code>NA</code>
 <pre><code class="r"># Create a vector w/ missing data
 some_nums &lt;- c(1,2,NA, 6, NA, 8)
 print(some_nums)
-</code></pre>
 
-<pre><code>## [1]  1  2 NA  6 NA  8
-</code></pre>
-
-<pre><code class="r"># Use is.na() to get a vector of TRUE/FALSE for the question &quot;is this element NA?&quot;
+# Use is.na() to get a vector of TRUE/FALSE for the question &quot;is this element NA?&quot;
 is.na(some_nums)
-</code></pre>
 
-<pre><code>## [1] FALSE FALSE  TRUE FALSE  TRUE FALSE
-</code></pre>
-
-<pre><code class="r"># Confirm that even w/ NAs, R still knows this is a numeric vector
+# Confirm that even w/ NAs, R still knows this is a numeric vector
 class(some_nums)
-</code></pre>
-
-<pre><code>## [1] &quot;numeric&quot;
 </code></pre>
 
   </article>
@@ -223,12 +212,12 @@ class(some_nums)
 
 <p><code>NA</code> values are not necessarily problems!</p>
 
-<p>NA` can actually hold valuable information
+<p><code>NA</code> can actually hold valuable information
 For example, imagine that you get a dump of data from Salesforce or some other CRM system with information like customer_name, date_of_first_contact, and date_of_second_contact.</p>
 
 <p><br></p>
 
-<p>Depending on how the system was set up, <code>date_of_second_contact1</code> may have dates only for customers who have been contacted at least twice, and be <code>NA</code> everywhere else.
+<p>Depending on how the system was set up, <code>date_of_second_contact</code> may have dates only for customers who have been contacted at least twice, and be <code>NA</code> everywhere else.
 This is valuable information!
 If you want to build a model of 1-contact conversion, you could use the presence/absence of <code>NA</code> to help you identify the 1-contact customers that belong in your model.</p>
 

@@ -562,8 +562,8 @@ To save memory, internally R will convert factor values to integers and then kee
 
 ```{r factorExample}
 regions <- as.factor(c("Africa", "Asia", "Europe", "Asia"))
-print(region_fac)
-print(as.integer(region_fac))
+print(regions)
+print(as.integer(regions))
 ```
 
 See ["Factors"](../code/programming-supplement.html#Factors) in the programming supplement for an example.
@@ -737,7 +737,7 @@ Practice subsetting them using the examples below.
 ```{r subsetDF, eval = FALSE}
 # Create a data frame
 someDF <- data.frame(
-    , conference  = c("Big East", "Big Ten", "Big East", "ACC", "SEC")
+    conference  = c("Big East", "Big Ten", "Big East", "ACC", "SEC")
     , school_name = c("Villanova", "Minnesota", "Marquette", "Duke", "LSU")
     , wins        = c(18, 14, 19, 24, 12)
     , ppg         = c(71.5, 45.8, 66.9, 83.4, 58.7)

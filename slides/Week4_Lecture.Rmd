@@ -346,7 +346,7 @@ These individual words can then be used downstream to build a language model and
 
 <br><br>
 
-See ["Tokenization"](../code/programming-supplement.html#Regular_Expressions) in the programming supplement.
+See ["Tokenization"](../code/programming-supplement.html#Tokenization) in the programming supplement.
 
 --- .section_slide
 
@@ -425,7 +425,7 @@ You'll spend the most time on this and you will have to go through it many times
 
 <br><br><br>
 
-See ["Pirate Book Example"](../code/code/programming-supplement.html#Pirate_Book_Example) in the programming supplement for an example.
+See ["Pirate Book Example"](../code/programming-supplement.html#Pirate_Book_Example) in the programming supplement for an example.
 
 --- .section_slide
 
