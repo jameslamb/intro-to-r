@@ -97,8 +97,11 @@ attitudeDT <- data.table::as.data.table(attitude)
 ```
 
 The function below contains comments that describe what the function should do.
+
 Add exactly one statement under each comment block.
+
 The `[must-use]` section describes the functions or operators from the `{data.table}` package that you must use in that statement.
+
 The `[description]` block describes what the code should do.
 
 ```{r assignment}
@@ -110,24 +113,31 @@ changeDataset <- function(inDT) {
     #     :=, .N
     #
     # [description]
-    #     add a new column "random_garbage"
+    #
+    #     Add a new column "random_garbage", filled with the value `TRUE` (boolean).
+    #
 
     # [must-use]
     #     setorderv()
     #
     # [description]
-    #     sort inDT by "rating" and "privileges"
+    #
+    #     Sort inDT by "rating" and "privileges".
+    #
 
     # [must-use]
     #     :=
     #
     # [description]
-    #     remove the column "advance"
+    #
+    #     Remove the column "advance".
+    #
 
     # [must-use]
     #     setcolorder()
     #
     # [description]
+    #
     #     change the column order to
     #     1. "complaints"
     #     2. "rating"
@@ -136,20 +146,25 @@ changeDataset <- function(inDT) {
     #     5. "critical"
     #     6. "raises"
     #     7. "learning"
+    #
 
     # [must-use]
     #     :=
     #
     # [description]
-    #     multiply every value in "raises" by 20
+    #
+    #     Multiply every value in "raises" by 20.
+    #
 
     # [must-use]
     #     setnames()
     #
     # [description]
-    #     add the length of each column name to the column name
+    #
+    #     Add the length of each column name to the column name.
     #     so e.g. "rating" should become "rating_6" because "rating" has 6
     #     characters. You must use nchar() to get the lengths.
+    #
 
     return(invisible(NULL))
 }
