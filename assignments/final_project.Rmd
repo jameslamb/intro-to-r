@@ -3,6 +3,10 @@ title : Final Project
 output:
   html_document:
     toc: true
+    toc_float:
+      collapsed: true
+      smooth_scroll: true
+    toc_depth: 2
     theme: spacelab
 ---
 
