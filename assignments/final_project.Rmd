@@ -187,7 +187,7 @@ Your script will be scored out of 100 points, using the following rubric:
 
 ### Tips
 
-<details><summary>All code runs without error (with no reliance on local data)</summary>
+> _All code runs without error (with no reliance on local data)_
 
 **TEST YOUR CODE IN A CLEAN SESSION**
 
@@ -195,8 +195,7 @@ Your script will be scored out of 100 points, using the following rubric:
 2. in RStudio click `Session --> Restart R`
 3. run your code
 
-</details>
-<details><summary>All/most external functions are called with `::`</summary>
+> _All/most external functions are called with `::`_
 
 See **"Telling R which package to use"** in the programming supplement ([link](../code/programming-supplement))
 
@@ -212,14 +211,10 @@ print(fromJSON)
 
 The line like `<environment: namespace:jsonlite>` in that example means that `fromJSON()` came from the `{jsonlite}` package.
 
-</details>
-
-<details><summary>Code commenting</summary>
+> _Code commenting_
 
 There are definitely good and bad ways to comment code.
 For some tips, see this code-commenting tutorial I like: https://www.learncpp.com/cpp-tutorial/comments/.
-
-</details>
 
 ---
 
