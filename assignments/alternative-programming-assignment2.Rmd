@@ -1,5 +1,5 @@
 ---
-title : Programming Assignment 2 (alternative)
+title: Programming Assignment 2 (alternative)
 output:
   html_document:
     theme: spacelab
