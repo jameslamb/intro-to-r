@@ -22,9 +22,19 @@ code-samples: clean
 		-name '*.Rmd' \
 		-exec Rscript -e "rmarkdown::render(commandArgs(trailingOnly=TRUE)[[1]])" {} \;
 
+vendored/github-markdown.css:
+	curl -L https://cdn.jsdelivr.net/npm/github-markdown-css/github-markdown.min.css -o vendored/github-markdown.css
+
+# '-f gfm' = "GitHub-flavored markdown"
 .PHONY: readme
-readme:
-	pandoc ./README.md -o ./index.html
+readme: vendored/github-markdown.css
+	pandoc \
+		-f gfm \
+		-s \
+		--metadata title="Intro to R" \
+		--css=vendored/github-markdown.css \
+		-o ./index.html \
+		./README.md
 
 .PHONY: slides
 slides:
