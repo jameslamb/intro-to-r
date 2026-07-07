@@ -6,7 +6,7 @@ output:
     theme: spacelab
 ---
 
-<h2>Final Project Introduction</h2>
+## Final Project Introduction
 
 This final project, which is worth 45\% of your final grade, is your opportunity to test the progress you've made as an R programmer.
 Once you've completed it, you'll be able to say that you have experience in the following:
@@ -54,9 +54,9 @@ See the following sections for submission details on each of the four parts of t
 
 ---
 
-<h2>Part 1: Project Proposal</h2>
+## Part 1: Project Proposal
 
-<h3>Description</h3>
+### Description
 
 The first deliverable for this project is a 1-2 page written report detailing your plans for the final project.
 This is not meant to lock you in to a particular data set, set of packages, or approach...all those details can change between this report and your final project submission.
@@ -72,7 +72,7 @@ This report should answer the following items:
 - What is one "Math and Statistics" package you plan to use? What does that package do?
 - What is one "Visualization, Presentation, and Reporting" package you plan to use? What does that package do?
 
-<h3>Submission</h3>
+### Submission
 
 Please submit your proposal (as a Word doc, PDF, or HTML doc) to the "Final Project Proposal" dropbox on D2L.
 
@@ -140,9 +140,9 @@ Your proposal will be scored out of 100 points, using the following rubric:
 
 ---
 
-<h2>Part 2: R Script(s)</h2>
+## Part 2: R Script(s)
 
-<h3>Description</h3>
+### Description
 
 This code is the main deliverable for the class...it is worth 20\% of your final grade.
 This is the part of the assignment where you get to show off what you've learned!
@@ -150,7 +150,7 @@ Your goal is to create one or more R scripts that meet the requirements listed i
 
 <center><img src="assets/img/programming_not_sure.jpg"></center>
 
-<h3>Submission</h3>
+### Submission
 
 Please submit your code to the "Final Project (script + report)" dropbox on D2L.
 If you use multiple scripts (totally acceptable!), please include an additional script called "build.R" which specifies the order to run the scripts in.
@@ -161,12 +161,12 @@ Your script will be scored out of 100 points, using the following rubric:
 |:-----------------------------------------------------------------------------------|:------------------------:|
 |**All-or-Nothing Grade Items**                                                      |                          |
 |&nbsp;&nbsp;1. All code runs without error (with no reliance on local data)         |25                        |
-|&nbsp;&nbsp;2. Uses at least one Data Retrieval and Transformation package          |4                         |
-|&nbsp;&nbsp;3. Uses at least one Math and Statistics package                        |4                         |
-|&nbsp;&nbsp;4. Uses at least one Visualization, Presentation, and Reporting package |4                         |
+|&nbsp;&nbsp;2. Uses at least one Data Retrieval and Transformation package          |5                         |
+|&nbsp;&nbsp;3. Uses at least one Math and Statistics package                        |5                         |
+|&nbsp;&nbsp;4. Uses at least one Visualization, Presentation, and Reporting package |5                         |
 |&nbsp;&nbsp;5. Every external package used is imported with `library()`             |3                         |
 |&nbsp;&nbsp;6. All `library()` calls are at the top of submitted script(s)          |1                         |
-|&nbsp;&nbsp;7. Code does not call `install.packages()`, `install_github()`, etc.    |4                         |
+|&nbsp;&nbsp;7. Code does not call `install.packages()`, `install_github()`, etc.    |1                         |
 |**Code Quality Items**                                                              |                          |
 |&nbsp;&nbsp;1. Code commenting                                                      |5                         |
 |&nbsp;&nbsp;&nbsp;&nbsp;*(4-5) Clearly commented*                                   |                          |
@@ -185,14 +185,45 @@ Your script will be scored out of 100 points, using the following rubric:
 |&nbsp;&nbsp;&nbsp;&nbsp;*(8-14) Good solution, meets minimum requirements*          |                          |
 |&nbsp;&nbsp;&nbsp;&nbsp;*(0-7) Solution is significantly incomplete*                |                          |
 
-<h3>Tips</h3>
+### Tips
+
+<details><summary>All code runs without error (with no reliance on local data)</summary>
+
+**TEST YOUR CODE IN A CLEAN SESSION**
+
+1. run `rm(list = ls())`
+2. in RStudio click `Session --> Restart R`
+3. run your code
+
+</details>
+<details><summary>All/most external functions are called with `::`</summary>
+
+See **"Telling R which package to use"** in the programming supplement ([link](../code/programming-supplement))
+
+If you're unsure which package a function in your code came from, try printing it.
+
+```{r objectSource}
+library(jsonlite)
+
+x <- fromJSON('{"country": "ITA"}')
+
+print(fromJSON)
+```
+
+The line like `<environment: namespace:jsonlite>` in that example means that `fromJSON()` came from the `{jsonlite}` package.
+
+</details>
+
+<details><summary>Code commenting</summary>
 
 There are definitely good and bad ways to comment code.
-For some tips, see [this code-commenting tutorial](https://www.learncpp.com/cpp-tutorial/comments/) I really like.
+For some tips, see this code-commenting tutorial I like: https://www.learncpp.com/cpp-tutorial/comments/.
+
+</details>
 
 ---
 
-<h2>Part 3: Presentation</h2>
+## Part 3: Presentation
 
 In professional data science teams, it is common for team members to present their work in internal "code reviews",
 small meetings where a data scientist presents brief background on the problem they sought to solve and then
@@ -202,7 +233,7 @@ This can be a nerve-wracking experience in the context of a new job (trust me), 
 to practice sharing code with others in the safe setting of this introductory course.
 In the code review component of this project, you will do a 5-10 minutes live presentation of your final project.
 
-<h3>Submission (live video call)</h3>
+### Submission (live video call)
 
 Code reviews will be a live, synchronous presentation near the end of the class.
 Details about timing will be sent out at the beginning of the term.
@@ -225,9 +256,11 @@ While you present, everyone in the class will have this doc up on their machines
 The benefit of this practice, in professional settings, is that days after your code review you'll have a written record of
 your audience's feedback.
 
-<h3>Description and Rubric</h3>
+### Description and Rubric
 
 Be prepared to show your code + report in front of the class.
+
+You will be asked a few direct questions about the code to test your understanding.
 
 Your code review should consist of the following:
 
@@ -252,12 +285,16 @@ Your presentation will be scored out of 100 points, using the following rubric:
 |&nbsp;&nbsp;&nbsp;&nbsp;*(20-30) explains source and real-world meaning of the data*   |                          |
 |&nbsp;&nbsp;&nbsp;&nbsp;*(10-19) overly-literal description or unclear connection to the problem"*    |           |
 |&nbsp;&nbsp;&nbsp;&nbsp;*(0-9) inaccurate or confusing explanation*                    |                          |
-|&nbsp;&nbsp;3. Explanation of the Code                                                 |50                        |
-|&nbsp;&nbsp;&nbsp;&nbsp;*(35-50) clear explanation of how the code solves the problem* |                          |
-|&nbsp;&nbsp;&nbsp;&nbsp;*(10-34) literal description of the code as-is*                |                          |
+|&nbsp;&nbsp;3. Explanation of the Code                                                 |30                        |
+|&nbsp;&nbsp;&nbsp;&nbsp;*(20-30) clear explanation of how the code solves the problem* |                          |
+|&nbsp;&nbsp;&nbsp;&nbsp;*(10-19) literal description of the code as-is*                |                          |
 |&nbsp;&nbsp;&nbsp;&nbsp;*(0-9) inaccurate or confusing explanation*                    |                          |
+|&nbsp;&nbsp;4. Understanding of the Code                                               |20                        |
+|&nbsp;&nbsp;&nbsp;&nbsp;*(15-20) demonstrates strong understanding of the codem*       |                          |
+|&nbsp;&nbsp;&nbsp;&nbsp;*(6-14) shallow or somewhat incorrect understanding*           |                          |
+|&nbsp;&nbsp;&nbsp;&nbsp;*(0-5) significant lack of understandign*                      |                          |
 
-<h3>Tips</h3>
+### Tips
 
 Avoid these common code review issues:
 
@@ -280,14 +317,15 @@ You'll do great!
 
 ---
 
-<h2>Part 4: Written Report</h2>
+## Part 4: Written Report
 
-<h3>Description</h3>
+### Description
 
 The final deliverable for this project is a written report with your findings.
 This should be a 2-4 page "executive briefing", the type that you would write if you were doing this analysis for a consulting client.
 
 Your report should focus on the problem, not the specifics of the code.
+
 None of the following should be included:
 
 * "R", "RStudio", etc.
@@ -332,9 +370,10 @@ For example, none of the following phrases should be used (unless they're clearl
 * "t-test"
 * "variance inflation factor"
 
-<h3>Submission</h3>
+### Submission
 
-Please upload your report to the "Final Project (script + report)" dropbox on D2L.
+Upload a file to the **Final Project (script + report)** dropbox on D2L with a name like `{Firstname}_{Lastname}_report.pdf` (example: `James_Lamb_report.pdf`).
+Failure to follow this file-naming format will result in a grade penalty.
 
 Your report will be scored out of 100 points, using the following rubric:
 

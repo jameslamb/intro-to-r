@@ -14,10 +14,12 @@
 - foreign
 - haven
 - httr2
+- ipumsr
 - jsonlite
 - lubridate
 - openxlsx
 - parallel
+- pdftools
 - purrr
 - quantmod
 - readxl
@@ -26,8 +28,11 @@
 - rvest
 - stringr
 - targets
+- tidyquant
 - tsfeatures
 - ucimlrepo
+- WDI
+- xml2
 - xts
 
 Or any of the packages from these:
@@ -81,6 +86,7 @@ Or any of the packages from these:
 - gghighlight
 - ggiraph
 - ggplot2
+- ggthemes
 - ggvis
 - googleVis
 - gt

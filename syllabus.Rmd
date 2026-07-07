@@ -303,6 +303,8 @@ Individual assignment grades will follow rubrics available on the course site.
 
 If you disagree with any grade assigned to you in this course, please refer to this document and those rubrics in your appeal.
 
+For more details, see https://bulletin.marquette.edu/policies/grade-appeals/
+
 # III. Administrative Information
 
 ## A. Special Needs
@@ -356,4 +358,4 @@ Your understanding of your final project code will be tested during the **Final 
 
 ## F. Important Dates
 
-See https://www.marquette.edu/central/registrar/2026-spring-academic-calendar.php for dates like the deadlines for dropping or withdrawing from the course.
+See https://www.marquette.edu/central/registrar/2026-summer-academic-calendar.php for dates like the deadlines for dropping or withdrawing from the course.
