@@ -865,21 +865,20 @@ incomplete</em></td>
 </div>
 <div id="tips" class="section level3">
 <h3>Tips</h3>
-<details>
-<summary>
-All code runs without error (with no reliance on local data)
-</summary>
+<blockquote>
+<p><em>All code runs without error (with no reliance on local
+data)</em></p>
+</blockquote>
 <p><strong>TEST YOUR CODE IN A CLEAN SESSION</strong></p>
 <ol style="list-style-type: decimal">
 <li>run <code>rm(list = ls())</code></li>
 <li>in RStudio click <code>Session --&gt; Restart R</code></li>
 <li>run your code</li>
 </ol>
-</details>
-<details>
-<summary>
-All/most external functions are called with <code>::</code>
-</summary>
+<blockquote>
+<p><em>All/most external functions are called with
+<code>::</code></em></p>
+</blockquote>
 <p>See <strong>“Telling R which package to use”</strong> in the
 programming supplement (<a href="../code/programming-supplement">link</a>)</p>
 <p>If you’re unsure which package a function in your code came from, try
@@ -913,19 +912,16 @@ print(fromJSON)</code></pre>
 ##         simplifyDataFrame = simplifyDataFrame, simplifyMatrix = simplifyMatrix, 
 ##         flatten = flatten, ...)
 ## }
-## &lt;bytecode: 0x11cb798a8&gt;
+## &lt;bytecode: 0x127e48628&gt;
 ## &lt;environment: namespace:jsonlite&gt;</code></pre>
 <p>The line like <code>&lt;environment: namespace:jsonlite&gt;</code> in
 that example means that <code>fromJSON()</code> came from the
 <code>{jsonlite}</code> package.</p>
-</details>
-<details>
-<summary>
-Code commenting
-</summary>
+<blockquote>
+<p><em>Code commenting</em></p>
+</blockquote>
 <p>There are definitely good and bad ways to comment code. For some
 tips, see this code-commenting tutorial I like: <a href="https://www.learncpp.com/cpp-tutorial/comments/" class="uri">https://www.learncpp.com/cpp-tutorial/comments/</a>.</p>
-</details>
 <hr />
 </div>
 </div>
