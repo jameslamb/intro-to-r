@@ -1,5 +1,5 @@
 ---
-title : Practices to Avoid in R Programming
+title: Practices to Avoid in R Programming
 output:
   html_document:
     toc: true

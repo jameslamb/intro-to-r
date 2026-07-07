@@ -1,5 +1,5 @@
 ---
-title : In-Place Modifications with data.table (extra credit)
+title: In-Place Modifications with data.table (extra credit)
 output:
   html_document:
     toc: true

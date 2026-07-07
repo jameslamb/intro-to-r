@@ -1,5 +1,5 @@
 ---
-title : Quiz 2 (alternative)
+title: Quiz 2 (alternative)
 output:
   html_document:
     toc: true
