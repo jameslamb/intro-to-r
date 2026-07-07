@@ -22,6 +22,10 @@ code-samples: clean
 		-name '*.Rmd' \
 		-exec Rscript -e "rmarkdown::render(commandArgs(trailingOnly=TRUE)[[1]])" {} \;
 
+.PHONY: readme
+readme:
+	pandoc ./README.md -o ./index.html
+
 .PHONY: slides
 slides:
 	find \
@@ -34,5 +38,5 @@ syllabus:
 	Rscript -e 'rmarkdown::render("./syllabus.Rmd", output_format = c("pdf_document", "html_document"))'
 
 .PHONY: course
-course: clean install assignments code-samples slides syllabus
+course: clean install assignments code-samples readme slides syllabus
 	@echo "made course"
